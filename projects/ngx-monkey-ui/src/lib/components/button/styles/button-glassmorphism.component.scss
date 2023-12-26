@@ -1,0 +1,44 @@
+@use '../../../styles/variables/colors' as colors;
+
+/* Glassmorphism style */
+button.btn-glass {
+    border-radius: 15px;
+    backdrop-filter: blur(30px);
+    padding: 20px 30px;
+
+    transition: all 0.3s ease;
+
+    /* Light color scheme */
+    &.scheme-light {
+        background-color: colors.$glass-light-color;
+        border: 1px solid colors.$glass-light-color;
+        color: colors.$glass-light-color-contrast;
+
+        &:hover {
+            background-color: colors.$glass-light-color-emphasis;
+            border: 1px solid colors.$glass-light-color-emphasis;
+        }
+
+        &:active {
+            background-color: colors.$glass-light-color;
+            border: 1px solid colors.$glass-light-color;
+        }
+    }
+
+    /* Dark color scheme */
+    &.scheme-dark {
+        background-color: colors.$glass-dark-color;
+        border: 1px solid colors.$glass-dark-color;
+        color: colors.$glass-dark-color-contrast;
+    }
+
+    &:hover {
+        background-color: colors.$glass-dark-color-emphasis;
+        border: 1px solid colors.$glass-dark-color-emphasis;
+    }
+
+    &:active {
+        background-color: colors.$glass-dark-color;
+        border: 1px solid colors.$glass-dark-color;
+    }
+}

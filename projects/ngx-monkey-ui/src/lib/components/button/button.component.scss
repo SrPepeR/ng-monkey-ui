@@ -1,0 +1,19 @@
+:host {
+    z-index: 1;
+
+    button {
+        box-sizing: border-box;
+        display: inline-block;
+    
+        min-height: 30px;
+        min-width: 120px;
+    
+        cursor: pointer;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: normal;
+        line-height: 1.2;
+        letter-spacing: .05rem;
+        border: 0;
+    }
+}

@@ -1,0 +1,72 @@
+@use '../../../styles/variables/colors' as colors;
+
+/* Brutalist style */
+button.btn-brutalist {
+    padding: 15px 25px;
+    font-weight: bold;
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        right: -8px;
+        bottom: -8px;
+        z-index: -1;
+    }
+
+    &:hover,
+    &:active {
+        transition: all 0.3s ease;
+    }
+
+    /* Light color scheme */
+    &.scheme-light {
+        background-color: colors.$brutalist-light-color;
+        color: colors.$brutalist-light-color-contrast;
+        border: 2px solid colors.$brutalist-light-color-contrast;
+
+        &:after {
+            background-color: colors.$brutalist-light-color-contrast;
+        }
+
+        &:hover,
+        &:active {
+            color: colors.$brutalist-light-color;
+            background-color: colors.$brutalist-light-color-contrast;
+        }
+
+        &:hover:after,
+        &:hover:active {
+            color: colors.$brutalist-light-color-contrast;
+            background-color: colors.$brutalist-light-color;
+            border: 2px solid colors.$brutalist-light-color-contrast;
+        }
+    }
+
+    /* Dark color scheme */
+    &.scheme-dark {
+        background-color: colors.$brutalist-dark-color;
+        color: colors.$brutalist-dark-color-contrast;
+        border: 2px solid colors.$brutalist-dark-color;
+
+        &:after {
+            background-color: colors.$brutalist-dark-color-contrast;
+            border: 2px solid colors.$brutalist-dark-color;
+        }
+
+        &:hover,
+        &:active {
+            color: colors.$brutalist-dark-color;
+            background-color: colors.$brutalist-dark-color-contrast;
+        }
+
+        &:hover:after,
+        &:hover:active {
+            color: colors.$brutalist-dark-color-contrast;
+            background-color: colors.$brutalist-dark-color;
+            border: 2px solid colors.$brutalist-dark-color;
+        }
+    }
+}
