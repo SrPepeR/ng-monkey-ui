@@ -4,8 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve ngx-monkey-ui-tests", 
+    "stop": "exit 0",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "watch": "ng build ngx-monkey-ui --watch",
     "test": "ng test"
   },
   "private": true,

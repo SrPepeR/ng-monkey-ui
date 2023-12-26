@@ -2,12 +2,31 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?LinkId=733558
   "version": "2.0.0",
   "tasks": [
+    // EN: Run ng serve in a dedicated terminal.
+    // ES: Ejecuta ng serve en una terminal dedicada.
+    // FR: Exécutez ng serve dans un terminal dédié.
     {
+      "label": "npm: start",
       "type": "npm",
       "script": "start",
       "isBackground": true,
+      "presentation": {
+        "focus": true,
+        "panel": "dedicated",
+        "close": true
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "problemMatcher": {
         "owner": "typescript",
+        "source": "ts",
+        "applyTo": "closedDocuments",
+        "fileLocation": [
+          "relative",
+          "${cwd}"
+        ],
         "pattern": "$tsc",
         "background": {
           "activeOnStart": true,
@@ -15,28 +34,29 @@
             "regexp": "(.*?)"
           },
           "endsPattern": {
-            "regexp": "bundle generation complete"
+            "regexp": "Compiled |Failed to compile."
           }
-        }
-      }
+        },
+      },
     },
+    // EN: Ends the npm: start task and closes the terminal windows.
+    // ES: Termina la tarea npm: start y cierra las ventanas de la terminal.
+    // FR: Termine la tâche npm: start et ferme les fenêtres du terminal.
     {
-      "type": "npm",
-      "script": "test",
-      "isBackground": true,
-      "problemMatcher": {
-        "owner": "typescript",
-        "pattern": "$tsc",
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": {
-            "regexp": "(.*?)"
-          },
-          "endsPattern": {
-            "regexp": "bundle generation complete"
-          }
-        }
-      }
+      "label": "quit",
+      "type": "shell",
+      "command": "taskkill /F /IM node.exe && exit 0",
+      "windows": {
+        "command": "taskkill /F /IM node.exe && exit 0",
+      },
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "dedicated",
+        "close": true,
+      },
+      "problemMatcher": []
     }
   ]
 }
