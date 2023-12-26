@@ -1,6 +1,9 @@
 # NgxMonkeyUi
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+Angular UI components library.
+
+## Author
+- [Kevin J. Rodríguez Morales](https://kevinrodriguez.es) @SrPepeR
 
 ## Code scaffolding
 
