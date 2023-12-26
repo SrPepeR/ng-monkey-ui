@@ -3,7 +3,12 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/app",
-    "types": []
+    "types": [],
+    "paths": {
+      "ngx-monkey-ui": [
+        "dist/ngx-monkey-ui"
+      ]
+    }
   },
   "files": [
     "src/main.ts"
