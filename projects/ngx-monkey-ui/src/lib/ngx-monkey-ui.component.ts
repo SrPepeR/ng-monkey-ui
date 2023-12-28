@@ -7,8 +7,7 @@ import { Component } from '@angular/core';
       ngx-monkey-ui works!
     </p>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class NgxMonkeyUiComponent {
 

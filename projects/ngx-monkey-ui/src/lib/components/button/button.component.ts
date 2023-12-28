@@ -3,9 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'monkey-button',
   templateUrl: './button.component.html',
-  styleUrls: [
-    './button.component.scss'
-  ]
+  styleUrls: ['./button.component.scss']
 })
 export class MonkeyButton {
 
