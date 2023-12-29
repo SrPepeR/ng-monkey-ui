@@ -1,7 +1,7 @@
 @use './../../../styles/components.colors' as colors;
 
 /* Glassmorphism style */
-button.btn-glass {
+button.style-glass {
     border-radius: 15px;
     backdrop-filter: blur(30px);
     padding: 20px 30px;
