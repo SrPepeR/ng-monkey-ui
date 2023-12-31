@@ -14,12 +14,14 @@ import { MonkeyGhostButton } from './components/ghost/button/button.component';
 import { MonkeyGhostCard } from './components/ghost/card/card.component';
 import { MonkeyGlowButton } from './components/glow/button/button.component';
 import { MonkeyGlowCard } from './components/glow/card/card.component';
+import { MonkeyThemeChanger } from './components/default/theme-changer/theme-changer.component';
 
 @NgModule({
   declarations: [
     // Default styles
     MonkeyButton,
     MonkeyCard,
+    MonkeyThemeChanger,
     // Brutalist styles
     MonkeyBrutalistButton,
     MonkeyBrutalistCard,
@@ -43,6 +45,7 @@ import { MonkeyGlowCard } from './components/glow/card/card.component';
     // Default styles
     MonkeyButton,
     MonkeyCard,
+    MonkeyThemeChanger,
     // Brutalist styles
     MonkeyBrutalistButton,
     MonkeyBrutalistCard,

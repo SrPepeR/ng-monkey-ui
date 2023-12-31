@@ -1,0 +1,17 @@
+<div
+    class='switch'
+>
+    <label
+        [class.dark-theme]="isDarkMode$ | async"
+    >
+        <input
+            type='checkbox'
+            [class.dark-theme]="isDarkMode$ | async"
+            (change)='toggleTheme()'
+        >
+        <span
+            class='slider'
+            [class.dark-theme]="isDarkMode$ | async"
+        ></span>
+    </label>
+</div>

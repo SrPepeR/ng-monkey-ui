@@ -22,6 +22,10 @@ button {
         border: 2px solid var(--primary-color);
     }
 
+    &:hover {
+        border: 2px solid var(--primary-color) !important;
+    }
+
     &:hover,
     &:active {
         color: var(--primary-color);
@@ -30,7 +34,7 @@ button {
 
     &:hover:after,
     &:hover:active {
-        border: 2px solid var(--primary-color-contrast-hight);
+        border: 2px solid var(--primary-color-contrast-hight) !important;
         
         transition: background-color 0.3s ease;
         color: var(--primary-color-contrast-hight);

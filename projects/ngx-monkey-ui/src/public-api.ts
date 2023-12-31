@@ -17,6 +17,9 @@ export * from './lib/components/default/button/button.component';
 // Card
 export * from './lib/components/default/card/card.component';
 
+// Theme changer
+export * from './lib/components/default/theme-changer/theme-changer.component';
+
 /*
 * BRUTALIST STYLES
 */

@@ -1,7 +1,7 @@
 @use '../../../styles/components/button.default.style';
 
 /* Flat style */
-button.style-flat {
+button {
     padding: 20px 25px;
     border-radius: 50px;
     font-weight: bold;
@@ -16,6 +16,6 @@ button.style-flat {
     }
 
     &:active {
-        box-shadow: 0 0 10px var(--primary-color-contrast-hight);
+        box-shadow: 0 0 10px var(--background-color-constrast-hight);
     }
 }
