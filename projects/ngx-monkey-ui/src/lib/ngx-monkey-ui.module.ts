@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
-import { MonkeyButton } from './components/button/button.component';
-
-
+import { MonkeyButton } from './components/default/button/button.component';
+import { MonkeyCard } from './components/default/card/card.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    MonkeyButton
+    MonkeyButton,
+    MonkeyCard
   ],
   imports: [
+    CommonModule,
   ],
   exports: [
-    MonkeyButton
+    MonkeyButton,
+    MonkeyCard
   ]
 })
 export class NgxMonkeyUiModule { }

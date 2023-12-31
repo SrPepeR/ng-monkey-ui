@@ -1,0 +1,198 @@
+@import '_light.theme';
+@import '_dark.theme';
+
+@mixin light-theme() {
+    //BACKGROUND COLOR
+    --background-color: #{$light-background-color};
+
+    --background-color-constrast-low: #{$light-background-color-constrast-low};
+    --background-color-constrast-hight: #{$light-background-color-constrast-hight};
+
+    --background-color-opacity-low: #{$light-background-color-opacity-low};
+    --background-color-opacity-medium: #{$light-background-color-opacity-medium};
+    --background-color-opacity-hight: #{$light-background-color-opacity-hight};
+
+    --background-color-emphasis: #{$light-background-color-emphasis};
+
+    //PRIMARY COLOR
+    --primary-color: #{$light-primary-color};
+
+    --primary-color-contrast-low: #{$light-primary-color-contrast-low};
+    --primary-color-contrast-hight: #{$light-primary-color-contrast-hight};
+
+    --primary-color-opacity-low: #{$light-primary-color-opacity-low};
+    --primary-color-opacity-medium: #{$light-primary-color-opacity-medium};
+    --primary-color-opacity-hight: #{$light-primary-color-opacity-hight};
+
+    --primary-color-emphasis: #{$light-primary-color-emphasis};
+
+    //SECONDARY COLOR
+    --secondary-color: #{$light-secondary-color};
+
+    --secondary-color-contrast-low: #{$light-secondary-color-contrast-low};
+    --secondary-color-contrast-hight: #{$light-secondary-color-contrast-hight};
+
+    --secondary-color-opacity-low: #{$light-secondary-color-opacity-low};
+    --secondary-color-opacity-medium: #{$light-secondary-color-opacity-medium};
+    --secondary-color-opacity-hight: #{$light-secondary-color-opacity-hight};
+
+    --secondary-color-emphasis: #{$light-secondary-color-emphasis};
+
+    // TERTIARY COLOR
+    --tertiary-color: #{$light-tertiary-color};
+
+    --tertiary-color-contrast-low: #{$light-tertiary-color-contrast-low};
+    --tertiary-color-contrast-hight: #{$light-tertiary-color-contrast-hight};
+
+    --tertiary-color-opacity-low: #{$light-tertiary-color-opacity-low};
+    --tertiary-color-opacity-medium: #{$light-tertiary-color-opacity-medium};
+    --tertiary-color-opacity-hight: #{$light-tertiary-color-opacity-hight};
+
+    --tertiary-color-emphasis: #{$light-tertiary-color-emphasis};
+
+    // WARNING COLOR
+    --warning-color: #{$light-warning-color};
+
+    --warning-color-contrast-low: #{$light-warning-color-contrast-low};
+    --warning-color-contrast-hight: #{$light-warning-color-contrast-hight};
+
+    --warning-color-opacity-low: #{$light-warning-color-opacity-low};
+    --warning-color-opacity-medium: #{$light-warning-color-opacity-medium};
+    --warning-color-opacity-hight: #{$light-warning-color-opacity-hight};
+
+    --warning-color-emphasis: #{$light-warning-color-emphasis};
+
+    // SUCCESS COLOR
+    --success-color: #{$light-success-color};
+
+    --success-color-contrast-low: #{$light-success-color-contrast-low};
+    --success-color-contrast-hight: #{$light-success-color-contrast-hight};
+
+    --success-color-opacity-low: #{$light-success-color-opacity-low};
+    --success-color-opacity-medium: #{$light-success-color-opacity-medium};
+    --success-color-opacity-hight: #{$light-success-color-opacity-hight};
+
+    --success-color-emphasis: #{$light-success-color-emphasis};
+
+    // DANGER COLOR
+    --danger-color: #{$light-danger-color};
+
+    --danger-color-contrast-low: #{$light-danger-color-contrast-low};
+    --danger-color-contrast-hight: #{$light-danger-color-contrast-hight};
+
+    --danger-color-opacity-low: #{$light-danger-color-opacity-low};
+    --danger-color-opacity-medium: #{$light-danger-color-opacity-medium};
+    --danger-color-opacity-hight: #{$light-danger-color-opacity-hight};
+
+    --danger-color-emphasis: #{$light-danger-color-emphasis};
+
+    // INFO COLOR
+    --info-color: #{$light-info-color};
+
+    --info-color-contrast-low: #{$light-info-color-contrast-low};
+    --info-color-contrast-hight: #{$light-info-color-contrast-hight};
+
+    --info-color-opacity-low: #{$light-info-color-opacity-low};
+    --info-color-opacity-medium: #{$light-info-color-opacity-medium};
+    --info-color-opacity-hight: #{$light-info-color-opacity-hight};
+
+    --info-color-emphasis: #{$light-info-color-emphasis};
+}
+
+@mixin dark-theme() {
+    //BACKGROUND COLOR
+    --background-color: #{$dark-background-color};
+
+    --background-color-constrast-low: #{$dark-background-color-constrast-low};
+    --background-color-constrast-hight: #{$dark-background-color-constrast-hight};
+
+    --background-color-opacity-low: #{$dark-background-color-opacity-low};
+    --background-color-opacity-medium: #{$dark-background-color-opacity-medium};
+    --background-color-opacity-hight: #{$dark-background-color-opacity-hight};
+
+    --background-color-emphasis: #{$dark-background-color-emphasis};
+
+    //PRIMARY COLOR
+    --primary-color: #{$dark-primary-color};
+
+    --primary-color-contrast-low: #{$dark-primary-color-contrast-low};
+    --primary-color-contrast-hight: #{$dark-primary-color-contrast-hight};
+
+    --primary-color-opacity-low: #{$dark-primary-color-opacity-low};
+    --primary-color-opacity-medium: #{$dark-primary-color-opacity-medium};
+    --primary-color-opacity-hight: #{$dark-primary-color-opacity-hight};
+
+    --primary-color-emphasis: #{$dark-primary-color-emphasis};
+
+    //SECONDARY COLOR
+    --secondary-color: #{$dark-secondary-color};
+
+    --secondary-color-contrast-low: #{$dark-secondary-color-contrast-low};
+    --secondary-color-contrast-hight: #{$dark-secondary-color-contrast-hight};
+
+    --secondary-color-opacity-low: #{$dark-secondary-color-opacity-low};
+    --secondary-color-opacity-medium: #{$dark-secondary-color-opacity-medium};
+    --secondary-color-opacity-hight: #{$dark-secondary-color-opacity-hight};
+
+    --secondary-color-emphasis: #{$dark-secondary-color-emphasis};
+
+    // TERTIARY COLOR
+    --tertiary-color: #{$dark-tertiary-color};
+
+    --tertiary-color-contrast-low: #{$dark-tertiary-color-contrast-low};
+    --tertiary-color-contrast-hight: #{$dark-tertiary-color-contrast-hight};
+
+    --tertiary-color-opacity-low: #{$dark-tertiary-color-opacity-low};
+    --tertiary-color-opacity-medium: #{$dark-tertiary-color-opacity-medium};
+    --tertiary-color-opacity-hight: #{$dark-tertiary-color-opacity-hight};
+
+    --tertiary-color-emphasis: #{$dark-tertiary-color-emphasis};
+
+    // WARNING COLOR
+    --warning-color: #{$dark-warning-color};
+
+    --warning-color-contrast-low: #{$dark-warning-color-contrast-low};
+    --warning-color-contrast-hight: #{$dark-warning-color-contrast-hight};
+
+    --warning-color-opacity-low: #{$dark-warning-color-opacity-low};
+    --warning-color-opacity-medium: #{$dark-warning-color-opacity-medium};  
+    --warning-color-opacity-hight: #{$dark-warning-color-opacity-hight};
+
+    --warning-color-emphasis: #{$dark-warning-color-emphasis};
+
+    // SUCCESS COLOR
+    --success-color: #{$dark-success-color};
+
+    --success-color-contrast-low: #{$dark-success-color-contrast-low};
+    --success-color-contrast-hight: #{$dark-success-color-contrast-hight};
+
+    --success-color-opacity-low: #{$dark-success-color-opacity-low};
+    --success-color-opacity-medium: #{$dark-success-color-opacity-medium};
+    --success-color-opacity-hight: #{$dark-success-color-opacity-hight};
+
+    --success-color-emphasis: #{$dark-success-color-emphasis};
+
+    // DANGER COLOR
+    --danger-color: #{$dark-danger-color};
+
+    --danger-color-contrast-low: #{$dark-danger-color-contrast-low};
+    --danger-color-contrast-hight: #{$dark-danger-color-contrast-hight};
+
+    --danger-color-opacity-low: #{$dark-danger-color-opacity-low};
+    --danger-color-opacity-medium: #{$dark-danger-color-opacity-medium};
+    --danger-color-opacity-hight: #{$dark-danger-color-opacity-hight};
+
+    --danger-color-emphasis: #{$dark-danger-color-emphasis};
+
+    // INFO COLOR
+    --info-color: #{$dark-info-color};
+
+    --info-color-contrast-low: #{$dark-info-color-contrast-low};
+    --info-color-contrast-hight: #{$dark-info-color-contrast-hight};
+
+    --info-color-opacity-low: #{$dark-info-color-opacity-low};
+    --info-color-opacity-medium: #{$dark-info-color-opacity-medium};
+    --info-color-opacity-hight: #{$dark-info-color-opacity-hight};
+
+    --info-color-emphasis: #{$dark-info-color-emphasis};
+}

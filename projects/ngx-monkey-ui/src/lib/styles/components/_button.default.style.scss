@@ -1,9 +1,4 @@
-@use './styles/button-default.component.scss';
-@use './styles/button-brutalist.component.scss';
-@use './styles/button-glassmorphism.component.scss';
-@use './styles/button-flat.component.scss';
-@use './styles/button-ghost.component.scss';
-@use './styles/button-glow.component.scss';
+@import '../components.colors';
 
 :host {
     z-index: 1;

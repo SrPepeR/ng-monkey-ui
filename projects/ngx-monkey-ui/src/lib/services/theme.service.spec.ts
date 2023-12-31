@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NgxMonkeyUiService } from './ngx-monkey-ui.service';
+import { ThemeService } from './theme.service';
 
-describe('NgxMonkeyUiService', () => {
-  let service: NgxMonkeyUiService;
+describe('ThemeService', () => {
+  let service: ThemeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(NgxMonkeyUiService);
+    service = TestBed.inject(ThemeService);
   });
 
   it('should be created', () => {

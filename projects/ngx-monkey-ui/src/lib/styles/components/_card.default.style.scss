@@ -1,0 +1,13 @@
+@import '../components.colors';
+
+section {
+    display: flex;
+    gap: 1rem;
+
+    margin: 15px;
+    padding: 20px;
+
+    &.flex-column {
+        flex-direction: column;
+    }
+}
