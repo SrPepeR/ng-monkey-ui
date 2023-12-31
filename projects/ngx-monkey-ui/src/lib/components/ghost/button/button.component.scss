@@ -1,0 +1,22 @@
+@use '../../../styles/components/button.default.style';
+
+/* Ghost style */
+button {
+    padding: 15px;
+
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color) !important;
+
+    transition: all 0.33s ease;
+
+    &:hover {
+        background-color: var(--primary-color-opacity-hight);
+        color: var(--primary-color-contrast-low);
+    }
+
+    &:active {
+        background-color: var(--primary-color);
+        color: var(--primary-color-contrast-hight);
+    }
+}

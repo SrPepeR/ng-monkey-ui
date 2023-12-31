@@ -46,3 +46,13 @@ export * from './lib/components/glass/button/button.component';
 
 // Card
 export * from './lib/components/glass/card/card.component';
+
+/*
+* GHOST STYLES
+*/
+
+// Button
+export * from './lib/components/ghost/button/button.component';
+
+// Card
+export * from './lib/components/ghost/card/card.component';

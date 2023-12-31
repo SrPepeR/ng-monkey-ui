@@ -8,7 +8,7 @@ button {
 
     background-color: var(--primary-color);
     color: var(--primary-color-contrast-hight);
-    border: 2px solid var(--primary-color-contrast-hight);
+    border: 2px solid var(--primary-color-contrast-hight) !important;
 
     &:after {
         content: '';
