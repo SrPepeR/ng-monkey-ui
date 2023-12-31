@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
 
 @Component({
-  selector: 'monkey-brutalist-button',
+  selector: 'monkey-flat-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss']
 })
-export class MonkeyBrutalistButton {
+export class MonkeyFlatButton {
   
   @Input() style?: string = 'primary';
 

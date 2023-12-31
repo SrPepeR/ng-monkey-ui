@@ -3,7 +3,7 @@
 /* Brutalist style */
 button {
     padding: 15px 25px;
-    font-weight: bold;
+    font-weight: bold !important;
     position: relative;
 
     background-color: var(--primary-color);

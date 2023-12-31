@@ -1,0 +1,21 @@
+@use '../../../styles/components/button.default.style';
+
+/* Flat style */
+button.style-flat {
+    padding: 20px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+
+    transition: all 0.1s ease;
+
+    color: var(--primary-color-contrast-hight);
+    background-color: var(--primary-color);
+    
+    &:hover {
+        background-color: var(--primary-color-emphasis);
+    }
+
+    &:active {
+        box-shadow: 0 0 10px var(--primary-color-contrast-hight);
+    }
+}

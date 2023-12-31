@@ -1,6 +1,7 @@
-<button
+<section
     [classList]="'style-' + style"
     [class.dark-theme]="isDarkMode$ | async"
+    [class.flex-column]="column"
 >
     <ng-content></ng-content>
-</button>
+</section>
