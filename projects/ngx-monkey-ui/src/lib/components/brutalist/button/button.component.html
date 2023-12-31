@@ -1,0 +1,7 @@
+<button
+    [classList]="'style-' + style"
+    [class.dark-theme]="isDarkMode$ | async"
+    (click)="toggleDarkMode()"
+>
+    <ng-content></ng-content>
+</button>

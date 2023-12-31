@@ -16,3 +16,13 @@ export * from './lib/components/default/button/button.component';
 
 // Card
 export * from './lib/components/default/card/card.component';
+
+/*
+* BRUTALIST STYLES
+*/
+
+// Button
+export * from './lib/components/brutalist/button/button.component';
+
+// Card
+export * from './lib/components/brutalist/card/card.component';
