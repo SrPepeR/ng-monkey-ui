@@ -56,3 +56,13 @@ export * from './lib/components/ghost/button/button.component';
 
 // Card
 export * from './lib/components/ghost/card/card.component';
+
+/*
+* GLOW STYLES
+*/
+
+// Button
+export * from './lib/components/glow/button/button.component';
+
+// Card
+export * from './lib/components/glow/card/card.component';

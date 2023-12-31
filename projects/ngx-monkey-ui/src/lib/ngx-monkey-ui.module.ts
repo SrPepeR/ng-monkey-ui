@@ -12,6 +12,8 @@ import { MonkeyGlassButton } from './components/glass/button/button.component';
 import { MonkeyGlassCard } from './components/glass/card/card.component';
 import { MonkeyGhostButton } from './components/ghost/button/button.component';
 import { MonkeyGhostCard } from './components/ghost/card/card.component';
+import { MonkeyGlowButton } from './components/glow/button/button.component';
+import { MonkeyGlowCard } from './components/glow/card/card.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,9 @@ import { MonkeyGhostCard } from './components/ghost/card/card.component';
     // Ghost styles
     MonkeyGhostButton,
     MonkeyGhostCard,
+    // Glow styles
+    MonkeyGlowButton,
+    MonkeyGlowCard,
   ],
   imports: [
     CommonModule,
@@ -50,6 +55,9 @@ import { MonkeyGhostCard } from './components/ghost/card/card.component';
     // Ghost styles
     MonkeyGhostButton,
     MonkeyGhostCard,
+    // Glow styles
+    MonkeyGlowButton,
+    MonkeyGlowCard,
   ]
 })
 export class NgxMonkeyUiModule { }

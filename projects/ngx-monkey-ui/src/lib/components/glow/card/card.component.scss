@@ -1,0 +1,10 @@
+@use '../../../styles/components/card.default.style';
+
+/* Glow style */
+section {
+    padding: 20px;
+    border-radius: 5px;
+    
+    background-color: var(--background-color);
+    box-shadow: 0 5px 15px var(--background-color-emphasis);
+}
