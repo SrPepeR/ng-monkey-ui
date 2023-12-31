@@ -36,3 +36,13 @@ export * from './lib/components/flat/button/button.component';
 
 // Card
 export * from './lib/components/flat/card/card.component';
+
+/*
+* GLASS STYLES
+*/
+
+// Button
+export * from './lib/components/glass/button/button.component';
+
+// Card
+export * from './lib/components/glass/card/card.component';

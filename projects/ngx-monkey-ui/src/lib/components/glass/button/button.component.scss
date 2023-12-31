@@ -1,0 +1,25 @@
+@use '../../../styles/components/button.default.style';
+
+/* Glassmorphism style */
+button {
+    border-radius: 15px;
+    backdrop-filter: blur(30px);
+    padding: 20px 30px;
+    
+    background-color: var(--primary-color-opacity-medium);
+    border: 1px solid var(--primary-color-contrast-hight);
+    color: var(--primary-color-contrast-low);
+
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: var(--primary-color-opacity-hight);
+        color: var(--primary-color-contrast-low);
+        border-color: var(--primary-color);
+    }
+
+    &:active {
+        background-color: var(--primary-color);
+        color: var(--primary-color-contrast-hight);
+    }
+}

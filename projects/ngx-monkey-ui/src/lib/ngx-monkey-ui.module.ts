@@ -8,6 +8,8 @@ import { MonkeyBrutalistButton } from './components/brutalist/button/button.comp
 import { MonkeyBrutalistCard } from './components/brutalist/card/card.component';
 import { MonkeyFlatButton } from './components/flat/button/button.component';
 import { MonkeyFlatCard } from './components/flat/card/card.component';
+import { MonkeyGlassButton } from './components/glass/button/button.component';
+import { MonkeyGlassCard } from './components/glass/card/card.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,9 @@ import { MonkeyFlatCard } from './components/flat/card/card.component';
     // Flat styles
     MonkeyFlatButton,
     MonkeyFlatCard,
+    // Glass styles
+    MonkeyGlassButton,
+    MonkeyGlassCard,
   ],
   imports: [
     CommonModule,
@@ -34,6 +39,9 @@ import { MonkeyFlatCard } from './components/flat/card/card.component';
     // Flat styles
     MonkeyFlatButton,
     MonkeyFlatCard,
+    // Glass styles
+    MonkeyGlassButton,
+    MonkeyGlassCard,
   ]
 })
 export class NgxMonkeyUiModule { }
