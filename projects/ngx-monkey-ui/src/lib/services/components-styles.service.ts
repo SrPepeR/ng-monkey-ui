@@ -9,7 +9,7 @@ export class ComponentsStylesService {
 
   generateClassList(component: any) {
     let classList: Array<string> = [];
-    let componentType = undefined;
+    let componentType = 'type-default';
     
     // Adds the component color scheme class to the classList array
     if (component.style) {
@@ -36,10 +36,7 @@ export class ComponentsStylesService {
       componentType = 'type-glow';
     }
 
-    if (componentType) {
-      // Adds the component type class to the classList array if any type is defined
-      classList.push(componentType);
-    }
+    classList.push(componentType);
 
     return classList;
   }
