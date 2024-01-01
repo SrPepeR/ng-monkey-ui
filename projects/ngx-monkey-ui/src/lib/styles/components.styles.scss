@@ -1,0 +1,29 @@
+@use 'styles/styles.mixins' as mixins;
+
+*.style-primary {
+    @include mixins.getPrimaryStyleVars();
+}
+
+*.style-secondary {
+    @include mixins.getSecondaryStyleVars();
+}
+
+*.style-tertiary {
+    @include mixins.getTertiaryStyleVars();
+}
+
+*.style-warning {
+    @include mixins.getWarningStyleVars();
+}
+
+*.style-success {
+    @include mixins.getSuccessStyleVars();
+}
+
+*.style-danger {
+    @include mixins.getDangerStyleVars();
+}
+
+*.style-info {
+    @include mixins.getInfoStyleVars();
+}

@@ -1,0 +1,97 @@
+// PRIMARY STYLE
+@mixin getPrimaryStyleVars() {
+    --color: var(--primary-color);
+
+    --contrast-low: var(--primary-color-contrast-low);
+    --contrast-hight: var(--primary-color-contrast-hight);
+
+    --opacity-low: var(--primary-color-opacity-low);
+    --opacity-medium: var(--primary-color-opacity-medium);
+    --opacity-hight: var(--primary-color-opacity-hight);
+
+    --emphasis: var(--primary-color-emphasis);
+}
+
+// SECONDARY STYLE
+@mixin getSecondaryStyleVars() {
+    --color: var(--secondary-color);
+
+    --contrast-low: var(--secondary-color-contrast-low);
+    --contrast-hight: var(--secondary-color-contrast-hight);
+
+    --opacity-low: var(--secondary-color-opacity-low);
+    --opacity-medium: var(--secondary-color-opacity-medium);
+    --opacity-hight: var(--secondary-color-opacity-hight);
+
+    --emphasis: var(--secondary-color-emphasis);
+}
+
+// TERTIARY STYLE
+@mixin getTertiaryStyleVars() {
+    --color: var(--tertiary-color);
+
+    --contrast-low: var(--tertiary-color-contrast-low);
+    --contrast-hight: var(--tertiary-color-contrast-hight);
+
+    --opacity-low: var(--tertiary-color-opacity-low);
+    --opacity-medium: var(--tertiary-color-opacity-medium);
+    --opacity-hight: var(--tertiary-color-opacity-hight);
+
+    --emphasis: var(--tertiary-color-emphasis);
+}
+
+// WARNING STYLE
+@mixin getWarningStyleVars() {
+    --color: var(--warning-color);
+
+    --contrast-low: var(--warning-color-contrast-low);
+    --contrast-hight: var(--warning-color-contrast-hight);
+
+    --opacity-low: var(--warning-color-opacity-low);
+    --opacity-medium: var(--warning-color-opacity-medium);
+    --opacity-hight: var(--warning-color-opacity-hight);
+
+    --emphasis: var(--warning-color-emphasis);
+}
+
+// SUCCESS STYLE
+@mixin getSuccessStyleVars() {
+    --color: var(--success-color);
+
+    --contrast-low: var(--success-color-contrast-low);
+    --contrast-hight: var(--success-color-contrast-hight);
+
+    --opacity-low: var(--success-color-opacity-low);
+    --opacity-medium: var(--success-color-opacity-medium);
+    --opacity-hight: var(--success-color-opacity-hight);
+
+    --emphasis: var(--success-color-emphasis);
+}
+
+// DANGER STYLE
+@mixin getDangerStyleVars() {
+    --color: var(--danger-color);
+
+    --contrast-low: var(--danger-color-contrast-low);
+    --contrast-hight: var(--danger-color-contrast-hight);
+
+    --opacity-low: var(--danger-color-opacity-low);
+    --opacity-medium: var(--danger-color-opacity-medium);
+    --opacity-hight: var(--danger-color-opacity-hight);
+
+    --emphasis: var(--danger-color-emphasis);
+}
+
+// INFO STYLE
+@mixin getInfoStyleVars() {
+    --color: var(--info-color);
+
+    --contrast-low: var(--info-color-contrast-low);
+    --contrast-hight: var(--info-color-contrast-hight);
+
+    --opacity-low: var(--info-color-opacity-low);
+    --opacity-medium: var(--info-color-opacity-medium);
+    --opacity-hight: var(--info-color-opacity-hight);
+
+    --emphasis: var(--info-color-emphasis);
+}

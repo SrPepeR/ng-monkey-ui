@@ -6,9 +6,9 @@ button {
     font-weight: bold !important;
     position: relative;
 
-    background-color: var(--primary-color);
-    color: var(--primary-color-contrast-hight);
-    border: 2px solid var(--primary-color-contrast-hight) !important;
+    background-color: var(--color);
+    color: var(--contrast-hight);
+    border: 2px solid var(--contrast-hight) !important;
 
     &:after {
         content: '';
@@ -18,26 +18,26 @@ button {
         right: -8px;
         bottom: -8px;
         z-index: -1;
-        background-color: var(--primary-color-contrast-hight);
-        border: 2px solid var(--primary-color);
+        background-color: var(--contrast-hight);
+        border: 2px solid var(--color);
     }
 
     &:hover {
-        border: 2px solid var(--primary-color) !important;
+        border: 2px solid var(--color) !important;
     }
 
     &:hover,
     &:active {
-        color: var(--primary-color);
-        background-color: var(--primary-color-contrast-hight);
+        color: var(--color);
+        background-color: var(--contrast-hight);
     }
 
     &:hover:after,
     &:hover:active {
-        border: 2px solid var(--primary-color-contrast-hight) !important;
+        border: 2px solid var(--contrast-hight) !important;
         
         transition: background-color 0.3s ease;
-        color: var(--primary-color-contrast-hight);
-        background-color: var(--primary-color);
+        color: var(--contrast-hight);
+        background-color: var(--color);
     }
 }

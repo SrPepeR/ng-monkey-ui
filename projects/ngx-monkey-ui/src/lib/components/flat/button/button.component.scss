@@ -6,16 +6,16 @@ button {
     border-radius: 50px;
     font-weight: bold;
 
-    color: var(--primary-color-contrast-hight);
-    background-color: var(--primary-color);
+    color: var(--contrast-hight);
+    background-color: var(--color);
 
     transition: all 0.1s ease;
     
     &:hover {
-        background-color: var(--primary-color-emphasis);
+        background-color: var(--emphasis);
     }
 
     &:active {
-        box-shadow: 0 0 10px var(--background-color-constrast-hight);
+        box-shadow: 0 0 10px var(--constrast-hight);
     }
 }

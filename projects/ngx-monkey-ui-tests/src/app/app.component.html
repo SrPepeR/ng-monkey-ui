@@ -1,25 +1,74 @@
 <monkey-theme-changer />
 
 <monkey-card>
-    <monkey-button>Default Monkey Button</monkey-button>
+    <monkey-button
+        [style]="primaryStyle"
+        (click)="changeStyle(primaryStyle)"
+    >PRIMARY</monkey-button>
+
+    <monkey-button
+        [style]="secondaryStyle"
+        (click)="changeStyle(secondaryStyle)"
+    >SECONDARY</monkey-button>
+
+    <monkey-button
+        [style]="tertiaryStyle"
+        (click)="changeStyle(tertiaryStyle)"
+    >TERTIARY</monkey-button>
+
+    <monkey-button
+        [style]="warningStyle"
+        (click)="changeStyle(warningStyle)"
+    >WARNING</monkey-button>
+
+    <monkey-button
+        [style]="dangerStyle"
+        (click)="changeStyle(dangerStyle)"
+    >DANGER</monkey-button>
+
+    <monkey-button
+        [style]="successStyle"
+        (click)="changeStyle(successStyle)"
+    >SUCCESS</monkey-button>
+
+    <monkey-button
+        [style]="infoStyle"
+        (click)="changeStyle(infoStyle)"
+    >INFO</monkey-button>
+</monkey-card>
+
+<monkey-card>
+    <monkey-button
+        [style]="currentStyle"
+    >Default Monkey Button</monkey-button>
 </monkey-card>
 
 <monkey-brutalist-card>
-    <monkey-brutalist-button>Brutalist Monkey Button</monkey-brutalist-button>
+    <monkey-brutalist-button
+        [style]="currentStyle"
+    >Brutalist Monkey Button</monkey-brutalist-button>
 </monkey-brutalist-card>
 
 <monkey-glass-card>
-    <monkey-glass-button>Glassmorphism Monkey Button</monkey-glass-button>
+    <monkey-glass-button
+        [style]="currentStyle"
+    >Glassmorphism Monkey Button</monkey-glass-button>
 </monkey-glass-card>
 
 <monkey-flat-card>
-    <monkey-flat-button>Flat Monkey Button</monkey-flat-button>
+    <monkey-flat-button
+        [style]="currentStyle"
+    >Flat Monkey Button</monkey-flat-button>
 </monkey-flat-card>
 
 <monkey-ghost-card>
-    <monkey-ghost-button>Ghost Monkey Button</monkey-ghost-button>
+    <monkey-ghost-button
+        [style]="currentStyle"
+    >Ghost Monkey Button</monkey-ghost-button>
 </monkey-ghost-card>
 
 <monkey-glow-card>
-    <monkey-glow-button>Glow Monkey Button</monkey-glow-button>
+    <monkey-glow-button
+        [style]="currentStyle"
+    >Glow Monkey Button</monkey-glow-button>
 </monkey-glow-card>

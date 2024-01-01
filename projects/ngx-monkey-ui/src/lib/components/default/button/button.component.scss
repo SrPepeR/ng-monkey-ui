@@ -5,8 +5,8 @@ button {
     border-radius: 10px;
     padding: 15px;
     
-    background-color: var(--primary-color);
-    color: var(--primary-color-contrast-hight);
+    background-color: var(--color);
+    color: var(--contrast-hight);
     opacity: 0.8;
 
     transition: all 0.3s ease;
@@ -16,7 +16,7 @@ button {
     }
 
     &:active {
-        background-color: var(--primary-color-emphasis);
-        color: var(--primary-color-contrast-low);
+        background-color: var(--emphasis);
+        color: var(--contrast-low);
     }
 }
