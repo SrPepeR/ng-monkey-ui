@@ -9,7 +9,6 @@ import { ThemeService } from '../../../services/theme.service';
 export class MonkeyGlowCard {
   
   @Input() column?: boolean = false;
-  @Input() style?: string = 'primary';
 
   isDarkMode$ = this.themeService.isDarkMode$;
 
