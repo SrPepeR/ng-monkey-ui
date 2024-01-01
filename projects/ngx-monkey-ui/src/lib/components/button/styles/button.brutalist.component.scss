@@ -1,0 +1,43 @@
+@use '../../../styles/components/button.default.style';
+
+/* Brutalist style */
+button.type-brutalist {
+    padding: 15px 25px;
+    font-weight: bold !important;
+    position: relative;
+
+    background-color: var(--color);
+    color: var(--contrast-hight);
+    border: 2px solid var(--contrast-hight) !important;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        right: -8px;
+        bottom: -8px;
+        z-index: -1;
+        background-color: var(--contrast-hight);
+        border: 2px solid var(--color);
+    }
+
+    &:hover {
+        border: 2px solid var(--color) !important;
+    }
+
+    &:hover,
+    &:active {
+        color: var(--color);
+        background-color: var(--contrast-hight);
+    }
+
+    &:hover:after,
+    &:hover:active {
+        border: 2px solid var(--contrast-hight) !important;
+        
+        transition: background-color 0.3s ease;
+        color: var(--contrast-hight);
+        background-color: var(--color);
+    }
+}

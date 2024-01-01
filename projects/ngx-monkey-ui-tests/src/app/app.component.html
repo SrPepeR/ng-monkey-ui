@@ -1,5 +1,59 @@
+<!-- THEME CHANGE -->
 <monkey-theme-changer />
 
+<!-- STYLES DEMOS -->
+<monkey-card>
+    <monkey-button
+        [style]="currentStyle"
+    >Default Monkey Button</monkey-button>
+</monkey-card>
+
+<monkey-card
+    brutalist
+>
+    <monkey-button
+        brutalist
+        [style]="currentStyle"
+    >Brutalist Monkey Button</monkey-button>
+</monkey-card>
+
+<monkey-card
+    glass
+>
+    <monkey-button
+        glass
+        [style]="currentStyle"
+    >Glassmorphism Monkey Button</monkey-button>
+</monkey-card>
+
+<monkey-card
+    flat
+>
+    <monkey-button
+        flat
+        [style]="currentStyle"
+    >Flat Monkey Button</monkey-button>
+</monkey-card>
+
+<monkey-card
+    ghost
+>
+    <monkey-button
+        ghost
+        [style]="currentStyle"
+    >Ghost Monkey Button</monkey-button>
+</monkey-card>
+
+<monkey-card
+    glow
+>
+    <monkey-button
+        glow
+        [style]="currentStyle"
+    >Glow Monkey Button</monkey-button>
+</monkey-card>
+
+<!-- STYLE CHANGE -->
 <monkey-card>
     <monkey-button
         [style]="primaryStyle"
@@ -36,39 +90,3 @@
         (click)="changeStyle(infoStyle)"
     >INFO</monkey-button>
 </monkey-card>
-
-<monkey-card>
-    <monkey-button
-        [style]="currentStyle"
-    >Default Monkey Button</monkey-button>
-</monkey-card>
-
-<monkey-brutalist-card>
-    <monkey-brutalist-button
-        [style]="currentStyle"
-    >Brutalist Monkey Button</monkey-brutalist-button>
-</monkey-brutalist-card>
-
-<monkey-glass-card>
-    <monkey-glass-button
-        [style]="currentStyle"
-    >Glassmorphism Monkey Button</monkey-glass-button>
-</monkey-glass-card>
-
-<monkey-flat-card>
-    <monkey-flat-button
-        [style]="currentStyle"
-    >Flat Monkey Button</monkey-flat-button>
-</monkey-flat-card>
-
-<monkey-ghost-card>
-    <monkey-ghost-button
-        [style]="currentStyle"
-    >Ghost Monkey Button</monkey-ghost-button>
-</monkey-ghost-card>
-
-<monkey-glow-card>
-    <monkey-glow-button
-        [style]="currentStyle"
-    >Glow Monkey Button</monkey-glow-button>
-</monkey-glow-card>

@@ -1,0 +1,7 @@
+<section
+    [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
+    [class.flex-column]="column"
+>
+    <ng-content></ng-content>
+</section>

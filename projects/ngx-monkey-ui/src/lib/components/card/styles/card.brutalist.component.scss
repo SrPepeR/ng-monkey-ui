@@ -1,0 +1,19 @@
+@use '../../../styles/components/card.default.style';
+
+/* Brutalist style */
+:host:has(.type-brutalist) {
+    z-index: 1;
+    
+    section.type-brutalist {
+        font-weight: bold;
+        position: relative;
+        padding: 25px 35px;
+    
+        background-color: var(--background-color);
+        border: 2px solid var(--background-color-constrast-low);
+        border-top-width: 0;
+        border-left-width: 0;
+        border-bottom-width: 8px;
+        border-right-width: 8px;
+    }
+}

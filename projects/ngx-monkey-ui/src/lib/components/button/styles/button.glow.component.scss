@@ -1,0 +1,21 @@
+@use '../../../styles/components/button.default.style';
+
+/* Glow style */
+button.type-glow {
+    padding: 20px;
+    border-radius: 5px;
+    
+    background-color: var(--color);
+    color: var(--contrast-hight);
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        color: var(--contrast-low);
+        box-shadow: 0 5px 15px var(--emphasis);
+    }
+
+    &:active {
+        background-color: var(--emphasis);
+    }
+}
