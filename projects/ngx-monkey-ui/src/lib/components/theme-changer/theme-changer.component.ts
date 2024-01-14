@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class MonkeyThemeChanger {
 
+  @Output() onAction = new EventEmitter();
+
   isDarkMode$ = this.themeService.isDarkMode$;
 
   constructor(
@@ -16,6 +18,7 @@ export class MonkeyThemeChanger {
 
   toggleTheme() {
     this.themeService.toggleDarkMode();
+    this.onAction.emit();
   }
 
 }

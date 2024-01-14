@@ -21,6 +21,10 @@ export class AppComponent {
   offSwitchText: string = 'Off';
   onSwitchText: string = 'On';
 
+  themeChanged(): void {
+    console.log('themeChanged');
+  }
+
   changeStyle(newStyle: Style): void {
     this.currentStyle =newStyle;
   }
