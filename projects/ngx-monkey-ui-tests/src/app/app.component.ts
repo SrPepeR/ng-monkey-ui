@@ -18,9 +18,13 @@ export class AppComponent {
   title = 'ngx-monkey-ui-tests';
   currentStyle: Style = this.primaryStyle;
 
+  offSwitchText: string = 'Off';
+  onSwitchText: string = 'On';
+
   changeStyle(newStyle: Style): void {
     this.currentStyle =newStyle;
   }
+
 }
 
 enum Style {

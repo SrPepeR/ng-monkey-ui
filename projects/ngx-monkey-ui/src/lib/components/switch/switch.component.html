@@ -1,0 +1,33 @@
+<label
+    for="switch"
+    class="switch-label"
+    [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
+>{{ offLabel }}</label>
+
+<div
+    class="switch-container"
+>
+    <label
+        class="switch"
+        [class]="classList"
+        [class.dark-theme]="isDarkMode$ | async"
+    >
+        <input
+            type='checkbox'
+            name="switch"
+            (change)='onSwitch()'
+        >
+        <span
+            class='slider'
+            [class.dark-theme]="isDarkMode$ | async"
+        ></span>
+    </label>
+</div>
+
+<label
+    for="switch"
+    class="switch-label"
+    [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
+>{{ onLabel }}</label>

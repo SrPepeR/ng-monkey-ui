@@ -3,6 +3,9 @@
  */
 export * from './lib/ngx-monkey-ui.module';
 
+// Theme changer
+export * from './lib/components/theme-changer/theme-changer.component';
+
 /*
 * UI COMPONENTS
 */
@@ -13,9 +16,5 @@ export * from './lib/components/button/button.component';
 // Card
 export * from './lib/components/card/card.component';
 
-/*
-* DEFAULT STYLES
-*/
-
-// Theme changer
-export * from './lib/components/theme-changer/theme-changer.component';
+// Switch
+export * from './lib/components/switch/switch.component';
