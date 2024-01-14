@@ -14,9 +14,10 @@
         [class.dark-theme]="isDarkMode$ | async"
     >
         <input
+            #switch
             type='checkbox'
             name="switch"
-            (change)='onSwitch()'
+            (change)='onSwitched()'
         >
         <span
             class='slider'

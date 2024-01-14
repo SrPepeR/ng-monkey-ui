@@ -25,6 +25,10 @@ export class AppComponent {
     this.currentStyle =newStyle;
   }
 
+  onSwitch(fromSwitch: string, event: Boolean): void {
+    console.log('onSwitch', fromSwitch, event);
+  }
+
 }
 
 enum Style {

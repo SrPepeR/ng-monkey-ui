@@ -8,6 +8,7 @@
     >Default Monkey Button</monkey-button>
 
     <monkey-switch
+        (onSwitch)="onSwitch('default', $event)"
         [style]="currentStyle"
     />
 </monkey-card>
@@ -22,6 +23,7 @@
 
     <monkey-switch
         brutalist
+        (onSwitch)="onSwitch('brutalist', $event)"
         [style]="currentStyle"
     />
 </monkey-card>
@@ -36,6 +38,7 @@
 
     <monkey-switch
         glass
+        (onSwitch)="onSwitch('glass', $event)"
         [style]="currentStyle"
     />
 </monkey-card>
@@ -50,6 +53,7 @@
 
     <monkey-switch
         flat
+        (onSwitch)="onSwitch('flat', $event)"
         [style]="currentStyle"
     />
 </monkey-card>
@@ -64,6 +68,7 @@
 
     <monkey-switch
         ghost
+        (onSwitch)="onSwitch('ghost', $event)"
         [style]="currentStyle"
     />
 </monkey-card>
@@ -78,6 +83,7 @@
 
     <monkey-switch
         glow
+        (onSwitch)="onSwitch('glow', $event)"
         [style]="currentStyle"
     />
 </monkey-card>

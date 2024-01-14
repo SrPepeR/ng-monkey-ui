@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { ComponentsStylesService } from '../../services/components-styles.service';
 
@@ -14,10 +14,12 @@ import { ComponentsStylesService } from '../../services/components-styles.servic
     './styles/switch.glow.component.scss',
   ]
 })
-export class MonkeySwitch {
-  
+export class MonkeySwitch implements AfterViewChecked {
+
+  @ViewChild('switch') switch!: any;
+
   @Input() style?: string = 'primary';
-  
+
   // COMPONENTS TYPES
   @Input() brutalist?: string = 'true';
   @Input() flat?: string = 'true';
@@ -26,8 +28,28 @@ export class MonkeySwitch {
   @Input() glow?: string = 'true';
 
   // LABELS
+  /**
+   * The switch label.
+   * @type string
+   */
   @Input() offLabel?: string = 'OFF';
+  /**
+   * The switch label.
+   * @type string
+   */
   @Input() onLabel?: string = 'ON';
+
+  /**
+   * The switch state.
+   * @type boolean
+   */
+  @Input() checked?: boolean = false;
+
+  /**
+   * Event emitted when the switch is switched.
+   * @type EventEmitter<Boolean>
+   */
+  @Output() onSwitch = new EventEmitter<Boolean>();
 
   isDarkMode$ = this.themeService.isDarkMode$;
 
@@ -38,12 +60,17 @@ export class MonkeySwitch {
     private componentStylesService: ComponentsStylesService,
   ) { }
 
+  ngAfterViewChecked(): void {
+    this.switch.nativeElement.checked = this.checked!;
+  }
+
   ngOnChanges() {
     this.classList = this.componentStylesService.generateClassList(this);
   }
 
-  onSwitch() {
-    console.log('switched');
+  onSwitched() {
+    this.checked = !this.checked;
+    this.onSwitch.emit(this.checked);
   }
 
 }
