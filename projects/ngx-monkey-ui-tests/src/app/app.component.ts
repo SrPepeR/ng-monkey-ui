@@ -25,6 +25,10 @@ export class AppComponent {
     this.currentStyle =newStyle;
   }
 
+  onClicked(fromButton: string): void {
+    console.log('onClicked', fromButton);
+  }
+
   onSwitch(fromSwitch: string, event: Boolean): void {
     console.log('onSwitch', fromSwitch, event);
   }

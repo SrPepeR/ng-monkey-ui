@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { ComponentsStylesService } from '../../services/components-styles.service';
 
@@ -25,6 +25,8 @@ export class MonkeyButton implements OnChanges {
   @Input() glass?: string = 'true';
   @Input() glow?: string = 'true';
 
+  @Output() onClick = new EventEmitter();
+
   isDarkMode$ = this.themeService.isDarkMode$;
 
   classList: Array<string> = [];
@@ -36,6 +38,10 @@ export class MonkeyButton implements OnChanges {
 
   ngOnChanges() {
     this.classList = this.componentStylesService.generateClassList(this);
+  }
+
+  onClicked() {
+    this.onClick.emit();
   }
 
 }

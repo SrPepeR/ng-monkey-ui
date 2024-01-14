@@ -5,6 +5,7 @@
 <monkey-card>
     <monkey-button
         [style]="currentStyle"
+        (onClick)="onClicked('default')"
     >Default Monkey Button</monkey-button>
 
     <monkey-switch
@@ -19,6 +20,7 @@
     <monkey-button
         brutalist
         [style]="currentStyle"
+        (onClick)="onClicked('brutalist')"
     >Brutalist Monkey Button</monkey-button>
 
     <monkey-switch
@@ -34,6 +36,7 @@
     <monkey-button
         glass
         [style]="currentStyle"
+        (onClick)="onClicked('glass')"
     >Glassmorphism Monkey Button</monkey-button>
 
     <monkey-switch
@@ -49,6 +52,7 @@
     <monkey-button
         flat
         [style]="currentStyle"
+        (onClick)="onClicked('flat')"
     >Flat Monkey Button</monkey-button>
 
     <monkey-switch
@@ -64,6 +68,7 @@
     <monkey-button
         ghost
         [style]="currentStyle"
+        (onClick)="onClicked('ghost')"
     >Ghost Monkey Button</monkey-button>
 
     <monkey-switch
@@ -79,6 +84,7 @@
     <monkey-button
         glow
         [style]="currentStyle"
+        (onClick)="onClicked('glow')"
     >Glow Monkey Button</monkey-button>
 
     <monkey-switch
@@ -92,36 +98,36 @@
 <monkey-card>
     <monkey-button
         [style]="primaryStyle"
-        (click)="changeStyle(primaryStyle)"
+        (onClick)="changeStyle(primaryStyle)"
     >PRIMARY</monkey-button>
 
     <monkey-button
         [style]="secondaryStyle"
-        (click)="changeStyle(secondaryStyle)"
+        (onClick)="changeStyle(secondaryStyle)"
     >SECONDARY</monkey-button>
 
     <monkey-button
         [style]="tertiaryStyle"
-        (click)="changeStyle(tertiaryStyle)"
+        (onClick)="changeStyle(tertiaryStyle)"
     >TERTIARY</monkey-button>
 
     <monkey-button
         [style]="warningStyle"
-        (click)="changeStyle(warningStyle)"
+        (onClick)="changeStyle(warningStyle)"
     >WARNING</monkey-button>
 
     <monkey-button
         [style]="dangerStyle"
-        (click)="changeStyle(dangerStyle)"
+        (onClick)="changeStyle(dangerStyle)"
     >DANGER</monkey-button>
 
     <monkey-button
         [style]="successStyle"
-        (click)="changeStyle(successStyle)"
+        (onClick)="changeStyle(successStyle)"
     >SUCCESS</monkey-button>
 
     <monkey-button
         [style]="infoStyle"
-        (click)="changeStyle(infoStyle)"
+        (onClick)="changeStyle(infoStyle)"
     >INFO</monkey-button>
 </monkey-card>
