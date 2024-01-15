@@ -3,6 +3,7 @@
     class="switch-label"
     [class]="classList"
     [class.dark-theme]="isDarkMode$ | async"
+    (click)="onSwitched()"
 >{{ offLabel }}</label>
 
 <div
@@ -31,4 +32,5 @@
     class="switch-label"
     [class]="classList"
     [class.dark-theme]="isDarkMode$ | async"
+    (click)="onSwitched()"
 >{{ onLabel }}</label>
