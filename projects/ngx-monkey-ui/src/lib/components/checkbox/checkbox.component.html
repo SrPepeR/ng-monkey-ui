@@ -1,0 +1,27 @@
+<label
+    class="container"
+    [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
+>
+    <input
+        #checkbox
+        type="checkbox"
+        name="checkbox"
+        id="checkbox"
+        [class]="classList"
+        [class.dark-theme]="isDarkMode$ | async"
+        (change)="onChanged()"
+    >
+
+    <span
+        class="checkmark"
+        [class]="classList"
+        [class.dark-theme]="isDarkMode$ | async"
+    ></span>
+
+    <span
+        class="label"
+        [class]="classList"
+        [class.dark-theme]="isDarkMode$ | async"
+    >{{ label }}</span>
+</label>

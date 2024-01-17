@@ -6,6 +6,7 @@ import { MonkeyThemeChanger } from './components/theme-changer/theme-changer.com
 import { MonkeyButton } from './components/button/button.component';
 import { MonkeyCard } from './components/card/card.component';
 import { MonkeySwitch } from './components/switch/switch.component';
+import { MonkeyCheckbox } from './components/checkbox/checkbox.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { MonkeySwitch } from './components/switch/switch.component';
     MonkeyButton,
     MonkeyCard,
     MonkeySwitch,
+    MonkeyCheckbox,
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { MonkeySwitch } from './components/switch/switch.component';
     MonkeyButton,
     MonkeyCard,
     MonkeySwitch,
+    MonkeyCheckbox,
   ]
 })
 export class NgxMonkeyUiModule { }

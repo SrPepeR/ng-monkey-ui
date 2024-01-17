@@ -1,0 +1,62 @@
+@import '../components.themes';
+@import '../components.styles';
+
+label.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    height: 22px;
+    margin: 5px;
+
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    span.checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 22px;
+        width: 22px;
+
+        box-sizing: border-box;
+
+        &:after {
+            content: "";
+            position: absolute;
+            display: none;
+
+            left: 7px;
+            top: 3px;
+
+            width: 5px;
+            height: 10px;
+            
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    }
+
+    span.label {
+        margin-left: 30px;
+    }
+    
+    input:checked~span.checkmark:after {
+        display: block;
+    }
+}

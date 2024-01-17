@@ -18,3 +18,6 @@ export * from './lib/components/card/card.component';
 
 // Switch
 export * from './lib/components/switch/switch.component';
+
+// Checkbox
+export * from './lib/components/checkbox/checkbox.component';

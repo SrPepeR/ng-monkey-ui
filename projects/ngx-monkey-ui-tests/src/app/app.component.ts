@@ -33,8 +33,12 @@ export class AppComponent {
     console.log('onClicked', fromButton);
   }
 
-  onSwitch(fromSwitch: string, event: Boolean): void {
-    console.log('onSwitch', fromSwitch, event);
+  onSwitch(fromSwitch: string, checked: Boolean): void {
+    console.log('onSwitch', fromSwitch, checked);
+  }
+
+  onCheck(fromCheckbox: string, checked: Boolean): void {
+    console.log('onCheck', fromCheckbox, checked);
   }
 
 }

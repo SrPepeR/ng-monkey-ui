@@ -3,20 +3,20 @@ import { ThemeService } from '../../services/theme.service';
 import { ComponentsStylesService } from '../../services/components-styles.service';
 
 @Component({
-  selector: 'monkey-switch',
-  templateUrl: './switch.component.html',
+  selector: 'monkey-checkbox',
+  templateUrl: './checkbox.component.html',
   styleUrls: [
-    './styles/switch.component.scss',
-    './styles/switch.brutalist.component.scss',
-    './styles/switch.glass.component.scss',
-    './styles/switch.flat.component.scss',
-    './styles/switch.ghost.component.scss',
-    './styles/switch.glow.component.scss',
+    './styles/checkbox.component.scss',
+    './styles/checkbox.brutalist.component.scss',
+    './styles/checkbox.glass.component.scss',
+    './styles/checkbox.flat.component.scss',
+    './styles/checkbox.ghost.component.scss',
+    './styles/checkbox.glow.component.scss',
   ]
 })
-export class MonkeySwitch implements AfterViewChecked {
+export class MonkeyCheckbox implements AfterViewChecked {
 
-  @ViewChild('switch') switch!: any;
+  @ViewChild('checkbox') checkbox!: any;
 
   @Input() style?: string = 'primary';
 
@@ -29,27 +29,23 @@ export class MonkeySwitch implements AfterViewChecked {
 
   // LABELS
   /**
-   * The switch label.
+   * The checkbox label.
    * @type string
    */
-  @Input() offLabel?: string = 'OFF';
-  /**
-   * The switch label.
-   * @type string
-   */
-  @Input() onLabel?: string = 'ON';
+  @Input() label?: string;
 
   /**
-   * The switch state.
+   * The checkbox state.
    * @type boolean
    */
   @Input() checked?: boolean = false;
 
   /**
-   * Event emitted when the switch is switched.
+   * Event emitted when the checkbox is checked.
    * @type EventEmitter<Boolean>
+   * @returns {Boolean} The checkbox state.
    */
-  @Output() onSwitch = new EventEmitter<Boolean>();
+  @Output() onCheckChange = new EventEmitter<Boolean>();
 
   isDarkMode$ = this.themeService.isDarkMode$;
 
@@ -61,16 +57,16 @@ export class MonkeySwitch implements AfterViewChecked {
   ) { }
 
   ngAfterViewChecked(): void {
-    this.switch.nativeElement.checked = this.checked!;
+    this.checkbox.nativeElement.checked = this.checked!;
   }
 
   ngOnChanges() {
     this.classList = this.componentStylesService.generateClassList(this);
   }
 
-  onSwitched() {
+  onChanged() {
     this.checked = !this.checked;
-    this.onSwitch.emit(this.checked);
+    this.onCheckChange.emit(this.checked);
   }
 
 }
