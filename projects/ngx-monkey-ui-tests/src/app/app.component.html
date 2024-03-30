@@ -8,7 +8,8 @@
     <monkey-button
         [style]="currentStyle"
         (onClick)="onClicked('default')"
-    >Default</monkey-button>
+    >Default
+    </monkey-button>
 
     <monkey-switch
         (onSwitch)="onSwitch('default', $event)"
@@ -20,6 +21,11 @@
         [style]="currentStyle"
         label="Default"
     />
+
+    <monkey-loader
+        lg
+        [style]="currentStyle"
+    ></monkey-loader>
 </monkey-card>
 
 <monkey-card
@@ -29,7 +35,8 @@
         brutalist
         [style]="currentStyle"
         (onClick)="onClicked('brutalist')"
-    >Brutalist</monkey-button>
+    >Brutalist
+    </monkey-button>
 
     <monkey-switch
         brutalist
@@ -43,6 +50,12 @@
         [style]="currentStyle"
         label="Brutalist"
     />
+
+    <monkey-loader
+        brutalist
+        lg
+        [style]="currentStyle"
+    ></monkey-loader>
 </monkey-card>
 
 <monkey-card
@@ -52,7 +65,8 @@
         glass
         [style]="currentStyle"
         (onClick)="onClicked('glass')"
-    >Glassmorphism</monkey-button>
+    >Glassmorphism
+    </monkey-button>
 
     <monkey-switch
         glass
@@ -66,6 +80,12 @@
         [style]="currentStyle"
         label="Glassmorphism"
     />
+
+    <monkey-loader
+        glass
+        lg
+        [style]="currentStyle"
+    ></monkey-loader>
 </monkey-card>
 
 <monkey-card
@@ -75,7 +95,8 @@
         flat
         [style]="currentStyle"
         (onClick)="onClicked('flat')"
-    >Flat</monkey-button>
+    >Flat
+    </monkey-button>
 
     <monkey-switch
         flat
@@ -89,6 +110,12 @@
         [style]="currentStyle"
         label="Flat"
     />
+
+    <monkey-loader
+        flat
+        lg
+        [style]="currentStyle"
+    ></monkey-loader>
 </monkey-card>
 
 <monkey-card
@@ -112,6 +139,12 @@
         [style]="currentStyle"
         label="Ghost"
     />
+
+    <monkey-loader
+        ghost
+        lg
+        [style]="currentStyle"
+    ></monkey-loader>
 </monkey-card>
 
 <monkey-card
@@ -135,6 +168,12 @@
         [style]="currentStyle"
         label="Glow"
     />
+
+    <monkey-loader
+        glow
+        lg
+        [style]="currentStyle"
+    ></monkey-loader>
 </monkey-card>
 
 <!-- STYLE CHANGE -->

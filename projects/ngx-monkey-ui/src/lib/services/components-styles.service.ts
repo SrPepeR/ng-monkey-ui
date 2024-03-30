@@ -38,6 +38,10 @@ export class ComponentsStylesService {
 
     classList.push(componentType);
 
+    if (component.contrast === '') {
+      classList.push('contrast');
+    }
+
     return classList;
   }
 

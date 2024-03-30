@@ -1,0 +1,24 @@
+@use '../../../styles/components/loader.default.style';
+
+/* Glassmorphism style */
+:host {
+    .spinner.type-glassmorphism {
+        border: none;
+        position: relative;
+
+        &::after,
+        &::before {
+            content: '';
+            width: var(--size);
+            height: var(--size);
+            border-radius: 50%;
+            border: var(--border) solid var(--background-color);
+            position: absolute;
+            animation: animloader 1.4s linear infinite;
+        }
+
+        &::after {
+            animation-delay: .7s;
+        }
+    }
+}

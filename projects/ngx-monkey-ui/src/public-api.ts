@@ -21,3 +21,6 @@ export * from './lib/components/switch/switch.component';
 
 // Checkbox
 export * from './lib/components/checkbox/checkbox.component';
+
+// Loader
+export * from './lib/components/loader/loader.component';

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve ngx-monkey-ui-tests", 
+    "start": "ng serve ngx-monkey-ui-tests",
     "stop": "exit 0",
     "build": "ng build",
     "watch": "ng build ngx-monkey-ui --watch",
@@ -28,6 +28,7 @@
     "@angular/cli": "~16.1.4",
     "@angular/compiler-cli": "^16.1.0",
     "@types/jasmine": "~4.3.0",
+    "concurrently": "^8.2.2",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
