@@ -102,3 +102,21 @@
         background-size: 20% 100%, 20% 100%, 20% 100%
     }
 }
+
+@keyframes linear-three-dots-blink {
+
+    0% {
+        box-shadow: calc(var(--animation-gap) * -1) 0 var(--color), var(--animation-gap) 0 var(--opacity-low);
+        background: var(--opacity-low);
+    }
+
+    50% {
+        box-shadow: calc(var(--animation-gap) * -1) 0 var(--opacity-low), var(--animation-gap) 0 var(--opacity-low);
+        background: var(--color);
+    }
+
+    100% {
+        box-shadow: calc(var(--animation-gap) * -1) 0 var(--opacity-low), var(--animation-gap) 0 var(--color);
+        background: var(--opacity-low);
+    }
+}
