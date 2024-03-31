@@ -1,0 +1,25 @@
+@use '../../../styles/components/loader.default.style';
+
+/* Glow style */
+:host {
+    .spinner.type-glow {
+        --mid-size: calc(var(--size) * .6);
+        --border: 0;
+        position: relative;
+        width: var(--size);
+        height: var(--mid-size);
+
+        &:before {
+            --mid-size: calc(var(--size) * .6);
+            content: "";
+            position: absolute;
+            background-color: var(--color);
+            border-color: var(--emphasis);
+            border-radius: 4px;
+            box-shadow:
+                0 0 0 2px inset var(--color),
+                0 0 15px var(--emphasis);
+            animation: circle-growing 0.75s infinite alternate;
+        }
+    }
+}

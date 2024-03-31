@@ -12,6 +12,7 @@ import { ComponentsSizesService } from '../../services/components-sizes.service'
     './styles/loader.glass.component.scss',
     './styles/loader.flat.component.scss',
     './styles/loader.ghost.component.scss',
+    './styles/loader.glow.component.scss',
   ]
 })
 export class MonkeyLoader {
