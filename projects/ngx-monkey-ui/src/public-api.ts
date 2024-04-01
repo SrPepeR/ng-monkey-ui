@@ -24,3 +24,6 @@ export * from './lib/components/checkbox/checkbox.component';
 
 // Loader
 export * from './lib/components/loader/loader.component';
+
+// Image
+export * from './lib/components/image/image.component';

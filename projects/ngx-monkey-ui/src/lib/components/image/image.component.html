@@ -1,0 +1,25 @@
+<div
+    [hidden]="!loading"
+    class="placeholder"
+    [style.width]="width + 'px'"
+    [style.height]="height + 'px'"
+    [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
+>
+    <monkey-loader
+        xl
+        contrast
+    ></monkey-loader>
+</div>
+
+<img
+    [hidden]="loading"
+    (load)="onLoadImage()"
+    [src]="src"
+    [alt]="alt"
+    [title]="title"
+    [width]="width"
+    [height]="height"
+>
+
+<ng-content/>

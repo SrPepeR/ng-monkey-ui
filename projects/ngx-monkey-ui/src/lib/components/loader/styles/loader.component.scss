@@ -3,11 +3,22 @@
 /* Default style */
 .spinner.type-default {
     border: none;
-    --c: no-repeat linear-gradient(var(--color) 0 0);
-    background:
-        var(--c) 0% 50%,
-        var(--c) 50% 50%,
-        var(--c) 100% 50%;
     background-size: 20% 100%;
     animation: growing-bars .75s infinite linear;
+
+    &.contrast {
+        --c: no-repeat linear-gradient(var(--contrast-hight) 0 0);
+        background:
+            var(--c) 0% 50%,
+            var(--c) 50% 50%,
+            var(--c) 100% 50%;
+    }
+
+    :not(&.contrast) {
+        --c: no-repeat linear-gradient(var(--color) 0 0);
+        background:
+            var(--c) 0% 50%,
+            var(--c) 50% 50%,
+            var(--c) 100% 50%;
+    }
 }

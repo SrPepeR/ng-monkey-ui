@@ -1,0 +1,19 @@
+@import '../components.themes';
+@import '../components.styles';
+
+:host {
+    display: flex;
+    flex-direction: column;
+
+    .placeholder {
+        // TODO: Add default style
+
+        &.constrast {
+            // TODO: Add constrast style
+        }
+
+        :not(&.contrast) {
+            // TODO: Add default style
+        }
+    }
+}

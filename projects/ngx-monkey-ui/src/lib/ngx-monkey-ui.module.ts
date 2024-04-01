@@ -8,6 +8,7 @@ import { MonkeyCard } from './components/card/card.component';
 import { MonkeySwitch } from './components/switch/switch.component';
 import { MonkeyCheckbox } from './components/checkbox/checkbox.component';
 import { MonkeyLoader } from './components/loader/loader.component';
+import { MonkeyImage } from './components/image/image.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MonkeyLoader } from './components/loader/loader.component';
     MonkeySwitch,
     MonkeyCheckbox,
     MonkeyLoader,
+    MonkeyImage,
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,7 @@ import { MonkeyLoader } from './components/loader/loader.component';
     MonkeySwitch,
     MonkeyCheckbox,
     MonkeyLoader,
+    MonkeyImage,
   ]
 })
 export class NgxMonkeyUiModule { }

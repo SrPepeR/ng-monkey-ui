@@ -1,0 +1,15 @@
+@use '../../../styles/components/image.default.style';
+
+/* Default style */
+.placeholder.type-default {
+    background-color: var(--opacity-hight);
+    border-radius: 10px;
+    position: relative;
+    
+    monkey-loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
