@@ -5,21 +5,18 @@
     [style.height]="height + 'px'"
     [class]="classList"
     [class.dark-theme]="isDarkMode$ | async"
->
-    <monkey-loader
-        xl
-        contrast
-    ></monkey-loader>
-</div>
+></div>
 
 <img
     [hidden]="loading"
     (load)="onLoadImage()"
+    (error)="onErrorImage()"
     [src]="src"
     [alt]="alt"
     [title]="title"
     [width]="width"
     [height]="height"
+    [class]="classList"
 >
 
 <ng-content/>

@@ -1,0 +1,12 @@
+@use '../../../styles/components/image.default.style';
+
+/* Brutalist style */
+.placeholder.type-brutalist {
+    background: linear-gradient(90deg, var(--color) 25%, var(--contrast-hight) 50%, var(--color) 75%);
+    animation: imageLoader-horizontal 1.5s infinite;
+}
+
+.placeholder.type-brutalist,
+img.type-brutalist {
+    border: 2px solid var(--contrast-hight);
+}

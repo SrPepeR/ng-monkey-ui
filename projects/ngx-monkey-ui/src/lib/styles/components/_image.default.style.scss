@@ -6,14 +6,17 @@
     flex-direction: column;
 
     .placeholder {
-        // TODO: Add default style
+        background-size: 400% 400% !important;
+        background-position: 100% 0;
+    }
+}
 
-        &.contrast {
-            // TODO: Add contrast style
-        }
+@keyframes imageLoader-horizontal {
+    0% {
+        background-position: 100% 0;
+    }
 
-        :not(&.contrast) {
-            // TODO: Add default style
-        }
+    100% {
+        background-position: -100% 0;
     }
 }

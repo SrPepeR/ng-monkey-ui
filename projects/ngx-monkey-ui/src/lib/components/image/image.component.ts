@@ -1,13 +1,13 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { ComponentsStylesService } from '../../services/components-styles.service';
-import { ComponentsSizesService } from '../../services/components-sizes.service';
 
 @Component({
   selector: 'monkey-image',
   templateUrl: './image.component.html',
   styleUrls: [
     './styles/image.component.scss',
+    './styles/image.brutalist.component.scss',
   ]
 })
 export class MonkeyImage implements OnChanges {
@@ -37,19 +37,22 @@ export class MonkeyImage implements OnChanges {
   constructor(
     private themeService: ThemeService,
     private componentStylesService: ComponentsStylesService,
-    private componentSizesService: ComponentsSizesService,
   ) { }
 
   ngOnChanges() {
     this.classList = this.componentStylesService.generateClassList(this);
-    this.classList = this.componentSizesService.generateClassList(this);
 
     this.loading = true;
   }
 
   onLoadImage() {
-    // Carga la imagen dado el src, muestra el contenido y oculta el loader
+    // TODO DESCOMENTAR
     // this.loading = false;
+  }
+
+  onErrorImage() {
+    this.loading = false;
+    // TODO manejar error
   }
 
 }

@@ -2,14 +2,11 @@
 
 /* Default style */
 .placeholder.type-default {
-    background-color: var(--opacity-hight);
+    background: linear-gradient(90deg, var(--opacity-medium) 25%, var(--color) 50%, var(--opacity-medium) 75%);
+    animation: imageLoader-horizontal 1.5s infinite;
+}
+
+.placeholder.type-default,
+img.type-default {
     border-radius: 10px;
-    position: relative;
-    
-    monkey-loader {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
 }
