@@ -14,7 +14,7 @@
             var(--c) 100% 50%;
     }
 
-    :not(&.contrast) {
+    &:not(&.contrast) {
         --c: no-repeat linear-gradient(var(--color) 0 0);
         background:
             var(--c) 0% 50%,

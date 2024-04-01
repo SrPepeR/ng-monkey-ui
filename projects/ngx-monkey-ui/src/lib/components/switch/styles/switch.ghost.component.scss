@@ -2,7 +2,7 @@
 
 /* Ghost style */
 label.switch-label.type-ghost {
-    color: var(--background-color-constrast-hight);
+    color: var(--background-color-contrast-hight);
     font-weight: lighter;
 }
 
@@ -22,7 +22,7 @@ div.switch-container label.switch.type-ghost {
         height: 16px;
 
         box-sizing: border-box;
-        border: 1px solid var(--background-color-constrast-low);
+        border: 1px solid var(--background-color-contrast-low);
     }
 
     input:hover~span.slider::before {

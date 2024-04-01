@@ -2,14 +2,14 @@
 
 /* Default style */
 label.switch-label.type-default {
-    color: var(--background-color-constrast-hight);
+    color: var(--background-color-contrast-hight);
 }
 
 label.switch.type-default {
     border-radius: 50px;
 
     background-color: var(--background-color);
-    border: 2px solid var(--background-color-constrast-low);
+    border: 2px solid var(--background-color-contrast-low);
 
     &:has(input:checked) {
         border-color: var(--color);
@@ -24,7 +24,7 @@ label.switch.type-default {
             height: 16px;
             border-radius: 50%;
 
-            background-color: var(--background-color-constrast-low);
+            background-color: var(--background-color-contrast-low);
         }
     }
 

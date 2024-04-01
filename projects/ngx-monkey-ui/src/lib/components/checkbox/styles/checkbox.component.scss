@@ -2,13 +2,13 @@
 
 /* Default style */
 label.container.type-default {
-    color: var(--background-color-constrast-hight);
+    color: var(--background-color-contrast-hight);
 
     span.checkmark {
         transition: all .2s ease-in-out;
         
         background-color: var(--background-color);
-        border: solid 2px var(--background-color-constrast-hight);
+        border: solid 2px var(--background-color-contrast-hight);
         border-radius: 4px;
 
         &:after {
@@ -18,7 +18,7 @@ label.container.type-default {
     }
 
     &:hover input~span.checkmark {
-        background-color: var(--background-color-constrast-hight);
+        background-color: var(--background-color-contrast-hight);
     }
     
     &:hover input:checked~span.checkmark {

@@ -2,7 +2,7 @@
 
 /* Flat style */
 label.switch-label.type-flat {
-    color: var(--background-color-constrast-hight);
+    color: var(--background-color-contrast-hight);
     font-weight: bold;
 }
 
@@ -26,7 +26,7 @@ div.switch-container label.switch.type-flat {
         
         border-radius: 15px;
 
-        background-color: var(--background-color-constrast-low);
+        background-color: var(--background-color-contrast-low);
     }
 
     input:hover~span.slider::before {

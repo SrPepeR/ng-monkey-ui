@@ -12,9 +12,18 @@
             width: var(--size);
             height: var(--size);
             border-radius: 50%;
-            border: var(--border) solid var(--background-color);
             position: absolute;
             animation: animloader 1.4s linear infinite;
+        }
+
+        &.contrast::after,
+        &.contrast::before  {
+            border: var(--border) solid var(--background-color-contrast-hight);
+        }
+    
+        &:not(&.contrast)::after,
+        &:not(&.contrast)::before {
+            border: var(--border) solid var(--background-color);
         }
 
         &::after {

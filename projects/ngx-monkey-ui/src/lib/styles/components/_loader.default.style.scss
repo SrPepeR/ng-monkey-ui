@@ -40,8 +40,8 @@
     width: var(--size);
     height: var(--size);
 
-    &.constrast {
-        border-color: var(--color-constast);
+    &.contrast {
+        border-color: var(--contrast-hight);
     }
 
     :not(&.contrast) {

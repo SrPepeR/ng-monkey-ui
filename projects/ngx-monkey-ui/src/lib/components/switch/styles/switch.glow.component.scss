@@ -2,13 +2,13 @@
 
 /* Glow style */
 label.switch-label.type-glow {
-    color: var(--background-color-constrast-hight);
+    color: var(--background-color-contrast-hight);
 }
 
 div.switch-container label.switch.type-glow {
     border-radius: 6px;
 
-    border: 2px solid var(--background-color-constrast-low);
+    border: 2px solid var(--background-color-contrast-low);
     background-color: transparent;
 
     transition: all 0.2s linear;

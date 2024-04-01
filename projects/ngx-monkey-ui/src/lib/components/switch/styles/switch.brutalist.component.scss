@@ -2,7 +2,7 @@
 
 /* Brutalist style */
 label.switch-label.type-brutalist {
-    color: var(--background-color-constrast-hight);
+    color: var(--background-color-contrast-hight);
     font-weight: bold;
 }
 
@@ -11,7 +11,7 @@ div.switch-container {
 
     label.switch.type-brutalist {
         background-color: var(--background-color);
-        border: 2px solid var(--background-color-constrast-hight);
+        border: 2px solid var(--background-color-contrast-hight);
 
         &:has(input:checked) {
             background-color: var(--background-color);
@@ -26,7 +26,7 @@ div.switch-container {
 
             z-index: 1;
 
-            background-color: var(--background-color-constrast-hight);
+            background-color: var(--background-color-contrast-hight);
         }
 
         input:checked~span.slider {

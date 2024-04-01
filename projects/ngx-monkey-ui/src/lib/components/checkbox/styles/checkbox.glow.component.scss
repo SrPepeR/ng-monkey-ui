@@ -2,13 +2,13 @@
 
 /* Glow style */
 label.container.type-glow {
-    color: var(--background-color-constrast-hight);
+    color: var(--background-color-contrast-hight);
 
     span.checkmark {
         transition: all .2s ease-in-out;
         
         background-color: var(--background-color);
-        border: solid 2px var(--background-color-constrast-low);
+        border: solid 2px var(--background-color-contrast-low);
         border-radius: 4px;
 
         &:after {
