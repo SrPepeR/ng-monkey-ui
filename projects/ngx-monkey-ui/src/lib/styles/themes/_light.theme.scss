@@ -23,73 +23,73 @@ $light-primary-color-opacity-hight: rgba(64, 210, 236, 0.8) !default;
 $light-primary-color-emphasis: #2bb6d8 !default;
 
 // SECONDARY COLOR
-$light-secondary-color: #ff6b6b !default;
+$light-secondary-color: #967adc !default;
 
 $light-secondary-color-contrast-low: #fbfbfb !default;
 $light-secondary-color-contrast-hight: #011222 !default;
 
-$light-secondary-color-opacity-low: rgba(255, 107, 107, 0.1) !default;
-$light-secondary-color-opacity-medium: rgba(255, 107, 107, 0.2) !default;
-$light-secondary-color-opacity-hight: rgba(255, 107, 107, 0.8) !default;
+$light-secondary-color-opacity-low: rgba(150, 122, 220, 0.1) !default;
+$light-secondary-color-opacity-medium: rgba(150, 122, 220, 0.2) !default;
+$light-secondary-color-opacity-hight: rgba(150, 122, 220, 0.8) !default;
 
-$light-secondary-color-emphasis: #ee5253 !default;
+$light-secondary-color-emphasis: #7b63b4 !default;
 
 // TERTIARY COLOR
-$light-tertiary-color: #ff9f1c !default;
+$light-tertiary-color: #ff00ff !default;
 
 $light-tertiary-color-contrast-low: #fbfbfb !default;
 $light-tertiary-color-contrast-hight: #011222 !default;
 
-$light-tertiary-color-opacity-low: rgba(255, 159, 28, 0.1) !default;
-$light-tertiary-color-opacity-medium: rgba(255, 159, 28, 0.2) !default;
-$light-tertiary-color-opacity-hight: rgba(255, 159, 28, 0.8) !default;
+$light-tertiary-color-opacity-low: rgba(255, 0, 255, 0.1) !default;
+$light-tertiary-color-opacity-medium: rgba(255, 0, 255, 0.2) !default;
+$light-tertiary-color-opacity-hight: rgba(255, 0, 255, 0.8) !default;
 
-$light-tertiary-color-emphasis: #feca57 !default;
+$light-tertiary-color-emphasis: #cc00cc !default;
 
 // WARNING COLOR
-$light-warning-color: #ff9f1c !default;
+$light-warning-color: #ffcc00 !default;
 
-$light-warning-color-contrast-low: #fbfbfb !default;
-$light-warning-color-contrast-hight: #011222 !default;
+$light-warning-color-contrast-low: #f5f5f5 !default;
+$light-warning-color-contrast-hight: #0d0d0d !default;
 
-$light-warning-color-opacity-low: rgba(255, 159, 28, 0.1) !default;
-$light-warning-color-opacity-medium: rgba(255, 159, 28, 0.2) !default;
-$light-warning-color-opacity-hight: rgba(255, 159, 28, 0.8) !default;
+$light-warning-color-opacity-low: rgba(255, 204, 0, 0.1) !default;
+$light-warning-color-opacity-medium: rgba(255, 204, 0, 0.2) !default;
+$light-warning-color-opacity-hight: rgba(255, 204, 0, 0.8) !default;
 
 $light-warning-color-emphasis: #feca57 !default;
 
 // SUCCESS COLOR
-$light-success-color: #2ecc71 !default;
+$light-success-color: #32cd32 !default;
 
-$light-success-color-contrast-low: #fbfbfb !default;
-$light-success-color-contrast-hight: #011222 !default;
+$light-success-color-contrast-low: #0d0d0d !default;
+$light-success-color-contrast-hight: #f5f5f5 !default;
 
-$light-success-color-opacity-low: rgba(46, 204, 113, 0.1) !default;
-$light-success-color-opacity-medium: rgba(46, 204, 113, 0.2) !default;
-$light-success-color-opacity-hight: rgba(46, 204, 113, 0.8) !default;
+$light-success-color-opacity-low: rgba(50, 205, 50, 0.1) !default;
+$light-success-color-opacity-medium: rgba(50, 205, 50, 0.2) !default;
+$light-success-color-opacity-hight: rgba(50, 205, 50, 0.8) !default;
 
-$light-success-color-emphasis: #27ae60 !default;
+$light-success-color-emphasis: #2e8b57 !default;
 
 // DANGER COLOR
-$light-danger-color: #e74c3c !default;
+$light-danger-color: #dc3545 !default;
 
-$light-danger-color-contrast-low: #fbfbfb !default;
-$light-danger-color-contrast-hight: #011222 !default;
+$light-danger-color-contrast-low: #f5f5f5 !default;
+$light-danger-color-contrast-hight: #0d0d0d !default;
 
-$light-danger-color-opacity-low: rgba(231, 76, 60, 0.1) !default;
-$light-danger-color-opacity-medium: rgba(231, 76, 60, 0.2) !default;
-$light-danger-color-opacity-hight: rgba(231, 76, 60, 0.8) !default;
+$light-danger-color-opacity-low: rgba(220, 53, 69, 0.1) !default;
+$light-danger-color-opacity-medium: rgba(220, 53, 69, 0.2) !default;
+$light-danger-color-opacity-hight: rgba(220, 53, 69, 0.8) !default;
 
-$light-danger-color-emphasis: #c0392b !default;
+$light-danger-color-emphasis: #c82333 !default;
 
 // INFO COLOR
-$light-info-color: #3498db !default;
+$light-info-color: #17a2b8 !default;
 
-$light-info-color-contrast-low: #fbfbfb !default;
-$light-info-color-contrast-hight: #011222 !default;
+$light-info-color-contrast-low: #f5f5f5 !default;
+$light-info-color-contrast-hight: #0d0d0d !default;
 
-$light-info-color-opacity-low: rgba(52, 152, 219, 0.1) !default;
-$light-info-color-opacity-medium: rgba(52, 152, 219, 0.2) !default;
-$light-info-color-opacity-hight: rgba(52, 152, 219, 0.8) !default;
+$light-info-color-opacity-low: rgba(23, 162, 184, 0.1) !default;
+$light-info-color-opacity-medium: rgba(23, 162, 184, 0.2) !default;
+$light-info-color-opacity-hight: rgba(23, 162, 184, 0.8) !default;
 
-$light-info-color-emphasis: #2980b9 !default;
+$light-info-color-emphasis: #138496 !default;
