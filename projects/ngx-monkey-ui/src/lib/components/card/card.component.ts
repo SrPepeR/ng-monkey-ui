@@ -17,6 +17,7 @@ import { ComponentsStylesService } from '../../services/components-styles.servic
 export class MonkeyCard implements OnInit, OnChanges {
   
   @Input() column?: boolean = false;
+  @Input() style?: string = 'background';
   
   // COMPONENTS TYPES
   @Input() brutalist?: string = 'true';

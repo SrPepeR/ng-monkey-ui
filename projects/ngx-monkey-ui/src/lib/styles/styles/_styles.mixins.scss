@@ -1,3 +1,17 @@
+// BACKGROUND STYLE
+@mixin getBackgroundStyleVars() {
+    --color: var(--background-color);
+
+    --contrast-low: var(--background-color-contrast-low);
+    --contrast-hight: var(--background-color-contrast-hight);
+
+    --opacity-low: var(--background-color-opacity-low);
+    --opacity-medium: var(--background-color-opacity-medium);
+    --opacity-hight: var(--background-color-opacity-hight);
+
+    --emphasis: var(--background-color-emphasis);
+}
+
 // PRIMARY STYLE
 @mixin getPrimaryStyleVars() {
     --color: var(--primary-color);

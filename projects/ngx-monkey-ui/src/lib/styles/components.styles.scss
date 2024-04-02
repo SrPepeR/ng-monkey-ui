@@ -1,5 +1,9 @@
 @use 'styles/styles.mixins' as mixins;
 
+*.style-background {
+    @include mixins.getBackgroundStyleVars();
+}
+
 *.style-primary {
     @include mixins.getPrimaryStyleVars();
 }
