@@ -8,6 +8,10 @@ import { ComponentsStylesService } from '../../services/components-styles.servic
   styleUrls: [
     './styles/image.component.scss',
     './styles/image.brutalist.component.scss',
+    './styles/image.glass.component.scss',
+    './styles/image.flat.component.scss',
+    './styles/image.ghost.component.scss',
+    './styles/image.glow.component.scss',
   ]
 })
 export class MonkeyImage implements OnChanges {

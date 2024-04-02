@@ -2,8 +2,8 @@
 
 /* Brutalist style */
 .placeholder.type-brutalist {
-    background: linear-gradient(90deg, var(--color) 25%, var(--contrast-hight) 50%, var(--color) 75%);
-    animation: imageLoader-horizontal 1.5s infinite;
+    background: linear-gradient(90deg, var(--color), var(--contrast-hight), var(--color), var(--contrast-hight));
+    animation: imageLoader-horizontal 1.5s infinite linear;
 }
 
 .placeholder.type-brutalist,
