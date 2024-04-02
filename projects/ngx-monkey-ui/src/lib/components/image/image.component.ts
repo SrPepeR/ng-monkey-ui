@@ -51,12 +51,7 @@ export class MonkeyImage implements OnChanges {
 
   onLoadImage() {
     // TODO DESCOMENTAR
-    // this.loading = false;
-  }
-
-  onErrorImage() {
     this.loading = false;
-    // TODO manejar error
   }
 
 }
