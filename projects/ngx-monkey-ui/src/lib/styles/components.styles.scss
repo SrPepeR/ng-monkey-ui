@@ -31,3 +31,17 @@
 *.style-info {
     @include mixins.getInfoStyleVars();
 }
+
+// GLOBAL STYLES
+*.no-margin {
+    margin: 0 !important;
+}
+
+*.no-padding {
+    padding: 0 !important;
+}
+
+*.display-flex-wrap-reverse {
+    display: flex !important;
+    flex-wrap: wrap-reverse !important;
+}

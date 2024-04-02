@@ -6,10 +6,12 @@
 
     button {
         box-sizing: border-box;
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     
-        min-height: 30px;
-        min-width: 120px;
+        min-height: 20px;
+        min-width: 20px;
     
         cursor: pointer;
         text-align: center;

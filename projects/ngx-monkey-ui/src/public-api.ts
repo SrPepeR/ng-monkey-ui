@@ -6,6 +6,9 @@ export * from './lib/ngx-monkey-ui.module';
 // Theme changer
 export * from './lib/components/theme-changer/theme-changer.component';
 
+// Alert service
+export * from './lib/services/alert.service';
+
 /*
 * UI COMPONENTS
 */
@@ -27,3 +30,6 @@ export * from './lib/components/loader/loader.component';
 
 // Image
 export * from './lib/components/image/image.component';
+
+// Alert
+export * from './lib/components/alert/alert.component';

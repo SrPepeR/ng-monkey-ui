@@ -9,6 +9,7 @@ import { MonkeySwitch } from './components/switch/switch.component';
 import { MonkeyCheckbox } from './components/checkbox/checkbox.component';
 import { MonkeyLoader } from './components/loader/loader.component';
 import { MonkeyImage } from './components/image/image.component';
+import { MonkeyAlert } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MonkeyImage } from './components/image/image.component';
     MonkeyCheckbox,
     MonkeyLoader,
     MonkeyImage,
+    MonkeyAlert,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { MonkeyImage } from './components/image/image.component';
     MonkeyCheckbox,
     MonkeyLoader,
     MonkeyImage,
-  ]
+    MonkeyAlert,
+  ],
 })
 export class NgxMonkeyUiModule { }

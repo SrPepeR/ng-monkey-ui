@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MonkeyAlertService } from 'ngx-monkey-ui';
 
 @Component({
   selector: 'app-root',
@@ -21,24 +22,28 @@ export class AppComponent {
   offSwitchText: string = 'Off';
   onSwitchText: string = 'On';
 
-  themeChanged(): void {
-    console.log('themeChanged');
-  }
+  constructor(
+    private alertService: MonkeyAlertService,
+  ) { }
 
   changeStyle(newStyle: Style): void {
-    this.currentStyle =newStyle;
+    this.currentStyle = newStyle;
+  }
+
+  themeChanged(): void {
+    this.alertService.infos(['Tema cambiado.'], true, 'Info');
   }
 
   onClicked(fromButton: string): void {
-    console.log('onClicked', fromButton);
+    this.alertService.warnings(['Botón ' + fromButton + ' presionado.'], false, 'Warning');
   }
 
   onSwitch(fromSwitch: string, checked: Boolean): void {
-    console.log('onSwitch', fromSwitch, checked);
+    this.alertService.dangers(['Switch ' + fromSwitch + '.', checked? 'ACTIVADO': 'DESACTIVADO'], true, 'Danger');
   }
 
   onCheck(fromCheckbox: string, checked: Boolean): void {
-    console.log('onCheck', fromCheckbox, checked);
+    this.alertService.successes(['CheckBox ' + fromCheckbox + '.', checked? 'ACTIVADO': 'DESACTIVADO'], false, 'Success');
   }
 
 }

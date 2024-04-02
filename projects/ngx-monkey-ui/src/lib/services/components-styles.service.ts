@@ -16,6 +16,18 @@ export class ComponentsStylesService {
       classList.push(`style-${component.style}`);
     }
 
+    if (component.displayFlexWrapReverse === '') {
+      classList.push('display-flex-wrap-reverse');
+    }
+
+    if (component.noPadding === '') {
+      classList.push('no-padding');
+    }
+
+    if (component.noMargin === '') {
+      classList.push('no-margin');
+    }
+
     if (component.brutalist === '') {
       componentType = 'type-brutalist';
     }

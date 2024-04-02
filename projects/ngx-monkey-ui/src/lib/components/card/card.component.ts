@@ -26,6 +26,10 @@ export class MonkeyCard implements OnInit, OnChanges {
   @Input() glass?: string = 'true';
   @Input() glow?: string = 'true';
 
+  @Input() noPadding?: string = 'true';
+  @Input() noMargin?: string = 'true';
+  @Input() displayFlexWrapReverse?: string = 'true';
+
   isDarkMode$ = this.themeService.isDarkMode$;
 
   classList: Array<string> = [];
