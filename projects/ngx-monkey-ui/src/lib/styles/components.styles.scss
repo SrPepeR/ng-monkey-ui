@@ -45,3 +45,7 @@
     display: flex !important;
     flex-wrap: wrap-reverse !important;
 }
+
+*.squared-item {
+    aspect-ratio: 1 !important;
+}
