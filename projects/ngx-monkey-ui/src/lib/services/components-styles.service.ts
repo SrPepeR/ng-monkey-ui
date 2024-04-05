@@ -28,6 +28,10 @@ export class ComponentsStylesService {
       classList.push('no-margin');
     }
 
+    if (component.squared === '') {
+      classList.push('squared-item');
+    }
+
     if (component.brutalist === '') {
       componentType = 'type-brutalist';
     }

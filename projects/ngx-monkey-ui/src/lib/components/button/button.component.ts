@@ -17,6 +17,7 @@ import { ComponentsStylesService } from '../../services/components-styles.servic
 export class MonkeyButton implements OnChanges {
   
   @Input() style?: string = 'primary';
+  @Input() squared?: string = 'true';
   
   // COMPONENTS TYPES
   @Input() brutalist?: string = 'true';

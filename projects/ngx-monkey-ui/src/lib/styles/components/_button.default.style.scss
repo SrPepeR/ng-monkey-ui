@@ -20,5 +20,9 @@
         line-height: 1.2;
         letter-spacing: .05rem;
         border: 0;
+
+        &.squared-item {
+            padding: 5px;
+        }
     }
 }
