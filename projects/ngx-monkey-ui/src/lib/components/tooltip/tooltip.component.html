@@ -1,0 +1,15 @@
+<monkey-card
+    *ngIf="tooltip.text.length > 0"
+    [style.top]="tooltip.startPosition.y + 'px'"
+    [style.left]="tooltip.toRight ? tooltip.startPosition.x + 'px' : 'auto'"
+    [style.right]="tooltip.toRight ? 'auto' : tooltip.startPosition.x + 'px'"
+    noMargin
+    [style]="tooltip.style"
+    [brutalist]="brutalist"
+    [flat]="flat"
+    [ghost]="ghost"
+    [glass]="glass"
+    [glow]="glow"
+>
+    <span>{{ tooltip.text }}</span>
+</monkey-card>
