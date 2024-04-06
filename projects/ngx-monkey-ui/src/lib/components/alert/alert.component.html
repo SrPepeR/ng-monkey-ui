@@ -31,9 +31,11 @@
             [glass]="glass"
             [glow]="glow"
         >
-            <monkey-button
+            <monkey-icon-button
                 class="accept-btn"
                 *ngIf="check(acceptable)"
+                [alt]="acceptText"
+                icon="done"
                 (click)="acceptSelected()"
                 [style]="'success'"
                 [brutalist]="brutalist"
@@ -41,14 +43,13 @@
                 [ghost]="ghost"
                 [glass]="glass"
                 [glow]="glow"
-            >
-                {{ acceptText }}
-                <span class="material-symbols-outlined">done</span>
-            </monkey-button>
+            ></monkey-icon-button>
             
-            <monkey-button
+            <monkey-icon-button
                 class="reject-btn"
                 *ngIf="check(rejectable)"
+                [alt]="rejectText"
+                icon="close"
                 (click)="rejectSelected()"
                 [style]="'danger'"
                 [brutalist]="brutalist"
@@ -56,13 +57,12 @@
                 [ghost]="ghost"
                 [glass]="glass"
                 [glow]="glow"
-            >
-                {{ rejectText }}
-                <span class="material-symbols-outlined">close</span>
-            </monkey-button>
+            ></monkey-icon-button>
             
-            <monkey-button
+            <monkey-icon-button
                 class="dimiss-btn"
+                [alt]="dismissibleText"
+                icon="double_arrow"
                 (click)="dismissSelected()"
                 [style]="'warning'"
                 [brutalist]="brutalist"
@@ -70,10 +70,7 @@
                 [ghost]="ghost"
                 [glass]="glass"
                 [glow]="glow"
-            >
-                {{ dismissibleText }}
-                <span class="material-symbols-outlined">double_arrow</span>
-            </monkey-button>
+            ></monkey-icon-button>
         </monkey-card>
     </main>
 
