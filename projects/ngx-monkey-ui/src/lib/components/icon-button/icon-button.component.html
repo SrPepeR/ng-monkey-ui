@@ -1,0 +1,16 @@
+<monkey-button
+    squared
+    [style]="style"
+    [brutalist]="brutalist"
+    [flat]="flat"
+    [ghost]="ghost"
+    [glass]="glass"
+    [glow]="glow"
+    (click)="onClicked()"
+    (mouseover)="showTooltip($event)"
+    (mouseout)="hideTooltip()"
+>
+    <span
+        class="material-symbols-outlined"
+    >{{ icon }}</span>
+</monkey-button>

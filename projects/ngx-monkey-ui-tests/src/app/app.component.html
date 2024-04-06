@@ -33,6 +33,13 @@
         alt="Imagen de prueba"
         title="Monkey image con estilo default"
     ></monkey-image>
+
+    <monkey-icon-button
+        [style]="currentStyle"
+        icon="add"
+        alt="Monkey icon button con estilo default"
+        (onClick)="onClicked('default')"
+    ></monkey-icon-button>
 </monkey-card>
 
 <monkey-card
@@ -71,6 +78,14 @@
         alt="Imagen de prueba"
         title="Monkey image con estilo brutalist"
     ></monkey-image>
+
+    <monkey-icon-button
+        brutalist
+        alt="Monkey icon button con estilo brutalist"
+        [style]="currentStyle"
+        icon="add"
+        (onClick)="onClicked('default')"
+    ></monkey-icon-button>
 </monkey-card>
 
 <monkey-card
@@ -109,6 +124,14 @@
         alt="Imagen de prueba"
         title="Monkey image con estilo brutalist"
     ></monkey-image>
+
+    <monkey-icon-button
+        glass
+        alt="Monkey icon button con estilo glassmorphism"
+        [style]="currentStyle"
+        icon="add"
+        (onClick)="onClicked('default')"
+    ></monkey-icon-button>
 </monkey-card>
 
 <monkey-card
@@ -147,6 +170,14 @@
         alt="Imagen de prueba"
         title="Monkey image con estilo brutalist"
     ></monkey-image>
+
+    <monkey-icon-button
+        flat
+        alt="Monkey icon button con estilo flat"
+        [style]="currentStyle"
+        icon="add"
+        (onClick)="onClicked('default')"
+    ></monkey-icon-button>
 </monkey-card>
 
 <monkey-card
@@ -184,6 +215,14 @@
         alt="Imagen de prueba"
         title="Monkey image con estilo brutalist"
     ></monkey-image>
+
+    <monkey-icon-button
+        ghost
+        alt="Monkey icon button con estilo ghost"
+        [style]="currentStyle"
+        icon="add"
+        (onClick)="onClicked('default')"
+    ></monkey-icon-button>
 </monkey-card>
 
 <monkey-card
@@ -221,10 +260,26 @@
         alt="Imagen de prueba"
         title="Monkey image con estilo brutalist"
     ></monkey-image>
+
+    <monkey-icon-button
+        glow
+        alt="Monkey icon button con estilo glow"
+        [style]="currentStyle"
+        icon="add"
+        (onClick)="onClicked('default')"
+    ></monkey-icon-button>
 </monkey-card>
 
 <!-- STYLE CHANGE -->
 <monkey-card>
+    <monkey-icon-button
+        glow
+        alt="Monkey icon ejemplo apertura hacia la derecha"
+        [style]="currentStyle"
+        icon="arrow_right"
+        (onClick)="onClicked('default')"
+    ></monkey-icon-button>
+
     <monkey-button
         [style]="primaryStyle"
         (onClick)="changeStyle(primaryStyle)"
@@ -259,6 +314,14 @@
         [style]="infoStyle"
         (onClick)="changeStyle(infoStyle)"
     >INFO</monkey-button>
+    
+    <monkey-icon-button
+        glow
+        alt="Monkey icon ejemplo apertura hacia la izquierda"
+        [style]="currentStyle"
+        icon="arrow_left"
+        (onClick)="onClicked('default')"
+    ></monkey-icon-button>
 </monkey-card>
 
 <monkey-alert
@@ -268,3 +331,7 @@
     rejectable
     glass
 ></monkey-alert>
+
+<monkey-tooltip
+    [style]="currentStyle"
+></monkey-tooltip>

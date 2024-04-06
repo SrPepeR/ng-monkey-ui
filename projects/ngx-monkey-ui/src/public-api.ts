@@ -9,6 +9,9 @@ export * from './lib/components/theme-changer/theme-changer.component';
 // Alert service
 export * from './lib/services/alert.service';
 
+// Tooltip service
+export * from './lib/services/tooltip/tooltip.service';
+
 /*
 * UI COMPONENTS
 */
@@ -33,3 +36,9 @@ export * from './lib/components/image/image.component';
 
 // Alert
 export * from './lib/components/alert/alert.component';
+
+// IconButton
+export * from './lib/components/icon-button/icon-button.component';
+
+// Tooltip
+export * from './lib/components/tooltip/tooltip.component';
