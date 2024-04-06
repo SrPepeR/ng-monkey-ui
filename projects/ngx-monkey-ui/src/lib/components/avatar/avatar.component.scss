@@ -1,0 +1,9 @@
+@use '../../styles/components/avatar.default.style';
+
+:host {
+    .avatar-container {
+        border: 4px solid red;
+        padding: 10px;
+    }
+
+}

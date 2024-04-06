@@ -50,8 +50,7 @@ export class MonkeyImage implements OnChanges {
   }
 
   onLoadImage() {
-    // TODO DESCOMENTAR
-    this.loading = false;
+    // this.loading = false;
   }
 
 }

@@ -12,6 +12,7 @@ import { MonkeyImage } from './components/image/image.component';
 import { MonkeyAlert } from './components/alert/alert.component';
 import { MonkeyIconButton } from './components/icon-button/icon-button.component';
 import { MonkeyTooltip } from './components/tooltip/tooltip.component';
+import { MonkeyAvatar } from './components/avatar/avatar.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MonkeyTooltip } from './components/tooltip/tooltip.component';
     MonkeyAlert,
     MonkeyIconButton,
     MonkeyTooltip,
+    MonkeyAvatar,
   ],
   imports: [
     CommonModule,
@@ -42,6 +44,7 @@ import { MonkeyTooltip } from './components/tooltip/tooltip.component';
     MonkeyAlert,
     MonkeyIconButton,
     MonkeyTooltip,
+    MonkeyAvatar,
   ],
 })
 export class NgxMonkeyUiModule { }

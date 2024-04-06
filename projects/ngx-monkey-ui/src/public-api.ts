@@ -42,3 +42,6 @@ export * from './lib/components/icon-button/icon-button.component';
 
 // Tooltip
 export * from './lib/components/tooltip/tooltip.component';
+
+// Avatar
+export * from './lib/components/avatar/avatar.component';

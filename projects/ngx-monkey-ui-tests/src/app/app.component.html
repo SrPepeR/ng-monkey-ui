@@ -40,6 +40,16 @@
         alt="Monkey icon button con estilo default"
         (onClick)="onClicked('default')"
     ></monkey-icon-button>
+
+    <monkey-avatar
+        [style]="currentStyle"
+        image="https://via.placeholder.com/100"
+        errorImage="https://via.placeholder.com/100"
+        size="md"
+        form="rounded"
+        labeled
+        text="Monkey avatar"
+    ></monkey-avatar>
 </monkey-card>
 
 <monkey-card
