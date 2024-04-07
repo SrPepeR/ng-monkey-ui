@@ -17,6 +17,7 @@ import { ComponentsStylesService } from '../../services/components-styles.servic
 export class MonkeyImage implements OnChanges {
   
   @Input() style?: string = 'primary';
+  @Input() fullRounded?: string = 'false';
   
   // COMPONENTS TYPES
   @Input() brutalist?: string = 'true';

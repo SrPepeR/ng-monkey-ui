@@ -37,6 +37,7 @@ export class MonkeyIconButton implements OnChanges {
 
   ngOnChanges() {
     this.classList = this.componentStylesService.generateClassList(this);
+    this.classList.push('squared-item');
   }
 
   onClicked() {

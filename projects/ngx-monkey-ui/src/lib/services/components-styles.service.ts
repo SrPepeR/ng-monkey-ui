@@ -32,6 +32,10 @@ export class ComponentsStylesService {
       classList.push('squared-item');
     }
 
+    if (component.fullRounded === '') {
+      classList.push('full-rounded');
+    }
+
     if (component.brutalist === '') {
       componentType = 'type-brutalist';
     }
