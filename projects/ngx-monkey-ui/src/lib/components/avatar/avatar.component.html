@@ -11,5 +11,13 @@
         [style]="style"
         [class]="classList"
         (onLoadingImageError)="onErrorImage()"
+        (mouseover)="showTooltip($event)"
+        (mouseout)="hideTooltip()"
     ></monkey-image>
 </div>
+
+<span
+    *ngIf="isLabeled"
+    class="label"
+    [class]="classList"
+>{{ text }}</span>
