@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { ComponentsStylesService } from '../../services/components-styles.service';
 import { ComponentsSizesService } from '../../services/components-sizes.service';
@@ -23,6 +23,8 @@ export class MonkeyAvatar implements OnInit, OnChanges {
   @Input() md?: string = 'md';
   @Input() lg?: string = 'lg';
 
+  @Output() onClickImage = new EventEmitter();
+
   isDarkMode$ = this.themeService.isDarkMode$;
 
   classList: Array<string> = [];
@@ -44,6 +46,14 @@ export class MonkeyAvatar implements OnInit, OnChanges {
     this.classList = this.componentSizesService.generateClassList(this);
 
     this.checkClasses();
+  }
+
+  onClick() {
+    this.onClickImage.emit();
+  }
+
+  onErrorImage(): void {
+    this.image = this.errorImage;
   }
 
   private checkSize() {
