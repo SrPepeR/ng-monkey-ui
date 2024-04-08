@@ -10,6 +10,8 @@
 <img
     [hidden]="loading"
     (load)="onLoadImage()"
+    (click)="onClick()"
+    (error)="onErrorImage()"
     [src]="src"
     [alt]="alt"
     [title]="title"

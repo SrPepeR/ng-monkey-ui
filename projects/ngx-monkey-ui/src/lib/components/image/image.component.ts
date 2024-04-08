@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { ComponentsStylesService } from '../../services/components-styles.service';
 
@@ -33,6 +33,9 @@ export class MonkeyImage implements OnChanges {
   @Input() width?: number = 100;
   @Input() height?: number = 100;
 
+  @Output() onLoadingImageError = new EventEmitter();
+  @Output() onClickImage = new EventEmitter();
+
   loading: boolean = true;
 
   isDarkMode$ = this.themeService.isDarkMode$;
@@ -52,6 +55,14 @@ export class MonkeyImage implements OnChanges {
 
   onLoadImage() {
     this.loading = false;
+  }
+
+  onClick() {
+    this.onClickImage.emit();
+  }
+
+  onErrorImage() {
+    this.onLoadingImageError.emit();
   }
 
 }
