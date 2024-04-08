@@ -2,8 +2,33 @@
 
 :host {
     .avatar-container {
-        border: 4px solid red;
-        padding: 10px;
+
+        &.size-sm {
+            border: 3px solid var(--emphasis);
+            padding: 4px;
+
+            &.form-squared {
+                border-radius: 15px;
+            }
+        }
+
+        &.size-md {
+            border: 5px solid var(--emphasis);
+            padding: 6px;
+
+            &.form-squared {
+                border-radius: 20px;
+            }
+        }
+
+        &.size-lg {
+            border: 7px solid var(--emphasis);
+            padding: 8px;
+
+            &.form-squared {
+                border-radius: 20px;
+            }
+        }
     }
 
 }

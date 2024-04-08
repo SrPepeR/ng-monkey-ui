@@ -1,8 +1,14 @@
-<div class="avatar-container squared-item full-rounded">
+<div
+    class="avatar-container squared-item"
+    [class]="classList"
+>
     <monkey-image
-        fullRounded
+        [fullRounded]="form == 'rounded' ? '' : 'false'"
+        [width]="size.width"
+        [height]="size.height"
         [src]="image"
+        [title]="text"
         [style]="style"
-        class="full-rounded"
+        [class]="classList"
     ></monkey-image>
 </div>
