@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { ComponentsStylesService } from '../../services/components-styles.service';
 
@@ -14,9 +14,9 @@ import { ComponentsStylesService } from '../../services/components-styles.servic
     './styles/button.glow.component.scss',
   ]
 })
-export class MonkeyButton implements OnChanges {
+export class MonkeyButton implements OnInit, OnChanges {
   
-  @Input() style?: string = 'primary';
+  @Input() style: string = 'primary';
   @Input() squared?: string = 'true';
   
   // COMPONENTS TYPES
@@ -36,6 +36,10 @@ export class MonkeyButton implements OnChanges {
     private themeService: ThemeService,
     private componentStylesService: ComponentsStylesService,
   ) { }
+
+  ngOnInit() {
+    this.classList = this.componentStylesService.generateClassList(this);
+  }
 
   ngOnChanges() {
     this.classList = this.componentStylesService.generateClassList(this);
