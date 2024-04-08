@@ -9,6 +9,10 @@
         background-size: 300% 300% !important;
         background-position: 100% 0;
     }
+
+    img, .placeholder {
+        cursor: pointer;
+    }
 }
 
 @keyframes imageLoader-horizontal {
