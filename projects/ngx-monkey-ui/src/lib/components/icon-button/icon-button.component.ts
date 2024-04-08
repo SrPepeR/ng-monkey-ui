@@ -46,8 +46,7 @@ export class MonkeyIconButton implements OnChanges {
 
   showTooltip(event: MouseEvent) {
     if (!this.alt) {
-    console.log('no alt');
-    return;
+      return;
     }
 
     this.tooltipService.show(this.alt, this.style, { x: event.pageX, y: event.pageY });
@@ -55,6 +54,5 @@ export class MonkeyIconButton implements OnChanges {
 
   hideTooltip() {
     this.tooltipService.hide();
-    console.log('hideTooltip');
   }
 }
