@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy } from "@angular/core";
-import { TooltipService } from "../../services/tooltip/tooltip.service";
+import { TooltipService } from "../services/tooltip/tooltip.service";
 
 @Component({
 	selector: 'app-tooltip-base',
