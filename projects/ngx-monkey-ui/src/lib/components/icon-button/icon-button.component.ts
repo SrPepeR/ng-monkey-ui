@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core
 import { ThemeService } from '../../services/theme.service';
 import { ComponentsStylesService } from '../../services/components-styles.service';
 import { TooltipService } from '../../services/tooltip/tooltip.service';
+import { TooltipBase } from '../tooltip/tooltip.base';
 
 @Component({
   selector: 'monkey-icon-button',
@@ -10,12 +11,10 @@ import { TooltipService } from '../../services/tooltip/tooltip.service';
     './styles/icon-button.component.scss',
   ]
 })
-export class MonkeyIconButton implements OnChanges {
-  
-  @Input() style: string = 'primary';
+export class MonkeyIconButton extends TooltipBase implements OnChanges {
+
   @Input() icon?: string = 'warning';
-  @Input() alt?: string = '';
-  
+
   // COMPONENTS TYPES
   @Input() brutalist?: string = 'true';
   @Input() flat?: string = 'true';
@@ -32,8 +31,10 @@ export class MonkeyIconButton implements OnChanges {
   constructor(
     private themeService: ThemeService,
     private componentStylesService: ComponentsStylesService,
-    private tooltipService: TooltipService,
-  ) { }
+    tooltipService: TooltipService,
+  ) {
+    super(tooltipService);
+  }
 
   ngOnChanges() {
     this.classList = this.componentStylesService.generateClassList(this);
@@ -42,17 +43,5 @@ export class MonkeyIconButton implements OnChanges {
 
   onClicked() {
     this.onClick.emit();
-  }
-
-  showTooltip(event: MouseEvent) {
-    if (!this.alt) {
-      return;
-    }
-
-    this.tooltipService.show(this.alt, this.style, { x: event.pageX, y: event.pageY });
-  }
-
-  hideTooltip() {
-    this.tooltipService.hide();
   }
 }
