@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core
 import { ThemeService } from '../../services/theme.service';
 import { ComponentsStylesService } from '../../services/components-styles.service';
 import { TooltipService } from '../../services/tooltip/tooltip.service';
-import { Tooltipable } from '../tooltip/tooltipable.base';
+import { Tooltipable } from '../../bases/tooltipable.base';
 
 @Component({
   selector: 'monkey-icon-button',
