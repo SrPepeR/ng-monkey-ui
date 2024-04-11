@@ -5,7 +5,7 @@ import { TooltipService } from "../../services/tooltip/tooltip.service";
 	selector: 'app-tooltip-base',
 	template: '',
 })
-export class TooltipBase implements OnDestroy {
+export class Tooltipable implements OnDestroy {
 
 	@Input() alt?: string = '';
 	@Input() style?: any;

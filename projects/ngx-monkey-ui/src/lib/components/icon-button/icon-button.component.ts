@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core
 import { ThemeService } from '../../services/theme.service';
 import { ComponentsStylesService } from '../../services/components-styles.service';
 import { TooltipService } from '../../services/tooltip/tooltip.service';
-import { TooltipBase } from '../tooltip/tooltip.base';
+import { Tooltipable } from '../tooltip/tooltipable.base';
 
 @Component({
   selector: 'monkey-icon-button',
@@ -11,7 +11,7 @@ import { TooltipBase } from '../tooltip/tooltip.base';
     './styles/icon-button.component.scss',
   ]
 })
-export class MonkeyIconButton extends TooltipBase implements OnChanges {
+export class MonkeyIconButton extends Tooltipable implements OnChanges {
 
   @Input() icon?: string = 'warning';
 

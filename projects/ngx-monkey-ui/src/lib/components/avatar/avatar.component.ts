@@ -3,14 +3,14 @@ import { ThemeService } from '../../services/theme.service';
 import { ComponentsStylesService } from '../../services/components-styles.service';
 import { ComponentsSizesService } from '../../services/components-sizes.service';
 import { TooltipService } from '../../services/tooltip/tooltip.service';
-import { TooltipBase } from '../tooltip/tooltip.base';
+import { Tooltipable } from '../tooltip/tooltipable.base';
 
 @Component({
   selector: 'monkey-avatar',
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss']
 })
-export class MonkeyAvatar extends TooltipBase implements OnChanges {
+export class MonkeyAvatar extends Tooltipable implements OnChanges {
 
   @Input() image: string = '';
   @Input() errorImage: string = '';
