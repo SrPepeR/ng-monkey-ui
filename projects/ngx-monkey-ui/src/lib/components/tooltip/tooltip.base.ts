@@ -10,7 +10,7 @@ export class TooltipBase implements OnDestroy {
 	@Input() alt?: string = '';
 	@Input() style?: any;
 
-	constructor(private tooltipService: TooltipService) { }
+	constructor(protected tooltipService: TooltipService) { }
 
 	showTooltip(event: MouseEvent) {
 		if (!this.alt) {

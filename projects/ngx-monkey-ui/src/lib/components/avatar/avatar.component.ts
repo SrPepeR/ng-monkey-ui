@@ -3,15 +3,14 @@ import { ThemeService } from '../../services/theme.service';
 import { ComponentsStylesService } from '../../services/components-styles.service';
 import { ComponentsSizesService } from '../../services/components-sizes.service';
 import { TooltipService } from '../../services/tooltip/tooltip.service';
+import { TooltipBase } from '../tooltip/tooltip.base';
 
 @Component({
   selector: 'monkey-avatar',
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss']
 })
-export class MonkeyAvatar implements OnChanges {
-
-  @Input() style: string = 'primary';
+export class MonkeyAvatar extends TooltipBase implements OnChanges {
 
   @Input() image: string = '';
   @Input() errorImage: string = '';
@@ -37,14 +36,14 @@ export class MonkeyAvatar implements OnChanges {
     private themeService: ThemeService,
     private componentStylesService: ComponentsStylesService,
     private componentSizesService: ComponentsSizesService,
-    private tooltipService: TooltipService,
-  ) { }
+    protected override tooltipService: TooltipService,
+  ) { super(tooltipService) }
 
   ngOnChanges() {
     this.checkAll();
   }
 
-  showTooltip(event: MouseEvent) {
+  override showTooltip(event: MouseEvent) {
     if (this.isLabeled) {
       return;
     }
@@ -52,7 +51,7 @@ export class MonkeyAvatar implements OnChanges {
     this.tooltipService.show(this.text, this.style || 'primary', { x: event.pageX, y: event.pageY })
   }
 
-  hideTooltip() {
+  override hideTooltip() {
     if (this.isLabeled) {
       return;
     }
