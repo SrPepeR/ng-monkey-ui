@@ -1,6 +1,7 @@
 <div
     class="avatar-container squared-item"
     [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
 >
     <monkey-image
         [fullRounded]="form == 'rounded' ? '' : 'false'"
