@@ -53,3 +53,21 @@
 *.full-rounded {
     border-radius: 100% !important;
 }
+
+*.align-left {
+    display: flex !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+}
+
+*.align-center {
+    display: flex !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+*.align-right {
+    display: flex !important;
+    align-items: flex-end !important;
+    text-align: right !important;
+}

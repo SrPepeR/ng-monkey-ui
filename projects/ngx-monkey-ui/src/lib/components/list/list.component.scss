@@ -1,0 +1,79 @@
+:host ::ng-deep {
+  &.list {
+    color: var(--color);
+
+    &.gap-sm {
+      gap: 5px;
+    }
+
+    &.gap-md {
+      gap: 15px;
+    }
+
+    &.gap-lg {
+      gap: 30px;
+    }
+
+    &.separators {
+      &> :not(:last-child) {
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          background-color: var(--opacity-medium);
+        }
+      }
+
+      &.horizontal {
+        &> :not(:last-child) {
+          // WITH HORIZONTAL SEPARATORS
+          height: 100%;
+
+          &::after {
+            bottom: 0;
+            height: 100%;
+            width: 2px;
+          }
+        }
+
+        &.gap-sm> :not(:last-child)::after {
+          right: -3%;
+        }
+
+        &.gap-md> :not(:last-child)::after {
+          right: -8%;
+        }
+
+        &.gap-lg> :not(:last-child)::after {
+          right: -16%;
+        }
+      }
+
+      &:not(.horizontal) {
+        &> :not(:last-child) {
+          // WITH VERTICAL SEPARATORS
+          width: 100%;
+
+          &::after {
+            width: 100%;
+            height: 2px;
+            left: 0;
+          }
+        }
+
+        &.gap-sm> :not(:last-child)::after {
+          bottom: -25%;
+        }
+
+        &.gap-md> :not(:last-child)::after {
+          bottom: -50%;
+        }
+
+        &.gap-lg> :not(:last-child)::after {
+          bottom: -100%;
+        }
+      }
+    }
+  }
+}

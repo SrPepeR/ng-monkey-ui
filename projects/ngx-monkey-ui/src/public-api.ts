@@ -45,3 +45,6 @@ export * from './lib/components/tooltip/tooltip.component';
 
 // Avatar
 export * from './lib/components/avatar/avatar.component';
+
+// List
+export * from './lib/components/list/list.component';

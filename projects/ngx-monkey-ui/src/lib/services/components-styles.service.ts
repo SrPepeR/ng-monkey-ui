@@ -9,60 +9,89 @@ export class ComponentsStylesService {
 
   generateClassList(component: any) {
     let classList: Array<string> = [];
-    let componentType = 'type-default';
     
     // Adds the component color scheme class to the classList array
     if (component.style) {
       classList.push(`style-${component.style}`);
     }
+    
+    classList = classList.concat(this.checkTypes(classList, component));
 
-    if (component.displayFlexWrapReverse === '') {
-      classList.push('display-flex-wrap-reverse');
+    classList = classList.concat(this.checkGeneralStyles(classList, component));
+
+    if (this.check(component.contrast)) {
+      classList.push('contrast');
     }
 
-    if (component.noPadding === '') {
-      classList.push('no-padding');
-    }
+    return classList;
+  }
 
-    if (component.noMargin === '') {
-      classList.push('no-margin');
-    }
+  private checkTypes(classList: Array<string>, component: any): Array<string> {
+    let componentType = 'type-default';
 
-    if (component.squared === '') {
-      classList.push('squared-item');
-    }
-
-    if (component.fullRounded === '') {
-      classList.push('full-rounded');
-    }
-
-    if (component.brutalist === '') {
+    if (this.check(component.brutalist)) {
       componentType = 'type-brutalist';
     }
 
-    if (component.flat === '') {
+    if (this.check(component.flat)) {
       componentType = 'type-flat';
     }
 
-    if (component.ghost === '') {
+    if (this.check(component.ghost)) {
       componentType = 'type-ghost';
     }
 
-    if (component.glass === '') {
+    if (this.check(component.glass)) {
       componentType = 'type-glassmorphism';
     }
 
-    if (component.glow === '') {
+    if (this.check(component.glow)) {
       componentType = 'type-glow';
     }
 
     classList.push(componentType);
 
-    if (component.contrast === '') {
-      classList.push('contrast');
+    return classList;
+  }
+
+  private checkGeneralStyles(classList: Array<string>, component: any): Array<string> {
+    if (this.check(component.displayFlexWrapReverse)) {
+      classList.push('display-flex-wrap-reverse');
+    }
+
+    if (this.check(component.noPadding)) {
+      classList.push('no-padding');
+    }
+
+    if (this.check(component.noMargin)) {
+      classList.push('no-margin');
+    }
+
+    if (this.check(component.squared)) {
+      classList.push('squared-item');
+    }
+
+    if (this.check(component.fullRounded)) {
+      classList.push('full-rounded');
+    }
+
+    if (this.check(component.alignLeft)) {
+      classList.push('align-left');
+    }
+
+    if (this.check(component.alignCenter)) {
+      classList.push('align-center');
+    }
+
+    if (this.check(component.alignRight)) {
+      classList.push('align-right');
     }
 
     return classList;
+  }
+
+  private check(value: any) {
+    return value === '';
   }
 
 }
