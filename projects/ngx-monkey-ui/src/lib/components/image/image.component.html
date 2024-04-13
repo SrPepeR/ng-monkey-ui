@@ -18,6 +18,7 @@
     [width]="width"
     [height]="height"
     [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
 >
 
 <ng-content/>

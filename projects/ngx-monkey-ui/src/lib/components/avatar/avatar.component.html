@@ -11,6 +11,7 @@
         [title]="text"
         [style]="style"
         [class]="classList"
+        [class.dark-theme]="isDarkMode$ | async"
         (onLoadingImageError)="onErrorImage()"
         (mouseover)="showTooltip($event)"
         (mouseout)="hideTooltip()"
@@ -21,4 +22,5 @@
     *ngIf="isLabeled"
     class="label"
     [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
 >{{ text }}</span>
