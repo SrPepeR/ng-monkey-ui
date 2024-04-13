@@ -1,19 +1,16 @@
 import { Component, Input, OnChanges, OnInit } from "@angular/core";
 
-import { ThemeService } from "../services/theme.service";
 import { ComponentsStylesService } from "../services/components-styles.service";
 
 @Component({
 	selector: '',
 	template: '',
 	providers: [
-		ThemeService,
 		ComponentsStylesService,
 	],
 })
 export class Styleable implements OnInit, OnChanges {
 
-	private themeService: ThemeService = new ThemeService();
 	private componentStylesService: ComponentsStylesService = new ComponentsStylesService();
 
 	// STYLE
@@ -31,8 +28,6 @@ export class Styleable implements OnInit, OnChanges {
 	@Input() flexCenter?: string = 'false';
 	@Input() flexEnd?: string = 'false';
 
-	isDarkMode$ = this.themeService.isDarkMode$;
-
 	classList: Array<string> = [];
 
 	ngOnInit() {
@@ -43,7 +38,7 @@ export class Styleable implements OnInit, OnChanges {
 		this.addAllClasses();
 	}
 
-	private addAllClasses() {
+	private addAllClasses () {
 		this.classList = this.componentStylesService.generateClassList(this);
 		this.checkGeneralStyles();
 		this.addAditionalClasses();
