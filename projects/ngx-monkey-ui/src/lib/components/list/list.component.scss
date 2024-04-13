@@ -53,7 +53,7 @@
       &:not(.horizontal) {
         &> :not(:last-child) {
           // WITH VERTICAL SEPARATORS
-          width: 100%;
+          width: auto;
 
           &::after {
             width: 100%;
