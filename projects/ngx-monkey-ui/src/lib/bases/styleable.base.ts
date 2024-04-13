@@ -17,19 +17,19 @@ export class Styleable implements OnInit, OnChanges {
 	private componentStylesService: ComponentsStylesService = new ComponentsStylesService();
 
 	// STYLE
-	@Input() style: string = 'primary';
+	@Input() style: 'background' | 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger' | 'info' | '' = 'primary';
 
 	// COMPONENTS TYPES
-	@Input() brutalist?: string = 'true';
-	@Input() flat?: string = 'true';
-	@Input() ghost?: string = 'true';
-	@Input() glass?: string = 'true';
-	@Input() glow?: string = 'true';
+	@Input() brutalist?: string = 'false';
+	@Input() flat?: string = 'false';
+	@Input() ghost?: string = 'false';
+	@Input() glass?: string = 'false';
+	@Input() glow?: string = 'false';
 
 	// GENERAL STYLES
-	@Input() alignLeft?: string = 'false';
-	@Input() alignCenter?: string = 'false';
-	@Input() alignRight?: string = 'false';
+	@Input() flexStart?: string = 'false';
+	@Input() flexCenter?: string = 'false';
+	@Input() flexEnd?: string = 'false';
 
 	isDarkMode$ = this.themeService.isDarkMode$;
 
@@ -50,8 +50,16 @@ export class Styleable implements OnInit, OnChanges {
 	}
 
 	private checkGeneralStyles() {
-		if (!this.check(this.alignLeft) && !this.check(this.alignRight)) {
-			this.alignCenter = '';
+		if (this.check(this.flexStart)) {
+			this.classList.push('flex-start');
+		}
+
+		if (this.check(this.flexCenter)) {
+			this.classList.push('flex-center');
+		}
+
+		if (this.check(this.flexEnd)) {
+			this.classList.push('flex-end');
 		}
 	}
 

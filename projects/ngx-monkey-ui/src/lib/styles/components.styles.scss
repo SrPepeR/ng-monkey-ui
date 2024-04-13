@@ -54,20 +54,21 @@
     border-radius: 100% !important;
 }
 
-*.align-left {
+*.flex {
+    display: flex !important;
+}
+
+*.flex-start {
     display: flex !important;
     align-items: flex-start !important;
-    text-align: left !important;
 }
 
-*.align-center {
+*.flex-center {
     display: flex !important;
     align-items: center !important;
-    text-align: center !important;
 }
 
-*.align-right {
+*.flex-end {
     display: flex !important;
     align-items: flex-end !important;
-    text-align: right !important;
 }
