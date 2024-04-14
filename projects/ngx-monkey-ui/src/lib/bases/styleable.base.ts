@@ -27,6 +27,7 @@ export class Styleable implements OnInit, OnChanges {
 	@Input() flexStart?: string = 'false';
 	@Input() flexCenter?: string = 'false';
 	@Input() flexEnd?: string = 'false';
+  @Input() sticky?: string = 'false';
 
 	classList: Array<string> = [];
 
@@ -55,6 +56,10 @@ export class Styleable implements OnInit, OnChanges {
 
 		if (this.check(this.flexEnd)) {
 			this.classList.push('flex-end');
+		}
+
+		if (this.check(this.sticky)) {
+			this.classList.push('position-sticky');
 		}
 	}
 
