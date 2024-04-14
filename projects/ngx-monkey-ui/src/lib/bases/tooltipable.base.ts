@@ -8,7 +8,7 @@ import { TooltipService } from "../services/tooltip/tooltip.service";
 export class Tooltipable implements OnDestroy {
 
 	@Input() alt?: string = '';
-	@Input() style?: any;
+	@Input() style: 'background' | 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger' | 'info' | '' = 'primary';
 
 	constructor(protected tooltipService: TooltipService) { }
 
