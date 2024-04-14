@@ -12,13 +12,29 @@ export class TooltipService {
    */
   private DEFAULT_SCREEN_TIME: number = 300;
 
+  /**
+   * Default time before show tooltip on screen.
+   */
+  private DEFAULT_TIME_BEFORE_SHOW: number = 2000;
+
+  showTimeoutId: any;
   hideTimeoutId: any;
 
   event: Subject<Tooltip> = new Subject<Tooltip>();
 
-  show(text: string, style: string, mousePosition: { x: number, y: number } = { x: 0, y: 0 }) {
-    this.event.next(new Tooltip(style, text, mousePosition));
-    this.removeHideTimeout();
+  onShow(text: string, style: string, mousePosition: { x: number, y: number } = { x: 0, y: 0 }) {
+    if (this.showTimeoutId) {
+      this.removeTimeouts();
+    }
+
+    this.showTimeoutId = setTimeout(() => {
+      this.show(new Tooltip(style, text, mousePosition));
+    }, this.DEFAULT_TIME_BEFORE_SHOW);
+  }
+
+  show(tooltip: Tooltip) {
+    this.event.next(tooltip);
+    this.removeTimeouts();
   }
 
   private onHide() {
@@ -29,10 +45,11 @@ export class TooltipService {
 
   hide() {
     this.event.next(new Tooltip('', '', undefined));
-    this.removeHideTimeout();
+    this.removeTimeouts();
   }
 
-  private removeHideTimeout() {
+  private removeTimeouts() {
+    clearTimeout(this.showTimeoutId);
     clearTimeout(this.hideTimeoutId);
   }
 }

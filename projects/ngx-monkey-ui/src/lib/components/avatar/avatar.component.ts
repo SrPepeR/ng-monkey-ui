@@ -48,7 +48,7 @@ export class MonkeyAvatar extends Tooltipable implements OnChanges {
       return;
     }
 
-    this.tooltipService.show(this.text, this.style || 'primary', { x: event.pageX, y: event.pageY })
+    this.tooltipService.onShow(this.text, this.style || 'primary', { x: event.pageX, y: event.pageY })
   }
 
   override hideTooltip() {
