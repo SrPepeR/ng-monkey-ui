@@ -27,6 +27,7 @@ export class MonkeyMenu extends Styleable {
   isDarkMode$ = this.themeService.isDarkMode$;
 
   alt!: string;
+  isFullMenuOpen: boolean = true;
 
   constructor(
     private themeService: ThemeService,
@@ -47,6 +48,13 @@ export class MonkeyMenu extends Styleable {
     super.ngOnChanges();
     this.tooltipable.alt = this.alt;
     this.tooltipable.style = this.style;
+    this.screenWidth$.subscribe((value: number) => {
+      if (this.isFullMenuOpen && value < this.SMALL_SCREEN_WIDTH) {
+        this.isFullMenuOpen = false;
+      } else if (!this.isFullMenuOpen && value >= this.SMALL_SCREEN_WIDTH) {
+        this.isFullMenuOpen = true;
+      }
+    });
   }
 
   onSelectedChanged(option: MenuOption) {
@@ -65,6 +73,10 @@ export class MonkeyMenu extends Styleable {
     if(this.check(this.selfNavigation)) {
       this.router.navigate([menuOption.route]);
     }
+  }
+
+  toggleFullMenu() {
+    this.isFullMenuOpen = !this.isFullMenuOpen;
   }
 
 }

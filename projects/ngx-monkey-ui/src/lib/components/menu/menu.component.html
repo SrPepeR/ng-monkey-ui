@@ -13,11 +13,26 @@
     >
       {{ title }}
     </span>
+
+    <monkey-icon-button
+      *ngIf="screenWidth < SMALL_SCREEN_WIDTH"
+      [class]="classList"
+      [style]="style"
+      [brutalist]="brutalist"
+      [glass]="glass"
+      [flat]="flat"
+      [ghost]="ghost"
+      [glow]="glow"
+      icon="menu"
+      (onClick)="toggleFullMenu()"
+    ></monkey-icon-button>
   
     <monkey-list
+      [hidden]="!isFullMenuOpen"
       [style]="style"
       class="menu-list"
       [class]="classList"
+      [class.dark-theme]="isDarkMode$ | async"
       gapSize="md"
       horizontal
     >
@@ -58,8 +73,11 @@
     </monkey-list>
   
     <monkey-list
+      [hidden]="!isFullMenuOpen"
       [style]="style"
       [class]="classList"
+      [class.dark-theme]="isDarkMode$ | async"
+      class="menu-content-list"
       gapSize="md"
       horizontal
     >

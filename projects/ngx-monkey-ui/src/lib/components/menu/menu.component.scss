@@ -54,12 +54,40 @@
         }
       }
     }
+
+    .menu-content:has(>.screen-sm),
+    .menu-content:has(>.screen-xs) {
+      position: relative;
+    }
+  
+    .menu-list.screen-sm,
+    .menu-list.screen-xs,
+    .menu-content-list.screen-sm,
+    .menu-content-list.screen-xs {
+      position: absolute;
+      left: 15px;
+  
+      padding: 10px 10px;
+      border-radius: 10px;
+      background-color: var(--background-color);
+    }
+  
+    .menu-list.screen-sm,
+    .menu-list.screen-xs {
+      flex-wrap: wrap;
+      top: 70px;
+    }
+  
+    .menu-content-list.screen-sm,
+    .menu-content-list.screen-xs {
+      top: 150px;
+    }
   }
 
   @media (max-width: 600px) {
 
     // Extra small devices (portrait phones, less than 576px)
-    margin-bottom: 100px !important;
+    margin-bottom: 10px !important;
 
     .menu-container {
       justify-content: center;
@@ -70,7 +98,7 @@
         padding: 10px 10px;
 
         span.title {
-          font-size: 1.4rem;
+          font-size: 1.8rem;
         }
       }
     }
@@ -79,7 +107,7 @@
   @media (min-width: 600px) {
 
     // Small devices (landscape phones, 576px and up)
-    margin-bottom: 100px !important;
+    margin-bottom: 10px !important;
 
     .menu-container {
       justify-content: center;
@@ -90,7 +118,7 @@
         padding: 10px 20px;
 
         span.title {
-          font-size: 1.4rem;
+          font-size: 2rem;
         }
       }
     }
