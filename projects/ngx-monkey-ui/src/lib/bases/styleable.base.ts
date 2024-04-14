@@ -33,6 +33,7 @@ export class Styleable implements OnInit, OnChanges {
 	screenWidth$: Observable<number>;
 	screenWidth: number = 0;
 	screenWidthStyle: string = 'screen-xs';
+	SMALL_SCREEN_WIDTH: number = 768;
 
 	classList: Array<string> = [];
 
