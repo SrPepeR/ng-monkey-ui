@@ -28,7 +28,7 @@
     ></monkey-icon-button>
   
     <monkey-list
-      [hidden]="!isFullMenuOpen"
+      *ngIf="isFullMenuOpen"
       [style]="style"
       class="menu-list"
       [class]="classList"
@@ -73,7 +73,7 @@
     </monkey-list>
   
     <monkey-list
-      [hidden]="!isFullMenuOpen"
+      *ngIf="isFullMenuOpen"
       [style]="style"
       [class]="classList"
       [class.dark-theme]="isDarkMode$ | async"

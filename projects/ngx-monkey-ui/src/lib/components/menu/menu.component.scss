@@ -58,6 +58,7 @@
     .menu-content:has(>.screen-sm),
     .menu-content:has(>.screen-xs) {
       position: relative;
+      height: 60px;
     }
   
     .menu-list.screen-sm,
@@ -65,22 +66,25 @@
     .menu-content-list.screen-sm,
     .menu-content-list.screen-xs {
       position: absolute;
-      left: 15px;
+      left: 0;
+      right: 0;
+
+      display: flex;
+      justify-content: flex-end;
   
-      padding: 10px 10px;
-      border-radius: 10px;
-      background-color: var(--background-color);
+      padding: 30px 10px;
+      background-color: var(--background-color-emphasis);
     }
   
     .menu-list.screen-sm,
     .menu-list.screen-xs {
       flex-wrap: wrap;
-      top: 70px;
+      top: 60px;
     }
   
     .menu-content-list.screen-sm,
     .menu-content-list.screen-xs {
-      top: 150px;
+      top: 300px;
     }
   }
 
