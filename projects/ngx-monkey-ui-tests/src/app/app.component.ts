@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DropdownOption, MenuOption, MonkeyAlertService } from 'ngx-monkey-ui';
+import { DropdownOption, MenuOption, MonkeyAlertService, MonkeyFontService } from 'ngx-monkey-ui';
 
 @Component({
   selector: 'app-root',
@@ -23,28 +23,36 @@ export class AppComponent {
   onSwitchText: string = 'On';
 
   dropdownOptions: DropdownOption[] = [
-    { label: 'Option 1', icon:'home', value: 'option1' },
-    { label: 'Option 2', value: 'option2' },
-    { label: 'Option 3', icon:'info', value: 'option3' },
+    { label: 'Dosis', value: '1' },
+    { label: 'Titillium Web', value: '2' },
+    { label: 'Red Hat Display', value: '3' },
   ];
 
   menuOptions: MenuOption[] = [
-    { label: 'Home', icon: 'home', route: '/' },
-    { label: 'About', icon: 'info', route: '/about' },
-    { label: 'Dropdown', children: [
-      { label: 'Option 1', icon:'home', route: '/option1' },
-      { label: 'Option 2', route: '/option2' },
-      { label: 'Option 3', icon:'info', route: '/option3' },
-    ]},
-    { label: 'Contact', icon: 'phone', route: '/contact' },
+    { label: 'Option 1', icon: 'info', route: '/option1' },
+    { label: 'Option 2', icon: 'info', route: '/option2' },
+    {
+      label: 'Dropdown', children: [
+        { label: 'Option 1', icon: 'home', route: '/option1' },
+        { label: 'Option 2', route: '/option2' },
+        { label: 'Option 3', icon: 'info', route: '/option3' },
+      ]
+    },
   ];
 
   constructor(
     private alertService: MonkeyAlertService,
-  ) { }
+    private fontService: MonkeyFontService,
+  ) {
+    this.fontService.addDosisFont();
+  }
 
   changeStyle(newStyle: Style): void {
     this.currentStyle = newStyle;
+  }
+
+  onNavigated(option: MenuOption) {
+    this.alertService.infos(['Navigating to ' + option.label + '.'], true, 'Info');
   }
 
   themeChanged(): void {
@@ -56,15 +64,25 @@ export class AppComponent {
   }
 
   onSwitch(fromSwitch: string, checked: Boolean): void {
-    this.alertService.dangers(['Switch ' + fromSwitch + '.', checked? 'ACTIVADO': 'DESACTIVADO'], true, 'Danger');
+    this.alertService.dangers(['Switch ' + fromSwitch + '.', checked ? 'ACTIVADO' : 'DESACTIVADO'], true, 'Danger');
   }
 
   onCheck(fromCheckbox: string, checked: Boolean): void {
-    this.alertService.successes(['CheckBox ' + fromCheckbox + '.', checked? 'ACTIVADO': 'DESACTIVADO'], true, 'Success');
+    this.alertService.successes(['CheckBox ' + fromCheckbox + '.', checked ? 'ACTIVADO' : 'DESACTIVADO'], true, 'Success');
   }
 
-  onNavigated(option: MenuOption) {
-    this.alertService.infos(['Navigating to ' + option.label + '.'], true, 'Info');
+  onDropdownChanged(option: DropdownOption) {
+    switch (option.value) {
+      case '1':
+        this.fontService.addDosisFont();
+        break;
+      case '2':
+        this.fontService.addTitilliumWebFont();
+        break;
+      case '3':
+        this.fontService.addRedHatDisplayFont();
+        break;
+    }
   }
 
 }

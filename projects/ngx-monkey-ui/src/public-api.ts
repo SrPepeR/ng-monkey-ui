@@ -21,6 +21,12 @@ export * from './lib/services/alert.service';
 // Tooltip service
 export * from './lib/services/tooltip/tooltip.service';
 
+// Font service
+export * from './lib/services/font.service';
+
+/*
+* INTERFACES
+*/
 // Dropdown option interface
 export * from './lib/components/dropdown/dropdown-option.interface';
 

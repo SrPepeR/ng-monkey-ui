@@ -11,6 +11,16 @@
         (onAction)="themeChanged()"
     />
 
+    <monkey-dropdown
+        [style]="currentStyle"
+        alt="Selector de fuente"
+        [options]="dropdownOptions"
+        [selected]="dropdownOptions[0]"
+        (selectedChanged)="onDropdownChanged($event)"
+        separators
+    >
+    </monkey-dropdown>
+
     <monkey-avatar
         [style]="currentStyle"
         image="https://via.placeholder.com/33"
@@ -76,16 +86,6 @@
         md
         text="Monkey avatar"
     ></monkey-avatar>
-
-    <monkey-dropdown
-        ghost
-        [style]="currentStyle"
-        alt="Dropdown de prueba"
-        [options]="dropdownOptions"
-        separators
-    >
-
-    </monkey-dropdown>
 </monkey-card>
 
 <monkey-card
