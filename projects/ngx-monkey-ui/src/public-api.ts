@@ -12,6 +12,9 @@ export * from './lib/services/alert.service';
 // Tooltip service
 export * from './lib/services/tooltip/tooltip.service';
 
+// Dropdown option interface
+export * from './lib/components/dropdown/dropdown-option.interface';
+
 /*
 * UI COMPONENTS
 */
@@ -48,3 +51,6 @@ export * from './lib/components/avatar/avatar.component';
 
 // List
 export * from './lib/components/list/list.component';
+
+// Dropdown
+export * from './lib/components/dropdown/dropdown.component';

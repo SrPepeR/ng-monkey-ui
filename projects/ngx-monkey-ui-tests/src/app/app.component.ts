@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MonkeyAlertService } from 'ngx-monkey-ui';
+import { DropdownOption, MonkeyAlertService } from 'ngx-monkey-ui';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +21,12 @@ export class AppComponent {
 
   offSwitchText: string = 'Off';
   onSwitchText: string = 'On';
+
+  dropdownOptions: DropdownOption[] = [
+    { label: 'Option 1', icon:'home', value: 'option1' },
+    { label: 'Option 2', value: 'option2' },
+    { label: 'Option 3', icon:'info', value: 'option3' },
+  ];
 
   constructor(
     private alertService: MonkeyAlertService,
