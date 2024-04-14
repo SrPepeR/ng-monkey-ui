@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DropdownOption, MonkeyAlertService } from 'ngx-monkey-ui';
+import { DropdownOption, MenuOption, MonkeyAlertService } from 'ngx-monkey-ui';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +28,17 @@ export class AppComponent {
     { label: 'Option 3', icon:'info', value: 'option3' },
   ];
 
+  menuOptions: MenuOption[] = [
+    { label: 'Home', icon: 'home', route: '/' },
+    { label: 'About', icon: 'info', route: '/about' },
+    { label: 'Dropdown', children: [
+      { label: 'Option 1', icon:'home', route: '/option1' },
+      { label: 'Option 2', route: '/option2' },
+      { label: 'Option 3', icon:'info', route: '/option3' },
+    ]},
+    { label: 'Contact', icon: 'phone', route: '/contact' },
+  ];
+
   constructor(
     private alertService: MonkeyAlertService,
   ) { }
@@ -41,7 +52,7 @@ export class AppComponent {
   }
 
   onClicked(fromButton: string): void {
-    this.alertService.warnings(['Botón ' + fromButton + ' presionado.'], false, 'Warning');
+    this.alertService.warnings(['Botón ' + fromButton + ' presionado.'], true, 'Warning');
   }
 
   onSwitch(fromSwitch: string, checked: Boolean): void {
@@ -49,7 +60,11 @@ export class AppComponent {
   }
 
   onCheck(fromCheckbox: string, checked: Boolean): void {
-    this.alertService.successes(['CheckBox ' + fromCheckbox + '.', checked? 'ACTIVADO': 'DESACTIVADO'], false, 'Success');
+    this.alertService.successes(['CheckBox ' + fromCheckbox + '.', checked? 'ACTIVADO': 'DESACTIVADO'], true, 'Success');
+  }
+
+  onNavigated(option: MenuOption) {
+    this.alertService.infos(['Navigating to ' + option.label + '.'], true, 'Info');
   }
 
 }

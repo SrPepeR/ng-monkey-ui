@@ -1,7 +1,25 @@
-<!-- THEME CHANGE -->
-<monkey-theme-changer
-    (onAction)="themeChanged()"
-/>
+<!-- MENU -->
+<monkey-menu
+    [style]="currentStyle"
+    title="Monkey UI Tests"
+    [options]="menuOptions"
+    (optionSelected)="onNavigated($event)"
+    sticky
+>
+    <!-- THEME CHANGE -->
+    <monkey-theme-changer
+        (onAction)="themeChanged()"
+    />
+
+    <monkey-avatar
+        [style]="currentStyle"
+        image="https://via.placeholder.com/33"
+        errorImage="https://via.placeholder.com/50"
+        form="rounded"
+        sm
+        text="Monkey avatar"
+    ></monkey-avatar>
+</monkey-menu>
 
 <!-- STYLES DEMOS -->
 <monkey-card>

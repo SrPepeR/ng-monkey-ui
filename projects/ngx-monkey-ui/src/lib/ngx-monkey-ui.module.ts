@@ -15,10 +15,12 @@ import { MonkeyTooltip } from './components/tooltip/tooltip.component';
 import { MonkeyAvatar } from './components/avatar/avatar.component';
 import { MonkeyList } from './components/list/list.component';
 import { MonkeyDropdown } from './components/dropdown/dropdown.component';
+import { MonkeyMenu } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
     MonkeyThemeChanger,
+    MonkeyMenu,
 
     MonkeyButton,
     MonkeyCard,
@@ -38,6 +40,7 @@ import { MonkeyDropdown } from './components/dropdown/dropdown.component';
   ],
   exports: [
     MonkeyThemeChanger,
+    MonkeyMenu,
     
     MonkeyButton,
     MonkeyCard,

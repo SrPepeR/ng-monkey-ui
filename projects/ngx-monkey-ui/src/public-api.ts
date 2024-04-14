@@ -3,9 +3,18 @@
  */
 export * from './lib/ngx-monkey-ui.module';
 
+/*
+* BASES
+*/
 // Theme changer
 export * from './lib/components/theme-changer/theme-changer.component';
 
+// Menu
+export * from './lib/components/menu/menu.component';
+
+/*
+* SERVICES
+*/
 // Alert service
 export * from './lib/services/alert.service';
 
@@ -14,6 +23,9 @@ export * from './lib/services/tooltip/tooltip.service';
 
 // Dropdown option interface
 export * from './lib/components/dropdown/dropdown-option.interface';
+
+// Menu option interface
+export * from './lib/components/menu/menu-option.interface';
 
 /*
 * UI COMPONENTS
