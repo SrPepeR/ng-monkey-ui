@@ -7,7 +7,12 @@ export class ComponentsStylesService {
 
   constructor() { }
 
-  generateClassList(component: any) {
+  /**
+   * Generates a class list for the given component.
+   * @param component - The component object.
+   * @returns An array of class names.
+   */
+  generateClassList(component: any): Array<string> {
     let classList: Array<string> = [];
     
     // Adds the component color scheme class to the classList array
@@ -26,6 +31,12 @@ export class ComponentsStylesService {
     return classList;
   }
 
+  /**
+   * Checks the component's type and adds the corresponding class to the class list.
+   * @param classList - The current class list.
+   * @param component - The component object.
+   * @returns The updated class list.
+   */
   private checkTypes(classList: Array<string>, component: any): Array<string> {
     let componentType = 'type-default';
 
@@ -54,6 +65,12 @@ export class ComponentsStylesService {
     return classList;
   }
 
+  /**
+   * Checks the component's general styles and adds the corresponding classes to the class list.
+   * @param classList - The current class list.
+   * @param component - The component object.
+   * @returns The updated class list.
+   */
   private checkGeneralStyles(classList: Array<string>, component: any): Array<string> {
     if (this.check(component.displayFlexWrapReverse)) {
       classList.push('display-flex-wrap-reverse');
@@ -90,8 +107,13 @@ export class ComponentsStylesService {
     return classList;
   }
 
-  private check(value: any) {
-    return value === '';
+  /**
+   * Checks if the value is empty.
+   * @param value - The value to check.
+   * @returns True if the value is empty, false otherwise.
+   */
+  private check(value: any): boolean {
+    return value === '' || value === 'true' || value === true;
   }
 
 }
