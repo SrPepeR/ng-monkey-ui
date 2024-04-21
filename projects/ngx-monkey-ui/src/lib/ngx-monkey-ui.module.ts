@@ -1,21 +1,40 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MonkeyThemeChanger } from './components/theme-changer/theme-changer.component';
+// FIRST LEVEL
 
-import { MonkeyButton } from './components/button/button.component';
-import { MonkeyCard } from './components/card/card.component';
-import { MonkeySwitch } from './components/switch/switch.component';
-import { MonkeyCheckbox } from './components/checkbox/checkbox.component';
-import { MonkeyLoader } from './components/loader/loader.component';
-import { MonkeyImage } from './components/image/image.component';
-import { MonkeyAlert } from './components/alert/alert.component';
-import { MonkeyIconButton } from './components/icon-button/icon-button.component';
-import { MonkeyTooltip } from './components/tooltip/tooltip.component';
-import { MonkeyAvatar } from './components/avatar/avatar.component';
-import { MonkeyList } from './components/list/list.component';
-import { MonkeyDropdown } from './components/dropdown/dropdown.component';
-import { MonkeyMenu } from './components/menu/menu.component';
+import { MonkeyButton } from './components/first-level/button/button.component';
+import { MonkeyCard } from './components/first-level/card/card.component';
+import { MonkeyImage } from './components/first-level/image/image.component';
+import { MonkeySwitch } from './components/first-level/switch/switch.component';
+import { MonkeyCheckbox } from './components/first-level/checkbox/checkbox.component';
+import { MonkeyLoader } from './components/first-level/loader/loader.component';
+import { MonkeyList } from './components/first-level/list/list.component';
+
+// FIRST LEVEL
+
+// SECOND LEVEL
+
+import { MonkeyIconButton } from './components/second-level/icon-button/icon-button.component';
+import { MonkeyAvatar } from './components/second-level/avatar/avatar.component';
+import { MonkeyDropdown } from './components/second-level/dropdown/dropdown.component';
+
+// SECOND LEVEL
+
+// THIRD LEVEL
+
+import { MonkeyAlert } from './components/third-level/alert/alert.component';
+import { MonkeyTooltip } from './components/third-level/tooltip/tooltip.component';
+import { MonkeyMenu } from './components/third-level/menu/menu.component';
+
+// THIRD LEVEL
+
+// FOURTH LEVEL
+
+import { MonkeyThemeChanger } from './components/fourth-level/theme-changer/theme-changer.component';
+
+// FOURTH LEVEL
+
 
 @NgModule({
   declarations: [
@@ -41,7 +60,7 @@ import { MonkeyMenu } from './components/menu/menu.component';
   exports: [
     MonkeyThemeChanger,
     MonkeyMenu,
-    
+
     MonkeyButton,
     MonkeyCard,
     MonkeySwitch,

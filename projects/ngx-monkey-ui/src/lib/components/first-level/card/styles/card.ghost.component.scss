@@ -1,0 +1,8 @@
+@use '../../../../styles/components/card.default.style';
+
+/* Ghost style */
+section.type-ghost {
+    padding: 15px;
+    background-color: var(--background-color);
+    border: 2px solid var(--color);
+}

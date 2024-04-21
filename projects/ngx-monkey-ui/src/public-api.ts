@@ -4,74 +4,81 @@
 export * from './lib/ngx-monkey-ui.module';
 
 /*
-* BASES
-*/
-// Theme changer
-export * from './lib/components/theme-changer/theme-changer.component';
-
-// Menu
-export * from './lib/components/menu/menu.component';
-
-/*
 * SERVICES
 */
-// Alert service
-export * from './lib/services/alert.service';
+  // Alert service
+  export * from './lib/services/alert.service';
 
-// Tooltip service
-export * from './lib/services/tooltip/tooltip.service';
+  // Tooltip service
+  export * from './lib/services/tooltip/tooltip.service';
 
-// Font service
-export * from './lib/services/font.service';
+  // Font service
+  export * from './lib/services/font.service';
 
-// Screen service
-export * from './lib/services/screen/screen.service';
-
-/*
-* INTERFACES
-*/
-// Dropdown option interface
-export * from './lib/components/dropdown/dropdown-option.interface';
-
-// Menu option interface
-export * from './lib/components/menu/menu-option.interface';
+  // Screen service
+  export * from './lib/services/screen/screen.service';
 
 /*
 * UI COMPONENTS
 */
+  // FIRST LEVEL
 
-// Button
-export * from './lib/components/button/button.component';
+    // Button
+    export * from './lib/components/first-level/button/button.component';
 
-// Card
-export * from './lib/components/card/card.component';
+    // Card
+    export * from './lib/components/first-level/card/card.component';
 
-// Switch
-export * from './lib/components/switch/switch.component';
+    // Image
+    export * from './lib/components/first-level/image/image.component';
 
-// Checkbox
-export * from './lib/components/checkbox/checkbox.component';
+    // Switch
+    export * from './lib/components/first-level/switch/switch.component';
 
-// Loader
-export * from './lib/components/loader/loader.component';
+    // Checkbox
+    export * from './lib/components/first-level/checkbox/checkbox.component';
 
-// Image
-export * from './lib/components/image/image.component';
+    // Loader
+    export * from './lib/components/first-level/loader/loader.component';
 
-// Alert
-export * from './lib/components/alert/alert.component';
+    // List
+    export * from './lib/components/first-level/list/list.component';
+  
+  // FIRST LEVEL
 
-// IconButton
-export * from './lib/components/icon-button/icon-button.component';
+  // SECOND LEVEL
 
-// Tooltip
-export * from './lib/components/tooltip/tooltip.component';
+    // IconButton
+    export * from './lib/components/second-level/icon-button/icon-button.component';
 
-// Avatar
-export * from './lib/components/avatar/avatar.component';
+    // Avatar
+    export * from './lib/components/second-level/avatar/avatar.component';
 
-// List
-export * from './lib/components/list/list.component';
+    // Dropdown
+    export * from './lib/components/second-level/dropdown/dropdown.component';
+      // Dropdown option interface
+      export * from './lib/components/second-level/dropdown/dropdown-option.interface';
+    
+  // SECOND LEVEL
 
-// Dropdown
-export * from './lib/components/dropdown/dropdown.component';
+  // THIRD LEVEL
+
+    // Menu
+    export * from './lib/components/third-level/menu/menu.component';
+      // Menu option interface
+      export * from './lib/components/third-level/menu/menu-option.interface';
+
+    // Alert
+    export * from './lib/components/third-level/alert/alert.component';
+
+    // Tooltip
+    export * from './lib/components/third-level/tooltip/tooltip.component';
+
+  // THIRD LEVEL
+
+  // FOURTH LEVEL
+
+    // Theme changer
+    export * from './lib/components/fourth-level/theme-changer/theme-changer.component';
+    
+  // FOURTH LEVEL

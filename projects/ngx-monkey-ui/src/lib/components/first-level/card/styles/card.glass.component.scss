@@ -1,0 +1,12 @@
+@use '../../../../styles/components/card.default.style';
+
+/* Glassmorphism style */
+section.type-glassmorphism {
+    border-radius: 15px;
+    backdrop-filter: blur(30px);
+    padding: 20px 30px;
+    
+    background-color: var(--opacity-medium);
+    border: none;
+    color: var(--opacity-hight);
+}
