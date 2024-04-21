@@ -1,6 +1,6 @@
 import { AfterViewChecked, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
-import { ComponentsStylesService } from '../../../services/components-styles.service';
+import { Styleable } from '../../../bases/styleable.base';
 
 /**
  * Represents a Monkey Checkbox component.
@@ -9,6 +9,7 @@ import { ComponentsStylesService } from '../../../services/components-styles.ser
   selector: 'monkey-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: [
+    '../../../styles/components/_common.default.style.scss',
     './styles/checkbox.component.scss',
     './styles/checkbox.brutalist.component.scss',
     './styles/checkbox.glass.component.scss',
@@ -17,46 +18,9 @@ import { ComponentsStylesService } from '../../../services/components-styles.ser
     './styles/checkbox.glow.component.scss',
   ]
 })
-export class MonkeyCheckbox implements AfterViewChecked {
+export class MonkeyCheckbox extends Styleable implements AfterViewChecked {
 
   @ViewChild('checkbox') checkbox!: any;
-
-  /**
-   * The style of the checkbox.
-   * @type string
-   */
-  @Input() style?: string = 'primary';
-
-  // COMPONENTS TYPES
-  /**
-   * Determines whether the brutalist style is enabled.
-   * @type string
-   */
-  @Input() brutalist?: string = 'false';
-
-  /**
-   * Determines whether the flat style is enabled.
-   * @type string
-   */
-  @Input() flat?: string = 'false';
-
-  /**
-   * Determines whether the ghost style is enabled.
-   * @type string
-   */
-  @Input() ghost?: string = 'false';
-
-  /**
-   * Determines whether the glass style is enabled.
-   * @type string
-   */
-  @Input() glass?: string = 'false';
-
-  /**
-   * Determines whether the glow style is enabled.
-   * @type string
-   */
-  @Input() glow?: string = 'false';
 
   // LABELS
   /**
@@ -83,15 +47,11 @@ export class MonkeyCheckbox implements AfterViewChecked {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  /**
-   * Array of CSS class names for the checkbox.
-   */
-  classList: Array<string> = [];
-
   constructor(
     private themeService: ThemeService,
-    private componentStylesService: ComponentsStylesService,
-  ) { }
+  ) {
+    super();
+  }
 
   /**
    * Lifecycle hook that is called after the component's view has been fully initialized.
@@ -99,14 +59,6 @@ export class MonkeyCheckbox implements AfterViewChecked {
    */
   ngAfterViewChecked(): void {
     this.checkbox.nativeElement.checked = this.checked!;
-  }
-
-  /**
-   * Lifecycle hook that is called when any of the input properties change.
-   * Generates the class list for the checkbox.
-   */
-  ngOnChanges() {
-    this.classList = this.componentStylesService.generateClassList(this);
   }
 
   /**

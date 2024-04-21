@@ -1,6 +1,6 @@
 import { AfterViewChecked, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
-import { ComponentsStylesService } from '../../../services/components-styles.service';
+import { Styleable } from '../../../bases/styleable.base';
 
 /**
  * Represents a Monkey Switch component.
@@ -9,6 +9,7 @@ import { ComponentsStylesService } from '../../../services/components-styles.ser
   selector: 'monkey-switch',
   templateUrl: './switch.component.html',
   styleUrls: [
+    '../../../styles/components/_common.default.style.scss',
     './styles/switch.component.scss',
     './styles/switch.brutalist.component.scss',
     './styles/switch.glass.component.scss',
@@ -17,42 +18,9 @@ import { ComponentsStylesService } from '../../../services/components-styles.ser
     './styles/switch.glow.component.scss',
   ]
 })
-export class MonkeySwitch implements AfterViewChecked {
+export class MonkeySwitch extends Styleable implements AfterViewChecked {
 
   @ViewChild('switch') switch!: any;
-
-  /**
-   * The style of the switch.
-   * @type string
-   */
-  @Input() style?: string = 'primary';
-
-  // COMPONENTS TYPES
-  /**
-   * Determines whether the brutalist style is enabled.
-   * @type string
-   */
-  @Input() brutalist?: string = 'false';
-  /**
-   * Determines whether the flat style is enabled.
-   * @type string
-   */
-  @Input() flat?: string = 'false';
-  /**
-   * Determines whether the ghost style is enabled.
-   * @type string
-   */
-  @Input() ghost?: string = 'false';
-  /**
-   * Determines whether the glass style is enabled.
-   * @type string
-   */
-  @Input() glass?: string = 'false';
-  /**
-   * Determines whether the glow style is enabled.
-   * @type string
-   */
-  @Input() glow?: string = 'false';
 
   // LABELS
   /**
@@ -84,29 +52,17 @@ export class MonkeySwitch implements AfterViewChecked {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  /**
-   * Array of CSS classes for the switch component.
-   * @type Array<string>
-   */
-  classList: Array<string> = [];
-
   constructor(
     private themeService: ThemeService,
-    private componentStylesService: ComponentsStylesService,
-  ) { }
+  ) {
+    super();
+  }
 
   /**
    * Lifecycle hook that is called after the component's view has been fully initialized.
    */
   ngAfterViewChecked(): void {
     this.switch.nativeElement.checked = this.checked!;
-  }
-
-  /**
-   * Lifecycle hook that is called when any of the input properties change.
-   */
-  ngOnChanges() {
-    this.classList = this.componentStylesService.generateClassList(this);
   }
 
   /**

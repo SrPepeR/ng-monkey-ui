@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DropdownOption, MenuOption, MonkeyAlertService, MonkeyFontService, MonkeyScreenService } from 'ngx-monkey-ui';
+import { DropdownOption, MenuOption, MonkeyAlertService, MonkeyFontService, MonkeyScreenService, MonkeyStyle } from 'ngx-monkey-ui';
 import { ScreenOrientation } from 'projects/ngx-monkey-ui/src/lib/services/screen/screen.enum';
 
 @Component({
@@ -9,16 +9,16 @@ import { ScreenOrientation } from 'projects/ngx-monkey-ui/src/lib/services/scree
 })
 export class AppComponent {
 
-  primaryStyle: Style = Style.primary;
-  secondaryStyle: Style = Style.secondary;
-  tertiaryStyle: Style = Style.tertiary;
-  warningStyle: Style = Style.warning;
-  dangerStyle: Style = Style.danger;
-  successStyle: Style = Style.success;
-  infoStyle: Style = Style.info;
+  primaryStyle: MonkeyStyle = MonkeyStyle.PRIMARY;
+  secondaryStyle: MonkeyStyle = MonkeyStyle.SECONDARY;
+  tertiaryStyle: MonkeyStyle = MonkeyStyle.TERTIARY;
+  warningStyle: MonkeyStyle = MonkeyStyle.WARNING;
+  dangerStyle: MonkeyStyle = MonkeyStyle.DANGER;
+  successStyle: MonkeyStyle = MonkeyStyle.SUCCESS;
+  infoStyle: MonkeyStyle = MonkeyStyle.INFO;
 
   title = 'ngx-monkey-ui-tests';
-  currentStyle: Style = this.primaryStyle;
+  currentStyle: MonkeyStyle = this.primaryStyle;
 
   offSwitchText: string = 'Off';
   onSwitchText: string = 'On';
@@ -51,7 +51,7 @@ export class AppComponent {
     this.fontService.addDosisFont();
   }
 
-  changeStyle(newStyle: Style): void {
+  changeStyle(newStyle: MonkeyStyle): void {
     this.currentStyle = newStyle;
   }
 
@@ -141,15 +141,4 @@ export class AppComponent {
     }
   }
 
-}
-
-enum Style {
-  primary = 'primary',
-  secondary = 'secondary',
-  tertiary = 'tertiary',
-
-  warning = 'warning',
-  danger = 'danger',
-  success = 'success',
-  info = 'info',
 }

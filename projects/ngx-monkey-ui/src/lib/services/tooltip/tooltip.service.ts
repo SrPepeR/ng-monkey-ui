@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Tooltip } from './tooltip';
 import { Subject } from 'rxjs';
+import { MonkeyStyle } from '../../bases/monkey-style';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class TooltipService {
    * @param style - The style of the tooltip.
    * @param mousePosition - The position of the mouse when the tooltip is shown.
    */
-  onShow(text: string, style: string, mousePosition: { x: number, y: number } = { x: 0, y: 0 }) {
+  onShow(text: string, style: MonkeyStyle, mousePosition: { x: number, y: number } = { x: 0, y: 0 }) {
     if (this.showTimeoutId) {
       this.removeTimeouts();
     }
@@ -64,7 +65,7 @@ export class TooltipService {
    * Hides the tooltip.
    */
   hide() {
-    this.event.next(new Tooltip('', '', undefined));
+    this.event.next(new Tooltip(MonkeyStyle.NONE, '', undefined));
     this.removeTimeouts();
   }
 

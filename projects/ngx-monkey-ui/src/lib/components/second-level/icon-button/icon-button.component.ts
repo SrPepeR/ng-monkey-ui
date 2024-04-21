@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
-import { ComponentsStylesService } from '../../../services/components-styles.service';
 import { TooltipService } from '../../../services/tooltip/tooltip.service';
 import { Tooltipable } from '../../../bases/tooltipable.base';
+import { Styleable } from '../../../bases/styleable.base';
 
 /**
  * Represents a Monkey Icon Button component.
@@ -11,37 +11,26 @@ import { Tooltipable } from '../../../bases/tooltipable.base';
   selector: 'monkey-icon-button',
   templateUrl: './icon-button.component.html',
   styleUrls: [
+    '../../../styles/components/_common.default.style.scss',
     './styles/icon-button.component.scss',
   ]
 })
-export class MonkeyIconButton extends Tooltipable implements OnChanges {
+export class MonkeyIconButton extends Styleable implements OnChanges {
+
+  /**
+   * Represents the tooltipable behavior of the icon button component.
+   */
+  tooltipable: Tooltipable;
+
+  /**
+   * The alternative text for the icon button.
+   */
+  @Input() alt!: string;
 
   /**
    * The icon to be displayed on the button.
    */
   @Input() icon?: string = 'warning';
-
-  // COMPONENTS TYPES
-  /**
-   * The brutalist style of the button.
-   */
-  @Input() brutalist?: string = 'false';
-  /**
-   * The flat style of the button.
-   */
-  @Input() flat?: string = 'false';
-  /**
-   * The ghost style of the button.
-   */
-  @Input() ghost?: string = 'false';
-  /**
-   * The glass style of the button.
-   */
-  @Input() glass?: string = 'false';
-  /**
-   * The glow style of the button.
-   */
-  @Input() glow?: string = 'false';
 
   /**
    * Event emitted when the button is clicked.
@@ -53,25 +42,24 @@ export class MonkeyIconButton extends Tooltipable implements OnChanges {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  /**
-   * Array of CSS classes for the button.
-   */
-  classList: Array<string> = [];
-
   constructor(
     private themeService: ThemeService,
-    private componentStylesService: ComponentsStylesService,
-    tooltipService: TooltipService,
+    private tooltipService: TooltipService,
   ) {
-    super(tooltipService);
+    super();
+    this.tooltipable = new Tooltipable(this.tooltipService);
   }
 
-  /**
-   * Lifecycle hook that is called when any of the input properties change.
-   */
-  ngOnChanges() {
-    this.classList = this.componentStylesService.generateClassList(this);
-    this.classList.push('squared-item');
+  override ngOnInit() {
+    super.ngOnInit();
+    this.tooltipable.alt = this.alt;
+    this.tooltipable.style = this.style;
+  }
+
+  override ngOnChanges() {
+    super.ngOnChanges();
+    this.tooltipable.alt = this.alt;
+    this.tooltipable.style = this.style;
   }
 
   /**
@@ -79,5 +67,21 @@ export class MonkeyIconButton extends Tooltipable implements OnChanges {
    */
   onClicked() {
     this.onClick.emit();
+  }
+
+  /**
+   * Shows the tooltip for the icon button component.
+   * 
+   * @param event - The mouse event that triggered the tooltip.
+   */
+  showTooltip(event: MouseEvent) {
+    this.tooltipable.showTooltip(event);
+  }
+
+  /**
+   * Hides the tooltip associated with the icon button.
+   */
+  hideTooltip() {
+    this.tooltipable.hideTooltip();
   }
 }

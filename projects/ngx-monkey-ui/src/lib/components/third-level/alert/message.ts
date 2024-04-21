@@ -1,3 +1,5 @@
+import { MonkeyStyle } from "../../../bases/monkey-style";
+
 /**
  * Represents a message to be displayed in an alert.
  */
@@ -10,7 +12,7 @@ export class Message {
     /**
      * The style of the message.
      */
-    style: string;
+    style: MonkeyStyle;
 
     /**
      * Indicates whether the message should automatically close.
@@ -37,7 +39,7 @@ export class Message {
      */
     constructor(
         texts: string[],
-        style: string,
+        style: MonkeyStyle,
         isAutoClose: boolean,
         title?: string,
         icon?: string

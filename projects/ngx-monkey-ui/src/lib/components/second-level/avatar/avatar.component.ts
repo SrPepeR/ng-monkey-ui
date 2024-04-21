@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
-import { ComponentsStylesService } from '../../../services/components-styles.service';
 import { ComponentsSizesService } from '../../../services/components-sizes.service';
 import { TooltipService } from '../../../services/tooltip/tooltip.service';
 import { Tooltipable } from '../../../bases/tooltipable.base';
+import { MonkeyStyle } from '../../../bases/monkey-style';
+import { Styleable } from '../../../bases/styleable.base';
 
 /**
  * Represents the MonkeyAvatar component.
@@ -11,9 +12,17 @@ import { Tooltipable } from '../../../bases/tooltipable.base';
 @Component({
   selector: 'monkey-avatar',
   templateUrl: './avatar.component.html',
-  styleUrls: ['./avatar.component.scss']
+  styleUrls: [
+    '../../../styles/components/_common.default.style.scss',
+    './avatar.component.scss',
+  ]
 })
-export class MonkeyAvatar extends Tooltipable implements OnChanges {
+export class MonkeyAvatar extends Styleable implements OnChanges {
+
+  /**
+   * Represents the tooltipable behavior of the avatar component.
+   */
+  tooltipable: Tooltipable;
 
   /**
    * The image source for the avatar.
@@ -68,11 +77,6 @@ export class MonkeyAvatar extends Tooltipable implements OnChanges {
   isDarkMode$ = this.themeService.isDarkMode$;
 
   /**
-   * Array of CSS classes to be applied to the avatar.
-   */
-  classList: Array<string> = [];
-
-  /**
    * The size of the avatar.
    */
   size: { width: number, height: number } = { width: 0, height: 0 };
@@ -84,15 +88,18 @@ export class MonkeyAvatar extends Tooltipable implements OnChanges {
 
   constructor(
     private themeService: ThemeService,
-    private componentStylesService: ComponentsStylesService,
     private componentSizesService: ComponentsSizesService,
-    protected override tooltipService: TooltipService,
-  ) { super(tooltipService) }
+    private tooltipService: TooltipService,
+  ) {
+    super();
+    this.tooltipable = new Tooltipable(this.tooltipService);
+  }
 
   /**
    * Lifecycle hook that is called when any of the input properties change.
    */
-  ngOnChanges() {
+  override ngOnChanges() {
+    super.ngOnChanges();
     this.checkAll();
   }
 
@@ -101,19 +108,19 @@ export class MonkeyAvatar extends Tooltipable implements OnChanges {
    * Displays the tooltip if the avatar is not labeled.
    * @param event - The mouse event.
    */
-  override showTooltip(event: MouseEvent) {
+  showTooltip(event: MouseEvent) {
     if (this.isLabeled) {
       return;
     }
 
-    this.tooltipService.onShow(this.text, this.style || 'primary', { x: event.pageX, y: event.pageY })
+    this.tooltipService.onShow(this.text, this.style || MonkeyStyle.PRIMARY, { x: event.pageX, y: event.pageY })
   }
 
   /**
    * Overrides the hideTooltip method from the Tooltipable class.
    * Hides the tooltip if the avatar is not labeled.
    */
-  override hideTooltip() {
+  hideTooltip() {
     if (this.isLabeled) {
       return;
     }
@@ -150,7 +157,6 @@ export class MonkeyAvatar extends Tooltipable implements OnChanges {
    * Generates the CSS class list for the avatar based on the properties.
    */
   private checkClasses() {
-    this.classList = this.componentStylesService.generateClassList(this);
     this.classList = this.componentSizesService.generateClassList(this);
 
     this.classList.push(`form-${this.form}`);
@@ -182,14 +188,5 @@ export class MonkeyAvatar extends Tooltipable implements OnChanges {
    */
   private checkLabeled() {
     this.isLabeled = this.check(this.labeled);
-  }
-
-  /**
-   * Checks if the given attribute is empty.
-   * @param attribute - The attribute to check.
-   * @returns True if the attribute is empty, false otherwise.
-   */
-  private check(attribute?: string) {
-    return attribute == '';
   }
 }

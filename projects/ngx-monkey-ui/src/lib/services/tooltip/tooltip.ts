@@ -1,3 +1,5 @@
+import { MonkeyStyle } from "../../bases/monkey-style";
+
 /**
  * Represents a Tooltip object.
  */
@@ -11,7 +13,7 @@ export class Tooltip {
     /**
      * The style of the tooltip.
      */
-    style: string = '';
+    style: MonkeyStyle = MonkeyStyle.NONE;
 
     /**
      * The text content of the tooltip.
@@ -34,7 +36,7 @@ export class Tooltip {
      * @param text - The text content of the tooltip.
      * @param mousePosition - The current mouse position.
      */
-    constructor(style: string, text: string, mousePosition: { x: number, y: number } = { x: 0, y: 0 }) {
+    constructor(style: MonkeyStyle, text: string, mousePosition: { x: number, y: number } = { x: 0, y: 0 }) {
         this.style = style;
         this.text = text;
         this.setDirection(mousePosition);

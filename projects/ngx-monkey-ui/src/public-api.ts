@@ -19,6 +19,12 @@ export * from './lib/ngx-monkey-ui.module';
   export * from './lib/services/screen/screen.service';
 
 /*
+* ENUMS
+*/
+  // Style enum
+  export * from './lib/bases/monkey-style';
+
+/*
 * UI COMPONENTS
 */
   // FIRST LEVEL

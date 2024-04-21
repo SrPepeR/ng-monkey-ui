@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
-import { ComponentsStylesService } from '../../../services/components-styles.service';
+import { Styleable } from '../../../bases/styleable.base';
 
 /**
  * Represents the MonkeyImage component.
@@ -9,6 +9,7 @@ import { ComponentsStylesService } from '../../../services/components-styles.ser
   selector: 'monkey-image',
   templateUrl: './image.component.html',
   styleUrls: [
+    '../../../styles/components/_common.default.style.scss',
     './styles/image.component.scss',
     './styles/image.brutalist.component.scss',
     './styles/image.glass.component.scss',
@@ -17,44 +18,12 @@ import { ComponentsStylesService } from '../../../services/components-styles.ser
     './styles/image.glow.component.scss',
   ]
 })
-export class MonkeyImage implements OnChanges {
-  
-  /**
-   * The style of the image.
-   */
-  @Input() style?: string = 'primary';
+export class MonkeyImage extends Styleable implements OnChanges {
 
   /**
    * Whether the image should have full rounded corners.
    */
   @Input() fullRounded?: string = 'false';
-  
-  // COMPONENTS TYPES
-
-  /**
-   * Whether the brutalist style is enabled.
-   */
-  @Input() brutalist?: string = 'false';
-
-  /**
-   * Whether the flat style is enabled.
-   */
-  @Input() flat?: string = 'false';
-
-  /**
-   * Whether the ghost style is enabled.
-   */
-  @Input() ghost?: string = 'false';
-
-  /**
-   * Whether the glass style is enabled.
-   */
-  @Input() glass?: string = 'false';
-
-  /**
-   * Whether the glow style is enabled.
-   */
-  @Input() glow?: string = 'false';
 
   // PARAMS
 
@@ -103,21 +72,17 @@ export class MonkeyImage implements OnChanges {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  /**
-   * Array of CSS class names for the image component.
-   */
-  classList: Array<string> = [];
-
   constructor(
     private themeService: ThemeService,
-    private componentStylesService: ComponentsStylesService,
-  ) { }
+  ) {
+    super();
+  }
 
   /**
    * Lifecycle hook that is called when any of the input properties change.
    */
-  ngOnChanges() {
-    this.classList = this.componentStylesService.generateClassList(this);
+  override ngOnChanges() {
+    super.ngOnChanges();
 
     this.loading = true;
   }
