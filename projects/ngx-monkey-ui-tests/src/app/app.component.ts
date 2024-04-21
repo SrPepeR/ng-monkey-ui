@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { DropdownOption, MenuOption, MonkeyAlertService, MonkeyFontService } from 'ngx-monkey-ui';
+import { DropdownOption, MenuOption, MonkeyAlertService, MonkeyFontService, MonkeyScreenService } from 'ngx-monkey-ui';
+import { ScreenOrientation } from 'projects/ngx-monkey-ui/src/lib/services/screen/screen.enum';
 
 @Component({
   selector: 'app-root',
@@ -32,10 +33,12 @@ export class AppComponent {
     { label: 'Option 1', icon: 'info', route: '/option1' },
     { label: 'Option 2', icon: 'info', route: '/option2' },
     {
-      label: 'Dropdown', children: [
-        { label: 'Option 1', icon: 'home', route: '/option1' },
-        { label: 'Option 2', route: '/option2' },
-        { label: 'Option 3', icon: 'info', route: '/option3' },
+      label: 'Rotations', children: [
+        { label: 'Toggle full screen', icon: 'fullscreen', route: '/toggle-fullscreen' },
+        { label: 'Locked', icon: 'screen_lock_rotation', route: '/locked' },
+        { label: 'Unlocked', icon: 'screen_rotation', route: '/unlocked' },
+        { label: 'portrait', icon: 'screen_lock_portrait', route: '/portrait' },
+        { label: 'landscape', icon: 'screen_lock_landscape', route: '/landscape' },
       ]
     },
   ];
@@ -43,6 +46,7 @@ export class AppComponent {
   constructor(
     private alertService: MonkeyAlertService,
     private fontService: MonkeyFontService,
+    private screenService: MonkeyScreenService,
   ) {
     this.fontService.addDosisFont();
   }
@@ -52,7 +56,59 @@ export class AppComponent {
   }
 
   onNavigated(option: MenuOption) {
-    this.alertService.infos(['Navigating to ' + option.label + '.'], true, 'Info');
+    if (!this.checkSelectedRouteScreenModifier(option)) {
+      this.alertService.infos(['Navigating to ' + option.label + '.'], true, 'Info');
+      return;
+    }
+
+    this.applyScreenModifier(option);
+  }
+
+  private checkSelectedRouteScreenModifier(option: MenuOption): boolean {
+    let isScreenModifierOption = false;
+    this.menuOptions.forEach((menuOption: MenuOption) => {
+      if (menuOption.children) {
+        menuOption.children.forEach((childMenuOption: MenuOption) => {
+          if (childMenuOption.route === option.route) {
+            isScreenModifierOption = true;
+          }
+        });
+      }
+    });
+
+    return isScreenModifierOption;
+  }
+
+  private applyScreenModifier(option: MenuOption): void {
+    switch (option.route) {
+      case '/toggle-fullscreen':
+        this.screenService.toggleFullScreen();
+        break;
+      case '/locked':
+        this.screenService.lockOrientation()
+          .catch((error) => {
+            this.alertService.dangers([error], true, 'Error');
+          });
+        break;
+      case '/unlocked':
+        this.screenService.unlockOrientation()
+          .catch((error) => {
+            this.alertService.dangers([error], true, 'Error');
+          });
+        break;
+      case '/portrait':
+        this.screenService.lockOrientation(ScreenOrientation.PORTRAIT)
+          .catch((error) => {
+            this.alertService.dangers([error], true, 'Error');
+          });
+        break;
+      case '/landscape':
+        this.screenService.lockOrientation(ScreenOrientation.LANDSCAPE)
+          .catch((error) => {
+            this.alertService.dangers([error], true, 'Error');
+          });
+        break;
+    }
   }
 
   themeChanged(): void {
