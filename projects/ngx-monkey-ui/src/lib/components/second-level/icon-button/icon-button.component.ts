@@ -4,6 +4,9 @@ import { ComponentsStylesService } from '../../../services/components-styles.ser
 import { TooltipService } from '../../../services/tooltip/tooltip.service';
 import { Tooltipable } from '../../../bases/tooltipable.base';
 
+/**
+ * Represents a Monkey Icon Button component.
+ */
 @Component({
   selector: 'monkey-icon-button',
   templateUrl: './icon-button.component.html',
@@ -13,19 +16,46 @@ import { Tooltipable } from '../../../bases/tooltipable.base';
 })
 export class MonkeyIconButton extends Tooltipable implements OnChanges {
 
+  /**
+   * The icon to be displayed on the button.
+   */
   @Input() icon?: string = 'warning';
 
   // COMPONENTS TYPES
+  /**
+   * The brutalist style of the button.
+   */
   @Input() brutalist?: string = 'true';
+  /**
+   * The flat style of the button.
+   */
   @Input() flat?: string = 'true';
+  /**
+   * The ghost style of the button.
+   */
   @Input() ghost?: string = 'true';
+  /**
+   * The glass style of the button.
+   */
   @Input() glass?: string = 'true';
+  /**
+   * The glow style of the button.
+   */
   @Input() glow?: string = 'true';
 
+  /**
+   * Event emitted when the button is clicked.
+   */
   @Output() onClick = new EventEmitter();
 
+  /**
+   * Observable that indicates whether the dark mode is enabled.
+   */
   isDarkMode$ = this.themeService.isDarkMode$;
 
+  /**
+   * Array of CSS classes for the button.
+   */
   classList: Array<string> = [];
 
   constructor(
@@ -36,11 +66,17 @@ export class MonkeyIconButton extends Tooltipable implements OnChanges {
     super(tooltipService);
   }
 
+  /**
+   * Lifecycle hook that is called when any of the input properties change.
+   */
   ngOnChanges() {
     this.classList = this.componentStylesService.generateClassList(this);
     this.classList.push('squared-item');
   }
 
+  /**
+   * Event handler for the button click event.
+   */
   onClicked() {
     this.onClick.emit();
   }
