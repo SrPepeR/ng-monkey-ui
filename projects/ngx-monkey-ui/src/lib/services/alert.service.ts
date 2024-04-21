@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Message } from '../components/alert/message';
+import { Message } from '../components/third-level/alert/message';
 
 @Injectable({ providedIn: 'root' })
 export class MonkeyAlertService {
