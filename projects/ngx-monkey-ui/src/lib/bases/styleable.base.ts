@@ -81,6 +81,16 @@ export class Styleable implements OnInit, OnChanges {
 	@Input() sticky?: string = 'false';
 
 	/**
+	 * Whether the component should be disabled.
+	 */
+	@Input() disabled?: string = 'false';
+
+	/**
+	 * Indicates whether the component is disabled.
+	 */
+	isDisabledComponent: boolean = false;
+
+	/**
 	 * The current screen data.
 	 */
 	currentScreen!: MonkeyScreen;
@@ -150,6 +160,11 @@ export class Styleable implements OnInit, OnChanges {
 
 		if (this.check(this.sticky)) {
 			this.classList.push('position-sticky');
+		}
+
+		if (this.check(this.disabled)) {
+			this.classList.push('disabled');
+			this.isDisabledComponent = true;
 		}
 	}
 
