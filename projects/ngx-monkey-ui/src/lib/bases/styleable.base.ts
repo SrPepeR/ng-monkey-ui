@@ -4,6 +4,7 @@ import { ComponentsStylesService } from "../services/components-styles.service";
 import { MonkeyScreenService } from "../services/screen/screen.service";
 import { MonkeyScreen } from "../services/screen/screen";
 import { ScreenSize } from "../services/screen/screen.enum";
+import { MonkeyStyle } from "./monkey-style";
 
 /**
  * Base class for styleable components.
@@ -28,10 +29,9 @@ export class Styleable implements OnInit, OnChanges {
 	// STYLE
 	/**
 	 * The style of the component.
-	 * Possible values: 'background', 'primary', 'secondary', 'tertiary', 'success', 'warning', 'danger', 'info', '' (empty string).
-	 * Default value: 'primary'.
+	 * Default value: MonkeyStyle.PRIMARY.
 	 */
-	@Input() style: 'background' | 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger' | 'info' | '' = 'primary';
+	@Input() style: MonkeyStyle = MonkeyStyle.PRIMARY;
 
 	// COMPONENTS TYPES
 	/**
@@ -95,7 +95,23 @@ export class Styleable implements OnInit, OnChanges {
 	 */
 	currentScreen!: MonkeyScreen;
 
+	/**
+	 * Represents the screen size flag for small screens.
+	 */
 	SMALL_SCREEN_FLAG: ScreenSize = ScreenSize.SM;
+
+	/**
+	 * Represents the success style for MonkeyStyle.
+	 */
+	styleSuccess: MonkeyStyle = MonkeyStyle.SUCCESS;
+	/**
+	 * Represents the warning style for MonkeyStyle.
+	 */
+	styleWarning: MonkeyStyle = MonkeyStyle.WARNING;
+	/**
+	 * Represents the danger style for MonkeyStyle.
+	 */
+	styleDanger: MonkeyStyle = MonkeyStyle.DANGER;
 
 	/**
 	 * The list of classes to apply to the component.

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Message } from '../components/third-level/alert/message';
+import { MonkeyStyle } from '../bases/monkey-style';
 
 @Injectable({ providedIn: 'root' })
 export class MonkeyAlertService {
@@ -31,7 +32,7 @@ export class MonkeyAlertService {
    * @param title Optional title for the alerts.
    */
   warnings(texts: string[], isAutoClose: boolean, title?: string) {
-    this.event.next(new Message(texts, 'warning', isAutoClose, title, 'warning'));
+    this.event.next(new Message(texts, MonkeyStyle.WARNING, isAutoClose, title, 'warning'));
     this.removeHideTimeout();
 
     if (isAutoClose) {
@@ -56,7 +57,7 @@ export class MonkeyAlertService {
    * @param title Optional title for the alerts.
    */
   dangers(texts: string[], isAutoClose: boolean, title?: string) {
-    this.event.next(new Message(texts, 'danger', isAutoClose, title, 'dangerous'));
+    this.event.next(new Message(texts, MonkeyStyle.DANGER, isAutoClose, title, 'dangerous'));
     this.removeHideTimeout();
 
     if (isAutoClose) {
@@ -81,7 +82,7 @@ export class MonkeyAlertService {
    * @param title Optional title for the alerts.
    */
   successes(texts: string[], isAutoClose: boolean, title?: string) {
-    this.event.next(new Message(texts, 'success', isAutoClose, title, 'done'));
+    this.event.next(new Message(texts, MonkeyStyle.SUCCESS, isAutoClose, title, 'done'));
     this.removeHideTimeout();
 
     if (isAutoClose) {
@@ -106,7 +107,7 @@ export class MonkeyAlertService {
    * @param title Optional title for the alerts.
    */
   infos(texts: string[], isAutoClose: boolean, title?: string) {
-    this.event.next(new Message(texts, 'info', isAutoClose, title, 'info'));
+    this.event.next(new Message(texts, MonkeyStyle.INFO, isAutoClose, title, 'info'));
     this.removeHideTimeout();
 
     if (isAutoClose) {
@@ -122,7 +123,7 @@ export class MonkeyAlertService {
    * @param title Optional title for the alert.
    * @param icon Optional icon for the alert.
    */
-  custom(text: string, style: string, isAutoClose: boolean, title?: string, icon?: string) {
+  custom(text: string, style: MonkeyStyle, isAutoClose: boolean, title?: string, icon?: string) {
     this.customs([text], style, isAutoClose, title, icon);
   }
 
@@ -134,7 +135,7 @@ export class MonkeyAlertService {
    * @param title Optional title for the alerts.
    * @param icon Optional icon for the alerts.
    */
-  customs(texts: string[], style: string, isAutoClose: boolean, title?: string, icon?: string) {
+  customs(texts: string[], style: MonkeyStyle, isAutoClose: boolean, title?: string, icon?: string) {
     this.event.next(new Message(texts, style, isAutoClose, title, icon));
     this.removeHideTimeout();
 
@@ -153,7 +154,7 @@ export class MonkeyAlertService {
    * Hides the alert.
    */
   hide() {
-    this.event.next(new Message([], 'alert', true));
+    this.event.next(new Message([], MonkeyStyle.WARNING, true));
     this.removeHideTimeout();
   }
 

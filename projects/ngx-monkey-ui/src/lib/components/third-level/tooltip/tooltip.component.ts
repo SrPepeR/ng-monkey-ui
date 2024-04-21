@@ -1,9 +1,11 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
-import { ComponentsStylesService } from '../../../services/components-styles.service';
 import { Tooltip } from '../../../services/tooltip/tooltip';
 import { Subject, takeUntil } from 'rxjs';
 import { TooltipService } from '../../../services/tooltip/tooltip.service';
+import { MonkeyStyle } from '../../../bases/monkey-style';
+import { Styleable } from '../../../bases/styleable.base';
+import { Tooltipable } from '../../../bases/tooltipable.base';
 
 /**
  * Represents the MonkeyTooltip component.
@@ -12,37 +14,21 @@ import { TooltipService } from '../../../services/tooltip/tooltip.service';
   selector: 'monkey-tooltip',
   templateUrl: './tooltip.component.html',
   styleUrls: [
+    '../../../styles/components/_common.default.style.scss',
     './styles/tooltip.component.scss',
   ]
 })
-export class MonkeyTooltip implements OnInit, OnChanges, OnDestroy {
+export class MonkeyTooltip extends Styleable implements OnInit, OnDestroy {
+
+  /**
+   * Represents the tooltipable behavior of the tooltip component.
+   */
+  tooltipable: Tooltipable;
   
   /**
    * The tooltip input property.
    */
-  @Input() tooltip: Tooltip = new Tooltip('', '', undefined);
-  
-  // COMPONENTS TYPES
-  /**
-   * The brutalist input property.
-   */
-  @Input() brutalist?: string = 'false';
-  /**
-   * The flat input property.
-   */
-  @Input() flat?: string = 'false';
-  /**
-   * The ghost input property.
-   */
-  @Input() ghost?: string = 'false';
-  /**
-   * The glass input property.
-   */
-  @Input() glass?: string = 'false';
-  /**
-   * The glow input property.
-   */
-  @Input() glow?: string = 'false';
+  @Input() tooltip: Tooltip = new Tooltip(MonkeyStyle.NONE, '', undefined);
 
   /**
    * The onClick output event.
@@ -55,25 +41,22 @@ export class MonkeyTooltip implements OnInit, OnChanges, OnDestroy {
   isDarkMode$ = this.themeService.isDarkMode$;
 
   /**
-   * Array of CSS class names.
-   */
-  classList: Array<string> = [];
-
-  /**
    * Subject used to unsubscribe from observables.
    */
   private unsubscribeComponent: Subject<void> = new Subject<void>();
 
   constructor(
     private themeService: ThemeService,
-    private componentStylesService: ComponentsStylesService,
     private tooltipService: TooltipService,
-  ) { }
+  ) {
+    super();
+    this.tooltipable = new Tooltipable(this.tooltipService);
+  }
 
   /**
    * Lifecycle hook that is called after the component has been initialized.
    */
-  ngOnInit() {
+  override ngOnInit() {
     this.tooltipService.event
       .pipe(takeUntil(this.unsubscribeComponent))
       .subscribe((tooltip: Tooltip) => {
@@ -81,13 +64,6 @@ export class MonkeyTooltip implements OnInit, OnChanges, OnDestroy {
       });
 
     this.tooltipService.hide();
-  }
-
-  /**
-   * Lifecycle hook that is called when any input property changes.
-   */
-  ngOnChanges() {
-    this.classList = this.componentStylesService.generateClassList(this);
   }
 
   /**

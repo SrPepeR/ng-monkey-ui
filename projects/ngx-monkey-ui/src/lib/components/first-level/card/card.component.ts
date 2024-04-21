@@ -1,6 +1,8 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
 import { ComponentsStylesService } from '../../../services/components-styles.service';
+import { Styleable } from '../../../bases/styleable.base';
+import { MonkeyStyle } from '../../../bases/monkey-style';
 
 /**
  * Represents a Monkey Card component.
@@ -9,6 +11,7 @@ import { ComponentsStylesService } from '../../../services/components-styles.ser
   selector: 'monkey-card',
   templateUrl: './card.component.html',
   styleUrls: [
+    '../../../styles/components/_common.default.style.scss',
     './styles/card.component.scss',
     './styles/card.brutalist.component.scss',
     './styles/card.flat.component.scss',
@@ -17,7 +20,7 @@ import { ComponentsStylesService } from '../../../services/components-styles.ser
     './styles/card.glow.component.scss',
   ]
 })
-export class MonkeyCard implements OnInit, OnChanges {
+export class MonkeyCard extends Styleable implements OnInit, OnChanges {
   
   /**
    * Specifies whether the card should be displayed in a column layout.
@@ -27,34 +30,7 @@ export class MonkeyCard implements OnInit, OnChanges {
   /**
    * Specifies the style of the card.
    */
-  @Input() style?: string = 'background';
-  
-  // COMPONENTS TYPES
-  
-  /**
-   * Specifies whether the brutalist style should be applied to the card.
-   */
-  @Input() brutalist?: string = 'false';
-  
-  /**
-   * Specifies whether the flat style should be applied to the card.
-   */
-  @Input() flat?: string = 'false';
-  
-  /**
-   * Specifies whether the ghost style should be applied to the card.
-   */
-  @Input() ghost?: string = 'false';
-  
-  /**
-   * Specifies whether the glass style should be applied to the card.
-   */
-  @Input() glass?: string = 'false';
-  
-  /**
-   * Specifies whether the glow style should be applied to the card.
-   */
-  @Input() glow?: string = 'false';
+  @Input() override style: MonkeyStyle = MonkeyStyle.BACKGROUND;
 
   /**
    * Specifies whether padding should be removed from the card.
@@ -76,28 +52,10 @@ export class MonkeyCard implements OnInit, OnChanges {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  /**
-   * Array of CSS class names to be applied to the card.
-   */
-  classList: Array<string> = [];
-
   constructor(
     private themeService: ThemeService,
-    private componentStylesService: ComponentsStylesService,
-  ) { }
-
-  /**
-   * Initializes the component.
-   */
-  ngOnInit() {
-    this.classList = this.componentStylesService.generateClassList(this);
-  }
-
-  /**
-   * Called whenever the input properties change.
-   */
-  ngOnChanges() {
-    this.classList = this.componentStylesService.generateClassList(this);
+  ) {
+    super();
   }
   
 }

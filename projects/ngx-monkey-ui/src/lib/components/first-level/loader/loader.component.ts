@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ComponentsStylesService } from '../../../services/components-styles.service';
 import { ThemeService } from '../../../services/theme.service';
+import { Styleable } from '../../../bases/styleable.base';
 import { ComponentsSizesService } from '../../../services/components-sizes.service';
 
 /**
@@ -10,6 +10,7 @@ import { ComponentsSizesService } from '../../../services/components-sizes.servi
   selector: 'monkey-loader',
   templateUrl: './loader.component.html',
   styleUrls: [
+    '../../../styles/components/_common.default.style.scss',
     './styles/loader.component.scss',
     './styles/loader.brutalist.component.scss',
     './styles/loader.glass.component.scss',
@@ -18,51 +19,7 @@ import { ComponentsSizesService } from '../../../services/components-sizes.servi
     './styles/loader.glow.component.scss',
   ]
 })
-export class MonkeyLoader {
-
-  /**
-   * The style of the loader.
-   * @type string
-   * @default 'primary'
-   */
-  @Input() style?: string = 'primary';
-
-  // COMPONENTS TYPES
-
-  /**
-   * Indicates whether the brutalist loader is enabled.
-   * @type string
-   * @default 'false'
-   */
-  @Input() brutalist?: string = 'false';
-
-  /**
-   * Indicates whether the flat loader is enabled.
-   * @type string
-   * @default 'false'
-   */
-  @Input() flat?: string = 'false';
-
-  /**
-   * Indicates whether the ghost loader is enabled.
-   * @type string
-   * @default 'false'
-   */
-  @Input() ghost?: string = 'false';
-
-  /**
-   * Indicates whether the glass loader is enabled.
-   * @type string
-   * @default 'false'
-   */
-  @Input() glass?: string = 'false';
-
-  /**
-   * Indicates whether the glow loader is enabled.
-   * @type string
-   * @default 'false'
-   */
-  @Input() glow?: string = 'false';
+export class MonkeyLoader extends Styleable {
 
   /**
    * Indicates whether the contrast mode is enabled.
@@ -120,23 +77,28 @@ export class MonkeyLoader {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  /**
-   * Array of CSS class names for the loader.
-   */
-  classList: Array<string> = [];
-
   constructor(
     private themeService: ThemeService,
-    private componentStylesService: ComponentsStylesService,
     private componentSizesService: ComponentsSizesService,
-  ) { }
+  ) {
+    super();
+  }
+  
+  /**
+   * Initializes the component and sets up any necessary initializations.
+   * Overrides the base class's ngOnInit method.
+   */
+  override ngOnInit() {
+    super.ngOnInit();
+    this.classList = this.componentSizesService.generateClassList(this);
+  }
 
   /**
    * Called when the input properties change.
    * Generates the CSS class list for the loader.
    */
-  ngOnChanges() {
-    this.classList = this.componentStylesService.generateClassList(this);
+  override ngOnChanges() {
+    super.ngOnChanges();
     this.classList = this.componentSizesService.generateClassList(this);
   }
 

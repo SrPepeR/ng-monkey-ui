@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy } from "@angular/core";
 import { TooltipService } from "../services/tooltip/tooltip.service";
+import { MonkeyStyle } from "./monkey-style";
 
 /**
  * Base class for components that can display tooltips.
@@ -17,10 +18,8 @@ export class Tooltipable implements OnDestroy {
 
 	/**
 	 * The style of the tooltip.
-	 * Possible values: 'background', 'primary', 'secondary', 'tertiary', 'success', 'warning', 'danger', 'info', or an empty string.
-	 * Default value: 'primary'.
 	 */
-	@Input() style: 'background' | 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger' | 'info' | '' = 'primary';
+	@Input() style: MonkeyStyle = MonkeyStyle.PRIMARY;
 
 	constructor(protected tooltipService: TooltipService) { }
 
