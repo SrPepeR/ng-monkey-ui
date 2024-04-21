@@ -5,6 +5,7 @@ import { TooltipService } from '../../services/tooltip/tooltip.service';
 import { Tooltipable } from '../../bases/tooltipable.base';
 import { MenuOption } from './menu-option.interface';
 import { Router } from '@angular/router';
+import { MonkeyScreen } from '../../services/screen/screen';
 
 @Component({
   selector: 'monkey-menu',
@@ -48,10 +49,11 @@ export class MonkeyMenu extends Styleable {
     super.ngOnChanges();
     this.tooltipable.alt = this.alt;
     this.tooltipable.style = this.style;
-    this.screenWidth$.subscribe((value: number) => {
-      if (this.isFullMenuOpen && value < this.SMALL_SCREEN_WIDTH) {
+
+    this.screenService.screenChanges$.subscribe((currentScreen: MonkeyScreen) => {
+      if (this.isFullMenuOpen && currentScreen.isScreenSizeDown(this.SMALL_SCREEN_FLAG)) {
         this.isFullMenuOpen = false;
-      } else if (!this.isFullMenuOpen && value >= this.SMALL_SCREEN_WIDTH) {
+      } else if (!this.isFullMenuOpen && currentScreen.isScreenSizeUp(this.SMALL_SCREEN_FLAG)) {
         this.isFullMenuOpen = true;
       }
     });

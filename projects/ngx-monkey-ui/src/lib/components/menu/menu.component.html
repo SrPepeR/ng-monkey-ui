@@ -15,7 +15,7 @@
     </span>
 
     <monkey-icon-button
-      *ngIf="screenWidth < SMALL_SCREEN_WIDTH"
+      *ngIf="currentScreen.isScreenSizeDown(SMALL_SCREEN_FLAG)"
       [class]="classList"
       [style]="style"
       [brutalist]="brutalist"
