@@ -71,27 +71,27 @@ export class MonkeyAlert implements OnInit, OnChanges, OnDestroy {
   /**
    * Specifies whether the alert should have brutalist style.
    */
-  @Input() brutalist?: string = 'true';
+  @Input() brutalist?: string = 'false';
   
   /**
    * Specifies whether the alert should have flat style.
    */
-  @Input() flat?: string = 'true';
+  @Input() flat?: string = 'false';
   
   /**
    * Specifies whether the alert should have ghost style.
    */
-  @Input() ghost?: string = 'true';
+  @Input() ghost?: string = 'false';
   
   /**
    * Specifies whether the alert should have glass style.
    */
-  @Input() glass?: string = 'true';
+  @Input() glass?: string = 'false';
   
   /**
    * Specifies whether the alert should have glow style.
    */
-  @Input() glow?: string = 'true';
+  @Input() glow?: string = 'false';
 
   /**
    * Observable that indicates whether the application is in dark mode.
@@ -182,7 +182,7 @@ export class MonkeyAlert implements OnInit, OnChanges, OnDestroy {
    * @returns True if the parameter is not equal to 'true', false otherwise.
    */
   check(param: string | undefined) {
-    return param !== 'true';
+    return param === '' || param === 'true';
   }
 
 }

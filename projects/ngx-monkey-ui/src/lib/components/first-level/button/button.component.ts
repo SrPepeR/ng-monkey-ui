@@ -25,36 +25,36 @@ export class MonkeyButton implements OnInit, OnChanges {
   @Input() style: string = 'primary';
 
   /**
-   * Whether the button should be squared. Defaults to 'true'.
+   * Whether the button should be squared. Defaults to 'false'.
    */
-  @Input() squared?: string = 'true';
+  @Input() squared?: string = 'false';
   
   // COMPONENTS TYPES
 
   /**
-   * Whether the button has brutalist style. Defaults to 'true'.
+   * Whether the button has brutalist style. Defaults to 'false'.
    */
-  @Input() brutalist?: string = 'true';
+  @Input() brutalist?: string = 'false';
 
   /**
-   * Whether the button has flat style. Defaults to 'true'.
+   * Whether the button has flat style. Defaults to 'false'.
    */
-  @Input() flat?: string = 'true';
+  @Input() flat?: string = 'false';
 
   /**
-   * Whether the button has ghost style. Defaults to 'true'.
+   * Whether the button has ghost style. Defaults to 'false'.
    */
-  @Input() ghost?: string = 'true';
+  @Input() ghost?: string = 'false';
 
   /**
-   * Whether the button has glass style. Defaults to 'true'.
+   * Whether the button has glass style. Defaults to 'false'.
    */
-  @Input() glass?: string = 'true';
+  @Input() glass?: string = 'false';
 
   /**
-   * Whether the button has glow style. Defaults to 'true'.
+   * Whether the button has glow style. Defaults to 'false'.
    */
-  @Input() glow?: string = 'true';
+  @Input() glow?: string = 'false';
 
   /**
    * Event emitted when the button is clicked.

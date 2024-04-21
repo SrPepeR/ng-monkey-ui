@@ -34,27 +34,27 @@ export class MonkeyImage implements OnChanges {
   /**
    * Whether the brutalist style is enabled.
    */
-  @Input() brutalist?: string = 'true';
+  @Input() brutalist?: string = 'false';
 
   /**
    * Whether the flat style is enabled.
    */
-  @Input() flat?: string = 'true';
+  @Input() flat?: string = 'false';
 
   /**
    * Whether the ghost style is enabled.
    */
-  @Input() ghost?: string = 'true';
+  @Input() ghost?: string = 'false';
 
   /**
    * Whether the glass style is enabled.
    */
-  @Input() glass?: string = 'true';
+  @Input() glass?: string = 'false';
 
   /**
    * Whether the glow style is enabled.
    */
-  @Input() glow?: string = 'true';
+  @Input() glow?: string = 'false';
 
   // PARAMS
 

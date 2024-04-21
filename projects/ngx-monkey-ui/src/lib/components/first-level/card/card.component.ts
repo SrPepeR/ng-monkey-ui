@@ -34,42 +34,42 @@ export class MonkeyCard implements OnInit, OnChanges {
   /**
    * Specifies whether the brutalist style should be applied to the card.
    */
-  @Input() brutalist?: string = 'true';
+  @Input() brutalist?: string = 'false';
   
   /**
    * Specifies whether the flat style should be applied to the card.
    */
-  @Input() flat?: string = 'true';
+  @Input() flat?: string = 'false';
   
   /**
    * Specifies whether the ghost style should be applied to the card.
    */
-  @Input() ghost?: string = 'true';
+  @Input() ghost?: string = 'false';
   
   /**
    * Specifies whether the glass style should be applied to the card.
    */
-  @Input() glass?: string = 'true';
+  @Input() glass?: string = 'false';
   
   /**
    * Specifies whether the glow style should be applied to the card.
    */
-  @Input() glow?: string = 'true';
+  @Input() glow?: string = 'false';
 
   /**
    * Specifies whether padding should be removed from the card.
    */
-  @Input() noPadding?: string = 'true';
+  @Input() noPadding?: string = 'false';
   
   /**
    * Specifies whether margin should be removed from the card.
    */
-  @Input() noMargin?: string = 'true';
+  @Input() noMargin?: string = 'false';
   
   /**
    * Specifies whether the flex-wrap should be reversed for the card.
    */
-  @Input() displayFlexWrapReverse?: string = 'true';
+  @Input() displayFlexWrapReverse?: string = 'false';
 
   /**
    * Observable that emits the current dark mode state.
