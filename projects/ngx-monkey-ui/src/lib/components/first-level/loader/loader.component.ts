@@ -32,44 +32,44 @@ export class MonkeyLoader {
   /**
    * Indicates whether the brutalist loader is enabled.
    * @type string
-   * @default 'true'
+   * @default 'false'
    */
-  @Input() brutalist?: string = 'true';
+  @Input() brutalist?: string = 'false';
 
   /**
    * Indicates whether the flat loader is enabled.
    * @type string
-   * @default 'true'
+   * @default 'false'
    */
-  @Input() flat?: string = 'true';
+  @Input() flat?: string = 'false';
 
   /**
    * Indicates whether the ghost loader is enabled.
    * @type string
-   * @default 'true'
+   * @default 'false'
    */
-  @Input() ghost?: string = 'true';
+  @Input() ghost?: string = 'false';
 
   /**
    * Indicates whether the glass loader is enabled.
    * @type string
-   * @default 'true'
+   * @default 'false'
    */
-  @Input() glass?: string = 'true';
+  @Input() glass?: string = 'false';
 
   /**
    * Indicates whether the glow loader is enabled.
    * @type string
-   * @default 'true'
+   * @default 'false'
    */
-  @Input() glow?: string = 'true';
+  @Input() glow?: string = 'false';
 
   /**
    * Indicates whether the contrast mode is enabled.
    * @type string
-   * @default 'true'
+   * @default 'false'
    */
-  @Input() contrast?: string = 'true';
+  @Input() contrast?: string = 'false';
 
   // COMPONENTS SIZES
 

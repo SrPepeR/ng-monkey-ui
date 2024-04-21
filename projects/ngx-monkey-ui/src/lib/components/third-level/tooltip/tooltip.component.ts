@@ -26,23 +26,23 @@ export class MonkeyTooltip implements OnInit, OnChanges, OnDestroy {
   /**
    * The brutalist input property.
    */
-  @Input() brutalist?: string = 'true';
+  @Input() brutalist?: string = 'false';
   /**
    * The flat input property.
    */
-  @Input() flat?: string = 'true';
+  @Input() flat?: string = 'false';
   /**
    * The ghost input property.
    */
-  @Input() ghost?: string = 'true';
+  @Input() ghost?: string = 'false';
   /**
    * The glass input property.
    */
-  @Input() glass?: string = 'true';
+  @Input() glass?: string = 'false';
   /**
    * The glow input property.
    */
-  @Input() glow?: string = 'true';
+  @Input() glow?: string = 'false';
 
   /**
    * The onClick output event.

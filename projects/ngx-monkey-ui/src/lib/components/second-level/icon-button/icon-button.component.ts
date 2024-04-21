@@ -25,23 +25,23 @@ export class MonkeyIconButton extends Tooltipable implements OnChanges {
   /**
    * The brutalist style of the button.
    */
-  @Input() brutalist?: string = 'true';
+  @Input() brutalist?: string = 'false';
   /**
    * The flat style of the button.
    */
-  @Input() flat?: string = 'true';
+  @Input() flat?: string = 'false';
   /**
    * The ghost style of the button.
    */
-  @Input() ghost?: string = 'true';
+  @Input() ghost?: string = 'false';
   /**
    * The glass style of the button.
    */
-  @Input() glass?: string = 'true';
+  @Input() glass?: string = 'false';
   /**
    * The glow style of the button.
    */
-  @Input() glow?: string = 'true';
+  @Input() glow?: string = 'false';
 
   /**
    * Event emitted when the button is clicked.

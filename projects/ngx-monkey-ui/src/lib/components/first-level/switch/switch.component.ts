@@ -32,27 +32,27 @@ export class MonkeySwitch implements AfterViewChecked {
    * Determines whether the brutalist style is enabled.
    * @type string
    */
-  @Input() brutalist?: string = 'true';
+  @Input() brutalist?: string = 'false';
   /**
    * Determines whether the flat style is enabled.
    * @type string
    */
-  @Input() flat?: string = 'true';
+  @Input() flat?: string = 'false';
   /**
    * Determines whether the ghost style is enabled.
    * @type string
    */
-  @Input() ghost?: string = 'true';
+  @Input() ghost?: string = 'false';
   /**
    * Determines whether the glass style is enabled.
    * @type string
    */
-  @Input() glass?: string = 'true';
+  @Input() glass?: string = 'false';
   /**
    * Determines whether the glow style is enabled.
    * @type string
    */
-  @Input() glow?: string = 'true';
+  @Input() glow?: string = 'false';
 
   // LABELS
   /**
