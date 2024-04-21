@@ -6,4 +6,8 @@
   cursor: not-allowed;
   pointer-events: none;
   opacity: 0.75;
+
+  &::after, &::before {
+    background-color: var(--opacity-medium) !important;
+  }
 }
