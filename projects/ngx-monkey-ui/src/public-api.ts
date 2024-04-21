@@ -24,6 +24,9 @@ export * from './lib/services/tooltip/tooltip.service';
 // Font service
 export * from './lib/services/font.service';
 
+// Screen service
+export * from './lib/services/screen/screen.service';
+
 /*
 * INTERFACES
 */
