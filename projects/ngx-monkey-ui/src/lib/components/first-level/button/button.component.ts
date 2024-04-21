@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
-import { ComponentsStylesService } from '../../../services/components-styles.service';
+import { Styleable } from '../../../bases/styleable.base';
 
 /**
  * Represents a Monkey Button component.
@@ -9,6 +9,7 @@ import { ComponentsStylesService } from '../../../services/components-styles.ser
   selector: 'monkey-button',
   templateUrl: './button.component.html',
   styleUrls: [
+    '../../../styles/components/_common.default.style.scss',
     './styles/button.component.scss',
     './styles/button.brutalist.component.scss',
     './styles/button.flat.component.scss',
@@ -17,44 +18,12 @@ import { ComponentsStylesService } from '../../../services/components-styles.ser
     './styles/button.glow.component.scss',
   ]
 })
-export class MonkeyButton implements OnInit, OnChanges {
-  
-  /**
-   * The style of the button. Defaults to 'primary'.
-   */
-  @Input() style: string = 'primary';
+export class MonkeyButton extends Styleable implements OnInit, OnChanges {
 
   /**
    * Whether the button should be squared. Defaults to 'false'.
    */
   @Input() squared?: string = 'false';
-  
-  // COMPONENTS TYPES
-
-  /**
-   * Whether the button has brutalist style. Defaults to 'false'.
-   */
-  @Input() brutalist?: string = 'false';
-
-  /**
-   * Whether the button has flat style. Defaults to 'false'.
-   */
-  @Input() flat?: string = 'false';
-
-  /**
-   * Whether the button has ghost style. Defaults to 'false'.
-   */
-  @Input() ghost?: string = 'false';
-
-  /**
-   * Whether the button has glass style. Defaults to 'false'.
-   */
-  @Input() glass?: string = 'false';
-
-  /**
-   * Whether the button has glow style. Defaults to 'false'.
-   */
-  @Input() glow?: string = 'false';
 
   /**
    * Event emitted when the button is clicked.
@@ -66,28 +35,10 @@ export class MonkeyButton implements OnInit, OnChanges {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  /**
-   * Array of CSS class names for the button.
-   */
-  classList: Array<string> = [];
-
   constructor(
     private themeService: ThemeService,
-    private componentStylesService: ComponentsStylesService,
-  ) { }
-
-  /**
-   * Initializes the component.
-   */
-  ngOnInit() {
-    this.classList = this.componentStylesService.generateClassList(this);
-  }
-
-  /**
-   * Called when input properties change.
-   */
-  ngOnChanges() {
-    this.classList = this.componentStylesService.generateClassList(this);
+  ) {
+    super();
   }
 
   /**
