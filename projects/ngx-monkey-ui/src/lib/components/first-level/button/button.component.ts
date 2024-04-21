@@ -2,6 +2,9 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
 import { ThemeService } from '../../../services/theme.service';
 import { ComponentsStylesService } from '../../../services/components-styles.service';
 
+/**
+ * Represents a Monkey Button component.
+ */
 @Component({
   selector: 'monkey-button',
   templateUrl: './button.component.html',
@@ -16,20 +19,56 @@ import { ComponentsStylesService } from '../../../services/components-styles.ser
 })
 export class MonkeyButton implements OnInit, OnChanges {
   
+  /**
+   * The style of the button. Defaults to 'primary'.
+   */
   @Input() style: string = 'primary';
+
+  /**
+   * Whether the button should be squared. Defaults to 'true'.
+   */
   @Input() squared?: string = 'true';
   
   // COMPONENTS TYPES
+
+  /**
+   * Whether the button has brutalist style. Defaults to 'true'.
+   */
   @Input() brutalist?: string = 'true';
+
+  /**
+   * Whether the button has flat style. Defaults to 'true'.
+   */
   @Input() flat?: string = 'true';
+
+  /**
+   * Whether the button has ghost style. Defaults to 'true'.
+   */
   @Input() ghost?: string = 'true';
+
+  /**
+   * Whether the button has glass style. Defaults to 'true'.
+   */
   @Input() glass?: string = 'true';
+
+  /**
+   * Whether the button has glow style. Defaults to 'true'.
+   */
   @Input() glow?: string = 'true';
 
+  /**
+   * Event emitted when the button is clicked.
+   */
   @Output() onClick = new EventEmitter();
 
+  /**
+   * Observable that indicates whether the dark mode is enabled.
+   */
   isDarkMode$ = this.themeService.isDarkMode$;
 
+  /**
+   * Array of CSS class names for the button.
+   */
   classList: Array<string> = [];
 
   constructor(
@@ -37,14 +76,23 @@ export class MonkeyButton implements OnInit, OnChanges {
     private componentStylesService: ComponentsStylesService,
   ) { }
 
+  /**
+   * Initializes the component.
+   */
   ngOnInit() {
     this.classList = this.componentStylesService.generateClassList(this);
   }
 
+  /**
+   * Called when input properties change.
+   */
   ngOnChanges() {
     this.classList = this.componentStylesService.generateClassList(this);
   }
 
+  /**
+   * Handles the button click event.
+   */
   onClicked() {
     this.onClick.emit();
   }
