@@ -1,0 +1,12 @@
+@use '../../../../styles/components/image.default.style';
+
+/* Default style */
+.placeholder.type-default {
+    background: linear-gradient(90deg, var(--color), var(--opacity-medium), var(--color), var(--opacity-medium));
+    animation: imageLoader-horizontal 1.5s infinite linear;
+}
+
+.placeholder.type-default,
+img.type-default {
+    border-radius: 10px;
+}

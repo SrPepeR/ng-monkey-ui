@@ -1,0 +1,45 @@
+@use '../../../../styles/components/switch.default.style';
+
+/* Default style */
+label.switch-label.type-default {
+    color: var(--background-color-contrast-hight);
+}
+
+label.switch.type-default {
+    border-radius: 50px;
+
+    background-color: var(--background-color);
+    border: 2px solid var(--background-color-contrast-low);
+
+    &:has(input:checked) {
+        border-color: var(--color);
+        background-color: var(--opacity-medium);
+    }
+
+    .slider {
+        border-radius: 50%;
+
+        &::before {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+
+            background-color: var(--background-color-contrast-low);
+        }
+    }
+
+    input:checked~.slider {
+        background-color: var(--background-color);
+    }
+
+    input:hover~.slider::before {
+        background-color: var(--color);
+    }
+
+    input:checked~.slider::before {
+        width: 20px;
+        height: 20px;
+
+        background-color: var(--color);
+    }
+}

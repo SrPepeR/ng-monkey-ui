@@ -1,0 +1,7 @@
+@use '../../../../styles/components/card.default.style';
+
+/* Default style */
+section.type-default {
+    border-radius: 10px;
+    background-color: var(--color);
+}
