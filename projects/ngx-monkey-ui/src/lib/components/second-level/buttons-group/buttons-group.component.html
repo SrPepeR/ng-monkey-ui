@@ -1,10 +1,20 @@
 <monkey-list
+  class="buttons-group"
+  [gapSize]="check(gap) ? 'md' : ''"
   horizontal
 >
   <monkey-button
     *ngFor="let buttonData of data"
-    [class]="classList"
+    class="button-group"
+    [style]="buttonData.type"
     [class.dark-theme]="isDarkMode$ | async"
+    (onClick)="buttonData.action($event)"
+    [disabled]="disabled"
+    [brutalist]="brutalist"
+    [glass]="glass"
+    [flat]="flat"
+    [ghost]="ghost"
+    [glow]="glow"
   >
     <span
       *ngIf="buttonData.icon && buttonData.iconPosition === 'left'"
