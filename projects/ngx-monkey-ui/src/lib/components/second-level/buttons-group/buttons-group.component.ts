@@ -32,14 +32,4 @@ export class MonkeyButtonsGroup extends Styleable {
     super();
   }
 
-  /**
-   * Adds additional classes to the class list based on the input properties.
-   * Overrides the base class method.
-   */
-  protected override addAditionalClasses() {
-    if (this.check(this.gap)) {
-      this.classList.push('gap-md');
-    }
-  }
-
 }
