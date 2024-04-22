@@ -33,7 +33,7 @@ export class MonkeyList extends Styleable {
    * Possible values are 'sm', 'md', or 'lg'.
    * Default value is 'md'.
    */
-  @Input() gapSize: 'sm' | 'md' | 'lg' = 'md';
+  @Input() gapSize: '' | 'sm' | 'md' | 'lg' = 'md';
 
   /**
    * Observable that emits a boolean indicating whether the theme is in dark mode or not.
