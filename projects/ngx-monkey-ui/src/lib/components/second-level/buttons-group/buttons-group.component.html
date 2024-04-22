@@ -1,0 +1,21 @@
+<monkey-list
+  horizontal
+>
+  <monkey-button
+    *ngFor="let buttonData of data"
+    [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
+  >
+    <span
+      *ngIf="buttonData.icon && buttonData.iconPosition === 'left'"
+      class="material-symbols-outlined"
+    >{{ buttonData.icon }}</span>
+
+    {{ buttonData.text }}
+
+    <span
+      *ngIf="buttonData.icon && buttonData.iconPosition === 'right'"
+      class="material-symbols-outlined"
+    >{{ buttonData.icon }}</span>
+  </monkey-button>
+</monkey-list>
