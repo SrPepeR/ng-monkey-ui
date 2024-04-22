@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
-import { DropdownOption } from './dropdown-option.interface';
+import { DropdownOption } from '../../../objects/interfaces/dropdown-option.interface';
 import { ThemeService } from '../../../services/theme.service';
 import { Tooltipable } from '../../../bases/tooltipable.base';
 import { TooltipService } from '../../../services/tooltip/tooltip.service';

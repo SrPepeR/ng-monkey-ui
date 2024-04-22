@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Message } from '../components/third-level/alert/message';
-import { MonkeyStyle } from '../bases/monkey-style';
+import { Message } from '../objects/classes/message-data.class';
+import { MonkeyStyle } from '../objects/enums/style.enum';
 
 @Injectable({ providedIn: 'root' })
 export class MonkeyAlertService {

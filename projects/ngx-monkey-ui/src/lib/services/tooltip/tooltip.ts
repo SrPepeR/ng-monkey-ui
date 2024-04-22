@@ -1,4 +1,4 @@
-import { MonkeyStyle } from "../../bases/monkey-style";
+import { MonkeyStyle } from "../../objects/enums/style.enum";
 
 /**
  * Represents a Tooltip object.

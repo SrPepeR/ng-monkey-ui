@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output } 
 import { ThemeService } from '../../../services/theme.service';
 import { MonkeyAlertService } from '../../../services/alert.service';
 import { Subject, takeUntil } from 'rxjs';
-import { Message } from './message';
+import { Message } from '../../../objects/classes/message-data.class';
 import { Styleable } from '../../../bases/styleable.base';
 
 /**

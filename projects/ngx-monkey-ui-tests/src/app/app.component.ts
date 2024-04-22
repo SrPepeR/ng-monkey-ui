@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DropdownOption, MenuOption, MonkeyAlertService, MonkeyFontService, MonkeyScreenService, MonkeyStyle } from 'ngx-monkey-ui';
-import { MonkeyButtonData } from 'projects/ngx-monkey-ui/src/lib/components/second-level/buttons-group/monkey-button-data';
+import { MonkeyButtonData } from 'projects/ngx-monkey-ui/src/lib/objects/classes/button-data.class';
 import { ScreenOrientation } from 'projects/ngx-monkey-ui/src/lib/services/screen/screen.enum';
 
 @Component({

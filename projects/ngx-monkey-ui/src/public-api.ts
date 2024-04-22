@@ -22,7 +22,7 @@ export * from './lib/ngx-monkey-ui.module';
 * ENUMS
 */
   // Style enum
-  export * from './lib/bases/monkey-style';
+  export * from './lib/objects/enums/style.enum';
 
 /*
 * UI COMPONENTS
@@ -63,7 +63,7 @@ export * from './lib/ngx-monkey-ui.module';
     // Dropdown
     export * from './lib/components/second-level/dropdown/dropdown.component';
       // Dropdown option interface
-      export * from './lib/components/second-level/dropdown/dropdown-option.interface';
+      export * from './lib/objects/interfaces/dropdown-option.interface';
 
     // Buttons group
     export * from './lib/components/second-level/buttons-group/buttons-group.component';
@@ -75,7 +75,7 @@ export * from './lib/ngx-monkey-ui.module';
     // Menu
     export * from './lib/components/third-level/menu/menu.component';
       // Menu option interface
-      export * from './lib/components/third-level/menu/menu-option.interface';
+      export * from './lib/objects/interfaces/menu-option.interface';
 
     // Alert
     export * from './lib/components/third-level/alert/alert.component';
