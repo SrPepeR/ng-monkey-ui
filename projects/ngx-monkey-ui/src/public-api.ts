@@ -83,6 +83,9 @@ export * from './lib/ngx-monkey-ui.module';
     // Tooltip
     export * from './lib/components/third-level/tooltip/tooltip.component';
 
+    // Tooltip
+    export * from './lib/components/third-level/aside-menu/aside-menu.component';
+
   // THIRD LEVEL
 
   // FOURTH LEVEL
