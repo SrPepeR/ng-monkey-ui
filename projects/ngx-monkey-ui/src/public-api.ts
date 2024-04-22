@@ -64,6 +64,9 @@ export * from './lib/ngx-monkey-ui.module';
     export * from './lib/components/second-level/dropdown/dropdown.component';
       // Dropdown option interface
       export * from './lib/components/second-level/dropdown/dropdown-option.interface';
+
+    // Buttons group
+    export * from './lib/components/second-level/buttons-group/buttons-group.component';
     
   // SECOND LEVEL
 

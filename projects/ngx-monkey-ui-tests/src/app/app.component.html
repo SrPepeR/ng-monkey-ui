@@ -33,11 +33,10 @@
 
 <!-- STYLES DEMOS -->
 <monkey-card>
-    <monkey-button
+    <monkey-buttons-group
         [style]="currentStyle"
-        (onClick)="onClicked('default')"
-    >Default
-    </monkey-button>
+        [data]="buttonsGroupData"
+    ></monkey-buttons-group>
 
     <monkey-list
         [style]="currentStyle"

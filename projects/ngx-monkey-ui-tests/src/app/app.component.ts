@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DropdownOption, MenuOption, MonkeyAlertService, MonkeyFontService, MonkeyScreenService, MonkeyStyle } from 'ngx-monkey-ui';
+import { MonkeyButtonData } from 'projects/ngx-monkey-ui/src/lib/components/second-level/buttons-group/monkey-button-data';
 import { ScreenOrientation } from 'projects/ngx-monkey-ui/src/lib/services/screen/screen.enum';
 
 @Component({
@@ -41,6 +42,12 @@ export class AppComponent {
         { label: 'landscape', icon: 'screen_lock_landscape', route: '/landscape' },
       ]
     },
+  ];
+
+  buttonsGroupData: MonkeyButtonData[] = [
+    new MonkeyButtonData(this.primaryStyle, 'First', () => this.onClicked('First'), 'info', 'left'),
+    new MonkeyButtonData(this.secondaryStyle, 'Second', () => this.onClicked('Second')),
+    new MonkeyButtonData(this.tertiaryStyle, 'Third', () => this.onClicked('Third'), 'info', 'right'),
   ];
 
   constructor(
