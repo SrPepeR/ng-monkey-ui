@@ -27,6 +27,7 @@ import { MonkeyButtonsGroup } from './components/second-level/buttons-group/butt
 import { MonkeyAlert } from './components/third-level/alert/alert.component';
 import { MonkeyTooltip } from './components/third-level/tooltip/tooltip.component';
 import { MonkeyMenu } from './components/third-level/menu/menu.component';
+import { MonkeyAsideMenu } from './components/third-level/aside-menu/aside-menu.component';
 
 // THIRD LEVEL
 
@@ -55,6 +56,7 @@ import { MonkeyThemeChanger } from './components/fourth-level/theme-changer/them
     MonkeyList,
     MonkeyDropdown,
     MonkeyButtonsGroup,
+    MonkeyAsideMenu,
   ],
   imports: [
     CommonModule,
@@ -76,6 +78,7 @@ import { MonkeyThemeChanger } from './components/fourth-level/theme-changer/them
     MonkeyList,
     MonkeyDropdown,
     MonkeyButtonsGroup,
+    MonkeyAsideMenu,
   ],
 })
 export class NgxMonkeyUiModule { }
