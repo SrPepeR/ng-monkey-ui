@@ -1,4 +1,4 @@
-import { MonkeyStyle } from "../../../bases/monkey-style";
+import { MonkeyStyle } from "../enums/style.enum";
 
 export class MonkeyButtonData {
 

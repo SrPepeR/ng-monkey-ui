@@ -3,7 +3,7 @@ import { ThemeService } from '../../../services/theme.service';
 import { ComponentsSizesService } from '../../../services/components-sizes.service';
 import { TooltipService } from '../../../services/tooltip/tooltip.service';
 import { Tooltipable } from '../../../bases/tooltipable.base';
-import { MonkeyStyle } from '../../../bases/monkey-style';
+import { MonkeyStyle } from '../../../objects/enums/style.enum';
 import { Styleable } from '../../../bases/styleable.base';
 
 /**

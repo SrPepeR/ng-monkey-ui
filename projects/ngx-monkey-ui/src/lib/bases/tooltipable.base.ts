@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy } from "@angular/core";
 import { TooltipService } from "../services/tooltip/tooltip.service";
-import { MonkeyStyle } from "./monkey-style";
+import { MonkeyStyle } from "../objects/enums/style.enum";
 
 /**
  * Base class for components that can display tooltips.

@@ -3,7 +3,7 @@ import { ThemeService } from '../../../services/theme.service';
 import { Tooltip } from '../../../services/tooltip/tooltip';
 import { Subject, takeUntil } from 'rxjs';
 import { TooltipService } from '../../../services/tooltip/tooltip.service';
-import { MonkeyStyle } from '../../../bases/monkey-style';
+import { MonkeyStyle } from '../../../objects/enums/style.enum';
 import { Styleable } from '../../../bases/styleable.base';
 import { Tooltipable } from '../../../bases/tooltipable.base';
 

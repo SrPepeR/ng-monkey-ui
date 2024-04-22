@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
 import { ThemeService } from '../../../services/theme.service';
-import { MonkeyButtonData } from './monkey-button-data';
+import { MonkeyButtonData } from '../../../objects/classes/button-data.class';
 
 @Component({
   selector: 'monkey-buttons-group',

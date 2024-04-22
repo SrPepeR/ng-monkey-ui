@@ -3,7 +3,7 @@ import { Styleable } from '../../../bases/styleable.base';
 import { ThemeService } from '../../../services/theme.service';
 import { TooltipService } from '../../../services/tooltip/tooltip.service';
 import { Tooltipable } from '../../../bases/tooltipable.base';
-import { MenuOption } from './menu-option.interface';
+import { MenuOption } from '../../../objects/interfaces/menu-option.interface';
 import { Router } from '@angular/router';
 import { MonkeyScreen } from '../../../services/screen/screen';
 

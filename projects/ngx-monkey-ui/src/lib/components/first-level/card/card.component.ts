@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
 import { ComponentsStylesService } from '../../../services/components-styles.service';
 import { Styleable } from '../../../bases/styleable.base';
-import { MonkeyStyle } from '../../../bases/monkey-style';
+import { MonkeyStyle } from '../../../objects/enums/style.enum';
 
 /**
  * Represents a Monkey Card component.

@@ -4,7 +4,7 @@ import { ComponentsStylesService } from "../services/components-styles.service";
 import { MonkeyScreenService } from "../services/screen/screen.service";
 import { MonkeyScreen } from "../services/screen/screen";
 import { ScreenSize } from "../services/screen/screen.enum";
-import { MonkeyStyle } from "./monkey-style";
+import { MonkeyStyle } from "../objects/enums/style.enum";
 
 /**
  * Base class for styleable components.

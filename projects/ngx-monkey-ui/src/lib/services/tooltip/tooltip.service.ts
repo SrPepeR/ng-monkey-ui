@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Tooltip } from './tooltip';
 import { Subject } from 'rxjs';
-import { MonkeyStyle } from '../../bases/monkey-style';
+import { MonkeyStyle } from '../../objects/enums/style.enum';
 
 @Injectable({
   providedIn: 'root'
