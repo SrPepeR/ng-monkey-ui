@@ -14,7 +14,7 @@
 ></monkey-icon-button>
 
 <monkey-card
-  *ngIf="!check(showHint) || isAsideOpened || canShowHint && !isAsideOpened"
+  *ngIf="!check(showHint) || isAsideOpened || !canShowHint && isAsideOpened"
   class="aside-menu"
   [column]="true"
 
@@ -37,13 +37,10 @@
       *ngFor="let option of data"
       class="aside-menu-option"
       (onClick)="onClicked(option)"
+
+      [class.current-option]="option == currentOption"
       
       [style]="style"
-      [brutalist]="brutalist"
-      [glass]="glass"
-      [flat]="flat"
-      [ghost]="ghost"
-      [glow]="glow"
     >
       {{ isAsideOpened ? option.label : '' }}
   
@@ -79,13 +76,8 @@
       class="aside-menu-option"
       [icon]="option.icon ? option.icon : DEFAULT_ICON"
       (onClick)="onClicked(option)"
-      
-      [style]="style"
-      [brutalist]="brutalist"
-      [glass]="glass"
-      [flat]="flat"
-      [ghost]="ghost"
-      [glow]="glow"
+
+      [class.current-option]="option == currentOption"
     ></monkey-icon-button>
   </monkey-list>
 </monkey-card>

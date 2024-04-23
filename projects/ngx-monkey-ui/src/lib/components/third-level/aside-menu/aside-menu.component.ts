@@ -37,6 +37,11 @@ export class MonkeyAsideMenu extends Styleable {
   @Input() showHint?: string = 'false';
 
   /**
+   * Represents the currently selected menu option.
+   */
+  @Input() currentOption?: MenuOption;
+
+  /**
    * Emits an event when a menu option is selected.
    * @event optionSelected
    * @type {EventEmitter<MenuOption>}
@@ -96,6 +101,18 @@ export class MonkeyAsideMenu extends Styleable {
   }
 
   /**
+   * Initializes the component.
+   * This method is called after the component has been created and initialized.
+   */
+  override ngOnInit() {
+    super.ngOnInit();
+    
+    if (this.data) {
+      this.currentOption = this.data[0];
+    }
+  }
+
+  /**
    * Handles changes to the component's input properties.
    */
   override ngOnChanges() {
@@ -142,6 +159,7 @@ export class MonkeyAsideMenu extends Styleable {
    * @param option - The selected menu option.
    */
   onClicked(option: MenuOption) {
+    this.currentOption = option;
     this.navigateToPage(option);
   }
 

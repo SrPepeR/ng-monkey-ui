@@ -25,6 +25,10 @@
     >section {
       height: 100%;
     }
+
+    .current-option > * {
+      // TODO Apply style to the current option
+    }
   }
 
   @media (max-width: 600px) {
