@@ -28,6 +28,7 @@
   [glow]="glow"
 
   noMargin
+  noPadding
 >
   <monkey-list
     [style]="style"
@@ -41,6 +42,7 @@
       [class.current-option]="option == currentOption"
       
       [style]="style"
+      discreet
     >
       {{ isAsideOpened ? option.label : '' }}
   
@@ -78,6 +80,7 @@
       (onClick)="onClicked(option)"
 
       [class.current-option]="option == currentOption"
+      discreet
     ></monkey-icon-button>
   </monkey-list>
 </monkey-card>
