@@ -1,0 +1,26 @@
+/* Discreet style */
+:host:has(button.type-discreet) {
+    width: 100%;
+}
+
+button.type-discreet {
+    padding: 15px 0;
+    width: 100%;
+
+    background-color: transparent;
+    color: var(--color);
+
+    font-weight: 700;
+
+    transition: all 0.33s ease;
+
+    &:hover {
+        background-color: var(--opacity-hight);
+        color: var(--contrast-low);
+    }
+
+    &:active {
+        background-color: var(--color);
+        color: var(--contrast-hight);
+    }
+}
