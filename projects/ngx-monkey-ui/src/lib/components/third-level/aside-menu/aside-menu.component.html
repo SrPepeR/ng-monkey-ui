@@ -1,1 +1,89 @@
-<p>aside-menu works!</p>
+<monkey-icon-button
+  class="aside-menu-toggle"
+  [alt]="alt"
+  [icon]="isAsideOpened ? CLOSE_ASIDE_ICON : OPEN_ASIDE_ICON"
+  (onClick)="toggleMenu()"
+
+  [style]="style"
+  [brutalist]="brutalist"
+  [flat]="flat"
+  [ghost]="ghost"
+  [glass]="glass"
+  [glow]="glow"
+></monkey-icon-button>
+
+<monkey-card
+  *ngIf="!check(showHint) || isAsideOpened"
+  class="aside-menu"
+  [column]="true"
+
+  [style.width]="isAsideOpened ? OPENED_ASIDE_WIDTH : CLOSED_ASIDE_WIDTH"
+
+  [brutalist]="brutalist"
+  [glass]="glass"
+  [flat]="flat"
+  [ghost]="ghost"
+  [glow]="glow"
+
+  noMargin
+>
+  <monkey-list
+    [style]="style"
+    gapSize="lg"
+  >
+    <monkey-button
+      *ngFor="let option of data"
+      class="aside-menu-option"
+      (onClick)="onClicked(option)"
+      
+      [style]="style"
+      [brutalist]="brutalist"
+      [glass]="glass"
+      [flat]="flat"
+      [ghost]="ghost"
+      [glow]="glow"
+    >
+      {{ isAsideOpened ? option.label : '' }}
+  
+      <span
+        class="material-symbols-outlined"
+      >{{ option.icon ? option.icon : DEFAULT_ICON }}</span>
+    </monkey-button>
+  </monkey-list>
+</monkey-card>
+
+<monkey-card
+  *ngIf="check(showHint)"
+  class="aside-menu"
+  [column]="true"
+
+  [style.width]="isAsideOpened ? OPENED_ASIDE_WIDTH : CLOSED_ASIDE_HINT_WIDTH"
+
+  [brutalist]="brutalist"
+  [glass]="glass"
+  [flat]="flat"
+  [ghost]="ghost"
+  [glow]="glow"
+
+  noMargin
+>
+  <monkey-list
+    [style]="style"
+    gapSize="lg"
+  >
+    <monkey-icon-button
+      *ngFor="let option of data"
+      class="aside-menu-option"
+      [icon]="option.icon ? option.icon : DEFAULT_ICON"
+      [alt]="option.label"
+      (onClick)="onClicked(option)"
+      
+      [style]="style"
+      [brutalist]="brutalist"
+      [glass]="glass"
+      [flat]="flat"
+      [ghost]="ghost"
+      [glow]="glow"
+    ></monkey-icon-button>
+  </monkey-list>
+</monkey-card>
