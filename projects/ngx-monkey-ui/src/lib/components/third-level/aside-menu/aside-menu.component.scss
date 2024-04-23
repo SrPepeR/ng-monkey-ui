@@ -30,8 +30,8 @@
       width: 100%;
     }
 
-    .current-option > * {
-      // TODO Apply style to the current option
+    .current-option button {
+      background-color: var(--opacity-low);
     }
   }
 
