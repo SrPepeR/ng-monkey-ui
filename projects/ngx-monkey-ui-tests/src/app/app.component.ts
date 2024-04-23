@@ -44,6 +44,14 @@ export class AppComponent {
     },
   ];
 
+  asideOptions: MenuOption[] = [
+    { label: 'Aside 1', icon: 'navigate_next', route: '/aside1' },
+    { label: 'Aside 2', icon: 'navigate_before', route: '/aside2' },
+    { label: 'Aside extra long 3', icon: 'navigate_before', route: '/aside3' },
+    { label: 'Aside 4', route: '/aside4' },
+    { label: 'Aside 5', icon: 'navigate_next', route: '/aside5' },
+  ];
+
   buttonsGroupData: MonkeyButtonData[] = [
     new MonkeyButtonData(this.primaryStyle, 'First', () => this.onClicked('First'), 'info', 'left'),
     new MonkeyButtonData(this.secondaryStyle, 'Second', () => this.onClicked('Second')),
