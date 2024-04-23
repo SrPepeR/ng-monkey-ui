@@ -1,4 +1,5 @@
 <monkey-icon-button
+  *ngIf="!check(showHint) || !canShowHint"
   class="aside-menu-toggle"
   [alt]="alt"
   [icon]="isAsideOpened ? CLOSE_ASIDE_ICON : OPEN_ASIDE_ICON"
@@ -13,11 +14,12 @@
 ></monkey-icon-button>
 
 <monkey-card
-  *ngIf="!check(showHint) || isAsideOpened"
+  *ngIf="!check(showHint) || isAsideOpened || canShowHint && !isAsideOpened"
   class="aside-menu"
   [column]="true"
 
   [style.width]="isAsideOpened ? OPENED_ASIDE_WIDTH : CLOSED_ASIDE_WIDTH"
+  (mouseleave)="closeMenu()"
 
   [brutalist]="brutalist"
   [glass]="glass"
@@ -53,11 +55,12 @@
 </monkey-card>
 
 <monkey-card
-  *ngIf="check(showHint)"
+  *ngIf="check(showHint) && canShowHint && !isAsideOpened"
   class="aside-menu"
   [column]="true"
 
   [style.width]="isAsideOpened ? OPENED_ASIDE_WIDTH : CLOSED_ASIDE_HINT_WIDTH"
+  (mouseenter)="openMenu()"
 
   [brutalist]="brutalist"
   [glass]="glass"
@@ -75,7 +78,6 @@
       *ngFor="let option of data"
       class="aside-menu-option"
       [icon]="option.icon ? option.icon : DEFAULT_ICON"
-      [alt]="option.label"
       (onClick)="onClicked(option)"
       
       [style]="style"

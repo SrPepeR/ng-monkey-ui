@@ -3,6 +3,8 @@ import { Styleable } from '../../../bases/styleable.base';
 import { ThemeService } from '../../../services/theme.service';
 import { MenuOption } from '../../../objects/interfaces/menu-option.interface';
 import { Router } from '@angular/router';
+import { MonkeyScreen } from '../../../services/screen/screen';
+import { ScreenSize } from '../../../services/screen/screen.enum';
 
 @Component({
   selector: 'monkey-aside-menu',
@@ -62,6 +64,11 @@ export class MonkeyAsideMenu extends Styleable {
   CLOSED_ASIDE_HINT_WIDTH: string = '80px';
 
   /**
+   * Determines whether the hint should be shown or not.
+   */
+  canShowHint: boolean = true;
+
+  /**
    * The icon used for closing the aside menu.
    */
   CLOSE_ASIDE_ICON: string = 'arrow_back';
@@ -88,10 +95,52 @@ export class MonkeyAsideMenu extends Styleable {
     super();
   }
 
+  /**
+   * Handles changes to the component's input properties.
+   */
+  override ngOnChanges() {
+    super.ngOnChanges();
+
+    this.screenService.screenChanges$.subscribe((currentScreen: MonkeyScreen) => {
+      if (!this.check(this.showHint)) {
+        this.canShowHint = false;
+        return;
+      }
+
+      this.canShowHint = currentScreen.isScreenSizeUp(ScreenSize.MD);
+    });
+  }
+
+  /**
+   * Toggles the menu between opened and closed states.
+   */
   toggleMenu() {
     this.isAsideOpened = !this.isAsideOpened;
   }
 
+  /**
+   * Opens the aside menu.
+   */
+  openMenu() {
+    if (this.check(this.showHint) && !this.isAsideOpened) {
+      this.isAsideOpened = true;
+    }
+  }
+
+  /**
+   * Closes the aside menu.
+   */
+  closeMenu() {
+    if (this.check(this.showHint) && this.isAsideOpened) {
+      this.isAsideOpened = false;
+    }
+  }
+
+  /**
+   * Handles the click event for a menu option.
+   * 
+   * @param option - The selected menu option.
+   */
   onClicked(option: MenuOption) {
     this.navigateToPage(option);
   }
