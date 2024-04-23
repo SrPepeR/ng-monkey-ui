@@ -60,6 +60,10 @@ export class ComponentsStylesService {
       componentType = 'type-glow';
     }
 
+    if (this.check(component.discreet)) {
+      componentType = 'type-discreet';
+    }
+
     classList.push(componentType);
 
     return classList;

@@ -32,6 +32,11 @@ export class MonkeyIconButton extends Styleable implements OnChanges {
    */
   @Input() icon?: string = 'warning';
 
+	/**
+	 * The discreet type of the component.
+	 */
+	@Input() discreet?: string = 'false';
+
   /**
    * Event emitted when the button is clicked.
    */
