@@ -219,12 +219,23 @@ export class Styleable implements OnInit, OnChanges {
 		const asideMenuWidth = asideMenu?.clientWidth || 0;
 
 		this.changeMainMarginLeft(asideMenuWidth);
+		this.addStylesToAsideMenuWhenMenu();
 	}
 
 	private changeMainMarginLeft(pixels: number) {
 		const main = document.querySelector('main');
 		if (main) {
 			main.style.marginLeft = `${pixels}px`;
+		}
+	}
+
+	private addStylesToAsideMenuWhenMenu() {
+		const menu: HTMLElement | null = document.querySelector('monkey-menu .menu-content');
+		const asideMenu: HTMLElement | null = document.querySelector('monkey-aside-menu .aside-menu');
+
+		if (menu && asideMenu) {
+			(asideMenu as HTMLElement).style.top = `${menu.clientHeight}px`;
+			(asideMenu as HTMLElement).style.height = `${document.body.clientHeight - menu.clientHeight}px`;
 		}
 	}
 
