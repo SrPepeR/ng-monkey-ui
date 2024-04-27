@@ -146,7 +146,6 @@ export class Styleable implements OnInit, OnChanges {
 		this.screenService.screenChanges$.subscribe((newCurrentScreen: MonkeyScreen) => {
 			this.currentScreen = newCurrentScreen;
 			this.addAllClasses();
-			this.checkSpecialComponents();
 		});
 	}
 
@@ -157,6 +156,7 @@ export class Styleable implements OnInit, OnChanges {
 		this.classList = this.componentStylesService.generateClassList(this);
 		this.checkGeneralStyles();
 		this.addAditionalClasses();
+		this.checkSpecialComponents();
 	}
 
 	/**
@@ -197,14 +197,17 @@ export class Styleable implements OnInit, OnChanges {
 	}
 
 	private manageAsideMenu() {
-		const asideMenu = document.querySelector('.aside-menu');
-		if (!asideMenu) {
-			return;
-		}
+		const asideMenu = document.querySelector('.aside-menu.hinted');
+		const asideMenuWidth = asideMenu?.clientWidth || 0;
 
-		if (asideMenu.classList.contains('hinted')) {
-			// If the aside menu is hinted, we need to push the content to the right.
-			// TODO Push the content to the right.
+		this.changeMainMarginLeft(asideMenuWidth);
+	}
+
+	private changeMainMarginLeft(pixels: number) {
+		const main = document.querySelector('main');
+		if (main) {
+			main.style.marginLeft = `${pixels}px`;
+			console.log('main.style.marginLeft', main.style.marginLeft);
 		}
 	}
 
