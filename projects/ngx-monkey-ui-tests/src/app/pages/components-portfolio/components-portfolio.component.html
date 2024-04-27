@@ -1,283 +1,147 @@
 <!-- STYLES DEMOS -->
-<monkey-card>
-  <monkey-buttons-group
-      [data]="buttonsGroupData"
-      gap
-  ></monkey-buttons-group>
-
-  <monkey-list
-      [style]="currentStyle"
-      separators
-      flexCenter
-  >
-      <span>Primer elemento</span>
-
-      <monkey-switch
-          (onSwitch)="onSwitch('default', $event)"
-          [style]="currentStyle"
-      />
-  
-      <monkey-checkbox
-          (onCheckChange)="onCheck('default', $event)"
-          [style]="currentStyle"
-          label="Default"
-      />
-  
-      <monkey-loader
-          lg
-          [style]="currentStyle"
-      ></monkey-loader>
-  </monkey-list>
-
-  <monkey-image
-      [style]="currentStyle"
-      src="https://via.placeholder.com/100"
-      alt="Imagen de prueba"
-      title="Monkey image con estilo default"
-  ></monkey-image>
-
-  <monkey-icon-button
-      [style]="currentStyle"
-      icon="add"
-      alt="Monkey icon button con estilo default"
-      (onClick)="onClicked('default')"
-  ></monkey-icon-button>
-
-  <monkey-avatar
-      [style]="currentStyle"
-      image="https://via.placeholder.com/33"
-      errorImage="https://via.placeholder.com/50"
-      form="rounded"
-      labeled
-      md
-      text="Monkey avatar"
-  ></monkey-avatar>
-</monkey-card>
-
-<monkey-card
-  brutalist
+<monkey-list
+    gapSize="lg"
 >
-  <monkey-button
-      brutalist
-      [style]="currentStyle"
-      (onClick)="onClicked('brutalist')"
-  >Brutalist
-  </monkey-button>
+    <monkey-card
+        flexWrap
 
-  <monkey-switch
-      brutalist
-      (onSwitch)="onSwitch('brutalist', $event)"
-      [style]="currentStyle"
-  />
+        [brutalist]="currentType === 'Brutalist' ? '': 'false'"
+        [glass]="currentType === 'Glass' ? '': 'false'"
+        [flat]="currentType === 'Flat' ? '': 'false'"
+        [ghost]="currentType === 'Ghost' ? '': 'false'"
+        [glow]="currentType === 'Glow' ? '': 'false'"
+    >
+        <monkey-list
+            [style]="currentStyle"
+            flexCenter
+            gapSize="md"
+            flexWrap
+        >
+            <monkey-content-header
+                [style]="currentStyle"
+                image="https://th.bing.com/th/id/OIP.6bDf-HbrDJFPfyRPJTYVZgHaG7?rs=1&pid=ImgDetMain"
+                header="Monkey UI"
+                subHeader="Components portfolio"
+            />
 
-  <monkey-checkbox
-      brutalist
-      (onCheckChange)="onCheck('brutalist', $event)"
-      [style]="currentStyle"
-      label="Brutalist"
-  />
+            <monkey-buttons-group
+                [data]="componentsTypes"
+                flexWrap
+                gap
 
-  <monkey-loader
-      brutalist
-      lg
-      [style]="currentStyle"
-  ></monkey-loader>
+                [brutalist]="currentType === 'Brutalist' ? '': 'false'"
+                [glass]="currentType === 'Glass' ? '': 'false'"
+                [flat]="currentType === 'Flat' ? '': 'false'"
+                [ghost]="currentType === 'Ghost' ? '': 'false'"
+                [glow]="currentType === 'Glow' ? '': 'false'"
+            />
+        </monkey-list>
+    </monkey-card>
 
-  <monkey-image
-      brutalist
-      [style]="currentStyle"
-      src="https://via.placeholder.com/100"
-      alt="Imagen de prueba"
-      title="Monkey image con estilo brutalist"
-  ></monkey-image>
+    <monkey-card
+        [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+        [glass]="currentType  === 'Glass' ? '': 'false'"
+        [flat]="currentType  === 'Flat' ? '': 'false'"
+        [ghost]="currentType  === 'Ghost' ? '': 'false'"
+        [glow]="currentType  === 'Glow' ? '': 'false'"
+    >
+        <monkey-list
+            [style]="currentStyle"
+            horizontal
+            flexCenter
+            gapSize="lg"
+            flexWrap
+        >
+            <monkey-avatar
+                [style]="currentStyle"
+                image="https://via.placeholder.com/33"
+                errorImage="https://via.placeholder.com/50"
+                form="rounded"
+                labeled
+                md
+                text="Monkey avatar"
+            />
 
-  <monkey-icon-button
-      brutalist
-      alt="Monkey icon button con estilo brutalist"
-      [style]="currentStyle"
-      icon="add"
-      (onClick)="onClicked('default')"
-  ></monkey-icon-button>
-</monkey-card>
+            <monkey-list
+                [style]="currentStyle"
+                separators
+                flexCenter
+            >
+                <span>Text</span>
 
-<monkey-card
-  glass
->
-  <monkey-button
-      glass
-      [style]="currentStyle"
-      (onClick)="onClicked('glass')"
-  >Glassmorphism
-  </monkey-button>
+                <monkey-switch
+                    (onSwitch)="onSwitch(currentType, $event)"
+                    [style]="currentStyle"
 
-  <monkey-switch
-      glass
-      (onSwitch)="onSwitch('glass', $event)"
-      [style]="currentStyle"
-  />
+                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                    [glass]="currentType  === 'Glass' ? '': 'false'"
+                    [flat]="currentType  === 'Flat' ? '': 'false'"
+                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                    [glow]="currentType  === 'Glow' ? '': 'false'"
+                />
 
-  <monkey-checkbox
-      glass
-      (onCheckChange)="onCheck('glass', $event)"
-      [style]="currentStyle"
-      label="Glassmorphism"
-  />
+                <monkey-checkbox
+                    (onCheckChange)="onCheck(currentType, $event)"
+                    [style]="currentStyle"
+                    [label]="currentType"
 
-  <monkey-loader
-      glass
-      lg
-      [style]="currentStyle"
-  ></monkey-loader>
+                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                    [glass]="currentType  === 'Glass' ? '': 'false'"
+                    [flat]="currentType  === 'Flat' ? '': 'false'"
+                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                    [glow]="currentType  === 'Glow' ? '': 'false'"
+                />
 
-  <monkey-image
-      glass
-      [style]="currentStyle"
-      src="https://via.placeholder.com/100"
-      alt="Imagen de prueba"
-      title="Monkey image con estilo brutalist"
-  ></monkey-image>
+                <monkey-loader
+                    lg
+                    [style]="currentStyle"
 
-  <monkey-icon-button
-      glass
-      alt="Monkey icon button con estilo glassmorphism"
-      [style]="currentStyle"
-      icon="add"
-      (onClick)="onClicked('default')"
-  ></monkey-icon-button>
-</monkey-card>
+                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                    [glass]="currentType  === 'Glass' ? '': 'false'"
+                    [flat]="currentType  === 'Flat' ? '': 'false'"
+                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                    [glow]="currentType  === 'Glow' ? '': 'false'"
+                />
+            </monkey-list>
+                
+            <monkey-icon-button
+                [alt]="currentType + ' monkey icon button'"
+                [style]="currentStyle"
+                icon="add"
+                (onClick)="onClicked('default')"
 
-<monkey-card
-  flat
->
-  <monkey-button
-      flat
-      [style]="currentStyle"
-      (onClick)="onClicked('flat')"
-  >Flat
-  </monkey-button>
+                [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                [glass]="currentType  === 'Glass' ? '': 'false'"
+                [flat]="currentType  === 'Flat' ? '': 'false'"
+                [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                [glow]="currentType  === 'Glow' ? '': 'false'"
+            />
 
-  <monkey-switch
-      flat
-      (onSwitch)="onSwitch('flat', $event)"
-      [style]="currentStyle"
-  />
+            <monkey-image
+                [style]="currentStyle"
+                src="https://via.placeholder.com/100"
+                alt="Test image"
+                [title]="currentType + ' Monkey image'"
 
-  <monkey-checkbox
-      flat
-      (onCheckChange)="onCheck('flat', $event)"
-      [style]="currentStyle"
-      label="Flat"
-  />
+                [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                [glass]="currentType  === 'Glass' ? '': 'false'"
+                [flat]="currentType  === 'Flat' ? '': 'false'"
+                [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                [glow]="currentType  === 'Glow' ? '': 'false'"
+            />
 
-  <monkey-loader
-      flat
-      lg
-      [style]="currentStyle"
-  ></monkey-loader>
+            <monkey-dropdown
+                [style]="currentStyle"
+                alt="Test dropdown"
+                [options]="dropdownOptions"
+                (selectedChanged)="onSelectedChanged($event)"
 
-  <monkey-image
-      flat
-      [style]="currentStyle"
-      src="https://via.placeholder.com/100"
-      alt="Imagen de prueba"
-      title="Monkey image con estilo brutalist"
-  ></monkey-image>
-
-  <monkey-icon-button
-      flat
-      alt="Monkey icon button con estilo flat"
-      [style]="currentStyle"
-      icon="add"
-      (onClick)="onClicked('default')"
-  ></monkey-icon-button>
-</monkey-card>
-
-<monkey-card
-  ghost
->
-  <monkey-button
-      ghost
-      [style]="currentStyle"
-      (onClick)="onClicked('ghost')"
-  >Ghost</monkey-button>
-
-  <monkey-switch
-      ghost
-      (onSwitch)="onSwitch('ghost', $event)"
-      [style]="currentStyle"
-  />
-
-  <monkey-checkbox
-      ghost
-      (onCheckChange)="onCheck('ghost', $event)"
-      [style]="currentStyle"
-      label="Ghost"
-  />
-
-  <monkey-loader
-      ghost
-      lg
-      [style]="currentStyle"
-  ></monkey-loader>
-
-  <monkey-image
-      ghost
-      [style]="currentStyle"
-      src="https://via.placeholder.com/100"
-      alt="Imagen de prueba"
-      title="Monkey image con estilo brutalist"
-  ></monkey-image>
-
-  <monkey-icon-button
-      ghost
-      alt="Monkey icon button con estilo ghost"
-      [style]="currentStyle"
-      icon="add"
-      (onClick)="onClicked('default')"
-  ></monkey-icon-button>
-</monkey-card>
-
-<monkey-card
-  glow
->
-  <monkey-button
-      glow
-      [style]="currentStyle"
-      (onClick)="onClicked('glow')"
-  >Glow</monkey-button>
-
-  <monkey-switch
-      glow
-      (onSwitch)="onSwitch('glow', $event)"
-      [style]="currentStyle"
-  />
-
-  <monkey-checkbox
-      glow
-      (onCheckChange)="onCheck('glow', $event)"
-      [style]="currentStyle"
-      label="Glow"
-  />
-
-  <monkey-loader
-      glow
-      lg
-      [style]="currentStyle"
-  ></monkey-loader>
-
-  <monkey-image
-      glow
-      [style]="currentStyle"
-      src="https://via.placeholder.com/100"
-      alt="Imagen de prueba"
-      title="Monkey image con estilo brutalist"
-  ></monkey-image>
-
-  <monkey-icon-button
-      glow
-      alt="Monkey icon button con estilo glow"
-      [style]="currentStyle"
-      icon="add"
-      (onClick)="onClicked('default')"
-  ></monkey-icon-button>
-</monkey-card>
+                [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                [glass]="currentType  === 'Glass' ? '': 'false'"
+                [flat]="currentType  === 'Flat' ? '': 'false'"
+                [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                [glow]="currentType  === 'Glow' ? '': 'false'"
+            />
+        </monkey-list>
+    </monkey-card>
+</monkey-list>
