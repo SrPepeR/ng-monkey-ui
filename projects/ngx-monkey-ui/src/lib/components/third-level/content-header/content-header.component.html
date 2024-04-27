@@ -1,1 +1,57 @@
-<p>content-header works!</p>
+<monkey-image
+  [style]="style"
+  [src]="image"
+  [alt]="header"
+  [width]="imageSize"
+  [height]="imageSize"
+  fullRounded
+  
+  [brutalist]="brutalist"
+  [glass]="glass"
+  [flat]="flat"
+  [ghost]="ghost"
+  [glow]="glow"
+></monkey-image>
+
+<div
+  class="texts"
+>
+  <span
+    class="content-header-header"
+    [class.dark-theme]="isDarkMode$ | async"
+  >
+    {{ header }}
+  </span>
+  
+  <span
+    *ngIf="subHeader"
+    class="content-header-subheader"
+    [class.dark-theme]="isDarkMode$ | async"
+  >
+    {{ subHeader }}
+  </span>
+</div>
+
+<monkey-button
+  *ngIf="action"
+  [style]="style"
+  (onClick)="action.action()"
+  
+  [brutalist]="brutalist"
+  [glass]="glass"
+  [flat]="flat"
+  [ghost]="ghost"
+  [glow]="glow"
+>
+  <span
+    *ngIf="action.icon && action.iconPosition === 'left'"
+    class="material-symbols-outlined"
+  >{{ action.icon }}</span>
+
+  {{ action.text }}
+
+  <span
+    *ngIf="action.icon && action.iconPosition === 'right'"
+    class="material-symbols-outlined"
+  >{{ action.icon }}</span>
+</monkey-button>
