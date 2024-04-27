@@ -207,7 +207,6 @@ export class Styleable implements OnInit, OnChanges {
 		const main = document.querySelector('main');
 		if (main) {
 			main.style.marginLeft = `${pixels}px`;
-			console.log('main.style.marginLeft', main.style.marginLeft);
 		}
 	}
 
