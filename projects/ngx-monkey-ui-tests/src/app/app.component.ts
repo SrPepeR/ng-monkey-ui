@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DropdownOption, MenuOption, MonkeyAlertService, MonkeyFontService, MonkeyScreenService, MonkeyStyle } from 'ngx-monkey-ui';
-import { MonkeyButtonData } from 'projects/ngx-monkey-ui/src/lib/objects/classes/button-data.class';
 import { ScreenOrientation } from 'projects/ngx-monkey-ui/src/lib/services/screen/screen.enum';
 
 @Component({
@@ -8,144 +8,103 @@ import { ScreenOrientation } from 'projects/ngx-monkey-ui/src/lib/services/scree
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-
-  primaryStyle: MonkeyStyle = MonkeyStyle.PRIMARY;
-  secondaryStyle: MonkeyStyle = MonkeyStyle.SECONDARY;
-  tertiaryStyle: MonkeyStyle = MonkeyStyle.TERTIARY;
-  warningStyle: MonkeyStyle = MonkeyStyle.WARNING;
-  dangerStyle: MonkeyStyle = MonkeyStyle.DANGER;
-  successStyle: MonkeyStyle = MonkeyStyle.SUCCESS;
-  infoStyle: MonkeyStyle = MonkeyStyle.INFO;
+export class AppComponent implements OnInit {
+  
+  currentStyle: MonkeyStyle = MonkeyStyle.PRIMARY;
 
   title = 'ngx-monkey-ui-tests';
-  currentStyle: MonkeyStyle = this.primaryStyle;
 
-  offSwitchText: string = 'Off';
-  onSwitchText: string = 'On';
+  menuRoutes: MenuOption[] = [];
 
-  dropdownOptions: DropdownOption[] = [
+  fontOptions: DropdownOption[] = [
     { label: 'Dosis', value: '1' },
     { label: 'Titillium Web', value: '2' },
     { label: 'Red Hat Display', value: '3' },
   ];
 
-  menuOptions: MenuOption[] = [
-    { label: 'Option 1', icon: 'info', route: '/option1' },
-    { label: 'Option 2', icon: 'info', route: '/option2' },
-    {
-      label: 'Rotations', children: [
-        { label: 'Toggle full screen', icon: 'fullscreen', route: '/toggle-fullscreen' },
-        { label: 'Locked', icon: 'screen_lock_rotation', route: '/locked' },
-        { label: 'Unlocked', icon: 'screen_rotation', route: '/unlocked' },
-        { label: 'portrait', icon: 'screen_lock_portrait', route: '/portrait' },
-        { label: 'landscape', icon: 'screen_lock_landscape', route: '/landscape' },
-      ]
-    },
+  screenOptions: DropdownOption[] = [
+    { label: 'Toggle fullscreen', icon: 'fullscreen', value: 'toggle-fullscreen' },
+    { label: 'Lock rotation', icon: 'screen_lock_rotation', value: 'locked' },
+    { label: 'Unlock rotation', icon: 'screen_rotation', value: 'unlocked' },
+    { label: 'Portrait', icon: 'screen_lock_portrait', value: 'portrait' },
+    { label: 'Landscape', icon: 'screen_lock_landscape', value: 'landscape' },
   ];
 
-  asideOptions: MenuOption[] = [
-    { label: 'Aside 1', icon: 'navigate_next', route: '/aside1' },
-    { label: 'Aside 2', icon: 'navigate_before', route: '/aside2' },
-    { label: 'Aside extra long 3', icon: 'navigate_before', route: '/aside3' },
-    { label: 'Aside 4', route: '/aside4' },
-    { label: 'Aside 5', icon: 'navigate_next', route: '/aside5' },
-  ];
-
-  contentHeaderAction: MonkeyButtonData = new MonkeyButtonData(this.primaryStyle, 'Show alert', () => this.onClicked('Content header'), 'info', 'right');
-
-  buttonsGroupData: MonkeyButtonData[] = [
-    new MonkeyButtonData(this.primaryStyle, 'First', () => this.onClicked('First'), 'info', 'left'),
-    new MonkeyButtonData(this.secondaryStyle, 'Second', () => this.onClicked('Second')),
-    new MonkeyButtonData(this.tertiaryStyle, 'Third', () => this.onClicked('Third'), 'info', 'right'),
+  styleOptions: MenuOption[] = [
+    { label: 'Primary', icon: 'palette', route: 'primary' },
+    { label: 'Secondary', icon: 'palette', route: 'secondary' },
+    { label: 'Tertiary', icon: 'palette', route: 'tertiary' },
+    { label: 'Warning', icon: 'palette', route: 'warning' },
+    { label: 'Danger', icon: 'palette', route: 'danger' },
+    { label: 'Success', icon: 'palette', route: 'success' },
+    { label: 'Info', icon: 'palette', route: 'info' },
   ];
 
   constructor(
     private alertService: MonkeyAlertService,
     private fontService: MonkeyFontService,
     private screenService: MonkeyScreenService,
+    private router: Router,
   ) {
     this.fontService.addDosisFont();
+    this.setStyle();
   }
 
-  changeStyle(newStyle: MonkeyStyle): void {
-    this.currentStyle = newStyle;
+  ngOnInit() {
+    this.generateRoutes();
   }
 
-  onNavigated(option: MenuOption) {
-    if (!this.checkSelectedRouteScreenModifier(option)) {
-      this.alertService.infos(['Navigating to ' + option.label + '.'], true, 'Info');
-      return;
-    }
+  private generateRoutes() {
+    const homeRoute = `/home/${this.currentStyle}`;
+    const componentsRoute = `/components/${this.currentStyle}`;
 
-    this.applyScreenModifier(option);
+    this.menuRoutes = [
+      { label: 'Example', icon: 'info', route: homeRoute },
+      { label: 'Comnponents', icon: 'info', route: componentsRoute },
+    ];
   }
 
-  private checkSelectedRouteScreenModifier(option: MenuOption): boolean {
-    let isScreenModifierOption = false;
-    this.menuOptions.forEach((menuOption: MenuOption) => {
-      if (menuOption.children) {
-        menuOption.children.forEach((childMenuOption: MenuOption) => {
-          if (childMenuOption.route === option.route) {
-            isScreenModifierOption = true;
-          }
-        });
-      }
-    });
-
-    return isScreenModifierOption;
-  }
-
-  private applyScreenModifier(option: MenuOption): void {
-    switch (option.route) {
-      case '/toggle-fullscreen':
-        this.screenService.toggleFullScreen();
-        break;
-      case '/locked':
-        this.screenService.lockOrientation()
-          .catch((error) => {
-            this.alertService.dangers([error], true, 'Error');
-          });
-        break;
-      case '/unlocked':
-        this.screenService.unlockOrientation()
-          .catch((error) => {
-            this.alertService.dangers([error], true, 'Error');
-          });
-        break;
-      case '/portrait':
-        this.screenService.lockOrientation(ScreenOrientation.PORTRAIT)
-          .catch((error) => {
-            this.alertService.dangers([error], true, 'Error');
-          });
-        break;
-      case '/landscape':
-        this.screenService.lockOrientation(ScreenOrientation.LANDSCAPE)
-          .catch((error) => {
-            this.alertService.dangers([error], true, 'Error');
-          });
-        break;
-    }
-  }
-
+  // Theme settings
   themeChanged(): void {
     this.alertService.infos(['Tema cambiado.'], true, 'Info');
   }
 
-  onClicked(fromButton: string): void {
-    this.alertService.warnings(['Botón ' + fromButton + ' presionado.'], true, 'Warning');
+  // Style settings
+  changeStyle(newStyle: MenuOption): void {
+    this.setStyle(newStyle.route);
+    this.generateRoutes();
+    this.router.navigate([this.router.url.split('/')[1], newStyle.route]);
   }
 
-  onSwitch(fromSwitch: string, checked: Boolean): void {
-    this.alertService.dangers(['Switch ' + fromSwitch + '.', checked ? 'ACTIVADO' : 'DESACTIVADO'], true, 'Danger');
+  private setStyle(style?: string): void {
+    switch (style) {
+      case 'secondary':
+        this.currentStyle = MonkeyStyle.SECONDARY;
+        break;
+      case 'tertiary':
+        this.currentStyle = MonkeyStyle.TERTIARY;
+        break;
+      case 'warning':
+        this.currentStyle = MonkeyStyle.WARNING;
+        break;
+      case 'danger':
+        this.currentStyle = MonkeyStyle.DANGER;
+        break;
+      case 'success':
+        this.currentStyle = MonkeyStyle.SUCCESS;
+        break;
+      case 'info':
+        this.currentStyle = MonkeyStyle.INFO;
+        break;
+      default:
+        this.currentStyle = MonkeyStyle.PRIMARY;
+        break;
+    }
   }
 
-  onCheck(fromCheckbox: string, checked: Boolean): void {
-    this.alertService.successes(['CheckBox ' + fromCheckbox + '.', checked ? 'ACTIVADO' : 'DESACTIVADO'], true, 'Success');
-  }
-
-  onDropdownChanged(option: DropdownOption) {
-    switch (option.value) {
+  // Font settings
+  changeFont(newFont: DropdownOption) {
+    switch (newFont.value) {
       case '1':
         this.fontService.addDosisFont();
         break;
@@ -154,6 +113,43 @@ export class AppComponent {
         break;
       case '3':
         this.fontService.addRedHatDisplayFont();
+        break;
+    }
+  }
+
+  // Screen settings
+  applyScreenSetting(screenSetting: DropdownOption) {
+    this.applyScreenModifier(screenSetting.value);
+  }
+
+  private applyScreenModifier(option: string): void {
+    switch (option) {
+      case 'toggle-fullscreen':
+        this.screenService.toggleFullScreen();
+        break;
+      case 'locked':
+        this.screenService.lockOrientation()
+          .catch((error) => {
+            this.alertService.dangers([error], true, 'Error');
+          });
+        break;
+      case 'unlocked':
+        this.screenService.unlockOrientation()
+          .catch((error) => {
+            this.alertService.dangers([error], true, 'Error');
+          });
+        break;
+      case 'portrait':
+        this.screenService.lockOrientation(ScreenOrientation.PORTRAIT)
+          .catch((error) => {
+            this.alertService.dangers([error], true, 'Error');
+          });
+        break;
+      case 'landscape':
+        this.screenService.lockOrientation(ScreenOrientation.LANDSCAPE)
+          .catch((error) => {
+            this.alertService.dangers([error], true, 'Error');
+          });
         break;
     }
   }
