@@ -8,13 +8,10 @@
 
   .aside-menu {
     position: fixed;
-    top: 0;
     left: 0;
 
-    height: 100%;
-
     z-index: 2;
-    overflow: hidden;
+    overflow-x: hidden;
 
     transition: 0.5s;
 
@@ -24,15 +21,27 @@
 
     >section {
       height: 100%;
+      box-sizing: border-box;
     }
 
     monkey-list {
       width: 100%;
+      height: 100%;
     }
 
     .current-option button {
       background-color: var(--opacity-low);
     }
+  }
+
+  .aside-menu-toggle + .aside-menu {
+    monkey-list {
+      padding-top: 65px;
+    }
+  }
+
+  monkey-card, monkey-card * {
+    border-radius: 0 !important;
   }
 
   @media (max-width: 600px) {
