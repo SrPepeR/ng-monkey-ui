@@ -16,28 +16,34 @@ export class AppComponent implements OnInit {
 
   menuRoutes: MenuOption[] = [];
 
-  fontOptions: DropdownOption[] = [
-    { label: 'Dosis', value: '1' },
-    { label: 'Titillium Web', value: '2' },
-    { label: 'Red Hat Display', value: '3' },
-  ];
-
-  screenOptions: DropdownOption[] = [
-    { label: 'Toggle fullscreen', icon: 'fullscreen', value: 'toggle-fullscreen' },
-    { label: 'Lock rotation', icon: 'screen_lock_rotation', value: 'locked' },
-    { label: 'Unlock rotation', icon: 'screen_rotation', value: 'unlocked' },
-    { label: 'Portrait', icon: 'screen_lock_portrait', value: 'portrait' },
-    { label: 'Landscape', icon: 'screen_lock_landscape', value: 'landscape' },
+  fontOptions: MenuOption[] = [
+    { label: 'Dosis', icon: 'brand_family', route: 'font-dosis' },
+    { label: 'Titillium Web', icon: 'brand_family', route: 'font-titillium' },
+    { label: 'Red Hat Display', icon: 'brand_family', route: 'font-red' },
   ];
 
   styleOptions: MenuOption[] = [
-    { label: 'Primary', icon: 'palette', route: 'primary' },
-    { label: 'Secondary', icon: 'palette', route: 'secondary' },
-    { label: 'Tertiary', icon: 'palette', route: 'tertiary' },
-    { label: 'Warning', icon: 'palette', route: 'warning' },
-    { label: 'Danger', icon: 'palette', route: 'danger' },
-    { label: 'Success', icon: 'palette', route: 'success' },
-    { label: 'Info', icon: 'palette', route: 'info' },
+    { label: 'Primary', icon: 'palette', route: 'style-primary' },
+    { label: 'Secondary', icon: 'palette', route: 'style-secondary' },
+    { label: 'Tertiary', icon: 'palette', route: 'style-tertiary' },
+    { label: 'Warning', icon: 'palette', route: 'style-warning' },
+    { label: 'Danger', icon: 'palette', route: 'style-danger' },
+    { label: 'Success', icon: 'palette', route: 'style-success' },
+    { label: 'Info', icon: 'palette', route: 'style-info' },
+  ];
+
+  screenOptions: MenuOption[] = [
+    { label: 'Toggle fullscreen', icon: 'fullscreen', route: 'screen-toggleFullscreen' },
+    { label: 'Lock rotation', icon: 'screen_lock_rotation', route: 'screen-locked' },
+    { label: 'Unlock rotation', icon: 'screen_rotation', route: 'screen-unlocked' },
+    { label: 'Portrait', icon: 'screen_lock_portrait', route: 'screen-portrait' },
+    { label: 'Landscape', icon: 'screen_lock_landscape', route: 'screen-landscape' },
+  ];
+
+  asideOptions: MenuOption[] = [
+    ...this.fontOptions,
+    ...this.styleOptions,
+    ...this.screenOptions,
   ];
 
   constructor(
@@ -64,16 +70,47 @@ export class AppComponent implements OnInit {
     ];
   }
 
+  asideSelected(option: MenuOption) {
+    const optionType = option.route!.split('-')[0];
+
+    switch (optionType) {
+      case 'font':
+        this.changeFont(option.route!.split('-')[1]);
+        break;
+      case 'style':
+        this.changeStyle(option.route!.split('-')[1]);
+        break;
+      case 'screen':
+        this.applyScreenSetting(option.route!.split('-')[1]);
+        break;
+    }
+  }
+
   // Theme settings
   themeChanged(): void {
     this.alertService.infos(['Tema cambiado.'], true, 'Info');
   }
 
+  // Font settings
+  changeFont(newFont: string) {
+    switch (newFont) {
+      case 'dosis':
+        this.fontService.addDosisFont();
+        break;
+      case 'titillium':
+        this.fontService.addTitilliumWebFont();
+        break;
+      case 'red':
+        this.fontService.addRedHatDisplayFont();
+        break;
+    }
+  }
+
   // Style settings
-  changeStyle(newStyle: MenuOption): void {
-    this.setStyle(newStyle.route);
+  private changeStyle(newStyle: string): void {
+    this.setStyle(newStyle);
     this.generateRoutes();
-    this.router.navigate([this.router.url.split('/')[1], newStyle.route]);
+    this.router.navigate([this.router.url.split('/')[1], newStyle]);
   }
 
   private setStyle(style?: string): void {
@@ -102,29 +139,14 @@ export class AppComponent implements OnInit {
     }
   }
 
-  // Font settings
-  changeFont(newFont: DropdownOption) {
-    switch (newFont.value) {
-      case '1':
-        this.fontService.addDosisFont();
-        break;
-      case '2':
-        this.fontService.addTitilliumWebFont();
-        break;
-      case '3':
-        this.fontService.addRedHatDisplayFont();
-        break;
-    }
-  }
-
   // Screen settings
-  applyScreenSetting(screenSetting: DropdownOption) {
-    this.applyScreenModifier(screenSetting.value);
+  applyScreenSetting(screenSetting: string) {
+    this.applyScreenModifier(screenSetting);
   }
 
   private applyScreenModifier(option: string): void {
     switch (option) {
-      case 'toggle-fullscreen':
+      case 'toggleFullscreen':
         this.screenService.toggleFullScreen();
         break;
       case 'locked':
