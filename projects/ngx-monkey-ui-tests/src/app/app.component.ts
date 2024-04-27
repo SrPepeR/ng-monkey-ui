@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DropdownOption, MenuOption, MonkeyAlertService, MonkeyFontService, MonkeyScreenService, MonkeyStyle } from 'ngx-monkey-ui';
+import { MenuOption, MonkeyAlertService, MonkeyFontService, MonkeyScreenService, MonkeyStyle } from 'ngx-monkey-ui';
 import { ScreenOrientation } from 'projects/ngx-monkey-ui/src/lib/services/screen/screen.enum';
 
 @Component({
@@ -23,13 +23,13 @@ export class AppComponent implements OnInit {
   ];
 
   styleOptions: MenuOption[] = [
-    { label: 'Primary', icon: 'palette', route: 'style-primary' },
-    { label: 'Secondary', icon: 'palette', route: 'style-secondary' },
-    { label: 'Tertiary', icon: 'palette', route: 'style-tertiary' },
-    { label: 'Warning', icon: 'palette', route: 'style-warning' },
-    { label: 'Danger', icon: 'palette', route: 'style-danger' },
-    { label: 'Success', icon: 'palette', route: 'style-success' },
-    { label: 'Info', icon: 'palette', route: 'style-info' },
+    { label: 'Primary color', icon: 'looks_one', route: 'style-primary' },
+    { label: 'Secondary color', icon: 'looks_two', route: 'style-secondary' },
+    { label: 'Tertiary color', icon: 'looks_3', route: 'style-tertiary' },
+    { label: 'Warning color', icon: 'warning', route: 'style-warning' },
+    { label: 'Danger color', icon: 'dangerous', route: 'style-danger' },
+    { label: 'Success color', icon: 'done', route: 'style-success' },
+    { label: 'Info color', icon: 'info', route: 'style-info' },
   ];
 
   screenOptions: MenuOption[] = [
