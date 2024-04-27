@@ -61,6 +61,16 @@ export class Styleable implements OnInit, OnChanges {
 
 	// GENERAL STYLES
 	/**
+	 * Whether the component should have flex wrap.
+	 */
+	@Input() flexWrap?: string = 'false';
+	
+	/**
+	 * Whether the component should have flex wrap-reverse.
+	 */
+	@Input() flexWrapReverse?: string = 'false';
+
+	/**
 	 * Whether the component should have flex-start alignment.
 	 */
 	@Input() flexStart?: string = 'false';
@@ -163,6 +173,14 @@ export class Styleable implements OnInit, OnChanges {
 	 * Checks the general styles of the component.
 	 */
 	private checkGeneralStyles() {
+		if (this.check(this.flexWrap)) {
+			this.classList.push('display-flex-wrap');
+		}
+
+		if (this.check(this.flexWrapReverse)) {
+			this.classList.push('display-flex-wrap-reverse');
+		}
+
 		if (this.check(this.flexStart)) {
 			this.classList.push('flex-start');
 		}
