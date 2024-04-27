@@ -52,6 +52,8 @@ export class AppComponent {
     { label: 'Aside 5', icon: 'navigate_next', route: '/aside5' },
   ];
 
+  contentHeaderAction: MonkeyButtonData = new MonkeyButtonData(this.primaryStyle, 'Show alert', () => this.onClicked('Content header'), 'info', 'right');
+
   buttonsGroupData: MonkeyButtonData[] = [
     new MonkeyButtonData(this.primaryStyle, 'First', () => this.onClicked('First'), 'info', 'left'),
     new MonkeyButtonData(this.secondaryStyle, 'Second', () => this.onClicked('Second')),
