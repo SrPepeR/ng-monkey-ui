@@ -37,6 +37,72 @@
     showHint
 ></monkey-aside-menu>
 
+<!-- DEMOS -->
+<monkey-card>
+    <monkey-content-header
+        [style]="currentStyle"
+        image="https://th.bing.com/th/id/OIP.6bDf-HbrDJFPfyRPJTYVZgHaG7?rs=1&pid=ImgDetMain"
+        header="Monkey UI"
+        subHeader="An Angular components lybrary"
+        [action]="contentHeaderAction"
+        
+    ></monkey-content-header>
+</monkey-card>
+
+<!-- STYLE CHANGE -->
+<monkey-card>
+    <monkey-icon-button
+        glow
+        alt="Monkey icon ejemplo apertura hacia la derecha"
+        [style]="currentStyle"
+        icon="arrow_right"
+        (onClick)="onClicked('default')"
+    ></monkey-icon-button>
+
+    <monkey-button
+        [style]="primaryStyle"
+        (onClick)="changeStyle(primaryStyle)"
+    >PRIMARY</monkey-button>
+
+    <monkey-button
+        [style]="secondaryStyle"
+        (onClick)="changeStyle(secondaryStyle)"
+    >SECONDARY</monkey-button>
+
+    <monkey-button
+        [style]="tertiaryStyle"
+        (onClick)="changeStyle(tertiaryStyle)"
+    >TERTIARY</monkey-button>
+
+    <monkey-button
+        [style]="warningStyle"
+        (onClick)="changeStyle(warningStyle)"
+    >WARNING</monkey-button>
+
+    <monkey-button
+        [style]="dangerStyle"
+        (onClick)="changeStyle(dangerStyle)"
+    >DANGER</monkey-button>
+
+    <monkey-button
+        [style]="successStyle"
+        (onClick)="changeStyle(successStyle)"
+    >SUCCESS</monkey-button>
+
+    <monkey-button
+        [style]="infoStyle"
+        (onClick)="changeStyle(infoStyle)"
+    >INFO</monkey-button>
+    
+    <monkey-icon-button
+        glow
+        alt="Monkey icon ejemplo apertura hacia la izquierda"
+        [style]="currentStyle"
+        icon="arrow_left"
+        (onClick)="onClicked('default')"
+    ></monkey-icon-button>
+</monkey-card>
+
 <!-- STYLES DEMOS -->
 <monkey-card>
     <monkey-buttons-group
@@ -317,60 +383,6 @@
         alt="Monkey icon button con estilo glow"
         [style]="currentStyle"
         icon="add"
-        (onClick)="onClicked('default')"
-    ></monkey-icon-button>
-</monkey-card>
-
-<!-- STYLE CHANGE -->
-<monkey-card>
-    <monkey-icon-button
-        glow
-        alt="Monkey icon ejemplo apertura hacia la derecha"
-        [style]="currentStyle"
-        icon="arrow_right"
-        (onClick)="onClicked('default')"
-    ></monkey-icon-button>
-
-    <monkey-button
-        [style]="primaryStyle"
-        (onClick)="changeStyle(primaryStyle)"
-    >PRIMARY</monkey-button>
-
-    <monkey-button
-        [style]="secondaryStyle"
-        (onClick)="changeStyle(secondaryStyle)"
-    >SECONDARY</monkey-button>
-
-    <monkey-button
-        [style]="tertiaryStyle"
-        (onClick)="changeStyle(tertiaryStyle)"
-    >TERTIARY</monkey-button>
-
-    <monkey-button
-        [style]="warningStyle"
-        (onClick)="changeStyle(warningStyle)"
-    >WARNING</monkey-button>
-
-    <monkey-button
-        [style]="dangerStyle"
-        (onClick)="changeStyle(dangerStyle)"
-    >DANGER</monkey-button>
-
-    <monkey-button
-        [style]="successStyle"
-        (onClick)="changeStyle(successStyle)"
-    >SUCCESS</monkey-button>
-
-    <monkey-button
-        [style]="infoStyle"
-        (onClick)="changeStyle(infoStyle)"
-    >INFO</monkey-button>
-    
-    <monkey-icon-button
-        glow
-        alt="Monkey icon ejemplo apertura hacia la izquierda"
-        [style]="currentStyle"
-        icon="arrow_left"
         (onClick)="onClicked('default')"
     ></monkey-icon-button>
 </monkey-card>
