@@ -1,33 +1,18 @@
+<!-- TODO Move options to settings modal when implemented -->
+
 <!-- MENU -->
 <monkey-menu
     [style]="currentStyle"
     title="Monkey UI Tests"
     [options]="menuRoutes"
     selfNavigation
+    flexCenter
     sticky
 >
-    <!-- TODO Move this options to settings modal when implemented -->
     <!-- THEME CHANGE -->
     <monkey-theme-changer
         (onAction)="themeChanged()"
     />
-
-    <monkey-dropdown
-        [style]="currentStyle"
-        alt="Font selector"
-        [options]="fontOptions"
-        [selected]="fontOptions[0]"
-        (selectedChanged)="changeFont($event)"
-        separators
-    ></monkey-dropdown>
-
-    <monkey-dropdown
-        [style]="currentStyle"
-        alt="Screen options"
-        [options]="screenOptions"
-        (selectedChanged)="applyScreenSetting($event)"
-        separators
-    ></monkey-dropdown>
 
     <monkey-avatar
         [style]="currentStyle"
@@ -41,9 +26,9 @@
 
 <monkey-aside-menu
     [style]="currentStyle"
-    [data]="styleOptions"
+    [data]="asideOptions"
     showHint
-    (optionSelected)="changeStyle($event)"
+    (optionSelected)="asideSelected($event)"
 ></monkey-aside-menu>
 
 <main>
