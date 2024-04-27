@@ -37,355 +37,357 @@
     showHint
 ></monkey-aside-menu>
 
-<!-- DEMOS -->
-<monkey-card>
-    <monkey-content-header
-        [style]="currentStyle"
-        image="https://th.bing.com/th/id/OIP.6bDf-HbrDJFPfyRPJTYVZgHaG7?rs=1&pid=ImgDetMain"
-        header="Monkey UI"
-        subHeader="An Angular components lybrary"
-        [action]="contentHeaderAction"
-        
-    ></monkey-content-header>
-</monkey-card>
-
-<!-- STYLE CHANGE -->
-<monkey-card>
-    <monkey-icon-button
-        glow
-        alt="Monkey icon ejemplo apertura hacia la derecha"
-        [style]="currentStyle"
-        icon="arrow_right"
-        (onClick)="onClicked('default')"
-    ></monkey-icon-button>
-
-    <monkey-button
-        [style]="primaryStyle"
-        (onClick)="changeStyle(primaryStyle)"
-    >PRIMARY</monkey-button>
-
-    <monkey-button
-        [style]="secondaryStyle"
-        (onClick)="changeStyle(secondaryStyle)"
-    >SECONDARY</monkey-button>
-
-    <monkey-button
-        [style]="tertiaryStyle"
-        (onClick)="changeStyle(tertiaryStyle)"
-    >TERTIARY</monkey-button>
-
-    <monkey-button
-        [style]="warningStyle"
-        (onClick)="changeStyle(warningStyle)"
-    >WARNING</monkey-button>
-
-    <monkey-button
-        [style]="dangerStyle"
-        (onClick)="changeStyle(dangerStyle)"
-    >DANGER</monkey-button>
-
-    <monkey-button
-        [style]="successStyle"
-        (onClick)="changeStyle(successStyle)"
-    >SUCCESS</monkey-button>
-
-    <monkey-button
-        [style]="infoStyle"
-        (onClick)="changeStyle(infoStyle)"
-    >INFO</monkey-button>
+<main>
+    <!-- DEMOS -->
+    <monkey-card>
+        <monkey-content-header
+            [style]="currentStyle"
+            image="https://th.bing.com/th/id/OIP.6bDf-HbrDJFPfyRPJTYVZgHaG7?rs=1&pid=ImgDetMain"
+            header="Monkey UI"
+            subHeader="An Angular components lybrary"
+            [action]="contentHeaderAction"
+            
+        ></monkey-content-header>
+    </monkey-card>
     
-    <monkey-icon-button
-        glow
-        alt="Monkey icon ejemplo apertura hacia la izquierda"
-        [style]="currentStyle"
-        icon="arrow_left"
-        (onClick)="onClicked('default')"
-    ></monkey-icon-button>
-</monkey-card>
-
-<!-- STYLES DEMOS -->
-<monkey-card>
-    <monkey-buttons-group
-        [data]="buttonsGroupData"
-        gap
-    ></monkey-buttons-group>
-
-    <monkey-list
-        [style]="currentStyle"
-        separators
-        flexCenter
+    <!-- STYLE CHANGE -->
+    <monkey-card>
+        <monkey-icon-button
+            glow
+            alt="Monkey icon ejemplo apertura hacia la derecha"
+            [style]="currentStyle"
+            icon="arrow_right"
+            (onClick)="onClicked('default')"
+        ></monkey-icon-button>
+    
+        <monkey-button
+            [style]="primaryStyle"
+            (onClick)="changeStyle(primaryStyle)"
+        >PRIMARY</monkey-button>
+    
+        <monkey-button
+            [style]="secondaryStyle"
+            (onClick)="changeStyle(secondaryStyle)"
+        >SECONDARY</monkey-button>
+    
+        <monkey-button
+            [style]="tertiaryStyle"
+            (onClick)="changeStyle(tertiaryStyle)"
+        >TERTIARY</monkey-button>
+    
+        <monkey-button
+            [style]="warningStyle"
+            (onClick)="changeStyle(warningStyle)"
+        >WARNING</monkey-button>
+    
+        <monkey-button
+            [style]="dangerStyle"
+            (onClick)="changeStyle(dangerStyle)"
+        >DANGER</monkey-button>
+    
+        <monkey-button
+            [style]="successStyle"
+            (onClick)="changeStyle(successStyle)"
+        >SUCCESS</monkey-button>
+    
+        <monkey-button
+            [style]="infoStyle"
+            (onClick)="changeStyle(infoStyle)"
+        >INFO</monkey-button>
+        
+        <monkey-icon-button
+            glow
+            alt="Monkey icon ejemplo apertura hacia la izquierda"
+            [style]="currentStyle"
+            icon="arrow_left"
+            (onClick)="onClicked('default')"
+        ></monkey-icon-button>
+    </monkey-card>
+    
+    <!-- STYLES DEMOS -->
+    <monkey-card>
+        <monkey-buttons-group
+            [data]="buttonsGroupData"
+            gap
+        ></monkey-buttons-group>
+    
+        <monkey-list
+            [style]="currentStyle"
+            separators
+            flexCenter
+        >
+            <span>Primer elemento</span>
+    
+            <monkey-switch
+                (onSwitch)="onSwitch('default', $event)"
+                [style]="currentStyle"
+            />
+        
+            <monkey-checkbox
+                (onCheckChange)="onCheck('default', $event)"
+                [style]="currentStyle"
+                label="Default"
+            />
+        
+            <monkey-loader
+                lg
+                [style]="currentStyle"
+            ></monkey-loader>
+        </monkey-list>
+    
+        <monkey-image
+            [style]="currentStyle"
+            src="https://via.placeholder.com/100"
+            alt="Imagen de prueba"
+            title="Monkey image con estilo default"
+        ></monkey-image>
+    
+        <monkey-icon-button
+            [style]="currentStyle"
+            icon="add"
+            alt="Monkey icon button con estilo default"
+            (onClick)="onClicked('default')"
+        ></monkey-icon-button>
+    
+        <monkey-avatar
+            [style]="currentStyle"
+            image="https://via.placeholder.com/33"
+            errorImage="https://via.placeholder.com/50"
+            form="rounded"
+            labeled
+            md
+            text="Monkey avatar"
+        ></monkey-avatar>
+    </monkey-card>
+    
+    <monkey-card
+        brutalist
     >
-        <span>Primer elemento</span>
-
+        <monkey-button
+            brutalist
+            [style]="currentStyle"
+            (onClick)="onClicked('brutalist')"
+        >Brutalist
+        </monkey-button>
+    
         <monkey-switch
-            (onSwitch)="onSwitch('default', $event)"
+            brutalist
+            (onSwitch)="onSwitch('brutalist', $event)"
             [style]="currentStyle"
         />
     
         <monkey-checkbox
-            (onCheckChange)="onCheck('default', $event)"
+            brutalist
+            (onCheckChange)="onCheck('brutalist', $event)"
             [style]="currentStyle"
-            label="Default"
+            label="Brutalist"
         />
     
         <monkey-loader
+            brutalist
             lg
             [style]="currentStyle"
         ></monkey-loader>
-    </monkey-list>
-
-    <monkey-image
-        [style]="currentStyle"
-        src="https://via.placeholder.com/100"
-        alt="Imagen de prueba"
-        title="Monkey image con estilo default"
-    ></monkey-image>
-
-    <monkey-icon-button
-        [style]="currentStyle"
-        icon="add"
-        alt="Monkey icon button con estilo default"
-        (onClick)="onClicked('default')"
-    ></monkey-icon-button>
-
-    <monkey-avatar
-        [style]="currentStyle"
-        image="https://via.placeholder.com/33"
-        errorImage="https://via.placeholder.com/50"
-        form="rounded"
-        labeled
-        md
-        text="Monkey avatar"
-    ></monkey-avatar>
-</monkey-card>
-
-<monkey-card
-    brutalist
->
-    <monkey-button
-        brutalist
-        [style]="currentStyle"
-        (onClick)="onClicked('brutalist')"
-    >Brutalist
-    </monkey-button>
-
-    <monkey-switch
-        brutalist
-        (onSwitch)="onSwitch('brutalist', $event)"
-        [style]="currentStyle"
-    />
-
-    <monkey-checkbox
-        brutalist
-        (onCheckChange)="onCheck('brutalist', $event)"
-        [style]="currentStyle"
-        label="Brutalist"
-    />
-
-    <monkey-loader
-        brutalist
-        lg
-        [style]="currentStyle"
-    ></monkey-loader>
-
-    <monkey-image
-        brutalist
-        [style]="currentStyle"
-        src="https://via.placeholder.com/100"
-        alt="Imagen de prueba"
-        title="Monkey image con estilo brutalist"
-    ></monkey-image>
-
-    <monkey-icon-button
-        brutalist
-        alt="Monkey icon button con estilo brutalist"
-        [style]="currentStyle"
-        icon="add"
-        (onClick)="onClicked('default')"
-    ></monkey-icon-button>
-</monkey-card>
-
-<monkey-card
-    glass
->
-    <monkey-button
+    
+        <monkey-image
+            brutalist
+            [style]="currentStyle"
+            src="https://via.placeholder.com/100"
+            alt="Imagen de prueba"
+            title="Monkey image con estilo brutalist"
+        ></monkey-image>
+    
+        <monkey-icon-button
+            brutalist
+            alt="Monkey icon button con estilo brutalist"
+            [style]="currentStyle"
+            icon="add"
+            (onClick)="onClicked('default')"
+        ></monkey-icon-button>
+    </monkey-card>
+    
+    <monkey-card
         glass
-        [style]="currentStyle"
-        (onClick)="onClicked('glass')"
-    >Glassmorphism
-    </monkey-button>
-
-    <monkey-switch
-        glass
-        (onSwitch)="onSwitch('glass', $event)"
-        [style]="currentStyle"
-    />
-
-    <monkey-checkbox
-        glass
-        (onCheckChange)="onCheck('glass', $event)"
-        [style]="currentStyle"
-        label="Glassmorphism"
-    />
-
-    <monkey-loader
-        glass
-        lg
-        [style]="currentStyle"
-    ></monkey-loader>
-
-    <monkey-image
-        glass
-        [style]="currentStyle"
-        src="https://via.placeholder.com/100"
-        alt="Imagen de prueba"
-        title="Monkey image con estilo brutalist"
-    ></monkey-image>
-
-    <monkey-icon-button
-        glass
-        alt="Monkey icon button con estilo glassmorphism"
-        [style]="currentStyle"
-        icon="add"
-        (onClick)="onClicked('default')"
-    ></monkey-icon-button>
-</monkey-card>
-
-<monkey-card
-    flat
->
-    <monkey-button
+    >
+        <monkey-button
+            glass
+            [style]="currentStyle"
+            (onClick)="onClicked('glass')"
+        >Glassmorphism
+        </monkey-button>
+    
+        <monkey-switch
+            glass
+            (onSwitch)="onSwitch('glass', $event)"
+            [style]="currentStyle"
+        />
+    
+        <monkey-checkbox
+            glass
+            (onCheckChange)="onCheck('glass', $event)"
+            [style]="currentStyle"
+            label="Glassmorphism"
+        />
+    
+        <monkey-loader
+            glass
+            lg
+            [style]="currentStyle"
+        ></monkey-loader>
+    
+        <monkey-image
+            glass
+            [style]="currentStyle"
+            src="https://via.placeholder.com/100"
+            alt="Imagen de prueba"
+            title="Monkey image con estilo brutalist"
+        ></monkey-image>
+    
+        <monkey-icon-button
+            glass
+            alt="Monkey icon button con estilo glassmorphism"
+            [style]="currentStyle"
+            icon="add"
+            (onClick)="onClicked('default')"
+        ></monkey-icon-button>
+    </monkey-card>
+    
+    <monkey-card
         flat
-        [style]="currentStyle"
-        (onClick)="onClicked('flat')"
-    >Flat
-    </monkey-button>
-
-    <monkey-switch
-        flat
-        (onSwitch)="onSwitch('flat', $event)"
-        [style]="currentStyle"
-    />
-
-    <monkey-checkbox
-        flat
-        (onCheckChange)="onCheck('flat', $event)"
-        [style]="currentStyle"
-        label="Flat"
-    />
-
-    <monkey-loader
-        flat
-        lg
-        [style]="currentStyle"
-    ></monkey-loader>
-
-    <monkey-image
-        flat
-        [style]="currentStyle"
-        src="https://via.placeholder.com/100"
-        alt="Imagen de prueba"
-        title="Monkey image con estilo brutalist"
-    ></monkey-image>
-
-    <monkey-icon-button
-        flat
-        alt="Monkey icon button con estilo flat"
-        [style]="currentStyle"
-        icon="add"
-        (onClick)="onClicked('default')"
-    ></monkey-icon-button>
-</monkey-card>
-
-<monkey-card
-    ghost
->
-    <monkey-button
+    >
+        <monkey-button
+            flat
+            [style]="currentStyle"
+            (onClick)="onClicked('flat')"
+        >Flat
+        </monkey-button>
+    
+        <monkey-switch
+            flat
+            (onSwitch)="onSwitch('flat', $event)"
+            [style]="currentStyle"
+        />
+    
+        <monkey-checkbox
+            flat
+            (onCheckChange)="onCheck('flat', $event)"
+            [style]="currentStyle"
+            label="Flat"
+        />
+    
+        <monkey-loader
+            flat
+            lg
+            [style]="currentStyle"
+        ></monkey-loader>
+    
+        <monkey-image
+            flat
+            [style]="currentStyle"
+            src="https://via.placeholder.com/100"
+            alt="Imagen de prueba"
+            title="Monkey image con estilo brutalist"
+        ></monkey-image>
+    
+        <monkey-icon-button
+            flat
+            alt="Monkey icon button con estilo flat"
+            [style]="currentStyle"
+            icon="add"
+            (onClick)="onClicked('default')"
+        ></monkey-icon-button>
+    </monkey-card>
+    
+    <monkey-card
         ghost
-        [style]="currentStyle"
-        (onClick)="onClicked('ghost')"
-    >Ghost</monkey-button>
-
-    <monkey-switch
-        ghost
-        (onSwitch)="onSwitch('ghost', $event)"
-        [style]="currentStyle"
-    />
-
-    <monkey-checkbox
-        ghost
-        (onCheckChange)="onCheck('ghost', $event)"
-        [style]="currentStyle"
-        label="Ghost"
-    />
-
-    <monkey-loader
-        ghost
-        lg
-        [style]="currentStyle"
-    ></monkey-loader>
-
-    <monkey-image
-        ghost
-        [style]="currentStyle"
-        src="https://via.placeholder.com/100"
-        alt="Imagen de prueba"
-        title="Monkey image con estilo brutalist"
-    ></monkey-image>
-
-    <monkey-icon-button
-        ghost
-        alt="Monkey icon button con estilo ghost"
-        [style]="currentStyle"
-        icon="add"
-        (onClick)="onClicked('default')"
-    ></monkey-icon-button>
-</monkey-card>
-
-<monkey-card
-    glow
->
-    <monkey-button
+    >
+        <monkey-button
+            ghost
+            [style]="currentStyle"
+            (onClick)="onClicked('ghost')"
+        >Ghost</monkey-button>
+    
+        <monkey-switch
+            ghost
+            (onSwitch)="onSwitch('ghost', $event)"
+            [style]="currentStyle"
+        />
+    
+        <monkey-checkbox
+            ghost
+            (onCheckChange)="onCheck('ghost', $event)"
+            [style]="currentStyle"
+            label="Ghost"
+        />
+    
+        <monkey-loader
+            ghost
+            lg
+            [style]="currentStyle"
+        ></monkey-loader>
+    
+        <monkey-image
+            ghost
+            [style]="currentStyle"
+            src="https://via.placeholder.com/100"
+            alt="Imagen de prueba"
+            title="Monkey image con estilo brutalist"
+        ></monkey-image>
+    
+        <monkey-icon-button
+            ghost
+            alt="Monkey icon button con estilo ghost"
+            [style]="currentStyle"
+            icon="add"
+            (onClick)="onClicked('default')"
+        ></monkey-icon-button>
+    </monkey-card>
+    
+    <monkey-card
         glow
-        [style]="currentStyle"
-        (onClick)="onClicked('glow')"
-    >Glow</monkey-button>
-
-    <monkey-switch
-        glow
-        (onSwitch)="onSwitch('glow', $event)"
-        [style]="currentStyle"
-    />
-
-    <monkey-checkbox
-        glow
-        (onCheckChange)="onCheck('glow', $event)"
-        [style]="currentStyle"
-        label="Glow"
-    />
-
-    <monkey-loader
-        glow
-        lg
-        [style]="currentStyle"
-    ></monkey-loader>
-
-    <monkey-image
-        glow
-        [style]="currentStyle"
-        src="https://via.placeholder.com/100"
-        alt="Imagen de prueba"
-        title="Monkey image con estilo brutalist"
-    ></monkey-image>
-
-    <monkey-icon-button
-        glow
-        alt="Monkey icon button con estilo glow"
-        [style]="currentStyle"
-        icon="add"
-        (onClick)="onClicked('default')"
-    ></monkey-icon-button>
-</monkey-card>
+    >
+        <monkey-button
+            glow
+            [style]="currentStyle"
+            (onClick)="onClicked('glow')"
+        >Glow</monkey-button>
+    
+        <monkey-switch
+            glow
+            (onSwitch)="onSwitch('glow', $event)"
+            [style]="currentStyle"
+        />
+    
+        <monkey-checkbox
+            glow
+            (onCheckChange)="onCheck('glow', $event)"
+            [style]="currentStyle"
+            label="Glow"
+        />
+    
+        <monkey-loader
+            glow
+            lg
+            [style]="currentStyle"
+        ></monkey-loader>
+    
+        <monkey-image
+            glow
+            [style]="currentStyle"
+            src="https://via.placeholder.com/100"
+            alt="Imagen de prueba"
+            title="Monkey image con estilo brutalist"
+        ></monkey-image>
+    
+        <monkey-icon-button
+            glow
+            alt="Monkey icon button con estilo glow"
+            [style]="currentStyle"
+            icon="add"
+            (onClick)="onClicked('default')"
+        ></monkey-icon-button>
+    </monkey-card>
+</main>
 
 <monkey-alert
     [style]="currentStyle"
