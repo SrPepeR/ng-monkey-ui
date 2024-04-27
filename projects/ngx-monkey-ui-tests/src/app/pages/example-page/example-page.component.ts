@@ -13,7 +13,7 @@ export class ExamplePageComponent {
 
   @Input() currentStyle: MonkeyStyle = MonkeyStyle.PRIMARY;
 
-  contentHeaderAction: MonkeyButtonData = new MonkeyButtonData(this.currentStyle, 'Show alert', () => this.onClicked('Content header'), 'info', 'right');
+  contentHeaderAction: MonkeyButtonData = new MonkeyButtonData(this.currentStyle, 'Show alert', () => this.showAlert('Content header'), 'info', 'right');
 
   constructor(
     private alertService: MonkeyAlertService,
@@ -57,8 +57,8 @@ export class ExamplePageComponent {
     }
   }
 
-  onClicked(fromButton: string): void {
-    this.alertService.warnings(['Botón ' + fromButton + ' presionado.'], true, 'Warning');
+  showAlert(fromButton: string): void {
+    this.alertService.successes([`${fromButton} button pressed.`], true, 'Success');
   }
 
 }
