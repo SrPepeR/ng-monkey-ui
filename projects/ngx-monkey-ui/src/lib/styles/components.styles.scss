@@ -41,6 +41,11 @@
     padding: 0 !important;
 }
 
+*.display-flex-wrap {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
 *.display-flex-wrap-reverse {
     display: flex !important;
     flex-wrap: wrap-reverse !important;
