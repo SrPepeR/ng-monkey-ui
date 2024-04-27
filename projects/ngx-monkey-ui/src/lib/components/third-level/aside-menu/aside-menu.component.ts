@@ -148,7 +148,7 @@ export class MonkeyAsideMenu extends Styleable {
    * Closes the aside menu.
    */
   closeMenu() {
-    if (this.check(this.showHint) && this.isAsideOpened) {
+    if (this.check(this.showHint) && this.isAsideOpened && this.canShowHint) {
       this.isAsideOpened = false;
     }
   }
