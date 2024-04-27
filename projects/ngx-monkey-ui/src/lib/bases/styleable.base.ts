@@ -146,6 +146,7 @@ export class Styleable implements OnInit, OnChanges {
 		this.screenService.screenChanges$.subscribe((newCurrentScreen: MonkeyScreen) => {
 			this.currentScreen = newCurrentScreen;
 			this.addAllClasses();
+			this.checkSpecialComponents();
 		});
 	}
 
@@ -189,6 +190,22 @@ export class Styleable implements OnInit, OnChanges {
 	 */
 	protected addAditionalClasses() {
 		this.classList.push(this.currentScreen.sizeStyleClass);
+	}
+
+	private checkSpecialComponents() {
+		this.manageAsideMenu();
+	}
+
+	private manageAsideMenu() {
+		const asideMenu = document.querySelector('.aside-menu');
+		if (!asideMenu) {
+			return;
+		}
+
+		if (asideMenu.classList.contains('hinted')) {
+			// If the aside menu is hinted, we need to push the content to the right.
+			// TODO Push the content to the right.
+		}
 	}
 
 	/**
