@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
 import { ThemeService } from '../../../services/theme.service';
 import { MenuOption } from '../../../objects/interfaces/menu-option.interface';
@@ -89,6 +89,11 @@ export class MonkeyAsideMenu extends Styleable {
   OPEN_ASIDE_ICON: string = 'arrow_forward';
 
   /**
+   * Indicates whether the menu should be opened by toggle.
+   */
+  openByToggle: boolean = false;
+
+  /**
    * Observable that emits a boolean indicating whether the theme is in dark mode or not.
    */
   isDarkMode$ = this.themeService.isDarkMode$;
@@ -108,8 +113,10 @@ export class MonkeyAsideMenu extends Styleable {
     super.ngOnInit();
     
     if (this.data) {
-      this.currentOption = this.data[0];
+      this.currentOption = !this.data[0].children ? this.data[0] : this.data[0].children![0];
     }
+
+    this.changeAsideWidth();
   }
 
   /**
@@ -126,31 +133,53 @@ export class MonkeyAsideMenu extends Styleable {
 
       this.canShowHint = currentScreen.isScreenSizeUp(ScreenSize.MD);
     });
+
+    this.changeAsideWidth();
   }
 
   /**
    * Toggles the menu between opened and closed states.
    */
   toggleMenu() {
-    this.isAsideOpened = !this.isAsideOpened;
+    if (this.isAsideOpened) {
+      this.closeMenu();
+      return;
+    }
+
+    this.openByToggle = true;
+    this.openMenu();
   }
 
   /**
    * Opens the aside menu.
    */
   openMenu() {
-    if (this.check(this.showHint) && !this.isAsideOpened) {
-      this.isAsideOpened = true;
-    }
+    this.isAsideOpened = true;
+    this.changeAsideWidth();
   }
 
   /**
    * Closes the aside menu.
    */
   closeMenu() {
-    if (this.check(this.showHint) && this.isAsideOpened && this.canShowHint) {
-      this.isAsideOpened = false;
+    this.isAsideOpened = false;
+    this.openByToggle = false;
+    this.changeAsideWidth();
+  }
+
+  private changeAsideWidth() {
+    const asideContent = document.getElementById('aside-menu-content');
+    if (!this.isAsideOpened) {
+      if (this.check(this.showHint) && this.canShowHint) {
+        asideContent!.style.width = this.CLOSED_ASIDE_HINT_WIDTH;
+        return;
+      }
+      asideContent!.style.width = this.CLOSED_ASIDE_WIDTH;
+      return;
     }
+    
+    asideContent!.style.width = this.OPENED_ASIDE_WIDTH;
+    return;
   }
 
   /**

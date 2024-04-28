@@ -14,12 +14,13 @@
 ></monkey-icon-button>
 
 <monkey-card
-  *ngIf="!check(showHint) || isAsideOpened || !canShowHint && isAsideOpened"
+  id="aside-menu-content"
   class="aside-menu"
+  [class.hinted]="check(showHint) && canShowHint && !isAsideOpened"
   [column]="true"
-
-  [style.width]="isAsideOpened ? OPENED_ASIDE_WIDTH : CLOSED_ASIDE_WIDTH"
-  (mouseleave)="closeMenu()"
+  
+  (mouseenter)="openMenu()"
+  (mouseleave)="!openByToggle ? closeMenu() : null"
 
   [brutalist]="brutalist"
   [glass]="glass"
@@ -31,57 +32,77 @@
   noPadding
 >
   <monkey-list
+    class="aside-menu-content-list"
     [style]="style"
     gapSize="md"
   >
-    <monkey-button
-      *ngFor="let option of data"
-      class="aside-menu-option"
-      (onClick)="onClicked(option)"
-
-      [class.current-option]="option == currentOption"
-      
+    <monkey-list
       [style]="style"
-      discreet
+      gapSize="sm"
+      separators
+
+      *ngFor="let option of data"
     >
-      {{ isAsideOpened ? option.label : '' }}
+      <monkey-button
+        *ngIf="!option.children"
+        class="aside-menu-option"
+        (onClick)="onClicked(option)"
+
+        [class.current-option]="option == currentOption"
+        
+        [style]="style"
+        discreet
+      >
+        {{ isAsideOpened ? option.label : '' }}
+
+        <span
+          class="material-symbols-outlined"
+        >{{ option.icon ? option.icon : DEFAULT_ICON }}</span>
+      </monkey-button>
+
+      <monkey-list
+        [style]="style"
+        gapSize="sm"
+
+        *ngIf="option.children"
+      >
+        <!-- TODO Replace this with monkey-subheader -->
+        <section
+          class="option-group"
   
-      <span
-        class="material-symbols-outlined"
-      >{{ option.icon ? option.icon : DEFAULT_ICON }}</span>
-    </monkey-button>
+          [class.dark-theme]="isDarkMode$ | async"
+        >
+          <span
+            class="option-group-label"
+            *ngIf="isAsideOpened"
+          >{{ option.label }}</span>
+          
+          <span
+            class="material-symbols-outlined"
+          >{{ option.icon ? option.icon : DEFAULT_ICON }}</span>
+        </section>
+
+        <monkey-button
+          *ngFor="let optionChildren of option.children"
+          class="aside-menu-option"
+          (onClick)="onClicked(optionChildren)"
+
+          [class.current-option]="optionChildren == currentOption"
+          
+          [style]="style"
+          discreet
+        >
+          {{ isAsideOpened ? optionChildren.label : '' }}
+
+          <span
+            class="material-symbols-outlined"
+          >{{ optionChildren.icon ? optionChildren.icon : DEFAULT_ICON }}</span>
+        </monkey-button>
+      </monkey-list>
+    </monkey-list>
   </monkey-list>
 </monkey-card>
 
-<monkey-card
-  *ngIf="check(showHint) && canShowHint && !isAsideOpened"
-  class="aside-menu hinted"
-  [column]="true"
-
-  [style.width]="isAsideOpened ? OPENED_ASIDE_WIDTH : CLOSED_ASIDE_HINT_WIDTH"
-  (mouseenter)="openMenu()"
-
-  [brutalist]="brutalist"
-  [glass]="glass"
-  [flat]="flat"
-  [ghost]="ghost"
-  [glow]="glow"
-
-  noMargin
->
-  <monkey-list
-    [style]="style"
-    gapSize="lg"
-  >
-    <monkey-icon-button
-      *ngFor="let option of data"
-      class="aside-menu-option"
-      [icon]="option.icon ? option.icon : DEFAULT_ICON"
-      (onClick)="onClicked(option)"
-
-      [class.current-option]="option == currentOption"
-      [style]="style"
-      discreet
-    ></monkey-icon-button>
-  </monkey-list>
-</monkey-card>
+<!--
+    
+-->
