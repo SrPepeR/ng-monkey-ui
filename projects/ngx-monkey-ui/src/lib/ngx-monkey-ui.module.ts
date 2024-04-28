@@ -35,6 +35,7 @@ import { MonkeyContentHeader } from './components/third-level/content-header/con
 // FOURTH LEVEL
 
 import { MonkeyThemeChanger } from './components/fourth-level/theme-changer/theme-changer.component';
+import { MonkeyScrollbar } from './components/fourth-level/scrollbar/scrollbar.component';
 
 // FOURTH LEVEL
 
@@ -42,6 +43,7 @@ import { MonkeyThemeChanger } from './components/fourth-level/theme-changer/them
 @NgModule({
   declarations: [
     MonkeyThemeChanger,
+    MonkeyScrollbar,
     MonkeyMenu,
 
     MonkeyButton,
@@ -65,6 +67,7 @@ import { MonkeyThemeChanger } from './components/fourth-level/theme-changer/them
   ],
   exports: [
     MonkeyThemeChanger,
+    MonkeyScrollbar,
     MonkeyMenu,
 
     MonkeyButton,
