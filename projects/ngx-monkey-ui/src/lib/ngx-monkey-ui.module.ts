@@ -12,6 +12,7 @@ import { MonkeyLoader } from './components/first-level/loader/loader.component';
 import { MonkeyList } from './components/first-level/list/list.component';
 import { MonkeyHeader } from './components/first-level/header/header.component';
 import { MonkeySubheader } from './components/first-level/subheader/subheader.component';
+import { MonkeyIcon } from './components/first-level/icon/icon.component';
 
 // FIRST LEVEL
 
@@ -65,6 +66,7 @@ import { MonkeyScrollbar } from './components/fourth-level/scrollbar/scrollbar.c
     MonkeyContentHeader,
     MonkeyHeader,
     MonkeySubheader,
+    MonkeyIcon,
   ],
   imports: [
     CommonModule,
@@ -91,6 +93,7 @@ import { MonkeyScrollbar } from './components/fourth-level/scrollbar/scrollbar.c
     MonkeyContentHeader,
     MonkeyHeader,
     MonkeySubheader,
+    MonkeyIcon,
   ],
 })
 export class NgxMonkeyUiModule { }
