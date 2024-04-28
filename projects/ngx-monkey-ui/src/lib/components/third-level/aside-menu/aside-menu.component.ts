@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
 import { ThemeService } from '../../../services/theme.service';
 import { MenuOption } from '../../../objects/interfaces/menu-option.interface';
 import { Router } from '@angular/router';
 import { MonkeyScreen } from '../../../services/screen/screen';
 import { ScreenSize } from '../../../services/screen/screen.enum';
+import { MonkeyStyle } from '../../../objects/enums/style.enum';
 
 @Component({
   selector: 'monkey-aside-menu',
@@ -92,6 +93,8 @@ export class MonkeyAsideMenu extends Styleable {
    * Indicates whether the menu should be opened by toggle.
    */
   openByToggle: boolean = false;
+
+  backgroundStyle: MonkeyStyle = MonkeyStyle.BACKGROUND;
 
   /**
    * Observable that emits a boolean indicating whether the theme is in dark mode or not.

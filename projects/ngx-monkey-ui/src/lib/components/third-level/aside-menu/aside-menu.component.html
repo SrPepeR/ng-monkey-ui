@@ -66,11 +66,8 @@
 
         *ngIf="option.children"
       >
-        <!-- TODO Replace this with monkey-subheader -->
-        <section
+        <monkey-subheader
           class="option-group"
-  
-          [class.dark-theme]="isDarkMode$ | async"
         >
           <span
             class="option-group-label"
@@ -80,7 +77,7 @@
           <span
             class="material-symbols-outlined"
           >{{ option.icon ? option.icon : DEFAULT_ICON }}</span>
-        </section>
+        </monkey-subheader>
 
         <monkey-button
           *ngFor="let optionChildren of option.children"
