@@ -1,5 +1,10 @@
-span {
+* {
   font-size: 1.8rem;
   font-weight: 600;
   color: var(--contrast-hight);
+}
+
+span {
+  display: flex;
+  gap: 5px;
 }
