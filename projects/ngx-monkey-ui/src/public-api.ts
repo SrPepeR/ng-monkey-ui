@@ -95,5 +95,8 @@ export * from './lib/ngx-monkey-ui.module';
 
     // Theme changer
     export * from './lib/components/fourth-level/theme-changer/theme-changer.component';
+
+    // Scrollbar
+    export * from './lib/components/fourth-level/scrollbar/scrollbar.component';
     
   // FOURTH LEVEL

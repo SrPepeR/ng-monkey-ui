@@ -21,7 +21,7 @@
         form="rounded"
         sm
         text="Monkey avatar"
-    ></monkey-avatar>
+    />
 </monkey-menu>
 
 <monkey-aside-menu
@@ -29,10 +29,10 @@
     [data]="asideOptions"
     showHint
     (optionSelected)="asideSelected($event)"
-></monkey-aside-menu>
+/>
 
 <main>
-    <router-outlet></router-outlet>
+    <router-outlet/>
 </main>
 
 <monkey-alert
@@ -41,8 +41,10 @@
     acceptable
     rejectable
     glass
-></monkey-alert>
+/>
 
 <monkey-tooltip
     [style]="currentStyle"
-></monkey-tooltip>
+/>
+
+<monkey-scrollbar/>
