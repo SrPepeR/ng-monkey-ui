@@ -17,20 +17,15 @@
 <div
   class="texts"
 >
-  <span
-    class="content-header-header"
-    [class.dark-theme]="isDarkMode$ | async"
-  >
+  <monkey-header>
     {{ header }}
-  </span>
+  </monkey-header>
   
-  <span
+  <monkey-subheader
     *ngIf="subHeader"
-    class="content-header-subheader"
-    [class.dark-theme]="isDarkMode$ | async"
   >
     {{ subHeader }}
-  </span>
+  </monkey-subheader>
 </div>
 
 <monkey-button

@@ -8,17 +8,5 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-
-    .content-header-header {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: var(--background-color-contrast-hight);
-    }
-
-    .content-header-subheader {
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--background-color-contrast-low);
-    }
   }
 }
