@@ -9,7 +9,7 @@ import { ScreenOrientation } from 'projects/ngx-monkey-ui/src/lib/services/scree
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  
+
   currentStyle: MonkeyStyle = MonkeyStyle.PRIMARY;
 
   title = 'ngx-monkey-ui-tests';
@@ -17,31 +17,48 @@ export class AppComponent implements OnInit {
   menuRoutes: MenuOption[] = [];
 
   fontOptions: MenuOption[] = [
-    { label: 'Dosis', icon: 'brand_family', route: 'font-dosis' },
-    { label: 'Titillium Web', icon: 'brand_family', route: 'font-titillium' },
-    { label: 'Red Hat Display', icon: 'brand_family', route: 'font-red' },
+    {
+      label: 'Fonts', icon: 'font_download', children: [
+        { label: 'Dosis', icon: 'brand_family', route: 'font-dosis' },
+        { label: 'Titillium Web', icon: 'brand_family', route: 'font-titillium' },
+        { label: 'Red Hat Display', icon: 'brand_family', route: 'font-red' },
+      ]
+    },
+  ];
+
+  singleUselessOption: MenuOption[] = [
+    { label: 'Useless', icon: 'info', route: 'useless' },
   ];
 
   styleOptions: MenuOption[] = [
-    { label: 'Primary color', icon: 'looks_one', route: 'style-primary' },
-    { label: 'Secondary color', icon: 'looks_two', route: 'style-secondary' },
-    { label: 'Tertiary color', icon: 'looks_3', route: 'style-tertiary' },
-    { label: 'Warning color', icon: 'warning', route: 'style-warning' },
-    { label: 'Danger color', icon: 'dangerous', route: 'style-danger' },
-    { label: 'Success color', icon: 'done', route: 'style-success' },
-    { label: 'Info color', icon: 'info', route: 'style-info' },
+    {
+      label: 'Styles', icon: 'style', children: [
+        { label: 'Primary color', icon: 'looks_one', route: 'style-primary' },
+        { label: 'Secondary color', icon: 'looks_two', route: 'style-secondary' },
+        { label: 'Tertiary color', icon: 'looks_3', route: 'style-tertiary' },
+        { label: 'Warning color', icon: 'warning', route: 'style-warning' },
+        { label: 'Danger color', icon: 'dangerous', route: 'style-danger' },
+        { label: 'Success color', icon: 'done', route: 'style-success' },
+        { label: 'Info color', icon: 'info', route: 'style-info' },
+      ]
+    },
   ];
 
   screenOptions: MenuOption[] = [
-    { label: 'Toggle fullscreen', icon: 'fullscreen', route: 'screen-toggleFullscreen' },
-    { label: 'Lock rotation', icon: 'screen_lock_rotation', route: 'screen-locked' },
-    { label: 'Unlock rotation', icon: 'screen_rotation', route: 'screen-unlocked' },
-    { label: 'Portrait', icon: 'screen_lock_portrait', route: 'screen-portrait' },
-    { label: 'Landscape', icon: 'screen_lock_landscape', route: 'screen-landscape' },
+    {
+      label: 'Screen', icon: 'fit_screen', children: [
+        { label: 'Toggle fullscreen', icon: 'fullscreen', route: 'screen-toggleFullscreen' },
+        { label: 'Lock rotation', icon: 'screen_lock_rotation', route: 'screen-locked' },
+        { label: 'Unlock rotation', icon: 'screen_rotation', route: 'screen-unlocked' },
+        { label: 'Portrait', icon: 'screen_lock_portrait', route: 'screen-portrait' },
+        { label: 'Landscape', icon: 'screen_lock_landscape', route: 'screen-landscape' },
+      ]
+    },
   ];
 
   asideOptions: MenuOption[] = [
     ...this.fontOptions,
+    ...this.singleUselessOption,
     ...this.styleOptions,
     ...this.screenOptions,
   ];
