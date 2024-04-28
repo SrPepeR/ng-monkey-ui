@@ -38,6 +38,10 @@
     }
   }
 
+  .aside-menu-content-list > section {
+    background-color: var(--background-color);
+  }
+
   .aside-menu-toggle + .aside-menu {
     .aside-menu-content-list {
       padding-top: 65px;
