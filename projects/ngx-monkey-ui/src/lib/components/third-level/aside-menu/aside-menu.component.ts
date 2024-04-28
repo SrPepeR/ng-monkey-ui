@@ -96,6 +96,8 @@ export class MonkeyAsideMenu extends Styleable {
 
   backgroundStyle: MonkeyStyle = MonkeyStyle.BACKGROUND;
 
+  openedByLongScreen = false;
+
   /**
    * Observable that emits a boolean indicating whether the theme is in dark mode or not.
    */
@@ -114,7 +116,7 @@ export class MonkeyAsideMenu extends Styleable {
    */
   override ngOnInit() {
     super.ngOnInit();
-    
+
     if (this.data) {
       this.currentOption = !this.data[0].children ? this.data[0] : this.data[0].children![0];
     }
@@ -129,6 +131,14 @@ export class MonkeyAsideMenu extends Styleable {
     super.ngOnChanges();
 
     this.screenService.screenChanges$.subscribe((currentScreen: MonkeyScreen) => {
+      if (currentScreen.isScreenSizeUp(ScreenSize.XL)) {
+        this.openedByLongScreen = true;
+        this.openMenu();
+      } else {
+        this.openedByLongScreen = false;
+        this.closeMenu();
+      }
+
       if (!this.check(this.showHint)) {
         this.canShowHint = false;
         return;
@@ -172,6 +182,11 @@ export class MonkeyAsideMenu extends Styleable {
 
   private changeAsideWidth() {
     const asideContent = document.getElementById('aside-menu-content');
+    if (this.openedByLongScreen) {
+      asideContent!.style.width = this.OPENED_ASIDE_WIDTH;
+      return;
+    }
+
     if (!this.isAsideOpened) {
       if (this.check(this.showHint) && this.canShowHint) {
         asideContent!.style.width = this.CLOSED_ASIDE_HINT_WIDTH;
@@ -180,7 +195,7 @@ export class MonkeyAsideMenu extends Styleable {
       asideContent!.style.width = this.CLOSED_ASIDE_WIDTH;
       return;
     }
-    
+
     asideContent!.style.width = this.OPENED_ASIDE_WIDTH;
     return;
   }
@@ -201,8 +216,8 @@ export class MonkeyAsideMenu extends Styleable {
    */
   private navigateToPage(option: MenuOption) {
     this.optionSelected.emit(option);
-    
-    if(this.check(this.selfNavigation)) {
+
+    if (this.check(this.selfNavigation)) {
       this.router.navigate([option.route]);
     }
   }
