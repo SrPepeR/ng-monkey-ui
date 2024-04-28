@@ -35,9 +35,9 @@
   >
     {{ item.label }}
     
-    <span
+    <monkey-icon
       *ngIf="item.icon"
-      class="material-symbols-outlined"
-    >{{ item.icon }}</span>
+      [icon]="item.icon"
+    />
   </div>
 </monkey-list>

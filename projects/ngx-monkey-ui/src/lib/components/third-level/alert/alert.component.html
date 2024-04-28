@@ -10,10 +10,10 @@
 >
     <main>
         <section class="content">
-            <span
+            <monkey-icon
                 *ngIf="message.icon"
-                class="material-symbols-outlined"
-            >{{ message.icon }}</span>
+                [icon]="message.icon"
+            />
     
             <section class="texts">
                 <h2 *ngIf="message.title">{{ message.title }}</h2>

@@ -55,9 +55,9 @@
       >
         {{ isAsideOpened ? option.label : '' }}
 
-        <span
-          class="material-symbols-outlined"
-        >{{ option.icon ? option.icon : DEFAULT_ICON }}</span>
+        <monkey-icon
+          [icon]="option.icon ? option.icon : DEFAULT_ICON"
+        />
       </monkey-button>
 
       <monkey-list
@@ -74,9 +74,9 @@
             *ngIf="isAsideOpened"
           >{{ option.label }}</span>
           
-          <span
-            class="material-symbols-outlined"
-          >{{ option.icon ? option.icon : DEFAULT_ICON }}</span>
+          <monkey-icon
+            [icon]="option.icon ? option.icon : DEFAULT_ICON"
+          />
         </monkey-subheader>
 
         <monkey-button
@@ -91,9 +91,9 @@
         >
           {{ isAsideOpened ? optionChildren.label : '' }}
 
-          <span
-            class="material-symbols-outlined"
-          >{{ optionChildren.icon ? optionChildren.icon : DEFAULT_ICON }}</span>
+          <monkey-icon
+            [icon]="optionChildren.icon ? optionChildren.icon : DEFAULT_ICON"
+          />
         </monkey-button>
       </monkey-list>
     </monkey-list>

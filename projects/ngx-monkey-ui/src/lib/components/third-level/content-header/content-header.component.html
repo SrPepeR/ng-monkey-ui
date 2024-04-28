@@ -39,15 +39,15 @@
   [ghost]="ghost"
   [glow]="glow"
 >
-  <span
+  <monkey-icon
     *ngIf="action.icon && action.iconPosition === 'left'"
-    class="material-symbols-outlined"
-  >{{ action.icon }}</span>
+    [icon]="action.icon"
+  />
 
   {{ action.text }}
 
-  <span
+  <monkey-icon
     *ngIf="action.icon && action.iconPosition === 'right'"
-    class="material-symbols-outlined"
-  >{{ action.icon }}</span>
+    [icon]="action.icon"
+  />
 </monkey-button>

@@ -12,7 +12,8 @@
     (mouseover)="showTooltip($event)"
     (mouseout)="hideTooltip()"
 >
-    <span
-        class="material-symbols-outlined"
-    >{{ icon }}</span>
+    <monkey-icon
+        *ngIf="icon"
+        [icon]="icon"
+    />
 </monkey-button>
