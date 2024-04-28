@@ -52,6 +52,9 @@ export * from './lib/ngx-monkey-ui.module';
 
     // Header
     export * from './lib/components/first-level/header/header.component';
+
+    // subheader
+    export * from './lib/components/first-level/subheader/subheader.component';
   
   // FIRST LEVEL
 
