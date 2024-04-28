@@ -49,6 +49,9 @@ export * from './lib/ngx-monkey-ui.module';
 
     // List
     export * from './lib/components/first-level/list/list.component';
+
+    // Header
+    export * from './lib/components/first-level/header/header.component';
   
   // FIRST LEVEL
 
