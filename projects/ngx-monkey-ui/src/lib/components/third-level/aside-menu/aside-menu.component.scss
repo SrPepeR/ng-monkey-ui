@@ -32,16 +32,31 @@
     .current-option button {
       background-color: var(--opacity-low);
     }
+
+    & > section {
+      padding-top: 20px !important;
+    }
   }
 
   .aside-menu-toggle + .aside-menu {
-    monkey-list {
+    .aside-menu-content-list {
       padding-top: 65px;
     }
   }
 
   monkey-card, monkey-card * {
     border-radius: 0 !important;
+  }
+
+  .option-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    width: 100%;
+
+    color: var(--background-color-contrast-hight);
   }
 
   @media (max-width: 600px) {
