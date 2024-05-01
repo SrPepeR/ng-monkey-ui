@@ -72,6 +72,7 @@ export class MonkeyTooltip extends Styleable implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.unsubscribeComponent.next();
     this.unsubscribeComponent.complete();
+    this.tooltipable.ngOnDestroy();
   }
 
 }
