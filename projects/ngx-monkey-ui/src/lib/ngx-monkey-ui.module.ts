@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // FIRST LEVEL
 
@@ -42,6 +43,12 @@ import { MonkeyScrollbar } from './components/fourth-level/scrollbar/scrollbar.c
 
 // FOURTH LEVEL
 
+// FORM
+
+import { MonkeyInputText } from './components/form/input-text/input-text.component';
+
+// FORM
+
 
 @NgModule({
   declarations: [
@@ -67,9 +74,11 @@ import { MonkeyScrollbar } from './components/fourth-level/scrollbar/scrollbar.c
     MonkeyHeader,
     MonkeySubheader,
     MonkeyIcon,
+    MonkeyInputText,
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
   ],
   exports: [
     MonkeyThemeChanger,
@@ -94,6 +103,7 @@ import { MonkeyScrollbar } from './components/fourth-level/scrollbar/scrollbar.c
     MonkeyHeader,
     MonkeySubheader,
     MonkeyIcon,
+    MonkeyInputText,
   ],
 })
 export class NgxMonkeyUiModule { }
