@@ -144,4 +144,42 @@
             />
         </monkey-list>
     </monkey-card>
+
+    <monkey-card
+        [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+        [glass]="currentType  === 'Glass' ? '': 'false'"
+        [flat]="currentType  === 'Flat' ? '': 'false'"
+        [ghost]="currentType  === 'Ghost' ? '': 'false'"
+        [glow]="currentType  === 'Glow' ? '': 'false'"
+    >
+        <monkey-list
+            flexCenter
+        >
+            <monkey-header>Form inputs</monkey-header>
+    
+            <monkey-list
+                [formGroup]="form"
+            >
+                <monkey-input-text
+                    [style]="currentStyle"
+                    label="Monkey text input"
+                    alt="Text input"
+                    [name]="INPUT_TEXT_FORM_CONTROL_NAME"
+                    [formGroup]="form"
+                    icon="draw"
+                    required
+                ></monkey-input-text>
+
+                <monkey-input-text
+                    [style]="currentStyle"
+                    label="Other monkey text input"
+                    alt="Other text input"
+                    [name]="OTHER_INPUT_TEXT_FORM_CONTROL_NAME"
+                    [formGroup]="form"
+                    icon="phone"
+                    deleteable
+                ></monkey-input-text>
+            </monkey-list>
+        </monkey-list>
+    </monkey-card>
 </monkey-list>

@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgxMonkeyUiModule } from 'ngx-monkey-ui';
 
 import { ComponentsPortfolioComponent } from './components-portfolio.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -23,6 +24,8 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    
     NgxMonkeyUiModule,
     RouterModule.forChild(routes),
   ],
