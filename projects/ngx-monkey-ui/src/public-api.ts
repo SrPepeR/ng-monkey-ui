@@ -109,3 +109,10 @@ export * from './lib/ngx-monkey-ui.module';
     export * from './lib/components/fourth-level/scrollbar/scrollbar.component';
     
   // FOURTH LEVEL
+
+  // FORM
+
+    // Input text
+    export * from './lib/components/form/input-text/input-text.component';
+    
+  // FORM
