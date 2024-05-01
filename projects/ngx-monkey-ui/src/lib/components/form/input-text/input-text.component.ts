@@ -9,6 +9,7 @@ import { ThemeService } from '../../../services/theme.service';
   styleUrls: [
     '../../../styles/components/_input.default.style.scss',
     './styles/input-text.component.scss',
+    './styles/input-text.brutalist.component.scss',
   ]
 })
 export class MonkeyInputText extends Styleable {
