@@ -168,6 +168,12 @@
                     [formGroup]="form"
                     icon="draw"
                     required
+                    
+                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                    [glass]="currentType  === 'Glass' ? '': 'false'"
+                    [flat]="currentType  === 'Flat' ? '': 'false'"
+                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                    [glow]="currentType  === 'Glow' ? '': 'false'"
                 ></monkey-input-text>
 
                 <monkey-input-text
@@ -178,6 +184,12 @@
                     [formGroup]="form"
                     icon="phone"
                     deleteable
+                    
+                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                    [glass]="currentType  === 'Glass' ? '': 'false'"
+                    [flat]="currentType  === 'Flat' ? '': 'false'"
+                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                    [glow]="currentType  === 'Glow' ? '': 'false'"
                 ></monkey-input-text>
             </monkey-list>
         </monkey-list>
