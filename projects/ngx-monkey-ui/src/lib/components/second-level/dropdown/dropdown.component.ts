@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
 import { DropdownOption } from '../../../objects/interfaces/dropdown-option.interface';
 import { ThemeService } from '../../../services/theme.service';
@@ -16,7 +16,7 @@ import { TooltipService } from '../../../services/tooltip/tooltip.service';
     './dropdown.component.scss',
   ]
 })
-export class MonkeyDropdown extends Styleable implements OnInit {
+export class MonkeyDropdown extends Styleable implements OnInit, OnDestroy {
 
   /**
    * Represents the tooltipable behavior of the dropdown component.
@@ -82,6 +82,10 @@ export class MonkeyDropdown extends Styleable implements OnInit {
     super.ngOnChanges();
     this.tooltipable.alt = this.alt;
     this.tooltipable.style = this.style;
+  }
+
+  ngOnDestroy() {
+    this.tooltipable.ngOnDestroy();
   }
 
   /**

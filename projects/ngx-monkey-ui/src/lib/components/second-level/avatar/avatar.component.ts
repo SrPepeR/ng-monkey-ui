@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
 import { ComponentsSizesService } from '../../../services/components-sizes.service';
 import { TooltipService } from '../../../services/tooltip/tooltip.service';
@@ -17,7 +17,7 @@ import { Styleable } from '../../../bases/styleable.base';
     './avatar.component.scss',
   ]
 })
-export class MonkeyAvatar extends Styleable implements OnChanges {
+export class MonkeyAvatar extends Styleable implements OnChanges, OnDestroy {
 
   /**
    * Represents the tooltipable behavior of the avatar component.
@@ -101,6 +101,10 @@ export class MonkeyAvatar extends Styleable implements OnChanges {
   override ngOnChanges() {
     super.ngOnChanges();
     this.checkAll();
+  }
+
+  ngOnDestroy() {
+    this.tooltipable.ngOnDestroy();
   }
 
   /**

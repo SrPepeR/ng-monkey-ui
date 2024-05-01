@@ -62,7 +62,7 @@ export class TooltipService {
   }
 
   /**
-   * Hides the tooltip.
+   * Hides the tooltip and finish pending tooltips.
    */
   hide() {
     this.event.next(new Tooltip(MonkeyStyle.NONE, '', undefined));

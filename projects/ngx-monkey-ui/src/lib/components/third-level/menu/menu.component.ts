@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
 import { ThemeService } from '../../../services/theme.service';
 import { TooltipService } from '../../../services/tooltip/tooltip.service';
@@ -18,7 +18,7 @@ import { MonkeyScreen } from '../../../services/screen/screen';
     './menu.component.scss',
   ]
 })
-export class MonkeyMenu extends Styleable {
+export class MonkeyMenu extends Styleable implements OnDestroy {
 
   /**
    * Represents the tooltipable behavior of the menu component.
@@ -95,6 +95,10 @@ export class MonkeyMenu extends Styleable {
         this.isFullMenuOpen = true;
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.tooltipable.ngOnDestroy();
   }
 
   /**
