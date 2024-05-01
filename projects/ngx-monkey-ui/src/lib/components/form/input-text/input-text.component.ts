@@ -7,8 +7,8 @@ import { ThemeService } from '../../../services/theme.service';
   selector: 'monkey-input-text',
   templateUrl: './input-text.component.html',
   styleUrls: [
-    '../../../styles/components/_common.default.style.scss',
-    './input-text.component.scss',
+    '../../../styles/components/_input.default.style.scss',
+    './styles/input-text.component.scss',
   ]
 })
 export class MonkeyInputText extends Styleable {
