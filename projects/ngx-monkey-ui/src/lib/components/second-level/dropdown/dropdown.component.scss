@@ -24,7 +24,7 @@
     position: absolute;
     right: 0;
 
-    background-color: var(--opacity-medium);
+    background-color: var(--opacity-hight);
     border-radius: 10px 0 10px 0;
 
     z-index: 9999;
@@ -32,6 +32,7 @@
     .dropdown-item {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 15px;
       color: var(--contrast-hight);
       padding: 3px 12px;
@@ -40,7 +41,7 @@
       cursor: pointer;
 
       &:hover {
-        color: var(--color);
+        color: var(--contrast-low);
       }
 
       &:active {

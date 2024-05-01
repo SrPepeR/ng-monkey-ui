@@ -14,7 +14,7 @@
     [flat]="flat"
     [ghost]="ghost"
     [glow]="glow"
-    icon="expand_more"
+    [icon]="!isOpen ? 'expand_more' : 'expand_less'"
     (click)="toggleDropdown()"
   ></monkey-icon-button>
 </label>
