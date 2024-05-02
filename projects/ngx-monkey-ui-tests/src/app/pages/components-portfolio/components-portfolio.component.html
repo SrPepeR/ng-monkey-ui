@@ -180,10 +180,27 @@
                     [style]="currentStyle"
                     label="Email monkey text input"
                     alt="Email text input"
-                    [name]="OTHER_INPUT_TEXT_FORM_CONTROL_NAME"
+                    [name]="EMAIL_INPUT_TEXT_FORM_CONTROL_NAME"
                     [formGroup]="form"
                     icon="email"
                     [inputType]="monkeyInputTextTypeEmail"
+                    deleteable
+                    
+                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                    [glass]="currentType  === 'Glass' ? '': 'false'"
+                    [flat]="currentType  === 'Flat' ? '': 'false'"
+                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                    [glow]="currentType  === 'Glow' ? '': 'false'"
+                ></monkey-input-text>
+
+                <monkey-input-text
+                    [style]="currentStyle"
+                    label="Password monkey text input"
+                    alt="Password text input"
+                    [name]="PASSWORD_INPUT_TEXT_FORM_CONTROL_NAME"
+                    [formGroup]="form"
+                    icon="password"
+                    [inputType]="monkeyInputTextTypePassword"
                     deleteable
                     
                     [brutalist]="currentType  === 'Brutalist' ? '': 'false'"

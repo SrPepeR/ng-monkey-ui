@@ -39,9 +39,9 @@ export class ComponentsPortfolioComponent {
   contentHeaderAction: MonkeyButtonData = new MonkeyButtonData(this.currentStyle, 'Show alert', () => this.showAlert('Content header'), 'info', 'right');
 
   form: FormGroup = new FormGroup({
-    monkeyInputText: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
-    otherMonkeyInputText: new FormControl('', [Validators.email]),
-    email: new FormControl('')
+    monkeyInputText: new FormControl('', [Validators.minLength(3), Validators.maxLength(10)]),
+    emailMonkeyInputText: new FormControl('', [Validators.email]),
+    passwordMonkeyInputText: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]),
   });
   
   monkeyInputTextTypeText: MonkeyInputTextType = MonkeyInputTextType.TEXT;
@@ -53,7 +53,8 @@ export class ComponentsPortfolioComponent {
   monkeyInputTextTypeWeek: MonkeyInputTextType = MonkeyInputTextType.WEEK;
 
   INPUT_TEXT_FORM_CONTROL_NAME: string = 'monkeyInputText';
-  OTHER_INPUT_TEXT_FORM_CONTROL_NAME: string = 'otherMonkeyInputText';
+  EMAIL_INPUT_TEXT_FORM_CONTROL_NAME: string = 'emailMonkeyInputText';
+  PASSWORD_INPUT_TEXT_FORM_CONTROL_NAME: string = 'passwordMonkeyInputText';
 
   constructor(
     private alertService: MonkeyAlertService,

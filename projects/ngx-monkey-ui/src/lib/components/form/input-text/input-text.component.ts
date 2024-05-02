@@ -101,6 +101,16 @@ export class MonkeyInputText extends Styleable {
   @Input() deleteable: string = 'false';
 
   /**
+   * The type of the input field when it is used as a password input.
+   */
+  INPUT_PASSWORD_TYPE = MonkeyInputTextType.PASSWORD;
+
+  /**
+   * Indicates whether the password is visible or hidden.
+   */
+  passwordVisible: boolean = false;
+
+  /**
    * Observable that indicates whether the dark mode is enabled.
    */
   isDarkMode$ = this.themeService.isDarkMode$;
@@ -124,6 +134,21 @@ export class MonkeyInputText extends Styleable {
    */
   resetInput() {
     this.formGroup.get(this.name)?.reset();
+  }
+
+  /**
+   * Toggles the visibility of the password in the input field.
+   */
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+
+    if (this.passwordVisible) {
+      this.input.nativeElement.type = MonkeyInputTextType.TEXT;
+    } else {
+      this.input.nativeElement.type = MonkeyInputTextType.PASSWORD;
+    }
+
+    this.labelClicked();
   }
 
 }
