@@ -20,6 +20,8 @@
     [name]="name"
     [placeholder]="alt"
 
+    (ngModelChange)="inputChanged()"
+
     [class]="classList"
     [class.dark-theme]="isDarkMode$ | async"
 
@@ -58,15 +60,31 @@
     [glow]="glow"
   ></monkey-icon>
 
+  <!-- REQUIRED -->
   <monkey-icon
-    *ngIf="validIcon || invalidIcon || requiredIcon"
-    [icon]="!formGroup.controls[this.name].value && check(required) ? requiredIcon! : formGroup.controls[this.name].value && formGroup.controls[this.name].valid ? validIcon! : formGroup.controls[this.name].value && !formGroup.controls[this.name].valid ? invalidIcon! : ''"
-    [class.required]="!formGroup.controls[this.name].value && check(required)"
-    [class.valid]="formGroup.controls[this.name].value && formGroup.controls[this.name].valid"
-    [class.invalid]="formGroup.controls[this.name].value && !formGroup.controls[this.name].valid"
+    *ngIf="requiredIcon && !formGroup.controls[this.name].value && check(required)"
+    [icon]="requiredIcon"
+    class="required"
     [class.dark-theme]="isDarkMode$ | async"
   ></monkey-icon>
 
+  <!-- VALID -->
+  <monkey-icon
+    *ngIf="validIcon && formGroup.controls[this.name].value && formGroup.controls[this.name].valid"
+    [icon]="validIcon"
+    class="valid"
+    [class.dark-theme]="isDarkMode$ | async"
+  ></monkey-icon>
+
+  <!-- INVALID -->
+  <monkey-icon
+    *ngIf="invalidIcon && check(dontShowInvalidMessage) && formGroup.controls[this.name].value && !formGroup.controls[this.name].valid"
+    [icon]="invalidIcon"
+    class="invalid"
+    [class.dark-theme]="isDarkMode$ | async"
+  ></monkey-icon>
+
+  <!-- DELETE -->
   <monkey-icon
     *ngIf="check(deleteable) && formGroup.controls[this.name].value"
     class="delete-icon"
@@ -74,4 +92,19 @@
     (click)="resetInput()"
     [class.dark-theme]="isDarkMode$ | async"
   ></monkey-icon>
+
+  <!-- INVALID MESSAGES -->
+  <monkey-list
+    *ngIf="!check(dontShowInvalidMessage) && invalidMessages.length > 0"
+    class="invalid-messages"
+    [style]="style"
+  >
+    <monkey-invalid-form-message
+      [style]="style"
+      *ngFor="let invalidMessage of invalidMessages"
+      [text]="invalidMessage"
+      [icon]="invalidIcon"
+      (click)="labelClicked()"
+    />
+  </monkey-list>
 </label>

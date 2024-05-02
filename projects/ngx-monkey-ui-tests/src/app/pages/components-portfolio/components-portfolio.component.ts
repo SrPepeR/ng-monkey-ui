@@ -41,7 +41,7 @@ export class ComponentsPortfolioComponent {
 
   form: FormGroup = new FormGroup({
     monkeyInputText: new FormControl('', [Validators.minLength(3), Validators.maxLength(10)]),
-    emailMonkeyInputText: new FormControl('', [Validators.email]),
+    emailMonkeyInputText: new FormControl('', [Validators.email, Validators.minLength(3)]),
     passwordMonkeyInputText: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]),
     numberMonkeyInputNumber: new FormControl('', [Validators.min(0), Validators.max(100)]),
   });

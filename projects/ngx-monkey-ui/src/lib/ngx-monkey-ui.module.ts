@@ -47,6 +47,7 @@ import { MonkeyScrollbar } from './components/fourth-level/scrollbar/scrollbar.c
 
 import { MonkeyInputText } from './components/form/input-text/input-text.component';
 import { MonkeyInputNumber } from './components/form/input-number/input-number.component';
+import { InvalidFormMessageComponent } from './components/form/invalid-form-message/invalid-form-message.component';
 
 // FORM
 
@@ -77,6 +78,7 @@ import { MonkeyInputNumber } from './components/form/input-number/input-number.c
     MonkeyIcon,
     MonkeyInputText,
     MonkeyInputNumber,
+    InvalidFormMessageComponent,
   ],
   imports: [
     CommonModule,
@@ -107,6 +109,7 @@ import { MonkeyInputNumber } from './components/form/input-number/input-number.c
     MonkeyIcon,
     MonkeyInputText,
     MonkeyInputNumber,
+    InvalidFormMessageComponent,
   ],
 })
 export class NgxMonkeyUiModule { }
