@@ -209,6 +209,23 @@
                     [ghost]="currentType  === 'Ghost' ? '': 'false'"
                     [glow]="currentType  === 'Glow' ? '': 'false'"
                 ></monkey-input-text>
+
+                <monkey-input-number
+                    [style]="currentStyle"
+                    label="Password monkey text input"
+                    alt="Password text input"
+                    [name]="NUMBER_INPUT_NUMBER_FORM_CONTROL_NAME"
+                    [formGroup]="form"
+                    icon="numbers"
+                    [inputType]="monkeyInputNumberTypeNumber"
+                    deleteable
+                    
+                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                    [glass]="currentType  === 'Glass' ? '': 'false'"
+                    [flat]="currentType  === 'Flat' ? '': 'false'"
+                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                    [glow]="currentType  === 'Glow' ? '': 'false'"
+                ></monkey-input-number>
             </monkey-list>
         </monkey-list>
     </monkey-card>
