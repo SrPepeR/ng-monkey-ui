@@ -34,6 +34,9 @@ export class ComponentsPortfolioComponent {
 
   currentStyle: MonkeyStyle = MonkeyStyle.PRIMARY;
 
+  warningStyle: MonkeyStyle = MonkeyStyle.WARNING;
+  successStyle: MonkeyStyle = MonkeyStyle.SUCCESS;
+
   offSwitchText: string = 'Off';
   onSwitchText: string = 'On';
 
@@ -154,6 +157,10 @@ export class ComponentsPortfolioComponent {
 
   submitForm(): void {
     this.alertService.successes(['Formulario válido.', 'Datos enviados:', JSON.stringify(this.form.value)], true, 'Success');
+  }
+
+  resetForm(): void {
+    this.form.reset();
   }
 
 }
