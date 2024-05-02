@@ -1,1 +1,101 @@
-<p>input-number works!</p>
+<label
+  [class]="classList"
+  [class.dark-theme]="isDarkMode$ | async"
+  [class.w-full]="check(wFull)"
+  [formGroup]="formGroup"
+
+  [for]="name"
+>
+  <span
+    [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
+    (click)="labelClicked()"
+  >
+    {{ label }}
+  </span>
+
+  <input
+    [type]="inputType"
+    [formControlName]="name"
+    [name]="name"
+    [placeholder]="alt"
+
+    [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
+
+    (mousewheel)="onMouseWheel($event)"
+
+    #input
+  />
+
+  <monkey-list
+    *ngIf="inputType === 'number'"
+    class="input-number-arrows"
+    gapSize="sm"
+  >
+    <monkey-icon
+      class="input-icon"
+      icon="add"
+      (click)="stepUp()"
+
+      [class]="classList"
+      [class.dark-theme]="isDarkMode$ | async"
+
+      [style]="style"
+      [brutalist]="brutalist"
+      [glass]="glass"
+      [flat]="flat"
+      [ghost]="ghost"
+      [glow]="glow"
+    ></monkey-icon>
+    
+    <monkey-icon
+      class="input-icon"
+      icon="remove"
+      (click)="stepDown()"
+
+      [class]="classList"
+      [class.dark-theme]="isDarkMode$ | async"
+
+      [style]="style"
+      [brutalist]="brutalist"
+      [glass]="glass"
+      [flat]="flat"
+      [ghost]="ghost"
+      [glow]="glow"
+    ></monkey-icon>
+  </monkey-list>
+
+  <monkey-icon
+    *ngIf="icon"
+    class="input-icon"
+    [icon]="icon"
+    (click)="labelClicked()"
+    [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
+
+    [style]="style"
+    [brutalist]="brutalist"
+    [glass]="glass"
+    [flat]="flat"
+    [ghost]="ghost"
+    [glow]="glow"
+  ></monkey-icon>
+
+  <monkey-icon
+    *ngIf="validIcon || invalidIcon || requiredIcon"
+    [icon]="!formGroup.controls[this.name].value && check(required) ? requiredIcon! : formGroup.controls[this.name].value && formGroup.controls[this.name].valid ? validIcon! : formGroup.controls[this.name].value && !formGroup.controls[this.name].valid ? invalidIcon! : ''"
+    [class.required]="!formGroup.controls[this.name].value && check(required)"
+    [class.valid]="formGroup.controls[this.name].value && formGroup.controls[this.name].valid"
+    [class.invalid]="formGroup.controls[this.name].value && !formGroup.controls[this.name].valid"
+    [class.dark-theme]="isDarkMode$ | async"
+  ></monkey-icon>
+
+  <monkey-icon
+    *ngIf="check(deleteable) && formGroup.controls[this.name].value"
+    class="delete-icon"
+    icon="delete"
+    (click)="resetInput()"
+    [class.dark-theme]="isDarkMode$ | async"
+  ></monkey-icon>
+</label>

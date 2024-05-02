@@ -7,30 +7,33 @@
   pointer-events: none;
   opacity: 0.75;
 
-  &::after, &::before {
+  &::after,
+  &::before {
     background-color: var(--opacity-medium) !important;
   }
 }
 
-:host {
+:host ::ng-deep {
   &:has(label.w-full) {
     width: 100%;
   }
-  
+
   label {
     width: 100%;
     color: var(--background-color-contrast-hight);
-  
+
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-  
+
     span {
       width: 100%;
       font-size: larger;
     }
-    
-    span, .input-icon, .delete-icon {
+
+    span,
+    .input-icon,
+    .delete-icon {
       cursor: pointer;
     }
   }
@@ -40,12 +43,26 @@
     border: none;
     font-size: large;
 
+    &[type=number]::-webkit-inner-spin-button,
+    &[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+
     &::placeholder {
       font-size: medium;
     }
 
     &:focus {
       outline: none;
+    }
+  }
+
+  .input-number-arrows {
+    position: relative;
+    left: -30px;
+
+    span {
+      font-size: .8rem;
     }
   }
 
