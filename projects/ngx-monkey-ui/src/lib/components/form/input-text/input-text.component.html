@@ -27,6 +27,22 @@
   />
 
   <monkey-icon
+    *ngIf="inputType === INPUT_PASSWORD_TYPE"
+    class="input-icon password-visibility"
+    [icon]="passwordVisible ? 'visibility' : 'visibility_off'"
+    (click)="togglePasswordVisibility()"
+    [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
+
+    [style]="style"
+    [brutalist]="brutalist"
+    [glass]="glass"
+    [flat]="flat"
+    [ghost]="ghost"
+    [glow]="glow"
+  ></monkey-icon>
+
+  <monkey-icon
     *ngIf="icon"
     class="input-icon"
     [icon]="icon"
