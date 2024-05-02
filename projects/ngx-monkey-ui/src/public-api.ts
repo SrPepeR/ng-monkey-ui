@@ -117,5 +117,8 @@ export * from './lib/ngx-monkey-ui.module';
 
     // Input number
     export * from './lib/components/form/input-number/input-number.component';
+
+    // Invalid form message
+    export * from './lib/components/form/invalid-form-message/invalid-form-message.component';
     
   // FORM
