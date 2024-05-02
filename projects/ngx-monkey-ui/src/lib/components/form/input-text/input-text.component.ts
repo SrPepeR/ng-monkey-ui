@@ -11,6 +11,7 @@ import { ThemeService } from '../../../services/theme.service';
     './styles/input-text.component.scss',
     './styles/input-text.brutalist.component.scss',
     './styles/input-text.glass.component.scss',
+    './styles/input-text.flat.component.scss',
   ]
 })
 export class MonkeyInputText extends Styleable {
