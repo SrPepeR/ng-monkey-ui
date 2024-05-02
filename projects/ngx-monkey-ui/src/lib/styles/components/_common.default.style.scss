@@ -3,11 +3,11 @@
 
 .disabled,
 .disabled * {
-  cursor: not-allowed;
-  pointer-events: none;
-  opacity: 0.75;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  opacity: 0.5 !important;
 
   &::after, &::before {
-    background-color: var(--opacity-medium) !important;
+    background-color: var(--opacity-low) !important;
   }
 }
