@@ -114,5 +114,8 @@ export * from './lib/ngx-monkey-ui.module';
 
     // Input text
     export * from './lib/components/form/input-text/input-text.component';
+
+    // Input number
+    export * from './lib/components/form/input-number/input-number.component';
     
   // FORM

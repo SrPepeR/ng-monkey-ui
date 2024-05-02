@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DropdownOption, MonkeyAlertService, MonkeyFontService, MonkeyStyle } from 'ngx-monkey-ui';
 import { MonkeyButtonData } from 'projects/ngx-monkey-ui/src/lib/objects/classes/button-data.class';
+import { MonkeyInputNumberType } from 'projects/ngx-monkey-ui/src/lib/objects/enums/input-number-type.enum';
 import { MonkeyInputTextType } from 'projects/ngx-monkey-ui/src/lib/objects/enums/input-text-type.enum';
 import { map } from 'rxjs';
 
@@ -51,6 +52,12 @@ export class ComponentsPortfolioComponent {
   monkeyInputTextTypeSearch: MonkeyInputTextType = MonkeyInputTextType.SEARCH;
   monkeyInputTextTypeMonth: MonkeyInputTextType = MonkeyInputTextType.MONTH;
   monkeyInputTextTypeWeek: MonkeyInputTextType = MonkeyInputTextType.WEEK;
+
+  monkeyInputNumberTypeNumber: MonkeyInputNumberType = MonkeyInputNumberType.NUMBER;
+  monkeyInputNumberTypePhone: MonkeyInputNumberType = MonkeyInputNumberType.PHONE;
+  monkeyInputNumberTypeDate: MonkeyInputNumberType = MonkeyInputNumberType.DATE;
+  monkeyInputNumberTypeDatetime: MonkeyInputNumberType = MonkeyInputNumberType.DATETIME;
+  monkeyInputNumberTypeTime: MonkeyInputNumberType = MonkeyInputNumberType.TIME;
 
   INPUT_TEXT_FORM_CONTROL_NAME: string = 'monkeyInputText';
   EMAIL_INPUT_TEXT_FORM_CONTROL_NAME: string = 'emailMonkeyInputText';

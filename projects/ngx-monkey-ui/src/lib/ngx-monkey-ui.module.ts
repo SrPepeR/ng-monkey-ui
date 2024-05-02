@@ -46,6 +46,7 @@ import { MonkeyScrollbar } from './components/fourth-level/scrollbar/scrollbar.c
 // FORM
 
 import { MonkeyInputText } from './components/form/input-text/input-text.component';
+import { MonkeyInputNumber } from './components/form/input-number/input-number.component';
 
 // FORM
 
@@ -75,6 +76,7 @@ import { MonkeyInputText } from './components/form/input-text/input-text.compone
     MonkeySubheader,
     MonkeyIcon,
     MonkeyInputText,
+    MonkeyInputNumber,
   ],
   imports: [
     CommonModule,
@@ -104,6 +106,7 @@ import { MonkeyInputText } from './components/form/input-text/input-text.compone
     MonkeySubheader,
     MonkeyIcon,
     MonkeyInputText,
+    MonkeyInputNumber,
   ],
 })
 export class NgxMonkeyUiModule { }
