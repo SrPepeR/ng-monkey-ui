@@ -122,3 +122,10 @@ export * from './lib/ngx-monkey-ui.module';
     export * from './lib/components/form/invalid-form-message/invalid-form-message.component';
     
   // FORM
+
+  // PAGES
+
+    // Login page
+    export * from './lib/pages/form/login/login.page';
+
+  // PAGES
