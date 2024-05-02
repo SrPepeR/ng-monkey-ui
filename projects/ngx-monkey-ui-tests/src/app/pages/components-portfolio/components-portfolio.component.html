@@ -227,19 +227,36 @@
                     [glow]="currentType  === 'Glow' ? '': 'false'"
                 />
 
-                <monkey-button
-                    [style]="currentStyle"
-                    [disabled]="!form.valid ? '' : 'false'"
-                    (onClick)="submitForm()"
-
-                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
-                    [glass]="currentType  === 'Glass' ? '': 'false'"
-                    [flat]="currentType  === 'Flat' ? '': 'false'"
-                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
-                    [glow]="currentType  === 'Glow' ? '': 'false'"
+                <monkey-list
+                    horizontal
                 >
-                    Submit
-                </monkey-button>
+                    <monkey-button
+                        [style]="successStyle"
+                        [disabled]="!form.valid ? '' : 'false'"
+                        (onClick)="submitForm()"
+
+                        [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                        [glass]="currentType  === 'Glass' ? '': 'false'"
+                        [flat]="currentType  === 'Flat' ? '': 'false'"
+                        [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                        [glow]="currentType  === 'Glow' ? '': 'false'"
+                    >
+                        Submit
+                    </monkey-button>
+
+                    <monkey-button
+                        [style]="warningStyle"
+                        (onClick)="resetForm()"
+
+                        [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                        [glass]="currentType  === 'Glass' ? '': 'false'"
+                        [flat]="currentType  === 'Flat' ? '': 'false'"
+                        [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                        [glow]="currentType  === 'Glow' ? '': 'false'"
+                    >
+                        Reset all form
+                    </monkey-button>
+                </monkey-list>
             </monkey-list>
         </monkey-list>
     </monkey-card>
