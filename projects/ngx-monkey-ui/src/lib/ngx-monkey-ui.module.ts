@@ -51,6 +51,12 @@ import { InvalidFormMessageComponent } from './components/form/invalid-form-mess
 
 // FORM
 
+// PAGES
+
+import { MonkeyLoginPage } from './pages/form/login/login.page';
+
+// PAGES
+
 
 @NgModule({
   declarations: [
@@ -79,6 +85,9 @@ import { InvalidFormMessageComponent } from './components/form/invalid-form-mess
     MonkeyInputText,
     MonkeyInputNumber,
     InvalidFormMessageComponent,
+    
+    // PAGES
+    MonkeyLoginPage,
   ],
   imports: [
     CommonModule,
@@ -110,6 +119,9 @@ import { InvalidFormMessageComponent } from './components/form/invalid-form-mess
     MonkeyInputText,
     MonkeyInputNumber,
     InvalidFormMessageComponent,
+    
+    // PAGES
+    MonkeyLoginPage,
   ],
 })
 export class NgxMonkeyUiModule { }
