@@ -2,6 +2,7 @@ import { Component, Input, ViewChild } from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
 import { FormGroup } from '@angular/forms';
 import { ThemeService } from '../../../services/theme.service';
+import { MonkeyInputTextType } from '../../../objects/enums/input-text-type.enum';
 
 @Component({
   selector: 'monkey-input-text',
@@ -42,6 +43,11 @@ export class MonkeyInputText extends Styleable {
    * The name of the input field.
    */
   @Input() name!: string;
+
+  /**
+   * The type of input for the input text component.
+   */
+  @Input() inputType: MonkeyInputTextType = MonkeyInputTextType.TEXT;
 
   /**
    * Indicates whether the input is required or not.
