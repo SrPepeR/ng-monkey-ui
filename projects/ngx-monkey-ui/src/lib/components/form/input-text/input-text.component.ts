@@ -13,6 +13,7 @@ import { ThemeService } from '../../../services/theme.service';
     './styles/input-text.glass.component.scss',
     './styles/input-text.flat.component.scss',
     './styles/input-text.ghost.component.scss',
+    './styles/input-text.glow.component.scss',
   ]
 })
 export class MonkeyInputText extends Styleable {
