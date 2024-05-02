@@ -174,7 +174,7 @@
                     [flat]="currentType  === 'Flat' ? '': 'false'"
                     [ghost]="currentType  === 'Ghost' ? '': 'false'"
                     [glow]="currentType  === 'Glow' ? '': 'false'"
-                ></monkey-input-text>
+                />
 
                 <monkey-input-text
                     [style]="currentStyle"
@@ -191,7 +191,7 @@
                     [flat]="currentType  === 'Flat' ? '': 'false'"
                     [ghost]="currentType  === 'Ghost' ? '': 'false'"
                     [glow]="currentType  === 'Glow' ? '': 'false'"
-                ></monkey-input-text>
+                />
 
                 <monkey-input-text
                     [style]="currentStyle"
@@ -208,7 +208,7 @@
                     [flat]="currentType  === 'Flat' ? '': 'false'"
                     [ghost]="currentType  === 'Ghost' ? '': 'false'"
                     [glow]="currentType  === 'Glow' ? '': 'false'"
-                ></monkey-input-text>
+                />
 
                 <monkey-input-number
                     [style]="currentStyle"
@@ -225,7 +225,21 @@
                     [flat]="currentType  === 'Flat' ? '': 'false'"
                     [ghost]="currentType  === 'Ghost' ? '': 'false'"
                     [glow]="currentType  === 'Glow' ? '': 'false'"
-                ></monkey-input-number>
+                />
+
+                <monkey-button
+                    [style]="currentStyle"
+                    [disabled]="!form.valid ? '' : 'false'"
+                    (onClick)="submitForm()"
+
+                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                    [glass]="currentType  === 'Glass' ? '': 'false'"
+                    [flat]="currentType  === 'Flat' ? '': 'false'"
+                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                    [glow]="currentType  === 'Glow' ? '': 'false'"
+                >
+                    Submit
+                </monkey-button>
             </monkey-list>
         </monkey-list>
     </monkey-card>

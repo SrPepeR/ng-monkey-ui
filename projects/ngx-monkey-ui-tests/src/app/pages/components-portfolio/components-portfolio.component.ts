@@ -152,4 +152,8 @@ export class ComponentsPortfolioComponent {
     }
   }
 
+  submitForm(): void {
+    this.alertService.successes(['Formulario válido.', 'Datos enviados:', JSON.stringify(this.form.value)], true, 'Success');
+  }
+
 }
