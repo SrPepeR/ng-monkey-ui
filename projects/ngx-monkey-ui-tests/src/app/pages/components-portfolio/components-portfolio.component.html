@@ -178,11 +178,12 @@
 
                 <monkey-input-text
                     [style]="currentStyle"
-                    label="Other monkey text input"
-                    alt="Other text input"
+                    label="Email monkey text input"
+                    alt="Email text input"
                     [name]="OTHER_INPUT_TEXT_FORM_CONTROL_NAME"
                     [formGroup]="form"
-                    icon="phone"
+                    icon="email"
+                    [inputType]="monkeyInputTextTypeEmail"
                     deleteable
                     
                     [brutalist]="currentType  === 'Brutalist' ? '': 'false'"

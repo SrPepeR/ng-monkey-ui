@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DropdownOption, MonkeyAlertService, MonkeyFontService, MonkeyStyle } from 'ngx-monkey-ui';
 import { MonkeyButtonData } from 'projects/ngx-monkey-ui/src/lib/objects/classes/button-data.class';
+import { MonkeyInputTextType } from 'projects/ngx-monkey-ui/src/lib/objects/enums/input-text-type.enum';
 import { map } from 'rxjs';
 
 @Component({
@@ -38,10 +39,18 @@ export class ComponentsPortfolioComponent {
   contentHeaderAction: MonkeyButtonData = new MonkeyButtonData(this.currentStyle, 'Show alert', () => this.showAlert('Content header'), 'info', 'right');
 
   form: FormGroup = new FormGroup({
-    monkeyInputText: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    otherMonkeyInputText: new FormControl('', [Validators.minLength(5), Validators.maxLength(10)]),
+    monkeyInputText: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
+    otherMonkeyInputText: new FormControl('', [Validators.email]),
     email: new FormControl('')
   });
+  
+  monkeyInputTextTypeText: MonkeyInputTextType = MonkeyInputTextType.TEXT;
+  monkeyInputTextTypeEmail: MonkeyInputTextType = MonkeyInputTextType.EMAIL;
+  monkeyInputTextTypePassword: MonkeyInputTextType = MonkeyInputTextType.PASSWORD;
+  monkeyInputTextTypeUrl: MonkeyInputTextType = MonkeyInputTextType.URL;
+  monkeyInputTextTypeSearch: MonkeyInputTextType = MonkeyInputTextType.SEARCH;
+  monkeyInputTextTypeMonth: MonkeyInputTextType = MonkeyInputTextType.MONTH;
+  monkeyInputTextTypeWeek: MonkeyInputTextType = MonkeyInputTextType.WEEK;
 
   INPUT_TEXT_FORM_CONTROL_NAME: string = 'monkeyInputText';
   OTHER_INPUT_TEXT_FORM_CONTROL_NAME: string = 'otherMonkeyInputText';
