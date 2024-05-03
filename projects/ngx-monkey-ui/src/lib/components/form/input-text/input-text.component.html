@@ -1,0 +1,110 @@
+<label
+  [class]="classList"
+  [class.dark-theme]="isDarkMode$ | async"
+  [class.w-full]="check(wFull)"
+  [formGroup]="formGroup"
+
+  [for]="name"
+>
+  <span
+    [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
+    (click)="labelClicked()"
+  >
+    {{ label }}
+  </span>
+
+  <input
+    [type]="inputType"
+    [formControlName]="name"
+    [name]="name"
+    [placeholder]="alt"
+
+    (ngModelChange)="inputChanged()"
+
+    [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
+
+    #input
+  />
+
+  <monkey-icon
+    *ngIf="inputType === INPUT_PASSWORD_TYPE"
+    class="input-icon password-visibility"
+    [icon]="passwordVisible ? 'visibility' : 'visibility_off'"
+    (click)="togglePasswordVisibility()"
+    [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
+
+    [style]="style"
+    [brutalist]="brutalist"
+    [glass]="glass"
+    [flat]="flat"
+    [ghost]="ghost"
+    [glow]="glow"
+  ></monkey-icon>
+
+  <monkey-icon
+    *ngIf="icon"
+    class="input-icon"
+    [icon]="icon"
+    (click)="labelClicked()"
+    [class]="classList"
+    [class.dark-theme]="isDarkMode$ | async"
+
+    [style]="style"
+    [brutalist]="brutalist"
+    [glass]="glass"
+    [flat]="flat"
+    [ghost]="ghost"
+    [glow]="glow"
+  ></monkey-icon>
+
+  <!-- REQUIRED -->
+  <monkey-icon
+    *ngIf="requiredIcon && !formGroup.controls[this.name].value && check(required)"
+    [icon]="requiredIcon"
+    class="required"
+    [class.dark-theme]="isDarkMode$ | async"
+  ></monkey-icon>
+
+  <!-- VALID -->
+  <monkey-icon
+    *ngIf="validIcon && formGroup.controls[this.name].value && formGroup.controls[this.name].valid"
+    [icon]="validIcon"
+    class="valid"
+    [class.dark-theme]="isDarkMode$ | async"
+  ></monkey-icon>
+
+  <!-- INVALID -->
+  <monkey-icon
+    *ngIf="invalidIcon && check(dontShowInvalidMessage) && formGroup.controls[this.name].value && !formGroup.controls[this.name].valid"
+    [icon]="invalidIcon"
+    class="invalid"
+    [class.dark-theme]="isDarkMode$ | async"
+  ></monkey-icon>
+
+  <!-- DELETE -->
+  <monkey-icon
+    *ngIf="check(deleteable) && formGroup.controls[this.name].value"
+    class="delete-icon"
+    icon="delete"
+    (click)="resetInput()"
+    [class.dark-theme]="isDarkMode$ | async"
+  ></monkey-icon>
+
+  <!-- INVALID MESSAGES -->
+  <monkey-list
+    *ngIf="!check(dontShowInvalidMessage) && invalidMessages.length > 0"
+    class="invalid-messages"
+    [style]="style"
+  >
+    <monkey-invalid-form-message
+      [style]="style"
+      *ngFor="let invalidMessage of invalidMessages"
+      [text]="invalidMessage"
+      [icon]="invalidIcon"
+      (click)="labelClicked()"
+    />
+  </monkey-list>
+</label>

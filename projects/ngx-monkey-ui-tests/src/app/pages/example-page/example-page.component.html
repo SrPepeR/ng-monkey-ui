@@ -1,0 +1,33 @@
+<!-- DEMOS -->
+<monkey-list>
+  <monkey-card
+    glass
+  >
+    <!-- CONTENT HEADER -->
+    <monkey-content-header
+      [style]="currentStyle"
+      image="https://th.bing.com/th/id/OIP.6bDf-HbrDJFPfyRPJTYVZgHaG7?rs=1&pid=ImgDetMain"
+      header="Monkey UI"
+      subHeader="An Angular components lybrary"
+      [action]="contentHeaderAction"
+
+      glass
+    />
+  </monkey-card>
+  
+  <monkey-card
+    glass
+  >
+    <!-- LOGIN -->
+    <monkey-login-page
+      [style]="currentStyle"
+      (onLogin)="navigateComponents()"
+      (onRegister)="navigateComponents()"
+      (onContinueAsGuest)="navigateComponents()"
+      (onForgotPassword)="navigateComponents()"
+      canContinueAsGuest
+
+      glass
+    />
+  </monkey-card>
+</monkey-list>

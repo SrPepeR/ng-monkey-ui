@@ -1,0 +1,42 @@
+@use '../../../../styles/components/switch.default.style';
+
+/* Ghost style */
+label.switch-label.type-ghost {
+    color: var(--background-color-contrast-hight);
+    font-weight: lighter;
+}
+
+div.switch-container label.switch.type-ghost {
+    background-color: var(--background-color);
+    border: 1px solid var(--color);
+
+    &:has(input:checked) {
+        border-color: var(--emphasis);
+    }
+
+    span.slider::before {
+        top: 5px;
+        left: 5px;
+
+        width: 16px;
+        height: 16px;
+
+        box-sizing: border-box;
+        border: 1px solid var(--background-color-contrast-low);
+    }
+
+    input:hover~span.slider::before {
+        background-color: var(--opacity-low);
+        border-color: var(--emphasis);
+    }
+
+    input:checked~span.slider::before {
+        height: 16px;
+        top: 5px;
+
+        transform: translate(35px);
+
+        border-color: var(--color);
+        background-color: var(--opacity-hight);
+    }
+}

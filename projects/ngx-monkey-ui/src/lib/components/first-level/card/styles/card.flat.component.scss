@@ -1,0 +1,9 @@
+@use '../../../../styles/components/card.default.style';
+
+/* Flat style */
+section.type-flat {
+    border-radius: 30px;
+    padding: 30px;
+
+    background-color: var(--color);
+}

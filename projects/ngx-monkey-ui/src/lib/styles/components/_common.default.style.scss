@@ -1,2 +1,13 @@
 @import '../components.themes';
 @import '../components.styles';
+
+.disabled,
+.disabled * {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  opacity: 0.5 !important;
+
+  &::after, &::before {
+    background-color: var(--opacity-low) !important;
+  }
+}

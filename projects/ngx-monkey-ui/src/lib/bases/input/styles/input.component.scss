@@ -1,0 +1,55 @@
+label.type-default {
+  gap: 5px;
+
+  span {
+    color: var(--background-color-contrast-low);
+  }
+
+  span,
+  .input-icon,
+  .delete-icon {
+    &:hover {
+      color: var(--background-color-contrast-hight);
+    }
+
+    &:active {
+      color: var(--opacity-hight);
+    }
+  }
+
+  input {
+    padding: 5px 10px;
+
+    background-color: var(--opacity-low);
+    color: var(--color);
+
+    &::placeholder {
+      color: var(--opacity-hight);
+    }
+
+    &:focus {
+      background-color: var(--opacity-medium);
+    }
+
+    &:disabled {
+      background-color: var(--opacity-low);
+      color: var(--opacity-hight);
+    }
+  }
+
+  monkey-icon {
+    color: var(--color);
+
+    &.required {
+      color: var(--warning-color);
+    }
+
+    &.valid {
+      color: var(--success-color);
+    }
+
+    &.invalid {
+      color: var(--danger-color);
+    }
+  }
+}

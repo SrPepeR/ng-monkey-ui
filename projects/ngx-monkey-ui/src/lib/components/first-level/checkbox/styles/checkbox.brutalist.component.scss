@@ -1,0 +1,37 @@
+@use '../../../../styles/components/checkbox.default.style';
+
+/* Brutalist style */
+label.container.type-brutalist {
+    color: var(--background-color-contrast-hight);
+
+    span.checkmark {
+        transition: all .2s ease-in-out;
+        
+        background-color: var(--background-color);
+        border: solid 4px var(--background-color-contrast-hight);
+
+        &:after {
+            border-bottom: 4px solid var(--background-color-contrast-hight);
+            border-right: 4px solid var(--background-color-contrast-hight);
+
+            left: 1px;
+            top: -3px;
+
+            width: 7px;
+            height: 12px;
+        }
+    }
+
+    &:hover input~span.checkmark {
+        background-color: var(--background-color-contrast-hight);
+    }
+    
+    &:hover input:checked~span.checkmark {
+        background-color: var(--emphasis);
+    }
+
+    input:checked~span.checkmark {
+        background-color: var(--color);
+        border: solid 4px var(--background-color-contrast-hight);
+    }
+}

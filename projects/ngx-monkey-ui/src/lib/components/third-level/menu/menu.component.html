@@ -1,0 +1,94 @@
+<section
+  class="menu-container"
+  [class]="classList"
+  [class.dark-theme]="isDarkMode$ | async"
+>
+  <div class="menu-content">
+    <span
+      *ngIf="title"
+      class="title"
+      [class]="classList"
+      [class.dark-theme]="isDarkMode$ | async"
+      (click)="navigateToRootPage()"
+    >
+      {{ title }}
+    </span>
+
+    <monkey-icon-button
+      *ngIf="currentScreen.isScreenSizeDown(SMALL_SCREEN_FLAG)"
+      [class]="classList"
+      [style]="style"
+      [brutalist]="brutalist"
+      [glass]="glass"
+      [flat]="flat"
+      [ghost]="ghost"
+      [glow]="glow"
+      icon="menu"
+      (onClick)="toggleFullMenu()"
+    ></monkey-icon-button>
+
+    <section
+      *ngIf="isFullMenuOpen"
+      class="menu-list-content"
+      [class]="classList"
+      [class.dark-theme]="isDarkMode$ | async"
+    >
+      <monkey-list
+        [style]="style"
+        class="menu-list"
+        [class]="classList"
+        [class.dark-theme]="isDarkMode$ | async"
+        gapSize="md"
+        horizontal
+      >
+        <div
+          *ngFor="let option of options"
+          class="menu-item"
+          [class]="classList"
+        >
+          <monkey-button
+            *ngIf="!option.children"
+            [class]="classList"
+            [style]="style"
+            [brutalist]="brutalist"
+            [glass]="glass"
+            [flat]="flat"
+            [ghost]="ghost"
+            [glow]="glow"
+            (onClick)="navigateToPage(option)"
+          >
+            {{ option.label }}
+          </monkey-button>
+    
+          <monkey-dropdown
+            *ngIf="option.children"
+            [class]="classList"
+            [style]="style"
+            [brutalist]="brutalist"
+            [glass]="glass"
+            [flat]="flat"
+            [ghost]="ghost"
+            [glow]="glow"
+            [alt]="option.label"
+            [options]="option.children"
+            separators
+            (selectedChanged)="onSelectedChanged($event)"
+          ></monkey-dropdown>
+        </div>
+      </monkey-list>
+    
+      <monkey-list
+        *ngIf="isFullMenuOpen"
+        [style]="style"
+        [class]="classList"
+        [class.dark-theme]="isDarkMode$ | async"
+        class="menu-content-list"
+        gapSize="md"
+        horizontal
+      >
+        <ng-content></ng-content>
+      </monkey-list>
+    </section>
+  
+  </div>
+</section>

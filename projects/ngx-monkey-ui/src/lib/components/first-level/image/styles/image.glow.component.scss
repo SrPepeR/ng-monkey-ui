@@ -1,0 +1,14 @@
+@use '../../../../styles/components/image.default.style';
+
+/* Glow style */
+.placeholder.type-glow {
+    background: var(--opacity-hight);
+
+    animation: glow-pulse 1s infinite linear;
+}
+
+.placeholder.type-glow,
+img.type-glow {
+    border-radius: 5px;
+    box-shadow: 0 5px 15px var(--emphasis);
+}

@@ -1,0 +1,21 @@
+@use '../../../../styles/components/loader.default.style';
+
+/* Brutalist style */
+:host {
+    .spinner.type-brutalist {
+        position: relative;
+        height: calc(var(--size) / 1.5);
+        border: none;
+        animation: fill-horizontal .5s linear infinite alternate;
+
+        &.contrast {
+            background-color: var(--color);
+            color: var(--contrast-hight);
+        }
+    
+        &:not(&.contrast) {
+            background-color: var(--contrast-hight);
+            color: var(--color);
+        }
+    }
+}

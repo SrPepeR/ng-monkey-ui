@@ -1,0 +1,12 @@
+:host ::ng-deep {
+  padding-left: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  monkey-icon,
+  monkey-subheader > * {
+    color: var(--danger-color) !important;
+  }
+}

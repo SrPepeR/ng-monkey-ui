@@ -1,90 +1,186 @@
 import { Component, Input, OnChanges, OnInit } from "@angular/core";
 
 import { ComponentsStylesService } from "../services/components-styles.service";
-import { Observable, fromEvent, map, startWith } from "rxjs";
+import { MonkeyScreenService } from "../services/screen/screen.service";
+import { MonkeyScreen } from "../services/screen/screen";
+import { ScreenSize } from "../services/screen/screen.enum";
+import { MonkeyStyle } from "../objects/enums/style.enum";
 
+/**
+ * Base class for styleable components.
+ */
 @Component({
 	selector: '',
 	template: '',
 	providers: [
 		ComponentsStylesService,
+		MonkeyScreenService,
 	],
 })
+/**
+ * Represents a base class for styleable components.
+ * Provides common style and type properties for components.
+ */
 export class Styleable implements OnInit, OnChanges {
 
 	private componentStylesService: ComponentsStylesService = new ComponentsStylesService();
+	protected screenService: MonkeyScreenService = new MonkeyScreenService();
 
 	// STYLE
-	@Input() style: 'background' | 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger' | 'info' | '' = 'primary';
+	/**
+	 * The style of the component.
+	 * Default value: MonkeyStyle.PRIMARY.
+	 */
+	@Input() style: MonkeyStyle = MonkeyStyle.PRIMARY;
 
 	// COMPONENTS TYPES
+	/**
+	 * The brutalist type of the component.
+	 */
 	@Input() brutalist?: string = 'false';
+
+	/**
+	 * The flat type of the component.
+	 */
 	@Input() flat?: string = 'false';
+
+	/**
+	 * The ghost type of the component.
+	 */
 	@Input() ghost?: string = 'false';
+
+	/**
+	 * The glass type of the component.
+	 */
 	@Input() glass?: string = 'false';
+
+	/**
+	 * The glow type of the component.
+	 */
 	@Input() glow?: string = 'false';
 
 	// GENERAL STYLES
+	/**
+	 * Whether the component should have flex wrap.
+	 */
+	@Input() flexWrap?: string = 'false';
+	
+	/**
+	 * Whether the component should have flex wrap-reverse.
+	 */
+	@Input() flexWrapReverse?: string = 'false';
+
+	/**
+	 * Whether the component should have flex-start alignment.
+	 */
 	@Input() flexStart?: string = 'false';
+
+	/**
+	 * Whether the component should have flex-center alignment.
+	 */
 	@Input() flexCenter?: string = 'false';
+
+	/**
+	 * Whether the component should have flex-end alignment.
+	 */
 	@Input() flexEnd?: string = 'false';
+
+	/**
+	 * Whether the component should have sticky positioning.
+	 */
 	@Input() sticky?: string = 'false';
 
-	screenWidth$: Observable<number>;
-	screenWidth: number = 0;
-	screenWidthStyle: string = 'screen-xs';
-	SMALL_SCREEN_WIDTH: number = 768;
+	/**
+	 * Whether the component should be disabled.
+	 */
+	@Input() disabled?: string = 'false';
 
+	/**
+	 * Indicates whether the component is disabled.
+	 */
+	isDisabledComponent: boolean = false;
+
+	/**
+	 * The current screen data.
+	 */
+	currentScreen!: MonkeyScreen;
+
+	/**
+	 * Represents the screen size flag for small screens.
+	 */
+	SMALL_SCREEN_FLAG: ScreenSize = ScreenSize.SM;
+
+	/**
+	 * Represents the success style for MonkeyStyle.
+	 */
+	styleSuccess: MonkeyStyle = MonkeyStyle.SUCCESS;
+	/**
+	 * Represents the warning style for MonkeyStyle.
+	 */
+	styleWarning: MonkeyStyle = MonkeyStyle.WARNING;
+	/**
+	 * Represents the danger style for MonkeyStyle.
+	 */
+	styleDanger: MonkeyStyle = MonkeyStyle.DANGER;
+
+	/**
+	 * The list of classes to apply to the component.
+	 * Default value: [].
+	 */
 	classList: Array<string> = [];
 
 	constructor() {
-		this.screenWidth$ = fromEvent(window, 'resize').pipe(
-			startWith(0),
-			map(() => window.innerWidth)
-		);
+		this.currentScreen = this.screenService.getCurrentScreen();
 	}
 
+	/**
+	 * Initializes the component.
+	 * Adds all the necessary classes and subscribes to screen changes.
+	 */
 	ngOnInit() {
 		this.addAllClasses();
 
-		this.screenWidth$.subscribe((value: number) => {
-			this.checkScreenSize(value);
+		this.screenService.screenChanges$.subscribe((newCurrentScreen: MonkeyScreen) => {
+			this.currentScreen = newCurrentScreen;
+			this.addAllClasses();
 		});
 	}
 
+	/**
+	 * Called when input properties change.
+	 * Adds all the necessary classes and subscribes to screen changes.
+	 */
 	ngOnChanges() {
 		this.addAllClasses();
 
-		this.screenWidth$.subscribe((value: number) => {
-			this.checkScreenSize(value);
+		this.screenService.screenChanges$.subscribe((newCurrentScreen: MonkeyScreen) => {
+			this.currentScreen = newCurrentScreen;
+			this.addAllClasses();
 		});
 	}
 
-	private checkScreenSize(value: number) {
-		this.screenWidth = value;
-
-		if (value < 600) {
-			this.screenWidthStyle = 'screen-xs';
-		} else if (value < 768) {
-			this.screenWidthStyle = 'screen-sm';
-		} else if (value < 992) {
-			this.screenWidthStyle = 'screen-md';
-		} else if (value < 1200) {
-			this.screenWidthStyle = 'screen-lg';
-		} else {
-			this.screenWidthStyle = 'screen-xl';
-		}
-
-		this.addAllClasses();
-	}
-
+	/**
+	 * Adds all the necessary classes to the component.
+	 */
 	private addAllClasses() {
 		this.classList = this.componentStylesService.generateClassList(this);
 		this.checkGeneralStyles();
 		this.addAditionalClasses();
+		this.checkSpecialComponents();
 	}
 
+	/**
+	 * Checks the general styles of the component.
+	 */
 	private checkGeneralStyles() {
+		if (this.check(this.flexWrap)) {
+			this.classList.push('display-flex-wrap');
+		}
+
+		if (this.check(this.flexWrapReverse)) {
+			this.classList.push('display-flex-wrap-reverse');
+		}
+
 		if (this.check(this.flexStart)) {
 			this.classList.push('flex-start');
 		}
@@ -100,14 +196,57 @@ export class Styleable implements OnInit, OnChanges {
 		if (this.check(this.sticky)) {
 			this.classList.push('position-sticky');
 		}
+
+		if (this.check(this.disabled)) {
+			this.classList.push('disabled');
+			this.isDisabledComponent = true;
+		}
 	}
 
+	/**
+	 * Adds additional classes to the component.
+	 */
 	protected addAditionalClasses() {
-		this.classList.push(this.screenWidthStyle);
+		this.classList.push(this.currentScreen.sizeStyleClass);
 	}
 
+	private checkSpecialComponents() {
+		this.manageAsideMenu();
+	}
+
+	private manageAsideMenu() {
+		const asideMenu = document.querySelector('.aside-menu.hinted');
+		const asideMenuWidth = asideMenu?.clientWidth || 0;
+
+		this.changeMainMarginLeft(asideMenuWidth);
+		this.addStylesToAsideMenuWhenMenu();
+	}
+
+	private changeMainMarginLeft(pixels: number) {
+		const main = document.querySelector('main');
+		if (main) {
+			main.style.marginLeft = `${pixels}px`;
+		}
+	}
+
+	private addStylesToAsideMenuWhenMenu() {
+		const menu: HTMLElement | null = document.querySelector('monkey-menu .menu-content');
+		const asideMenu: HTMLElement | null = document.querySelector('monkey-aside-menu .aside-menu');
+
+		if (menu && asideMenu) {
+			(asideMenu as HTMLElement).style.top = `${menu.clientHeight}px`;
+			(asideMenu as HTMLElement).style.height = `${document.body.clientHeight - menu.clientHeight}px`;
+		}
+	}
+
+	/**
+	 * Checks if the value is empty.
+	 * 
+	 * @param value The value to check.
+	 * @returns True if the value is empty, false otherwise.
+	 */
 	protected check(value: any) {
-		return value === '';
+		return value === '' || value === 'true' || value === true;
 	}
 
 }

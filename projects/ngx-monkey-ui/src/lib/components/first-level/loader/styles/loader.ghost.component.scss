@@ -1,0 +1,16 @@
+@use '../../../../styles/components/loader.default.style';
+
+/* Ghost style */
+:host {
+
+    .spinner.type-ghost {
+        --component-size: calc(var(--size) * .5);
+        width: var(--component-size);
+        height: var(--component-size);
+        padding: var(--component-size) var(var(--size));
+        border-radius: 50%;
+        --animation-gap: calc(var(--size) * .75);
+        --border: 0;
+        animation: linear-three-dots-blink .75s infinite linear alternate;
+    }
+}

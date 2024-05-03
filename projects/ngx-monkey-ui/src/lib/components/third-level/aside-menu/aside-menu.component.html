@@ -1,0 +1,101 @@
+<monkey-icon-button
+  *ngIf="!check(showHint) || !canShowHint"
+  class="aside-menu-toggle"
+  [alt]="alt"
+  [icon]="isAsideOpened ? CLOSE_ASIDE_ICON : OPEN_ASIDE_ICON"
+  (onClick)="toggleMenu()"
+
+  [style]="style"
+  [brutalist]="brutalist"
+  [flat]="flat"
+  [ghost]="ghost"
+  [glass]="glass"
+  [glow]="glow"
+></monkey-icon-button>
+
+<monkey-card
+  id="aside-menu-content"
+  class="aside-menu"
+  [class.hinted]="check(showHint) && canShowHint && !isAsideOpened"
+  [column]="true"
+  
+  (mouseenter)="openMenu()"
+  (mouseleave)="!openByToggle ? closeMenu() : null"
+
+  [brutalist]="brutalist"
+  [glass]="glass"
+  [flat]="flat"
+  [ghost]="ghost"
+  [glow]="glow"
+
+  noMargin
+  noPadding
+>
+  <monkey-list
+    class="aside-menu-content-list"
+    [style]="style"
+    gapSize="md"
+  >
+    <monkey-list
+      [style]="style"
+      gapSize="sm"
+      separators
+
+      *ngFor="let option of data"
+    >
+      <monkey-button
+        *ngIf="!option.children"
+        class="aside-menu-option"
+        (onClick)="onClicked(option)"
+
+        [class.current-option]="option == currentOption"
+        
+        [style]="style"
+        discreet
+      >
+        {{ isAsideOpened || openedByLongScreen ? option.label : '' }}
+
+        <monkey-icon
+          [icon]="option.icon ? option.icon : DEFAULT_ICON"
+        />
+      </monkey-button>
+
+      <monkey-list
+        [style]="style"
+        gapSize="sm"
+
+        *ngIf="option.children"
+      >
+        <monkey-subheader
+          class="option-group"
+        >
+          <span
+            class="option-group-label"
+            *ngIf="isAsideOpened || openedByLongScreen"
+          >{{ option.label }}</span>
+          
+          <monkey-icon
+            [icon]="option.icon ? option.icon : DEFAULT_ICON"
+          />
+        </monkey-subheader>
+
+        <monkey-button
+          *ngFor="let optionChildren of option.children"
+          class="aside-menu-option"
+          (onClick)="onClicked(optionChildren)"
+
+          [class.current-option]="optionChildren == currentOption"
+          
+          [style]="style"
+          discreet
+        >
+          {{ isAsideOpened || openedByLongScreen ? optionChildren.label : '' }}
+
+          <monkey-icon
+            [icon]="optionChildren.icon ? optionChildren.icon : DEFAULT_ICON"
+          />
+        </monkey-button>
+      </monkey-list>
+    </monkey-list>
+  </monkey-list>
+</monkey-card>

@@ -1,0 +1,263 @@
+<!-- STYLES DEMOS -->
+<monkey-list
+    gapSize="lg"
+>
+    <monkey-card
+        flexWrap
+
+        [brutalist]="currentType === 'Brutalist' ? '': 'false'"
+        [glass]="currentType === 'Glass' ? '': 'false'"
+        [flat]="currentType === 'Flat' ? '': 'false'"
+        [ghost]="currentType === 'Ghost' ? '': 'false'"
+        [glow]="currentType === 'Glow' ? '': 'false'"
+    >
+        <monkey-list
+            [style]="currentStyle"
+            flexCenter
+            gapSize="md"
+            flexWrap
+        >
+            <monkey-content-header
+                [style]="currentStyle"
+                image="https://th.bing.com/th/id/OIP.6bDf-HbrDJFPfyRPJTYVZgHaG7?rs=1&pid=ImgDetMain"
+                header="Monkey UI"
+                subHeader="Components portfolio"
+            />
+
+            <monkey-buttons-group
+                [data]="componentsTypes"
+                flexWrap
+                gap
+
+                [brutalist]="currentType === 'Brutalist' ? '': 'false'"
+                [glass]="currentType === 'Glass' ? '': 'false'"
+                [flat]="currentType === 'Flat' ? '': 'false'"
+                [ghost]="currentType === 'Ghost' ? '': 'false'"
+                [glow]="currentType === 'Glow' ? '': 'false'"
+            />
+        </monkey-list>
+    </monkey-card>
+
+    <monkey-card
+        [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+        [glass]="currentType  === 'Glass' ? '': 'false'"
+        [flat]="currentType  === 'Flat' ? '': 'false'"
+        [ghost]="currentType  === 'Ghost' ? '': 'false'"
+        [glow]="currentType  === 'Glow' ? '': 'false'"
+    >
+        <monkey-list
+            [style]="currentStyle"
+            horizontal
+            flexCenter
+            gapSize="lg"
+            flexWrap
+        >
+            <monkey-avatar
+                [style]="currentStyle"
+                image="https://via.placeholder.com/33"
+                errorImage="https://via.placeholder.com/50"
+                form="rounded"
+                labeled
+                md
+                text="Monkey avatar"
+            />
+
+            <monkey-list
+                [style]="currentStyle"
+                separators
+                flexCenter
+            >
+                <span>Text</span>
+
+                <monkey-switch
+                    (onSwitch)="onSwitch(currentType, $event)"
+                    [style]="currentStyle"
+
+                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                    [glass]="currentType  === 'Glass' ? '': 'false'"
+                    [flat]="currentType  === 'Flat' ? '': 'false'"
+                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                    [glow]="currentType  === 'Glow' ? '': 'false'"
+                />
+
+                <monkey-checkbox
+                    (onCheckChange)="onCheck(currentType, $event)"
+                    [style]="currentStyle"
+                    [label]="currentType"
+
+                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                    [glass]="currentType  === 'Glass' ? '': 'false'"
+                    [flat]="currentType  === 'Flat' ? '': 'false'"
+                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                    [glow]="currentType  === 'Glow' ? '': 'false'"
+                />
+
+                <monkey-loader
+                    lg
+                    [style]="currentStyle"
+
+                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                    [glass]="currentType  === 'Glass' ? '': 'false'"
+                    [flat]="currentType  === 'Flat' ? '': 'false'"
+                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                    [glow]="currentType  === 'Glow' ? '': 'false'"
+                />
+            </monkey-list>
+                
+            <monkey-icon-button
+                [alt]="currentType + ' monkey icon button'"
+                [style]="currentStyle"
+                icon="add"
+                (onClick)="onClicked('default')"
+
+                [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                [glass]="currentType  === 'Glass' ? '': 'false'"
+                [flat]="currentType  === 'Flat' ? '': 'false'"
+                [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                [glow]="currentType  === 'Glow' ? '': 'false'"
+            />
+
+            <monkey-image
+                [style]="currentStyle"
+                src="https://via.placeholder.com/100"
+                alt="Test image"
+                [title]="currentType + ' Monkey image'"
+
+                [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                [glass]="currentType  === 'Glass' ? '': 'false'"
+                [flat]="currentType  === 'Flat' ? '': 'false'"
+                [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                [glow]="currentType  === 'Glow' ? '': 'false'"
+            />
+
+            <monkey-dropdown
+                [style]="currentStyle"
+                alt="Test dropdown"
+                [options]="dropdownOptions"
+                (selectedChanged)="onSelectedChanged($event)"
+
+                [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                [glass]="currentType  === 'Glass' ? '': 'false'"
+                [flat]="currentType  === 'Flat' ? '': 'false'"
+                [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                [glow]="currentType  === 'Glow' ? '': 'false'"
+            />
+        </monkey-list>
+    </monkey-card>
+
+    <monkey-card
+        [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+        [glass]="currentType  === 'Glass' ? '': 'false'"
+        [flat]="currentType  === 'Flat' ? '': 'false'"
+        [ghost]="currentType  === 'Ghost' ? '': 'false'"
+        [glow]="currentType  === 'Glow' ? '': 'false'"
+    >
+        <monkey-list
+            flexCenter
+        >
+            <monkey-header>Form inputs</monkey-header>
+    
+            <monkey-list
+                [formGroup]="form"
+            >
+                <monkey-input-text
+                    [style]="currentStyle"
+                    label="Monkey text input"
+                    alt="Text input"
+                    [name]="INPUT_TEXT_FORM_CONTROL_NAME"
+                    [formGroup]="form"
+                    icon="draw"
+                    required
+                    
+                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                    [glass]="currentType  === 'Glass' ? '': 'false'"
+                    [flat]="currentType  === 'Flat' ? '': 'false'"
+                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                    [glow]="currentType  === 'Glow' ? '': 'false'"
+                />
+
+                <monkey-input-text
+                    [style]="currentStyle"
+                    label="Email monkey text input"
+                    alt="Email text input"
+                    [name]="EMAIL_INPUT_TEXT_FORM_CONTROL_NAME"
+                    [formGroup]="form"
+                    icon="email"
+                    [inputType]="monkeyInputTextTypeEmail"
+                    deleteable
+                    
+                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                    [glass]="currentType  === 'Glass' ? '': 'false'"
+                    [flat]="currentType  === 'Flat' ? '': 'false'"
+                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                    [glow]="currentType  === 'Glow' ? '': 'false'"
+                />
+
+                <monkey-input-text
+                    [style]="currentStyle"
+                    label="Password monkey text input"
+                    alt="Password text input"
+                    [name]="PASSWORD_INPUT_TEXT_FORM_CONTROL_NAME"
+                    [formGroup]="form"
+                    icon="password"
+                    [inputType]="monkeyInputTextTypePassword"
+                    deleteable
+                    
+                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                    [glass]="currentType  === 'Glass' ? '': 'false'"
+                    [flat]="currentType  === 'Flat' ? '': 'false'"
+                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                    [glow]="currentType  === 'Glow' ? '': 'false'"
+                />
+
+                <monkey-input-number
+                    [style]="currentStyle"
+                    label="Number monkey number input"
+                    alt="Number input"
+                    [name]="NUMBER_INPUT_NUMBER_FORM_CONTROL_NAME"
+                    [formGroup]="form"
+                    icon="numbers"
+                    [inputType]="monkeyInputNumberTypeNumber"
+                    deleteable
+                    
+                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                    [glass]="currentType  === 'Glass' ? '': 'false'"
+                    [flat]="currentType  === 'Flat' ? '': 'false'"
+                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                    [glow]="currentType  === 'Glow' ? '': 'false'"
+                />
+
+                <monkey-list
+                    horizontal
+                >
+                    <monkey-button
+                        [style]="successStyle"
+                        [disabled]="!form.valid ? '' : 'false'"
+                        (onClick)="submitForm()"
+
+                        [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                        [glass]="currentType  === 'Glass' ? '': 'false'"
+                        [flat]="currentType  === 'Flat' ? '': 'false'"
+                        [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                        [glow]="currentType  === 'Glow' ? '': 'false'"
+                    >
+                        Submit
+                    </monkey-button>
+
+                    <monkey-button
+                        [style]="warningStyle"
+                        (onClick)="resetForm()"
+
+                        [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+                        [glass]="currentType  === 'Glass' ? '': 'false'"
+                        [flat]="currentType  === 'Flat' ? '': 'false'"
+                        [ghost]="currentType  === 'Ghost' ? '': 'false'"
+                        [glow]="currentType  === 'Glow' ? '': 'false'"
+                    >
+                        Reset all form
+                    </monkey-button>
+                </monkey-list>
+            </monkey-list>
+        </monkey-list>
+    </monkey-card>
+</monkey-list>

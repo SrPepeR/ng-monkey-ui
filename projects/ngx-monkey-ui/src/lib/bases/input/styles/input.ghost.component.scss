@@ -1,0 +1,57 @@
+label.type-ghost {
+  gap: 5px;
+
+  span {
+    color: var(--background-color-contrast-low);
+  }
+
+  span,
+  .input-icon,
+  .delete-icon {
+    &:hover {
+      color: var(--emphasis);
+    }
+
+    &:active {
+      color: var(--background-color-contrast-low);
+    }
+  }
+
+  input {
+    padding: 5px 10px;
+
+    border-bottom: 1px solid var(--opacity-medium);
+    background-color: transparent;
+    color: var(--color);
+
+    &::placeholder {
+      color: var(--opacity-hight);
+    }
+
+    &:focus {
+      border-bottom: 2px solid var(--color);
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: var(--opacity-medium);
+    }
+
+  }
+
+  monkey-icon {
+    color: var(--color);
+
+    &.required {
+      color: var(--warning-color);
+    }
+
+    &.valid {
+      color: var(--success-color);
+    }
+
+    &.invalid {
+      color: var(--danger-color);
+    }
+  }
+}

@@ -1,0 +1,59 @@
+label.type-glow {
+  gap: 5px;
+
+  span {
+    color: var(--background-color-contrast-hight);
+  }
+
+  span,
+  .input-icon,
+  .delete-icon {
+    &:hover {
+      color: var(--emphasis);
+    }
+
+    &:active {
+      color: var(--background-color-contrast-low);
+    }
+  }
+
+  input {
+    padding: 15px 15px;
+    border-radius: 5px;
+
+    background-color: var(--opacity-medium);
+    box-shadow: 0 5px 15px var(--opacity-medium);
+    color: var(--contrast-hight);
+
+    &::placeholder {
+      color: var(--color);
+    }
+
+    &:focus {
+      background-color: var(--color);
+      box-shadow: 0 5px 15px var(--emphasis);
+    }
+
+    &:disabled {
+      background-color: var(--opacity-low);
+      color: var(--opacity-hight);
+    }
+
+  }
+
+  monkey-icon {
+    color: var(--color);
+
+    &.required {
+      color: var(--warning-color);
+    }
+
+    &.valid {
+      color: var(--success-color);
+    }
+
+    &.invalid {
+      color: var(--danger-color);
+    }
+  }
+}

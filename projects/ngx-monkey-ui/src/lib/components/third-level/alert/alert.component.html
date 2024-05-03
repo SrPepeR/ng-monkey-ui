@@ -1,0 +1,78 @@
+<monkey-card
+    *ngIf="message.texts.length > 0"
+    [column]="column"
+    [style]="message.style"
+    [brutalist]="brutalist"
+    [flat]="flat"
+    [ghost]="ghost"
+    [glass]="glass"
+    [glow]="glow"
+>
+    <main>
+        <section class="content">
+            <monkey-icon
+                *ngIf="message.icon"
+                [icon]="message.icon"
+            />
+    
+            <section class="texts">
+                <h2 *ngIf="message.title">{{ message.title }}</h2>
+                <span *ngFor="let text of message.texts">{{ text }}</span>
+            </section>
+        </section>
+
+        <monkey-card
+            class="actions"
+            noMargin
+            displayFlexWrapReverse
+            [brutalist]="brutalist"
+            [flat]="flat"
+            [ghost]="ghost"
+            [glass]="glass"
+            [glow]="glow"
+        >
+            <monkey-icon-button
+                class="accept-btn"
+                *ngIf="check(acceptable)"
+                [alt]="acceptText"
+                icon="done"
+                (click)="acceptSelected()"
+                [style]="styleSuccess"
+                [brutalist]="brutalist"
+                [flat]="flat"
+                [ghost]="ghost"
+                [glass]="glass"
+                [glow]="glow"
+            ></monkey-icon-button>
+            
+            <monkey-icon-button
+                class="reject-btn"
+                *ngIf="check(rejectable)"
+                [alt]="rejectText"
+                icon="close"
+                (click)="rejectSelected()"
+                [style]="styleDanger"
+                [brutalist]="brutalist"
+                [flat]="flat"
+                [ghost]="ghost"
+                [glass]="glass"
+                [glow]="glow"
+            ></monkey-icon-button>
+            
+            <monkey-icon-button
+                class="dimiss-btn"
+                [alt]="dismissibleText"
+                icon="double_arrow"
+                (click)="dismissSelected()"
+                [style]="styleWarning"
+                [brutalist]="brutalist"
+                [flat]="flat"
+                [ghost]="ghost"
+                [glass]="glass"
+                [glow]="glow"
+            ></monkey-icon-button>
+        </monkey-card>
+    </main>
+
+    <ng-content></ng-content>
+</monkey-card>

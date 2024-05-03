@@ -1,0 +1,32 @@
+<monkey-list
+  class="buttons-group"
+  [gapSize]="check(gap) ? 'md' : ''"
+  horizontal
+  flexWrap
+>
+  <monkey-button
+    *ngFor="let buttonData of data"
+    class="button-group"
+    [style]="buttonData.type"
+    [class.dark-theme]="isDarkMode$ | async"
+    (onClick)="buttonData.action($event)"
+    [disabled]="disabled"
+    [brutalist]="brutalist"
+    [glass]="glass"
+    [flat]="flat"
+    [ghost]="ghost"
+    [glow]="glow"
+  >
+    <monkey-icon
+      *ngIf="buttonData.icon && buttonData.iconPosition === 'left'"
+      [icon]="buttonData.icon"
+    />
+
+    {{ buttonData.text }}
+
+    <monkey-icon
+      *ngIf="buttonData.icon && buttonData.iconPosition === 'right'"
+      [icon]="buttonData.icon"
+    />
+  </monkey-button>
+</monkey-list>

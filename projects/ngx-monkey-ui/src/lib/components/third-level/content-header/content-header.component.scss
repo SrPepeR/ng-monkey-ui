@@ -1,0 +1,12 @@
+:host ::ng-deep {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  .texts {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}

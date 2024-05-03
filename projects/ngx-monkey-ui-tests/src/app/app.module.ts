@@ -8,14 +8,13 @@ import { NgxMonkeyUiModule } from 'ngx-monkey-ui';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxMonkeyUiModule,
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

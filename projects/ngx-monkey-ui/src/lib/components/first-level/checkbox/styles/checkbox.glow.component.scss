@@ -1,0 +1,41 @@
+@use '../../../../styles/components/checkbox.default.style';
+
+/* Glow style */
+label.container.type-glow {
+    color: var(--background-color-contrast-hight);
+
+    span.checkmark {
+        transition: all .2s ease-in-out;
+        
+        background-color: var(--background-color);
+        border: solid 2px var(--background-color-contrast-low);
+        border-radius: 4px;
+
+        &:after {
+            left: 5px;
+            top: 1px;
+            border-bottom: 3px solid var(--background-color);
+            border-right: 3px solid var(--background-color);
+        }
+    }
+
+    &:hover input~span.checkmark {
+        border-color: var(--color);
+        box-shadow:
+            inset 0 0 10px var(--color),
+            0 0 15px var(--color),
+        ;
+    }
+    
+    &:hover input:checked~span.checkmark {
+        background-color: var(--emphasis);
+        border-color: var(--emphasis);
+        box-shadow: 0 0 15px var(--emphasis);
+    }
+
+    input:checked~span.checkmark {
+        background-color: var(--color);
+        border-color: var(--color);
+        box-shadow: 0 0 15px var(--color);
+    }
+}

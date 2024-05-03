@@ -1,0 +1,60 @@
+label.type-brutalist {
+  gap: 5px;
+
+  span {
+    color: var(--background-color-contrast-hight);
+    font-size: x-large;
+    font-weight: bolder;
+  }
+
+  span,
+  .input-icon,
+  .delete-icon {
+    &:hover {
+      color: var(--color);
+    }
+
+    &:active {
+      color: var(--emphasis);
+    }
+  }
+
+  input {
+    padding: 15px 20px;
+
+    background-color: var(--color);
+    color: var(--contrast-hight);
+
+    font-weight: bold;
+    font-size: large;
+
+    &::placeholder {
+      color: var(--contrast-low);
+    }
+
+    &:focus {
+      background-color: var(--emphasis);
+    }
+
+    &:disabled {
+      background-color: var(--opacity-low);
+      color: var(--opacity-hight);
+    }
+  }
+
+  monkey-icon {
+    color: var(--background-color-contrast-hight);
+  
+    &.required {
+      color: var(--warning-color);
+    }
+
+    &.valid {
+      color: var(--success-color);
+    }
+
+    &.invalid {
+      color: var(--danger-color);
+    }
+  }
+}

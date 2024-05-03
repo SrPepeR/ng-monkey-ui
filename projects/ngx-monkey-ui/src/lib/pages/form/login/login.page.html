@@ -1,0 +1,80 @@
+<!-- PAGE CONTENT -->
+<monkey-list
+  gapSize="lg"
+>
+  <!-- LOGIN FORM -->
+  <monkey-list
+    class="login-form"
+  >
+    <!-- HEADER -->
+    <monkey-header>{{ header }}</monkey-header>
+
+    <!-- EMAIL -->
+    <monkey-input-text
+      [icon]="emailIcon"
+      [label]="emailLabel"
+      [alt]="emailPlaceholder"
+      [formGroup]="form"
+      [name]="EMAIL_CONTROL_NAME"
+      [inputType]="EMAIL_INPUT_TYPE"
+      required
+      
+      [style]="style"
+      [brutalist]="brutalist"
+      [glass]="glass"
+      [flat]="flat"
+      [ghost]="ghost"
+      [glow]="glow"
+    />
+
+    <!-- PASSWORD -->
+    <monkey-input-text
+      [icon]="passwordIcon"
+      [label]="passwordLabel"
+      [alt]="passwordPlaceholder"
+      [formGroup]="form"
+      [name]="PASSWORD_CONTROL_NAME"
+      [inputType]="PASSWORD_INPUT_TYPE"
+      required
+
+      [style]="style"
+      [brutalist]="brutalist"
+      [glass]="glass"
+      [flat]="flat"
+      [ghost]="ghost"
+      [glow]="glow"
+    />
+
+    <!-- FORGOT PASSWORD -->
+    <monkey-button
+      (onClick)="onForgotPassword.emit()"
+      discreet
+
+      [style]="style"
+      [brutalist]="brutalist"
+      [glass]="glass"
+      [flat]="flat"
+      [ghost]="ghost"
+      [glow]="glow"
+    >
+      {{ forgotPasswordLabel }}
+    </monkey-button>
+  </monkey-list>
+  
+  <!-- ACTIONS -->
+  <monkey-buttons-group
+    class="login-actions"
+    [data]="loginActions"
+    gap
+
+    [style]="style"
+    [brutalist]="brutalist"
+    [glass]="glass"
+    [flat]="flat"
+    [ghost]="ghost"
+    [glow]="glow"
+  />
+
+  <!-- CONTENT -->
+  <ng-content/>
+</monkey-list>

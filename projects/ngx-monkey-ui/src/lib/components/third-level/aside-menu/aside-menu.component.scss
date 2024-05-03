@@ -1,0 +1,108 @@
+:host ::ng-deep {
+  position: relative;
+
+  .aside-menu-toggle {
+    position: fixed;
+    z-index: 3;
+  }
+
+  .aside-menu {
+    position: fixed;
+    left: 0;
+
+    z-index: 2;
+    overflow-x: hidden;
+
+    transition: width 0.4s;
+
+    .aside-menu-option>button {
+      width: 100%;
+    }
+
+    >section {
+      height: 100%;
+      box-sizing: border-box;
+    }
+
+    monkey-list {
+      width: 100%;
+      height: 100%;
+    }
+
+    .current-option button {
+      background-color: var(--opacity-low);
+    }
+
+    & > section {
+      padding-top: 20px !important;
+    }
+  }
+
+  .aside-menu-content-list > section {
+    background-color: var(--background-color);
+  }
+
+  .aside-menu-toggle + .aside-menu {
+    .aside-menu-content-list {
+      padding-top: 65px;
+    }
+  }
+
+  monkey-card, monkey-card * {
+    border-radius: 0 !important;
+  }
+
+  .option-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    width: 100%;
+  }
+
+  @media (max-width: 600px) {
+
+    // Extra small devices (portrait phones, less than 576px)
+    .aside-menu-toggle {
+      top: 75px;
+      left: 15px;
+    }
+  }
+
+  @media (min-width: 600px) {
+
+    // Small devices (landscape phones, 576px and up)
+    .aside-menu-toggle {
+      top: 75px;
+      left: 15px;
+    }
+  }
+
+  @media (min-width: 768px) {
+
+    // Medium devices (tablets, 768px and up)
+    .aside-menu-toggle {
+      top: 140px;
+      left: 20px;
+    }
+  }
+
+  @media (min-width: 992px) {
+
+    // Large devices (desktops, 992px and up)
+    .aside-menu-toggle {
+      top: 130px;
+      left: 30px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+
+    // Extra large devices (large desktops, 1200px and up)
+    .aside-menu-toggle {
+      top: 130px;
+      left: 150px;
+    }
+  }
+}

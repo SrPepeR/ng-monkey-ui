@@ -1,0 +1,178 @@
+:host ::ng-deep {
+  width: 100%;
+  margin-bottom: 50px;
+
+  .menu-container {
+    display: flex;
+    width: 100%;
+    top: 0;
+
+    z-index: 100;
+
+    &.position-sticky {
+      position: fixed;
+      background-color: var(--background-color);
+    }
+
+    &:not(.position-sticky) {
+      position: absolute;
+      background-color: var(--background-color-opacity-hight);
+    }
+
+    .menu-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      box-sizing: border-box;
+
+      span.title {
+        cursor: pointer;
+        color: var(--background-color-contrast-hight);
+        font-weight: bold;
+
+        &:hover {
+          color: var(--emphasis);
+        }
+
+        &:active {
+          color: var(--opacity-hight);
+        }
+      }
+
+      .menu-list-content {
+        flex-grow: 1;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+
+        &>monkey-list {
+          &.menu-list {
+            flex-wrap: wrap;
+            flex-grow: 1;
+          }
+
+          &>* {
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+
+      &:has(.screen-xs):has(.menu-list-content) {
+        border-bottom: solid 5px var(--color);
+      }
+    }
+
+    .menu-list-content.screen-xs,
+    .menu-list-content.screen-sm {
+      position: relative;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      flex-direction: column;
+      align-content: space-evenly;
+      gap: 15px;
+      padding: 20px 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+
+    // Extra small devices (portrait phones, less than 576px)
+    margin-bottom: 10px !important;
+
+    .menu-container {
+      justify-content: center;
+
+      .menu-content {
+        width: 100%;
+        gap: 15px;
+        padding: 10px 10px;
+
+        span.title {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 600px) {
+
+    // Small devices (landscape phones, 576px and up)
+    margin-bottom: 10px !important;
+
+    .menu-container {
+      justify-content: center;
+
+      .menu-content {
+        width: 100%;
+        gap: 10px;
+        padding: 10px 20px;
+
+        span.title {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+
+    // Medium devices (tablets, 768px and up)
+    margin-bottom: 100px !important;
+
+    .menu-container {
+      justify-content: center;
+
+      .menu-content {
+        width: 100%;
+        gap: 20px;
+        padding: 30px 30px;
+
+        span.title {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 992px) {
+
+    // Large devices (desktops, 992px and up)
+    .menu-container {
+      justify-content: center;
+
+      .menu-content {
+        width: 100%;
+        gap: 30px;
+        padding: 20px 50px;
+
+        span.title {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1200px) {
+
+    // Extra large devices (large desktops, 1200px and up)
+    .menu-container {
+      justify-content: center;
+
+      .menu-content {
+        width: 1200px;
+        gap: 60px;
+        padding: 20px 20px;
+
+        span.title {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
