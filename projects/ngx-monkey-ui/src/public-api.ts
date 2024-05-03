@@ -18,6 +18,9 @@ export * from './lib/ngx-monkey-ui.module';
   // Screen service
   export * from './lib/services/screen/screen.service';
 
+  // Background service
+  export * from './lib/services/background/background.service';
+
 /*
 * ENUMS
 */
