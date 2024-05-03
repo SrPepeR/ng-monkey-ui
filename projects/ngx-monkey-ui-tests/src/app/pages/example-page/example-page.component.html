@@ -1,10 +1,25 @@
 <!-- DEMOS -->
-<monkey-card>
-  <monkey-content-header
+<monkey-list>
+  <monkey-card>
+    <!-- CONTENT HEADER -->
+    <monkey-content-header
       [style]="currentStyle"
       image="https://th.bing.com/th/id/OIP.6bDf-HbrDJFPfyRPJTYVZgHaG7?rs=1&pid=ImgDetMain"
       header="Monkey UI"
       subHeader="An Angular components lybrary"
       [action]="contentHeaderAction"
-  ></monkey-content-header>
-</monkey-card>
+    />
+  </monkey-card>
+  
+  <monkey-card>
+    <!-- LOGIN -->
+    <monkey-login-page
+      [style]="currentStyle"
+      (onLogin)="navigateComponents()"
+      (onRegister)="navigateComponents()"
+      (onContinueAsGuest)="navigateComponents()"
+      (onForgotPassword)="navigateComponents()"
+      canContinueAsGuest
+    />
+  </monkey-card>
+</monkey-list>

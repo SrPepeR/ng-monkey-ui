@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MonkeyAlertService, MonkeyFontService, MonkeyStyle } from 'ngx-monkey-ui';
 import { MonkeyButtonData } from 'projects/ngx-monkey-ui/src/lib/objects/classes/button-data.class';
 import { map } from 'rxjs';
@@ -19,6 +19,7 @@ export class ExamplePageComponent {
     private alertService: MonkeyAlertService,
     private fontService: MonkeyFontService,
     private route: ActivatedRoute,
+    private router: Router,
   ) {
     this.manageParams();
     this.fontService.addDosisFont();
@@ -59,6 +60,10 @@ export class ExamplePageComponent {
 
   showAlert(fromButton: string): void {
     this.alertService.successes([`${fromButton} button pressed.`], true, 'Success');
+  }
+
+  navigateComponents(): void {
+    this.router.navigate(['components']);
   }
 
 }
