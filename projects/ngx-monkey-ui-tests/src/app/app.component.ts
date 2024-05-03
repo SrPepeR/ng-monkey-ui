@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuOption, MonkeyAlertService, MonkeyFontService, MonkeyScreenService, MonkeyStyle } from 'ngx-monkey-ui';
+import { MenuOption, MonkeyAlertService, MonkeyBackgroundService, MonkeyFontService, MonkeyScreenService, MonkeyStyle } from 'ngx-monkey-ui';
 import { ScreenOrientation } from 'projects/ngx-monkey-ui/src/lib/services/screen/screen.enum';
 
 @Component({
@@ -67,10 +67,17 @@ export class AppComponent implements OnInit {
     private alertService: MonkeyAlertService,
     private fontService: MonkeyFontService,
     private screenService: MonkeyScreenService,
+    private backgroundService: MonkeyBackgroundService,
     private router: Router,
   ) {
     this.fontService.addDosisFont();
     this.setStyle();
+    this.backgroundService.setBaseColor('#2e99b1')
+      .addGradient('hsl(162.15, 79%, 49%)', 30, { x: 47, y: 33 })
+      .addGradient('hsl(166.53, 72%, 60%)', 55, { x: 82, y: 65 })
+      .addGradient('hsl(168.74, 20%, 48%)', 33, { x: 33, y: 59 })
+      .apply()
+      .animate();
   }
 
   ngOnInit() {

@@ -1,6 +1,8 @@
 <!-- DEMOS -->
 <monkey-list>
-  <monkey-card>
+  <monkey-card
+    glass
+  >
     <!-- CONTENT HEADER -->
     <monkey-content-header
       [style]="currentStyle"
@@ -8,10 +10,14 @@
       header="Monkey UI"
       subHeader="An Angular components lybrary"
       [action]="contentHeaderAction"
+
+      glass
     />
   </monkey-card>
   
-  <monkey-card>
+  <monkey-card
+    glass
+  >
     <!-- LOGIN -->
     <monkey-login-page
       [style]="currentStyle"
@@ -20,6 +26,8 @@
       (onContinueAsGuest)="navigateComponents()"
       (onForgotPassword)="navigateComponents()"
       canContinueAsGuest
+
+      glass
     />
   </monkey-card>
 </monkey-list>
