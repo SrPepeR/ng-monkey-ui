@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy } from "@angular/core";
-import { TooltipService } from "../services/tooltip/tooltip.service";
+import { MonkeyTooltipService } from "../services/tooltip/tooltip.service";
 import { MonkeyStyle } from "../objects/enums/style.enum";
 
 /**
@@ -21,7 +21,7 @@ export class Tooltipable implements OnDestroy {
 	 */
 	@Input() style: MonkeyStyle = MonkeyStyle.PRIMARY;
 
-	constructor(protected tooltipService: TooltipService) { }
+	constructor(protected tooltipService: MonkeyTooltipService) { }
 
 	/**
 	 * Displays the tooltip at the specified mouse event coordinates.

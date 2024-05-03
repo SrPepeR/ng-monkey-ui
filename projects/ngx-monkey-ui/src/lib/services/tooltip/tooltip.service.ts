@@ -6,7 +6,7 @@ import { MonkeyStyle } from '../../objects/enums/style.enum';
 @Injectable({
   providedIn: 'root'
 })
-export class TooltipService {
+export class MonkeyTooltipService {
 
   /**
    * Default screen time for the tooltip to be shown.

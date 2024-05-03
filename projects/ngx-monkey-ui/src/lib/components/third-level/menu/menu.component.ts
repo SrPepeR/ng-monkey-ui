@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
 import { ThemeService } from '../../../services/theme.service';
-import { TooltipService } from '../../../services/tooltip/tooltip.service';
+import { MonkeyTooltipService } from '../../../services/tooltip/tooltip.service';
 import { Tooltipable } from '../../../bases/tooltipable.base';
 import { MenuOption } from '../../../objects/interfaces/menu-option.interface';
 import { Router } from '@angular/router';
@@ -64,7 +64,7 @@ export class MonkeyMenu extends Styleable implements OnDestroy {
 
   constructor(
     private themeService: ThemeService,
-    private tooltipService: TooltipService,
+    private tooltipService: MonkeyTooltipService,
     private router: Router,
   ) {
     super();

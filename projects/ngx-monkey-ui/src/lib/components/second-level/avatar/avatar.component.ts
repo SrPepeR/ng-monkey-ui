@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
 import { ComponentsSizesService } from '../../../services/components-sizes.service';
-import { TooltipService } from '../../../services/tooltip/tooltip.service';
+import { MonkeyTooltipService } from '../../../services/tooltip/tooltip.service';
 import { Tooltipable } from '../../../bases/tooltipable.base';
 import { MonkeyStyle } from '../../../objects/enums/style.enum';
 import { Styleable } from '../../../bases/styleable.base';
@@ -89,7 +89,7 @@ export class MonkeyAvatar extends Styleable implements OnChanges, OnDestroy {
   constructor(
     private themeService: ThemeService,
     private componentSizesService: ComponentsSizesService,
-    private tooltipService: TooltipService,
+    private tooltipService: MonkeyTooltipService,
   ) {
     super();
     this.tooltipable = new Tooltipable(this.tooltipService);

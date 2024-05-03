@@ -3,7 +3,7 @@ import { Styleable } from '../../../bases/styleable.base';
 import { DropdownOption } from '../../../objects/interfaces/dropdown-option.interface';
 import { ThemeService } from '../../../services/theme.service';
 import { Tooltipable } from '../../../bases/tooltipable.base';
-import { TooltipService } from '../../../services/tooltip/tooltip.service';
+import { MonkeyTooltipService } from '../../../services/tooltip/tooltip.service';
 
 /**
  * Represents a dropdown component that allows users to select an option from a list.
@@ -60,7 +60,7 @@ export class MonkeyDropdown extends Styleable implements OnInit, OnDestroy {
 
   constructor(
     private themeService: ThemeService,
-    private tooltipService: TooltipService,
+    private tooltipService: MonkeyTooltipService,
   ) {
     super();
     this.tooltipable = new Tooltipable(this.tooltipService);

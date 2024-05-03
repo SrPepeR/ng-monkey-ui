@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { ThemeService } from '../../../services/theme.service';
 import { Tooltip } from '../../../services/tooltip/tooltip';
 import { Subject, takeUntil } from 'rxjs';
-import { TooltipService } from '../../../services/tooltip/tooltip.service';
+import { MonkeyTooltipService } from '../../../services/tooltip/tooltip.service';
 import { MonkeyStyle } from '../../../objects/enums/style.enum';
 import { Styleable } from '../../../bases/styleable.base';
 import { Tooltipable } from '../../../bases/tooltipable.base';
@@ -47,7 +47,7 @@ export class MonkeyTooltip extends Styleable implements OnInit, OnDestroy {
 
   constructor(
     private themeService: ThemeService,
-    private tooltipService: TooltipService,
+    private tooltipService: MonkeyTooltipService,
   ) {
     super();
     this.tooltipable = new Tooltipable(this.tooltipService);
