@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { DropdownOption, MonkeyAlertService, MonkeyFontService, MonkeyStyle } from 'ngx-monkey-ui';
-import { MonkeyButtonData } from 'projects/ngx-monkey-ui/src/lib/objects/classes/button-data.class';
-import { MonkeyInputNumberType } from 'projects/ngx-monkey-ui/src/lib/objects/enums/input-number-type.enum';
-import { MonkeyInputTextType } from 'projects/ngx-monkey-ui/src/lib/objects/enums/input-text-type.enum';
+import { DropdownOption, MonkeyAlertService, MonkeyButtonData, MonkeyFontService, MonkeyInputNumberType, MonkeyInputTextType, MonkeyStyle } from 'ngx-monkey-ui';
 import { map } from 'rxjs';
 
 @Component({

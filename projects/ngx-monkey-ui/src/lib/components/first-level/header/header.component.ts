@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Styleable } from 'projects/ngx-monkey-ui/src/lib/bases/styleable.base';
-import { ThemeService } from 'projects/ngx-monkey-ui/src/lib/services/theme.service';
+import { Styleable } from '../../../bases/styleable.base';
+import { ThemeService } from '../../../services/theme.service';
 import { MonkeyStyle } from '../../../objects/enums/style.enum';
 
 @Component({

@@ -4,6 +4,17 @@
 export * from './lib/ngx-monkey-ui.module';
 
 /*
+* BASES
+*/
+  // Styleable
+  export * from './lib/bases/styleable.base';
+    // MonkeyStyle
+    export * from './lib/objects/enums/style.enum';
+
+  // Tooltip
+  export * from './lib/bases/tooltipable.base';
+
+/*
 * SERVICES
 */
   // Alert service
@@ -11,21 +22,59 @@ export * from './lib/ngx-monkey-ui.module';
 
   // Tooltip service
   export * from './lib/services/tooltip/tooltip.service';
+    // Tooltip
+    export * from './lib/services/tooltip/tooltip';
 
   // Font service
   export * from './lib/services/font.service';
 
   // Screen service
   export * from './lib/services/screen/screen.service';
+    // Screen enum
+    export * from './lib/services/screen/screen.enum';
+    // Screen
+    export * from './lib/services/screen/screen';
 
   // Background service
   export * from './lib/services/background/background.service';
+    // Gradient
+    export * from './lib/services/background/objects/gradient';
+      // Colors
+      export * from './lib/services/background/objects/colors';
+      // Gradient positions
+      export * from './lib/services/background/objects/gradient-positions';
+      // Gradient sizes
+      export * from './lib/services/background/objects/gradient-sizes';
+
+/*
+* OBJECTS
+*/
+  // Button data
+  export * from './lib/objects/classes/button-data.class';
+
+  // Message data
+  export * from './lib/objects/classes/message-data.class';
 
 /*
 * ENUMS
 */
-  // Style enum
-  export * from './lib/objects/enums/style.enum';
+  // Input number enum
+  export * from './lib/objects/enums/input-number-type.enum';
+
+  // Input text enum
+  export * from './lib/objects/enums/input-text-type.enum';
+
+  // Screen enums
+  export * from './lib/services/screen/screen.enum';
+
+/*
+* INTERFACES
+*/
+  // Dropdown option
+  export * from './lib/objects/interfaces/dropdown-option.interface';
+
+  // Menu option
+  export * from './lib/objects/interfaces/menu-option.interface';
 
 /*
 * UI COMPONENTS
