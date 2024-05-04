@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuOption, MonkeyAlertService, MonkeyBackgroundService, MonkeyFontService, MonkeyScreenService, MonkeyStyle } from 'ngx-monkey-ui';
-import { ScreenOrientation } from 'projects/ngx-monkey-ui/src/lib/services/screen/screen.enum';
+import { MenuOption, MonkeyAlertService, MonkeyBackgroundService, MonkeyFontService, MonkeyScreenService, MonkeyStyle, ScreenOrientation } from 'ngx-monkey-ui';
 
 @Component({
   selector: 'app-root',

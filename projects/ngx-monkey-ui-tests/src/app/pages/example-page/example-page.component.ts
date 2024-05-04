@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MonkeyAlertService, MonkeyFontService, MonkeyStyle } from 'ngx-monkey-ui';
-import { MonkeyButtonData } from 'projects/ngx-monkey-ui/src/lib/objects/classes/button-data.class';
+import { MonkeyAlertService, MonkeyButtonData, MonkeyFontService, MonkeyStyle } from 'ngx-monkey-ui';
 import { map } from 'rxjs';
 
 @Component({
