@@ -46,6 +46,9 @@ export * from './lib/ngx-monkey-ui.module';
       // Gradient sizes
       export * from './lib/services/background/objects/gradient-sizes';
 
+  // Theme service
+  export * from './lib/services/theme.service';
+
 /*
 * OBJECTS
 */
