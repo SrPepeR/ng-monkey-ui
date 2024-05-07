@@ -38,7 +38,7 @@
     }
   }
 
-  .aside-menu-content-list > section {
+  .aside-menu-content-list:not(.type-glassmorphism) > section {
     background-color: var(--background-color);
   }
 
