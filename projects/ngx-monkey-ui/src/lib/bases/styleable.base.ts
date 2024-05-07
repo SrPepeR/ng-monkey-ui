@@ -64,7 +64,7 @@ export class Styleable implements OnInit, OnChanges {
 	 * Whether the component should have flex wrap.
 	 */
 	@Input() flexWrap?: string = 'false';
-	
+
 	/**
 	 * Whether the component should have flex wrap-reverse.
 	 */
@@ -151,12 +151,14 @@ export class Styleable implements OnInit, OnChanges {
 	 * Adds all the necessary classes and subscribes to screen changes.
 	 */
 	ngOnChanges() {
-		this.addAllClasses();
-
-		this.screenService.screenChanges$.subscribe((newCurrentScreen: MonkeyScreen) => {
-			this.currentScreen = newCurrentScreen;
+		setTimeout(() => {
 			this.addAllClasses();
-		});
+
+			this.screenService.screenChanges$.subscribe((newCurrentScreen: MonkeyScreen) => {
+				this.currentScreen = newCurrentScreen;
+				this.addAllClasses();
+			});
+		}, 300);
 	}
 
 	/**
@@ -214,6 +216,9 @@ export class Styleable implements OnInit, OnChanges {
 		this.manageAsideMenu();
 	}
 
+	/**
+	 * Manages the aside menu styles.
+	 */
 	private manageAsideMenu() {
 		const asideMenu = document.querySelector('.aside-menu.hinted');
 		const asideMenuWidth = asideMenu?.clientWidth || 0;
@@ -222,6 +227,10 @@ export class Styleable implements OnInit, OnChanges {
 		this.addStylesToAsideMenuWhenMenu();
 	}
 
+	/**
+	 * Changes the left margin of the main element by the specified number of pixels.
+	 * @param pixels - The number of pixels to set as the left margin.
+	 */
 	private changeMainMarginLeft(pixels: number) {
 		const main = document.querySelector('main');
 		if (main) {
@@ -229,6 +238,10 @@ export class Styleable implements OnInit, OnChanges {
 		}
 	}
 
+	/**
+	 * Adds styles to the aside menu based on the menu content.
+	 * @private
+	 */
 	private addStylesToAsideMenuWhenMenu() {
 		const menu: HTMLElement | null = document.querySelector('monkey-menu .menu-content');
 		const asideMenu: HTMLElement | null = document.querySelector('monkey-aside-menu .aside-menu');
