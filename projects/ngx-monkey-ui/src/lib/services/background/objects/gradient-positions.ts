@@ -63,15 +63,19 @@ export class GradientPositions {
   }
 
   /**
-   * Moves the gradient positions randomly in the x or y axis.
+   * Moves the gradient positions randomly in both or neither direction with amount values between 0 and 100.
    */
   move(): void {
-    for (let i = 0; i < this.gradientPositions.length; i++) {
-      const direction = Math.random() > 0.5 ? 1 : -1;
-      const axis = Math.random() > 0.5 ? 'x' : 'y';
-      const amount = Math.floor(Math.random() * 3);
+    const prevPositions = this.gradientPositions;
 
-      this.gradientPositions[i][axis] += amount * direction;
+    let newX;
+    let newY;
+
+    for (let i = 0; i < this.gradientPositions.length; i++) {
+      newX = Math.random() < 0.5 ? prevPositions[i].x + Math.floor(Math.random() * 31) : prevPositions[i].x - Math.floor(Math.random() * 31); // Generate a random value between -30 and 30
+      newY = Math.random() < 0.5 ? prevPositions[i].y + Math.floor(Math.random() * 31) : prevPositions[i].y - Math.floor(Math.random() * 31); // Generate a random value between -30 and 30
+
+      this.gradientPositions[i] = { x: newX, y: newY };
     }
   }
 

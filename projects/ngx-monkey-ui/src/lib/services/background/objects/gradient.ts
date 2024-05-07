@@ -87,4 +87,14 @@ export class MonkeyGradient {
     return gradients;
   }
 
+  copy(): MonkeyGradient {
+    const gradient: MonkeyGradient = new MonkeyGradient();
+
+    for (let i = 0; i < this.colors.get().length; i++) {
+      gradient.addData(this.colors.get()[i], this.gradientPositions.get()[i], this.gradientSizes.get()[i]);
+    }
+
+    return gradient;
+  }
+
 }
