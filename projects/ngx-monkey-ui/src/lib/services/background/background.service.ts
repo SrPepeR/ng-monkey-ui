@@ -189,4 +189,19 @@ export class MonkeyBackgroundService {
     return this;
   }
 
+  /**
+   * Stops the background animation.
+   * Removes the 'monkey-background-animation' style element from the document.
+   * 
+   * @returns The MonkeyBackgroundService instance.
+   */
+  stopAnimation(): MonkeyBackgroundService {
+    const style = document.getElementById('monkey-background-animation');
+    if (style) {
+      style.remove();
+    }
+
+    return this;
+  }
+
 }
