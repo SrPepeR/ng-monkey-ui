@@ -42,7 +42,7 @@ export class MonkeyAlert extends Styleable implements OnInit, OnChanges, OnDestr
   /**
    * Specifies whether the alert can be accepted.
    */
-  @Input() acceptable?: string = 'true';
+  @Input() acceptable?: string = 'false';
   
   /**
    * The text to be displayed for the accept action.
@@ -57,7 +57,7 @@ export class MonkeyAlert extends Styleable implements OnInit, OnChanges, OnDestr
   /**
    * Specifies whether the alert can be rejected.
    */
-  @Input() rejectable?: string = 'true';
+  @Input() rejectable?: string = 'false';
   
   /**
    * The text to be displayed for the reject action.
