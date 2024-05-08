@@ -1,27 +1,77 @@
 # NgxMonkeyUi
 
-Angular UI components library.
+NgxMonkeyUi is an Angular components and functionalities library under development.
 
 ## Author
+
 - [Kevin J. Rodríguez Morales](https://kevinrodriguez.es) @SrPepeR
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project ngx-monkey-ui` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-monkey-ui`.
-> Note: Don't forget to add `--project ngx-monkey-ui` or else it will be added to the default project in your `angular.json` file. 
+To install NgxMonkeyUi, you have two options:
 
-## Build
+- Using npm:
+  1. Run the following command in your Angular project:
 
-Run `ng build ngx-monkey-ui` to build the project. The build artifacts will be stored in the `dist/` directory.
+    ```bash
+    npm install ngx-monkey-ui
+    ```
 
-## Publishing
+- Downloading built files:
+  1. Go to the [GitHub repository releases page](https://github.com/SrPepeR/ng-monkey-ui/releases).
+  2. Download your preferred version (latest version recommended).
+  3. Extract the downloaded files into your Angular project.
+  4. In your tsconfig.json file, add the following under the "compilerOptions" tag:
 
-After building your library with `ng build ngx-monkey-ui`, go to the dist folder `cd dist/ngx-monkey-ui` and run `npm publish`.
+   ```json
+   "paths": {
+      "ngx-monkey-ui": [
+        "{{your ngx-monkey-ui parent folder}}/ngx-monkey-ui"
+      ]
+    },
+   ```
 
-## Running unit tests
+## Usage
 
-Run `ng test ngx-monkey-ui` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To use the NgxMonkeyUi library in your Angular project, follow these steps:
 
-## Further help
+1. Import the necessary modules in your app module:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  ```typescript
+  import { NgxMonkeyUiModule } from 'ngx-monkey-ui';
+
+  @NgModule({
+    imports: [
+     // ...
+     NgxMonkeyUiModule
+    ],
+    // ...
+  })
+  export class AppModule { }
+  ```
+
+2. Use the components and functionalities provided by NgxMonkeyUi in your templates:
+
+  ```html
+  <monkey-menu></monkey-menu>
+  <monkey-button></monkey-button>
+  <!-- ... -->
+  ```
+
+3. Customize the styles of the NgxMonkeyUi components by adding your own CSS classes, using the provided CSS variables, or adding any MonkeyStyle to the component tag.
+
+4. Build and run your Angular project to see the NgxMonkeyUi components in action.
+
+## Documentation
+
+<!-- For detailed documentation on how to use NgxMonkeyUi, refer to the [official documentation](https://github.com/SrPepeR/ng-monkey-ui/wiki). -->
+
+Detailed documentation in next versions...
+
+## Support
+
+If you encounter any issues or have any questions, feel free to open an issue on the [GitHub repository](https://github.com/SrPepeR/ng-monkey-ui/issues).
+
+## License
+
+The NgxMonkeyUi library is released under the MIT License. See the [LICENSE](https://github.com/SrPepeR/ng-monkey-ui/blob/main/LICENSE) file for more details.
