@@ -40,7 +40,7 @@ export class MonkeyAvatar extends Styleable implements OnChanges, OnDestroy {
   @Input() form?: string = 'rounded';
 
   /**
-   * Indicates whether the avatar is labeled or not. Possible values: 'true', 'false'.
+   * Indicates whether the avatar is labeled or not. Possible values: 'true', 'false', ''.
    */
   @Input() labeled?: string = 'false';
 

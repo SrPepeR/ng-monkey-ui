@@ -53,7 +53,7 @@ export class MonkeyInput extends Styleable {
    * @remarks
    * The value of this property should be a string representation of a boolean value ('true' or 'false').
    * If set to 'true', the input will be marked as required.
-   * If set to 'false' (default), the input will not be marked as required.
+   * If set to 'false' or '' (default), the input will not be marked as required.
    */
   @Input() required: string = 'false';
 

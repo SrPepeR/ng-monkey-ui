@@ -137,7 +137,6 @@ export class MonkeyBackgroundService {
   animate(steps: number = 10, delay: number = 5000): MonkeyBackgroundService {
     const gradientsVariations: MonkeyGradient[] = [];
     gradientsVariations.push(this.gradient.copy());
-    console.log(this.gradient.gradientPositions.get()[0]);
 
     let newGradient;
     for (let i = 0; i < steps - 1; i++) {
@@ -145,7 +144,6 @@ export class MonkeyBackgroundService {
       newGradient.move();
       newGradient.growShrink();
       gradientsVariations.push(newGradient);
-      console.log(newGradient.gradientPositions.get()[0]);
     }
 
     let animationCss = '@keyframes monkey-background-animation {';
