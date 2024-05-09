@@ -92,10 +92,14 @@ export class MonkeyBackgroundService {
    * 
    * @returns The generated background CSS string.
    */
-  generate(): string {
+  generate(data?: MonkeyGradient): string {
     let background: string = 'background-image: ';
 
-    background += `${this.gradient.generateAll()};`;
+    if (data) {
+      background += `${data.generateAll()};`;
+    } else {
+      background += `${this.gradient.generateAll()};`;
+    }
 
     return background;
   }
@@ -124,12 +128,51 @@ export class MonkeyBackgroundService {
     return this;
   }
 
-  animate(delay?: number): MonkeyBackgroundService {
-    this.animationId = window.setInterval(() => {
-      this.gradient.move();
-      this.gradient.growShrink();
-      this.apply();
-    }, delay || 500);
+  /**
+   * Animates the background using keyframes.
+   * 
+   * @param delay - The delay between each keyframe.
+   * @returns The MonkeyBackgroundService instance.
+   */
+  animate(steps: number = 10, delay: number = 5000): MonkeyBackgroundService {
+    const gradientsVariations: MonkeyGradient[] = [];
+    gradientsVariations.push(this.gradient.copy());
+    console.log(this.gradient.gradientPositions.get()[0]);
+
+    let newGradient;
+    for (let i = 0; i < steps - 1; i++) {
+      newGradient = this.gradient.copy();
+      newGradient.move();
+      newGradient.growShrink();
+      gradientsVariations.push(newGradient);
+      console.log(newGradient.gradientPositions.get()[0]);
+    }
+
+    let animationCss = '@keyframes monkey-background-animation {';
+    let percentage = 0;
+
+    for (let i = 0; i < gradientsVariations.length - 1; i++) {
+      animationCss += `${percentage}% { ${this.generate(gradientsVariations[i])} } `;
+      // Round next percentage to avoid floating point errors
+      percentage = Math.round((100 / steps) * (i + 1));
+    }
+
+    animationCss += `100% { ${this.generate()} } `;
+
+    animationCss += `} body, html { animation: monkey-background-animation ${delay}ms infinite; }`;
+
+    const currentMonkeyBackground = document.getElementById('monkey-background-animation');
+    let style;
+
+    if (currentMonkeyBackground) {
+      style = currentMonkeyBackground;
+    } else {
+      style = document.createElement('style');
+      style.id = 'monkey-background-animation';
+    }
+    
+    style.innerHTML = animationCss;
+    document.head.appendChild(style);
 
     return this;
   }
@@ -139,6 +182,21 @@ export class MonkeyBackgroundService {
    */
   remove(): MonkeyBackgroundService {
     const style = document.getElementById('monkey-background');
+    if (style) {
+      style.remove();
+    }
+
+    return this;
+  }
+
+  /**
+   * Stops the background animation.
+   * Removes the 'monkey-background-animation' style element from the document.
+   * 
+   * @returns The MonkeyBackgroundService instance.
+   */
+  stopAnimation(): MonkeyBackgroundService {
+    const style = document.getElementById('monkey-background-animation');
     if (style) {
       style.remove();
     }

@@ -11,11 +11,19 @@
 
     &.position-sticky {
       position: fixed;
-      background-color: var(--background-color);
     }
 
     &:not(.position-sticky) {
       position: absolute;
+    }
+
+    &:not(.type-glassmorphism) {
+      &.position-sticky {
+        background-color: var(--background-color);
+      }
+    }
+
+    &.type-glassmorphism, &:not(.position-sticky) {
       background-color: var(--background-color-opacity-hight);
     }
 
