@@ -107,7 +107,7 @@ export class MonkeyScreen {
    * @private
    */
   private setSize() {
-    if (this.width < 576) {
+    if (this.width <= 600) {
       this.size = ScreenSize.XS;
     } else if (this.width < 768) {
       this.size = ScreenSize.SM;
