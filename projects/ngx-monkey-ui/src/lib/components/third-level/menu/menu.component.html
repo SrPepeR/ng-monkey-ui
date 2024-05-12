@@ -3,7 +3,10 @@
   [class]="classList"
   [class.dark-theme]="isDarkMode$ | async"
 >
-  <div class="menu-content">
+  <div
+    class="menu-content"
+    [class.expanded]="currentScreen.isScreenSizeDown(SMALL_SCREEN_FLAG) && isFullMenuOpen"
+  >
     <span
       *ngIf="title"
       class="title"
@@ -28,7 +31,7 @@
     ></monkey-icon-button>
 
     <section
-      *ngIf="isFullMenuOpen"
+      *ngIf="isFullMenuOpen || !currentScreen.isScreenSizeDown(SMALL_SCREEN_FLAG)"
       class="menu-list-content"
       [class]="classList"
       [class.dark-theme]="isDarkMode$ | async"
@@ -78,7 +81,7 @@
       </monkey-list>
     
       <monkey-list
-        *ngIf="isFullMenuOpen"
+        *ngIf="isFullMenuOpen || !currentScreen.isScreenSizeDown(SMALL_SCREEN_FLAG)"
         [style]="style"
         [class]="classList"
         [class.dark-theme]="isDarkMode$ | async"

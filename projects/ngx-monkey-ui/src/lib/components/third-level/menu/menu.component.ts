@@ -60,7 +60,7 @@ export class MonkeyMenu extends Styleable implements OnDestroy {
    * Determines whether the full menu is open or not.
    * Defaults to true.
    */
-  isFullMenuOpen: boolean = true;
+  isFullMenuOpen: boolean = false;
 
   constructor(
     private themeService: ThemeService,
@@ -87,14 +87,6 @@ export class MonkeyMenu extends Styleable implements OnDestroy {
     super.ngOnChanges();
     this.tooltipable.alt = this.alt;
     this.tooltipable.style = this.style;
-
-    this.screenService.screenChanges$.subscribe((currentScreen: MonkeyScreen) => {
-      if (this.isFullMenuOpen && currentScreen.isScreenSizeDown(this.SMALL_SCREEN_FLAG)) {
-        this.isFullMenuOpen = false;
-      } else if (!this.isFullMenuOpen && currentScreen.isScreenSizeUp(this.SMALL_SCREEN_FLAG)) {
-        this.isFullMenuOpen = true;
-      }
-    });
   }
 
   ngOnDestroy() {
