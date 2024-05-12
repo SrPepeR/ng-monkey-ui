@@ -206,6 +206,7 @@ export class MonkeyAsideMenu extends Styleable {
    * @param option - The selected menu option.
    */
   onClicked(option: MenuOption) {
+    this.manageAsideMenu();
     this.currentOption = option;
     this.navigateToPage(option);
   }

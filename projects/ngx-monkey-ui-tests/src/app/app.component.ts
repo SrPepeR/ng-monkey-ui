@@ -89,7 +89,7 @@ export class AppComponent implements OnInit {
 
     this.menuRoutes = [
       { label: 'Example', icon: 'info', route: homeRoute },
-      { label: 'Comnponents', icon: 'info', route: componentsRoute },
+      { label: 'Components', icon: 'info', route: componentsRoute },
     ];
   }
 

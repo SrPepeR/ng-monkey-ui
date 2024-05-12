@@ -220,7 +220,7 @@ export class Styleable implements OnInit, OnChanges {
 	/**
 	 * Manages the aside menu styles.
 	 */
-	private manageAsideMenu() {
+	manageAsideMenu() {
 		const asideMenu = document.querySelector('.aside-menu.hinted');
 		const asideMenuWidth = asideMenu?.clientWidth || 0;
 
