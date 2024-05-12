@@ -4,7 +4,7 @@ NgxMonkeyUi is an Angular components and functionalities library under developme
 
 ## Author
 
-- [Kevin J. Rodríguez Morales](https://kevinrodriguez.es) @SrPepeR
+- [Kevin J. Rodríguez Morales](https://kevinrodriguez.es) [@SrPepeR](https://github.com/SrPepeR)
 
 ## Installation
 
