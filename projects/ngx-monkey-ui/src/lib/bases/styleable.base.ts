@@ -213,13 +213,14 @@ export class Styleable implements OnInit, OnChanges {
 	}
 
 	private checkSpecialComponents() {
+		this.addClassesToMainElement();
 		this.manageAsideMenu();
 	}
 
 	/**
 	 * Manages the aside menu styles.
 	 */
-	private manageAsideMenu() {
+	manageAsideMenu() {
 		const asideMenu = document.querySelector('.aside-menu.hinted');
 		const asideMenuWidth = asideMenu?.clientWidth || 0;
 
@@ -235,6 +236,17 @@ export class Styleable implements OnInit, OnChanges {
 		const main = document.querySelector('main');
 		if (main) {
 			main.style.marginLeft = `${pixels}px`;
+		}
+	}
+
+	/**
+	 * Adds classes to the main element based on the current screen size style class.
+	 */
+	private addClassesToMainElement() {
+		const main = document.querySelector('main');
+		if (main) {
+			main.removeAttribute('class');
+			main.classList.add(this.currentScreen.sizeStyleClass);
 		}
 	}
 
