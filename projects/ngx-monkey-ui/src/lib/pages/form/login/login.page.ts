@@ -212,6 +212,26 @@ export class MonkeyLoginPage extends Styleable {
     if (this.check(this.canContinueAsGuest)) {
       this.addContinueAsGuestAction();
     }
+
+    this.handleEnterKey();
+  }
+
+  /**
+   * Handles the 'Enter' key press event.
+   */
+  private handleEnterKey() {
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        if (this.form.valid) {
+          this.onLogin.emit({
+            email: this.form.get(this.EMAIL_CONTROL_NAME)?.value,
+            password: this.form.get(this.PASSWORD_CONTROL_NAME)?.value,
+          });
+        } else if (this.check(this.canContinueAsGuest)) {
+          this.onContinueAsGuest.emit();
+        }
+      }
+    });
   }
 
   /**
