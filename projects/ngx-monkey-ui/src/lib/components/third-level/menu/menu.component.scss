@@ -69,6 +69,19 @@
         }
       }
 
+      &.expanded {
+        display: grid;
+        
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+
+        &>section {
+          grid-column: 1 / 3;
+          flex-direction: row;
+          
+        }
+      }
+
       &:has(.screen-xs):has(.menu-list-content) {
         border-bottom: solid 5px var(--color);
       }
