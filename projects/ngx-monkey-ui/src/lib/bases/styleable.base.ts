@@ -213,6 +213,7 @@ export class Styleable implements OnInit, OnChanges {
 	}
 
 	private checkSpecialComponents() {
+		this.addClassesToMainElement();
 		this.manageAsideMenu();
 	}
 
@@ -235,6 +236,17 @@ export class Styleable implements OnInit, OnChanges {
 		const main = document.querySelector('main');
 		if (main) {
 			main.style.marginLeft = `${pixels}px`;
+		}
+	}
+
+	/**
+	 * Adds classes to the main element based on the current screen size style class.
+	 */
+	private addClassesToMainElement() {
+		const main = document.querySelector('main');
+		if (main) {
+			main.removeAttribute('class');
+			main.classList.add(this.currentScreen.sizeStyleClass);
 		}
 	}
 
