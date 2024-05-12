@@ -118,7 +118,11 @@ export class MonkeyAsideMenu extends Styleable {
     super.ngOnInit();
 
     if (this.data) {
-      this.currentOption = !this.data[0].children ? this.data[0] : this.data[0].children![0];
+      if (this.data[0].children) {
+        this.currentOption = this.data[0].children![0];
+      } else {
+        this.currentOption = this.data[0];
+      }
     }
 
     this.changeAsideWidth();
