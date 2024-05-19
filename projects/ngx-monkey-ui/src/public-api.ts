@@ -26,7 +26,12 @@ export * from './lib/ngx-monkey-ui.module';
     export * from './lib/services/tooltip/tooltip';
 
   // Font service
-  export * from './lib/services/font.service';
+  export * from './lib/services/fonts-icons/font.service';
+
+  // Icons service
+  export * from './lib/services/fonts-icons/icons.service';
+    // Icons providers
+    export * from './lib/services/fonts-icons/icons-providers';
 
   // Screen service
   export * from './lib/services/screen/screen.service';

@@ -1,5 +1,6 @@
 <span
-  class="material-symbols-outlined"
+  *ngIf="iconProvider?.iconsProviderFamily == googleFamily"
+  [class]="iconProvider?.className"
 >
   {{ icon }}
 </span>

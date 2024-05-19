@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuOption, MonkeyAlertService, MonkeyBackgroundService, MonkeyFontService, MonkeyScreenService, MonkeyStyle, ScreenOrientation } from 'ngx-monkey-ui';
+import { IconsProviders, MenuOption, MonkeyAlertService, MonkeyBackgroundService, MonkeyFontService, MonkeyIconsService, MonkeyScreenService, MonkeyStyle, ScreenOrientation } from 'ngx-monkey-ui';
 
 @Component({
   selector: 'app-root',
@@ -67,6 +67,7 @@ export class AppComponent implements OnInit {
     private fontService: MonkeyFontService,
     private screenService: MonkeyScreenService,
     private backgroundService: MonkeyBackgroundService,
+    private iconsService: MonkeyIconsService,
     private router: Router,
   ) {
     this.fontService.addDosisFont();
@@ -94,6 +95,7 @@ export class AppComponent implements OnInit {
   }
 
   asideSelected(option: MenuOption) {
+    this.iconsService.initIconsProvider(IconsProviders.GOOGLE_NEW_SHARP);
     const optionType = option.route!.split('-')[0];
 
     switch (optionType) {
