@@ -218,25 +218,35 @@ export class Styleable implements OnInit, OnChanges {
 	}
 
 	/**
-	 * Manages the aside menu styles.
+	 * Manages the aside menu by changing the main margin left and adding styles to the aside menu.
+	 * @returns A promise that resolves to a boolean indicating whether any changes were made.
 	 */
-	manageAsideMenu() {
-		const asideMenu = document.querySelector('.aside-menu.hinted');
-		const asideMenuWidth = asideMenu?.clientWidth || 0;
+	manageAsideMenu(): Promise<boolean> {
+		return new Promise((resolve) => {
+			let changes = false;
+			const asideMenu = document.querySelector('.aside-menu.hinted');
+			const asideMenuWidth = asideMenu?.clientWidth || 0;
 
-		this.changeMainMarginLeft(asideMenuWidth);
-		this.addStylesToAsideMenuWhenMenu();
+			changes = this.changeMainMarginLeft(asideMenuWidth);
+			changes = this.addStylesToAsideMenuWhenMenu() || changes;
+
+			resolve(changes);
+		});
 	}
 
 	/**
 	 * Changes the left margin of the main element by the specified number of pixels.
 	 * @param pixels - The number of pixels to set as the left margin.
+	 * @returns `true` if changes were made, `false` otherwise.
 	 */
-	private changeMainMarginLeft(pixels: number) {
+	private changeMainMarginLeft(pixels: number): boolean {
 		const main = document.querySelector('main');
 		if (main) {
 			main.style.marginLeft = `${pixels}px`;
+			return true;
 		}
+
+		return false;
 	}
 
 	/**
@@ -252,16 +262,20 @@ export class Styleable implements OnInit, OnChanges {
 
 	/**
 	 * Adds styles to the aside menu based on the menu content.
-	 * @private
+	 * @returns {boolean} Returns true if the styles were successfully added, false otherwise.
 	 */
-	private addStylesToAsideMenuWhenMenu() {
+	private addStylesToAsideMenuWhenMenu(): boolean {
 		const menu: HTMLElement | null = document.querySelector('monkey-menu .menu-content');
 		const asideMenu: HTMLElement | null = document.querySelector('monkey-aside-menu .aside-menu');
 
 		if (menu && asideMenu) {
 			(asideMenu as HTMLElement).style.top = `${menu.clientHeight}px`;
 			(asideMenu as HTMLElement).style.height = `${document.body.clientHeight - menu.clientHeight}px`;
+
+			return true;
 		}
+
+		return false;
 	}
 
 	/**
