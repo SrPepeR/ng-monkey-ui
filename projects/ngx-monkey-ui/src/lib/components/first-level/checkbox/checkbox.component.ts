@@ -10,6 +10,7 @@ import { Styleable } from '../../../bases/styleable.base';
   templateUrl: './checkbox.component.html',
   styleUrls: [
     '../../../styles/components/_common.default.style.scss',
+    '../../../styles/components/_checkbox.default.style.scss',
     './styles/checkbox.component.scss',
     './styles/checkbox.brutalist.component.scss',
     './styles/checkbox.glass.component.scss',
