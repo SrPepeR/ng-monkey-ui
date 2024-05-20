@@ -129,6 +129,11 @@ export class Styleable implements OnInit, OnChanges {
 	 */
 	classList: Array<string> = [];
 
+	/**
+	 * Determines whether the aside menu should be managed automatically.
+	 */
+	automaticAsideMenuManagement: boolean = true;
+
 	constructor() {
 		this.currentScreen = this.screenService.getCurrentScreen();
 	}
@@ -214,7 +219,18 @@ export class Styleable implements OnInit, OnChanges {
 
 	private checkSpecialComponents() {
 		this.addClassesToMainElement();
-		this.manageAsideMenu();
+		if (this.automaticAsideMenuManagement) {
+			this.manageAsideMenu();
+		}
+	}
+
+	/**
+	 * Sets the status of automatic aside menu management.
+	 * 
+	 * @param status - The status to set for automatic aside menu management.
+	 */
+	setAutomaticAsideMenuManagement(status: boolean) {
+		this.automaticAsideMenuManagement = status;
 	}
 
 	/**
