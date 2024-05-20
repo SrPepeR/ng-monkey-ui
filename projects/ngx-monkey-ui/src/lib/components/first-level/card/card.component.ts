@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
-import { ComponentsStylesService } from '../../../services/components-styles.service';
 import { Styleable } from '../../../bases/styleable.base';
 import { MonkeyStyle } from '../../../objects/enums/style.enum';
 
@@ -12,6 +11,7 @@ import { MonkeyStyle } from '../../../objects/enums/style.enum';
   templateUrl: './card.component.html',
   styleUrls: [
     '../../../styles/components/_common.default.style.scss',
+    '../../../styles/components/_card.default.style.scss',
     './styles/card.component.scss',
     './styles/card.brutalist.component.scss',
     './styles/card.flat.component.scss',
