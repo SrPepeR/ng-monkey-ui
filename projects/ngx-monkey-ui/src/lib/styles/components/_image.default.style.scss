@@ -1,6 +1,3 @@
-@import '../components.themes';
-@import '../components.styles';
-
 :host {
     display: flex;
     flex-direction: column;
@@ -12,52 +9,5 @@
 
     img, .placeholder {
         cursor: pointer;
-    }
-}
-
-@keyframes imageLoader-horizontal {
-    0% {
-        background-position: 0 0;
-    }
-
-    100% {
-        background-position: 100% 0;
-    }
-}
-
-@keyframes animloader {
-    0% {
-        transform: scale(0);
-        opacity: 1;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 0;
-    }
-}
-
-@keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes glow-pulse {
-    0% {
-        box-shadow: 0 7px 14px var(--color);
-    }
-
-    50% {
-        box-shadow: 0 3px 7px var(--emphasis);
-        background: var(--color);
-    }
-
-    100% {
-        box-shadow: 0 7px 14px var(--color);
     }
 }

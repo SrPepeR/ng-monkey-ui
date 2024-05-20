@@ -10,6 +10,7 @@ import { Styleable } from '../../../bases/styleable.base';
   templateUrl: './image.component.html',
   styleUrls: [
     '../../../styles/components/_common.default.style.scss',
+    '../../../styles/components/_image.default.style.scss',
     './styles/image.component.scss',
     './styles/image.brutalist.component.scss',
     './styles/image.glass.component.scss',

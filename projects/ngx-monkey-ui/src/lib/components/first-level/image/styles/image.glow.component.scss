@@ -1,5 +1,3 @@
-@use '../../../../styles/components/image.default.style';
-
 /* Glow style */
 .placeholder.type-glow {
     background: var(--opacity-hight);
@@ -11,4 +9,19 @@
 img.type-glow {
     border-radius: 5px;
     box-shadow: 0 5px 15px var(--emphasis);
+}
+
+@keyframes glow-pulse {
+    0% {
+        box-shadow: 0 7px 14px var(--color);
+    }
+
+    50% {
+        box-shadow: 0 3px 7px var(--emphasis);
+        background: var(--color);
+    }
+
+    100% {
+        box-shadow: 0 7px 14px var(--color);
+    }
 }

@@ -1,5 +1,3 @@
-@use '../../../../styles/components/image.default.style';
-
 /* Flat style */
 .placeholder.type-flat {
     background-color: var(--opacity-hight);
@@ -25,4 +23,14 @@
 .placeholder.type-flat,
 img.type-flat {
     border-radius: 20%;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
