@@ -1,5 +1,5 @@
 <monkey-icon-button
-  *ngIf="!check(showHint) || !canShowHint"
+  *ngIf="(!check(showHint) || !canShowHint) && !openedByLongScreen"
   class="aside-menu-toggle"
   [alt]="alt"
   [icon]="isAsideOpened ? CLOSE_ASIDE_ICON : OPEN_ASIDE_ICON"

@@ -240,7 +240,7 @@ export class Styleable implements OnInit, OnChanges {
 	manageAsideMenu(): Promise<boolean> {
 		return new Promise((resolve) => {
 			let changes = false;
-			const asideMenu = document.querySelector('.aside-menu.hinted');
+			const asideMenu = document.querySelector('#aside-menu-content');
 			const asideMenuWidth = asideMenu?.clientWidth || 0;
 
 			changes = this.changeMainMarginLeft(asideMenuWidth);
