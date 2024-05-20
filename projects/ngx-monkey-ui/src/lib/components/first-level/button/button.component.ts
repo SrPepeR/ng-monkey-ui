@@ -10,6 +10,7 @@ import { Styleable } from '../../../bases/styleable.base';
   templateUrl: './button.component.html',
   styleUrls: [
     '../../../styles/components/_common.default.style.scss',
+    '../../../styles/components/_button.default.style.scss',
     './styles/button.component.scss',
     './styles/button.brutalist.component.scss',
     './styles/button.flat.component.scss',
