@@ -5,7 +5,6 @@ import { MonkeyTooltipService } from '../../../services/tooltip/tooltip.service'
 import { Tooltipable } from '../../../bases/tooltipable.base';
 import { MenuOption } from '../../../objects/interfaces/menu-option.interface';
 import { Router } from '@angular/router';
-import { MonkeyScreen } from '../../../services/screen/screen';
 
 /**
  * Represents a menu component that displays a list of options.
@@ -116,7 +115,7 @@ export class MonkeyMenu extends Styleable implements OnDestroy {
    */
   navigateToPage(menuOption: MenuOption) {
     this.optionSelected.emit(menuOption);
-    
+
     if(this.check(this.selfNavigation)) {
       this.router.navigate([menuOption.route]);
     }

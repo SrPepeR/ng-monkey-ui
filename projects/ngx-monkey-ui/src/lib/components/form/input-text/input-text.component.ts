@@ -7,6 +7,7 @@ import { MonkeyInput } from '../../../bases/input/input.base';
   selector: 'monkey-input-text',
   templateUrl: './input-text.component.html',
   styleUrls: [
+    '../../../styles/components/_common.default.style.scss',
     '../../../styles/components/_input.default.style.scss',
     '../../../bases/input/styles/input.component.scss',
     '../../../bases/input/styles/input.brutalist.component.scss',
