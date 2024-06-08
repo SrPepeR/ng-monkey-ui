@@ -1,5 +1,3 @@
-@use '../../../../styles/components/loader.default.style';
-
 /* Glow style */
 :host {
     .spinner.type-glow {
@@ -19,7 +17,21 @@
             box-shadow:
                 0 0 0 2px inset var(--color),
                 0 0 15px var(--emphasis);
-            animation: circle-growing 0.75s infinite alternate;
+            animation: growing 0.75s infinite alternate;
         }
     }
+}
+
+@keyframes growing {
+  0% {
+    inset: 0 var(--mid-size) 0 0;
+  }
+
+  50% {
+    inset: 0 0 0 0;
+  }
+
+  100% {
+    inset: 0 0 0 var(--mid-size);
+  }
 }

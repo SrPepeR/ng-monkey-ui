@@ -1,5 +1,3 @@
-@use '../../../../styles/components/loader.default.style';
-
 /* Brutalist style */
 :host {
     .spinner.type-brutalist {
@@ -12,10 +10,20 @@
             background-color: var(--color);
             color: var(--contrast-hight);
         }
-    
+
         &:not(&.contrast) {
             background-color: var(--contrast-hight);
             color: var(--color);
         }
     }
+}
+
+@keyframes fill-horizontal {
+  0% {
+    box-shadow: 0 0 inset;
+  }
+
+  100% {
+    box-shadow: var(--size) 0 inset;
+  }
 }
