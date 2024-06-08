@@ -13,7 +13,7 @@ export class ThemeService {
    * Represents the current dark mode state.
    */
   private _isDarkMode = new BehaviorSubject<boolean>(false);
-  
+
   /**
    * Observable that emits the current dark mode state.
    */
@@ -33,7 +33,18 @@ export class ThemeService {
    * Toggles the dark mode of the application.
    */
   toggleDarkMode() {
+    this.saveThemeOnLocalStorage();
     this._isDarkMode.next(!this._isDarkMode.value);
+  }
+
+
+  /**
+   * Saves the current theme preference to the local storage.
+   * The theme preference is determined by the negation of `_isDarkMode` BehaviorSubject's value.
+   * If `_isDarkMode` is false, 'dark' is stored, otherwise 'light' is stored.
+   */
+  saveThemeOnLocalStorage(): void {
+    localStorage.setItem('theme', !this._isDarkMode.value ? 'dark' : 'light');
   }
 
   /**
@@ -49,5 +60,5 @@ export class ThemeService {
   get isLightMode() {
     return !this._isDarkMode.value;
   }
-  
+
 }
