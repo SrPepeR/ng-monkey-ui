@@ -12,7 +12,6 @@ import { Styleable } from '../../../bases/styleable.base';
   templateUrl: './icon-button.component.html',
   styleUrls: [
     '../../../styles/components/_common.default.style.scss',
-    './styles/icon-button.component.scss',
   ]
 })
 export class MonkeyIconButton extends Styleable implements OnChanges, OnDestroy {
@@ -80,7 +79,7 @@ export class MonkeyIconButton extends Styleable implements OnChanges, OnDestroy 
 
   /**
    * Shows the tooltip for the icon button component.
-   * 
+   *
    * @param event - The mouse event that triggered the tooltip.
    */
   showTooltip(event: MouseEvent) {
