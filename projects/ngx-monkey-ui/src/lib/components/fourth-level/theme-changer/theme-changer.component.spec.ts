@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ThemeChangerComponent } from './theme-changer.component';
+import { MonkeyThemeChanger } from './theme-changer.component';
 
 describe('ThemeChangerComponent', () => {
-  let component: ThemeChangerComponent;
-  let fixture: ComponentFixture<ThemeChangerComponent>;
+  let component: MonkeyThemeChanger;
+  let fixture: ComponentFixture<MonkeyThemeChanger>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ThemeChangerComponent]
+      declarations: [MonkeyThemeChanger]
     });
-    fixture = TestBed.createComponent(ThemeChangerComponent);
+    fixture = TestBed.createComponent(MonkeyThemeChanger);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
