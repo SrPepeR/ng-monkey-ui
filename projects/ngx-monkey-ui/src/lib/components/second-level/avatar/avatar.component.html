@@ -2,6 +2,8 @@
     class="avatar-container squared-item"
     [class]="classList"
     [class.dark-theme]="isDarkMode$ | async"
+    [class.full-rounded]="form == 'rounded'"
+    [class.form-squared]="form == 'squared'"
 >
     <monkey-image
         [fullRounded]="form == 'rounded' ? '' : 'false'"
