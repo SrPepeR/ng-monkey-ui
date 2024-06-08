@@ -10,6 +10,7 @@ import { Styleable } from '../../../bases/styleable.base';
   templateUrl: './switch.component.html',
   styleUrls: [
     '../../../styles/components/_common.default.style.scss',
+    '../../../styles/components/_switch.default.style.scss',
     './styles/switch.component.scss',
     './styles/switch.brutalist.component.scss',
     './styles/switch.glass.component.scss',

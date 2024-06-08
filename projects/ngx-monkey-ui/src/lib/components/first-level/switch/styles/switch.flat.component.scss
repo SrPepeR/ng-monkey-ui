@@ -1,5 +1,3 @@
-@use '../../../../styles/components/switch.default.style';
-
 /* Flat style */
 label.switch-label.type-flat {
     color: var(--background-color-contrast-hight);
@@ -23,7 +21,7 @@ div.switch-container label.switch.type-flat {
 
         width: 20px;
         height: 20px;
-        
+
         border-radius: 15px;
 
         background-color: var(--background-color-contrast-low);
