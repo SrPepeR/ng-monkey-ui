@@ -6,7 +6,6 @@ import { ThemeService } from '../../../services/theme.service';
   templateUrl: './scrollbar.component.html',
   styleUrls: [
     '../../../styles/components/_common.default.style.scss',
-    './scrollbar.component.scss',
   ]
 })
 export class MonkeyScrollbar {
