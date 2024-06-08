@@ -19,7 +19,7 @@ export class ComponentsSizesService {
    */
   generateClassList(component: any) {
     let classList: Array<string> = component.classList || [];
-    let componentType = 'size-sm';
+    let componentType!: string;
 
     // Adds the component size class
     if (component.xs === '') {
@@ -42,7 +42,9 @@ export class ComponentsSizesService {
       componentType = 'size-xl';
     }
 
-    classList.push(componentType);
+    if (componentType) {
+      classList.push(componentType);
+    }
 
     return classList;
   }

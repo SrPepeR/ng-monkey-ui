@@ -49,23 +49,6 @@ export class MonkeyAvatar extends Styleable implements OnChanges, OnDestroy {
    */
   @Input() text: string = '';
 
-  // COMPONENTS SIZES
-
-  /**
-   * The size of the avatar for small screens.
-   */
-  @Input() sm?: string = 'sm';
-
-  /**
-   * The size of the avatar for medium screens.
-   */
-  @Input() md?: string = 'md';
-
-  /**
-   * The size of the avatar for large screens.
-   */
-  @Input() lg?: string = 'lg';
-
   /**
    * Event emitted when the avatar image is clicked.
    */
@@ -88,7 +71,6 @@ export class MonkeyAvatar extends Styleable implements OnChanges, OnDestroy {
 
   constructor(
     private themeService: ThemeService,
-    private componentSizesService: ComponentsSizesService,
     private tooltipService: MonkeyTooltipService,
   ) {
     super();
@@ -161,8 +143,6 @@ export class MonkeyAvatar extends Styleable implements OnChanges, OnDestroy {
    * Generates the CSS class list for the avatar based on the properties.
    */
   private checkClasses() {
-    this.classList = this.componentSizesService.generateClassList(this);
-
     this.classList.push(`form-${this.form}`);
 
     if (this.check(this.labeled)) {

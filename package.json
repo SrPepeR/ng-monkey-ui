@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve ngx-monkey-ui-tests",
+    "start": "ng serve ngx-monkey-ui-tests --o",
     "stop": "exit 0",
     "build": "ng build",
     "watch": "ng build ngx-monkey-ui --watch",

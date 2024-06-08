@@ -91,19 +91,19 @@
                     [ghost]="currentType  === 'Ghost' ? '': 'false'"
                     [glow]="currentType  === 'Glow' ? '': 'false'"
                 />
-
-                <monkey-loader
-                    lg
-                    [style]="currentStyle"
-
-                    [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
-                    [glass]="currentType  === 'Glass' ? '': 'false'"
-                    [flat]="currentType  === 'Flat' ? '': 'false'"
-                    [ghost]="currentType  === 'Ghost' ? '': 'false'"
-                    [glow]="currentType  === 'Glow' ? '': 'false'"
-                />
             </monkey-list>
-                
+
+            <monkey-loader
+              lg
+              [style]="currentStyle"
+
+              [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+              [glass]="currentType  === 'Glass' ? '': 'false'"
+              [flat]="currentType  === 'Flat' ? '': 'false'"
+              [ghost]="currentType  === 'Ghost' ? '': 'false'"
+              [glow]="currentType  === 'Glow' ? '': 'false'"
+            />
+
             <monkey-icon-button
                 [alt]="currentType + ' monkey icon button'"
                 [style]="currentStyle"
@@ -156,7 +156,7 @@
             flexCenter
         >
             <monkey-header>Form inputs</monkey-header>
-    
+
             <monkey-list
                 [formGroup]="form"
             >
@@ -168,7 +168,7 @@
                     [formGroup]="form"
                     icon="draw"
                     required
-                    
+
                     [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
                     [glass]="currentType  === 'Glass' ? '': 'false'"
                     [flat]="currentType  === 'Flat' ? '': 'false'"
@@ -185,7 +185,7 @@
                     icon="email"
                     [inputType]="monkeyInputTextTypeEmail"
                     deleteable
-                    
+
                     [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
                     [glass]="currentType  === 'Glass' ? '': 'false'"
                     [flat]="currentType  === 'Flat' ? '': 'false'"
@@ -202,7 +202,7 @@
                     icon="password"
                     [inputType]="monkeyInputTextTypePassword"
                     deleteable
-                    
+
                     [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
                     [glass]="currentType  === 'Glass' ? '': 'false'"
                     [flat]="currentType  === 'Flat' ? '': 'false'"
@@ -219,7 +219,7 @@
                     icon="numbers"
                     [inputType]="monkeyInputNumberTypeNumber"
                     deleteable
-                    
+
                     [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
                     [glass]="currentType  === 'Glass' ? '': 'false'"
                     [flat]="currentType  === 'Flat' ? '': 'false'"

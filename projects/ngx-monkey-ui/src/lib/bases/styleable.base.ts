@@ -5,6 +5,7 @@ import { MonkeyScreenService } from "../services/screen/screen.service";
 import { MonkeyScreen } from "../services/screen/screen";
 import { ScreenSize } from "../services/screen/screen.enum";
 import { MonkeyStyle } from "../objects/enums/style.enum";
+import {ComponentsSizesService} from "../services/components-sizes.service";
 
 /**
  * Base class for styleable components.
@@ -25,6 +26,7 @@ export class Styleable implements OnInit, OnChanges {
 
 	private componentStylesService: ComponentsStylesService = new ComponentsStylesService();
 	protected screenService: MonkeyScreenService = new MonkeyScreenService();
+  private componentSizesService: ComponentsSizesService = new ComponentsSizesService();
 
 	// STYLE
 	/**
@@ -94,6 +96,42 @@ export class Styleable implements OnInit, OnChanges {
 	 * Whether the component should be disabled.
 	 */
 	@Input() disabled?: string = 'false';
+
+  // COMPONENTS SIZES
+  /**
+   * The size of the loader (extra small).
+   * @type string
+   * @default 'xs'
+   */
+  @Input() xs?: string = 'xs';
+
+  /**
+   * The size of the loader (small).
+   * @type string
+   * @default 'sm'
+   */
+  @Input() sm?: string = 'sm';
+
+  /**
+   * The size of the loader (medium).
+   * @type string
+   * @default 'md'
+   */
+  @Input() md?: string = 'md';
+
+  /**
+   * The size of the loader (large).
+   * @type string
+   * @default 'lg'
+   */
+  @Input() lg?: string = 'lg';
+
+  /**
+   * The size of the loader (extra large).
+   * @type string
+   * @default 'xl'
+   */
+  @Input() xl?: string = 'xl';
 
 	/**
 	 * Indicates whether the component is disabled.
@@ -171,6 +209,7 @@ export class Styleable implements OnInit, OnChanges {
 	 */
 	private addAllClasses() {
 		this.classList = this.componentStylesService.generateClassList(this);
+    this.componentSizesService.generateClassList(this);
 		this.checkGeneralStyles();
 		this.addAditionalClasses();
 		this.checkSpecialComponents();
@@ -226,7 +265,7 @@ export class Styleable implements OnInit, OnChanges {
 
 	/**
 	 * Sets the status of automatic aside menu management.
-	 * 
+	 *
 	 * @param status - The status to set for automatic aside menu management.
 	 */
 	setAutomaticAsideMenuManagement(status: boolean) {
@@ -296,7 +335,7 @@ export class Styleable implements OnInit, OnChanges {
 
 	/**
 	 * Checks if the value is empty.
-	 * 
+	 *
 	 * @param value The value to check.
 	 * @returns True if the value is empty, false otherwise.
 	 */

@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
 import { Styleable } from '../../../bases/styleable.base';
-import { ComponentsSizesService } from '../../../services/components-sizes.service';
 
 /**
  * Represents the MonkeyLoader component.
@@ -28,43 +27,6 @@ export class MonkeyLoader extends Styleable {
    */
   @Input() contrast?: string = 'false';
 
-  // COMPONENTS SIZES
-
-  /**
-   * The size of the loader (extra small).
-   * @type string
-   * @default 'xs'
-   */
-  @Input() xs?: string = 'xs';
-
-  /**
-   * The size of the loader (small).
-   * @type string
-   * @default 'sm'
-   */
-  @Input() sm?: string = 'sm';
-
-  /**
-   * The size of the loader (medium).
-   * @type string
-   * @default 'md'
-   */
-  @Input() md?: string = 'md';
-
-  /**
-   * The size of the loader (large).
-   * @type string
-   * @default 'lg'
-   */
-  @Input() lg?: string = 'lg';
-
-  /**
-   * The size of the loader (extra large).
-   * @type string
-   * @default 'xl'
-   */
-  @Input() xl?: string = 'xl';
-
   /**
    * The visibility of the loader.
    * @type boolean
@@ -79,27 +41,8 @@ export class MonkeyLoader extends Styleable {
 
   constructor(
     private themeService: ThemeService,
-    private componentSizesService: ComponentsSizesService,
   ) {
     super();
-  }
-  
-  /**
-   * Initializes the component and sets up any necessary initializations.
-   * Overrides the base class's ngOnInit method.
-   */
-  override ngOnInit() {
-    super.ngOnInit();
-    this.classList = this.componentSizesService.generateClassList(this);
-  }
-
-  /**
-   * Called when the input properties change.
-   * Generates the CSS class list for the loader.
-   */
-  override ngOnChanges() {
-    super.ngOnChanges();
-    this.classList = this.componentSizesService.generateClassList(this);
   }
 
 }
