@@ -1,6 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { IconsProviders, MenuOption, MonkeyAlertService, MonkeyBackgroundService, MonkeyFontService, MonkeyIconsService, MonkeyScreenService, MonkeyStyle, ScreenOrientation } from 'ngx-monkey-ui';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {
+  IconsProviders,
+  MenuOption,
+  MonkeyAlertService,
+  MonkeyBackgroundService,
+  MonkeyFontService,
+  MonkeyIconsService,
+  MonkeyScreenService,
+  MonkeyStyle,
+  ScreenOrientation
+} from 'ngx-monkey-ui';
+import {MonkeyColorPaletteService} from "../../../ngx-monkey-ui/src/lib/services/palette/monkey-color-palette.service";
 
 @Component({
   selector: 'app-root',
@@ -68,6 +79,7 @@ export class AppComponent implements OnInit {
     private screenService: MonkeyScreenService,
     private backgroundService: MonkeyBackgroundService,
     private iconsService: MonkeyIconsService,
+    private paletteService: MonkeyColorPaletteService,
     private router: Router,
   ) {
     this.fontService.addDosisFont();
@@ -78,10 +90,15 @@ export class AppComponent implements OnInit {
       .addGradient('hsl(168.74, 20%, 48%)', 33, { x: 33, y: 59 })
       .apply()
       .animate();
+    this.setColorScheme();
   }
 
   ngOnInit() {
     this.generateRoutes();
+  }
+
+  private setColorScheme() {
+    this.paletteService.apply();
   }
 
   private generateRoutes() {

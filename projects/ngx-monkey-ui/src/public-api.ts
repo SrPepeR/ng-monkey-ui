@@ -54,6 +54,13 @@ export * from './lib/ngx-monkey-ui.module';
   // Theme service
   export * from './lib/services/theme.service';
 
+  // Palette service
+  export * from './lib/services/palette/monkey-color-palette.service';
+    // Interfaces
+    export * from './lib/services/palette/palette.interfaces';
+    // Enums
+    export * from './lib/services/palette/palette.enums';
+
 /*
 * OBJECTS
 */
@@ -118,7 +125,7 @@ export * from './lib/ngx-monkey-ui.module';
 
     // Icon
     export * from './lib/components/first-level/icon/icon.component';
-  
+
   // FIRST LEVEL
 
   // SECOND LEVEL
@@ -136,7 +143,7 @@ export * from './lib/ngx-monkey-ui.module';
 
     // Buttons group
     export * from './lib/components/second-level/buttons-group/buttons-group.component';
-    
+
   // SECOND LEVEL
 
   // THIRD LEVEL
@@ -167,7 +174,7 @@ export * from './lib/ngx-monkey-ui.module';
 
     // Scrollbar
     export * from './lib/components/fourth-level/scrollbar/scrollbar.component';
-    
+
   // FOURTH LEVEL
 
   // FORM
@@ -180,7 +187,7 @@ export * from './lib/ngx-monkey-ui.module';
 
     // Invalid form message
     export * from './lib/components/form/invalid-form-message/invalid-form-message.component';
-    
+
   // FORM
 
   // PAGES
