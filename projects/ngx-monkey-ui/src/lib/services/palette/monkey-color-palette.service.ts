@@ -1,5 +1,4 @@
-import {Inject, Injectable} from '@angular/core';
-import {DOCUMENT} from "@angular/common";
+import {Injectable} from '@angular/core';
 import {Color, Palette, Scheme} from "./palette.interfaces";
 import {ColorsEnum, SchemesEnum} from "./palette.enums";
 import {DEFAULT_PALETTE} from "./palette.default";
@@ -22,9 +21,7 @@ export class MonkeyColorPaletteService {
    */
   private currentPalette: Palette = DEFAULT_PALETTE;
 
-  constructor(
-    @Inject(DOCUMENT) private document: Document
-  ) { }
+  constructor() { }
 
   /**
    * Set the theme of the palette.
@@ -115,6 +112,30 @@ export class MonkeyColorPaletteService {
   }
 
   /**
+   * Set the palette from a JSON file.
+   * @param {string} jsonFilePath The path to the JSON file.
+   * @returns {MonkeyColorPaletteService} The service itself.
+   */
+  setFromJsonFile(jsonFilePath: string): Promise<MonkeyColorPaletteService> {
+    return new Promise<MonkeyColorPaletteService>((resolve, reject) => {
+      fetch(jsonFilePath)
+        .then(response => {
+          if (!response.ok) {
+            reject(response.statusText);
+          }
+          return response.json();
+        })
+        .then(json => {
+          this.currentPalette = json.palette as Palette;
+          resolve(this);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
+
+  /**
    * Apply the current palette to the application.
    * @returns {MonkeyColorPaletteService} The service itself.
    */
@@ -147,8 +168,8 @@ export class MonkeyColorPaletteService {
     css += this.generateSchemeCss(this.currentPalette.light);
     css += `}`;
 
-    css += `*:not(.dark-theme){`;
-    css += this.generateSchemeCss(this.currentPalette.light);
+    css += `*.dark-theme{`;
+    css += this.generateSchemeCss(this.currentPalette.dark);
     css += `}`;
 
     return css

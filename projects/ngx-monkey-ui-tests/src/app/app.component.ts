@@ -98,7 +98,14 @@ export class AppComponent implements OnInit {
   }
 
   private setColorScheme() {
-    this.paletteService.apply();
+    this.paletteService
+      .setFromJsonFile('../assets/monkey.colors.palette.json')
+        .then((result: MonkeyColorPaletteService) => {
+          result.apply();
+        })
+        .catch((error) => {
+          this.alertService.dangers([error], true, 'Error');
+        });
   }
 
   private generateRoutes() {
