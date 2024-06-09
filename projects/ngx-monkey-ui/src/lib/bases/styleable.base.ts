@@ -167,11 +167,6 @@ export class Styleable implements OnInit, OnChanges {
 	 */
 	classList: Array<string> = [];
 
-	/**
-	 * Determines whether the aside menu should be managed automatically.
-	 */
-	automaticAsideMenuManagement: boolean = true;
-
 	constructor() {
 		this.currentScreen = this.screenService.getCurrentScreen();
 	}
@@ -212,10 +207,100 @@ export class Styleable implements OnInit, OnChanges {
     this.componentSizesService.generateClassList(this);
 		this.checkGeneralStyles();
 		this.addAditionalClasses();
-		this.checkSpecialComponents();
+    this.checkRootComponentsStyles();
 	}
 
-	/**
+  /**
+   * Checks the root components styles.
+   * @param isAsideOpened The state of the aside.
+   */
+  checkRootComponentsStyles(isAsideOpened?: boolean) {
+    const currentMonkeyRoot = document.getElementById('monkey-root-styles');
+    let styleTag;
+
+    let menu = document.querySelector('monkey-menu .menu-container');
+    let aside = document.querySelector('monkey-aside-menu');
+    let main = document.querySelector('main');
+
+    let css: string = 'body { margin: 0; padding: 0; width: 100%; height: 100%; } ';
+
+    if (menu) {
+      css = this.manageGeneralRootStyles(css, menu);
+      css += 'monkey-menu { grid-area: menu; } ';
+    }
+
+    if (aside) {
+      css += 'monkey-aside-menu { grid-area: aside; overflow-y: auto; } '
+      css += 'monkey-aside-menu > monkey-card { height: 100%; } ';
+
+      css += '@media (min-width: 1200px) { ';
+      css += `app-root { grid-template-columns: 200px 1fr; grid-template-rows: ${menu ? menu.clientHeight : 0}px 1fr; } `;
+      css += '} ';
+    }
+
+    if (main) {
+      css += 'main { grid-area: main; padding-top: 50px; margin-left: auto; margin-right: auto; max-width: 1200px; } ';
+    }
+
+    css = this.manageMobileRootStyles(css, isAsideOpened);
+
+    if (currentMonkeyRoot) {
+      styleTag = currentMonkeyRoot;
+    } else {
+      styleTag = document.createElement('style');
+      styleTag.id = 'monkey-root-styles';
+    }
+
+    styleTag.innerHTML = css;
+    document.head.appendChild(styleTag);
+  }
+
+  /**
+   * Manages the general style of the root component.
+   * @param css The current css.
+   * @param menu The menu element.
+   * @returns The updated css.
+   * @private
+   **/
+  private manageGeneralRootStyles(css: string, menu: Element) {
+    css += 'app-root { ';
+    css += 'display: grid; ';
+    css += `grid-template-columns: 80px 1fr; grid-template-rows: ${menu ? menu.clientHeight : 0}px 1fr; `;
+    css += 'width: 100%; height: 100%; ';
+    css += 'grid-template-areas: "menu menu" "aside main"; ';
+    css += '} ';
+    return css;
+  }
+
+  /**
+   * Manages the mobile style of the root component.
+   * @param css The current css.
+   * @param isAsideOpened The state of the aside.
+   * @returns The updated css.
+   * @private
+   **/
+  private manageMobileRootStyles(css: string, isAsideOpened: boolean | undefined) {
+    css += '@media (max-width: 768px) { ';
+
+    if (isAsideOpened == undefined) {
+      // Get the previous state of aside
+      isAsideOpened = JSON.parse(localStorage.getItem('isAsideOpened') || '{}');
+    }
+    localStorage.setItem('isAsideOpened', JSON.stringify(isAsideOpened));
+
+    if (isAsideOpened) {
+      // Opening aside
+      css += 'app-root { grid-template-areas: "menu menu" "aside main"; } ';
+    } else {
+      // Closing aside
+      css += 'app-root { grid-template-areas: "menu menu" "main main"; } ';
+    }
+
+    css += '} ';
+    return css;
+  }
+
+  /**
 	 * Checks the general styles of the component.
 	 */
 	private checkGeneralStyles() {
@@ -254,83 +339,6 @@ export class Styleable implements OnInit, OnChanges {
 	 */
 	protected addAditionalClasses() {
 		this.classList.push(this.currentScreen.sizeStyleClass);
-	}
-
-	private checkSpecialComponents() {
-		this.addClassesToMainElement();
-		if (this.automaticAsideMenuManagement) {
-			this.manageAsideMenu();
-		}
-	}
-
-	/**
-	 * Sets the status of automatic aside menu management.
-	 *
-	 * @param status - The status to set for automatic aside menu management.
-	 */
-	setAutomaticAsideMenuManagement(status: boolean) {
-		this.automaticAsideMenuManagement = status;
-	}
-
-	/**
-	 * Manages the aside menu by changing the main margin left and adding styles to the aside menu.
-	 * @returns A promise that resolves to a boolean indicating whether any changes were made.
-	 */
-	manageAsideMenu(): Promise<boolean> {
-		return new Promise((resolve) => {
-			let changes = false;
-			const asideMenu = document.querySelector('#aside-menu-content');
-			const asideMenuWidth = asideMenu?.clientWidth || 0;
-
-			changes = this.changeMainMarginLeft(asideMenuWidth);
-			changes = this.addStylesToAsideMenuWhenMenu() || changes;
-
-			resolve(changes);
-		});
-	}
-
-	/**
-	 * Changes the left margin of the main element by the specified number of pixels.
-	 * @param pixels - The number of pixels to set as the left margin.
-	 * @returns `true` if changes were made, `false` otherwise.
-	 */
-	private changeMainMarginLeft(pixels: number): boolean {
-		const main = document.querySelector('main');
-		if (main) {
-			main.style.marginLeft = `${pixels}px`;
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Adds classes to the main element based on the current screen size style class.
-	 */
-	private addClassesToMainElement() {
-		const main = document.querySelector('main');
-		if (main) {
-			main.removeAttribute('class');
-			main.classList.add(this.currentScreen.sizeStyleClass);
-		}
-	}
-
-	/**
-	 * Adds styles to the aside menu based on the menu content.
-	 * @returns {boolean} Returns true if the styles were successfully added, false otherwise.
-	 */
-	private addStylesToAsideMenuWhenMenu(): boolean {
-		const menu: HTMLElement | null = document.querySelector('monkey-menu .menu-content');
-		const asideMenu: HTMLElement | null = document.querySelector('monkey-aside-menu .aside-menu');
-
-		if (menu && asideMenu) {
-			(asideMenu as HTMLElement).style.top = `${menu.clientHeight}px`;
-			(asideMenu as HTMLElement).style.height = `${document.body.clientHeight - menu.clientHeight}px`;
-
-			return true;
-		}
-
-		return false;
 	}
 
 	/**

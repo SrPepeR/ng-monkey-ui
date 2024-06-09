@@ -182,6 +182,7 @@ export class MonkeyAsideMenu extends Styleable {
     this.isAsideOpened = false;
     this.openByToggle = false;
     this.changeAsideWidth();
+    this.checkRootComponentsStyles(false);
   }
 
   private changeAsideWidth() {
@@ -201,16 +202,17 @@ export class MonkeyAsideMenu extends Styleable {
     }
 
     asideContent!.style.width = this.OPENED_ASIDE_WIDTH;
+    this.checkRootComponentsStyles(true);
+
     return;
   }
 
   /**
    * Handles the click event for a menu option.
-   * 
+   *
    * @param option - The selected menu option.
    */
   onClicked(option: MenuOption) {
-    this.manageAsideMenu();
     this.currentOption = option;
     this.navigateToPage(option);
   }

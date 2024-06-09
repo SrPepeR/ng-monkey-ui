@@ -126,6 +126,9 @@ export class MonkeyMenu extends Styleable implements OnDestroy {
    */
   toggleFullMenu() {
     this.isFullMenuOpen = !this.isFullMenuOpen;
+    setTimeout(() => {
+      this.checkRootComponentsStyles();
+    })
   }
 
 }
