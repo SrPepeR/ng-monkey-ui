@@ -54,6 +54,7 @@ import { InvalidFormMessageComponent } from './components/form/invalid-form-mess
 // PAGES
 
 import { MonkeyLoginPage } from './pages/form/login/login.page';
+import { MonkeyUnfocus } from './components/first-level/unfocus/unfocus.component';
 
 // PAGES
 
@@ -88,6 +89,7 @@ import { MonkeyLoginPage } from './pages/form/login/login.page';
     
     // PAGES
     MonkeyLoginPage,
+          MonkeyUnfocus,
   ],
   imports: [
     CommonModule,

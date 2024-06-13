@@ -10,7 +10,7 @@ export class MonkeyFocusService {
   /**
    * Represents the reference of the unfocused component in the DOM.
    */
-  private UNFOCUSED_COMPONENT_REFERENCE = '#unfocused-component';
+  private UNFOCUSED_COMPONENT_REFERENCE = 'monkey-unfocus';
 
   /**
    * Represents a subject that emits focus events.
@@ -40,7 +40,7 @@ export class MonkeyFocusService {
    */
   private checkUnfocusedComponentDeclared(): void {
     if (document.querySelector(this.UNFOCUSED_COMPONENT_REFERENCE) === null) {
-      // TODO: Create a new unfocused component.
+      document.body.appendChild(document.createElement(this.UNFOCUSED_COMPONENT_REFERENCE));
     }
   }
 

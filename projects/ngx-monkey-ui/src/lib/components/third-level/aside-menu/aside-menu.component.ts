@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { MonkeyScreen } from '../../../services/screen/screen';
 import { ScreenSize } from '../../../services/screen/screen.enum';
 import { MonkeyStyle } from '../../../objects/enums/style.enum';
+import { Focusable } from '../../../bases/focusable.base';
+import { MonkeyFocusService } from '../../../services/focus/focus.service';
 
 @Component({
   selector: 'monkey-aside-menu',
@@ -16,6 +18,8 @@ import { MonkeyStyle } from '../../../objects/enums/style.enum';
   ]
 })
 export class MonkeyAsideMenu extends Styleable {
+
+  focuseable: Focusable;
 
   /**
    * Represents the data for the aside menu component.
@@ -106,8 +110,10 @@ export class MonkeyAsideMenu extends Styleable {
   constructor(
     private themeService: ThemeService,
     private router: Router,
+    private focusService: MonkeyFocusService,
   ) {
     super();
+    this.focuseable = new Focusable(focusService);
   }
 
   /**
@@ -173,6 +179,8 @@ export class MonkeyAsideMenu extends Styleable {
   openMenu() {
     this.isAsideOpened = true;
     this.changeAsideWidth();
+    const currentComponentElement: HTMLElement = 
+    this.focuseable.focusElement(this.)
   }
 
   /**
