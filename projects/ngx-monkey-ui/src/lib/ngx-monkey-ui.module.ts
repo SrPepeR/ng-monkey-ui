@@ -14,6 +14,7 @@ import { MonkeyList } from './components/first-level/list/list.component';
 import { MonkeyHeader } from './components/first-level/header/header.component';
 import { MonkeySubheader } from './components/first-level/subheader/subheader.component';
 import { MonkeyIcon } from './components/first-level/icon/icon.component';
+import { MonkeyUnfocus } from './components/first-level/unfocus/unfocus.component';
 
 // FIRST LEVEL
 
@@ -54,7 +55,6 @@ import { InvalidFormMessageComponent } from './components/form/invalid-form-mess
 // PAGES
 
 import { MonkeyLoginPage } from './pages/form/login/login.page';
-import { MonkeyUnfocus } from './components/first-level/unfocus/unfocus.component';
 
 // PAGES
 
@@ -86,10 +86,10 @@ import { MonkeyUnfocus } from './components/first-level/unfocus/unfocus.componen
     MonkeyInputText,
     MonkeyInputNumber,
     InvalidFormMessageComponent,
-    
+    MonkeyUnfocus,
+
     // PAGES
     MonkeyLoginPage,
-          MonkeyUnfocus,
   ],
   imports: [
     CommonModule,
@@ -121,7 +121,8 @@ import { MonkeyUnfocus } from './components/first-level/unfocus/unfocus.componen
     MonkeyInputText,
     MonkeyInputNumber,
     InvalidFormMessageComponent,
-    
+    MonkeyUnfocus,
+
     // PAGES
     MonkeyLoginPage,
   ],

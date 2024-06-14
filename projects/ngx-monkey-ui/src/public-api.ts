@@ -14,6 +14,13 @@ export * from './lib/ngx-monkey-ui.module';
   // Tooltip
   export * from './lib/bases/tooltipable.base';
 
+  // Focusable
+  export * from './lib/bases/focusable.base';
+    // Focus
+    export * from './lib/services/focus/focus';
+    // Service
+    export * from './lib/services/focus/focus.service';
+
 /*
 * SERVICES
 */
@@ -125,6 +132,9 @@ export * from './lib/ngx-monkey-ui.module';
 
     // Icon
     export * from './lib/components/first-level/icon/icon.component';
+
+    // Unfocus
+    export * from './lib/components/first-level/unfocus/unfocus.component';
 
   // FIRST LEVEL
 
