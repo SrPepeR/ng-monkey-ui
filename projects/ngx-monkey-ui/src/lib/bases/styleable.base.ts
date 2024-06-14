@@ -269,6 +269,7 @@ export class Styleable implements OnInit, OnChanges {
     css += 'width: 100%; height: 100%; ';
     css += 'grid-template-areas: "menu menu" "aside main"; ';
     css += '} ';
+    css += 'app-root:has(> monkey-aside-menu>#aside-menu-content:hover) { grid-template-columns: 200px 1fr; }'
     return css;
   }
 
@@ -290,10 +291,11 @@ export class Styleable implements OnInit, OnChanges {
 
     if (isAsideOpened) {
       // Opening aside
-      css += 'app-root { grid-template-areas: "menu menu" "aside main"; } ';
+      css += 'app-root { grid-template-columns: 200px 1fr; grid-template-areas: "menu menu" "aside main"; } ';
     } else {
       // Closing aside
       css += 'app-root { grid-template-areas: "menu menu" "main main"; } ';
+      css += 'monkey-aside-menu>#aside-menu-content { display: none; } ';
     }
 
     css += '} ';
