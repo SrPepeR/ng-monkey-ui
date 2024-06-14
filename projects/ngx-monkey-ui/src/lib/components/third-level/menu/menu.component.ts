@@ -5,6 +5,9 @@ import { MonkeyTooltipService } from '../../../services/tooltip/tooltip.service'
 import { Tooltipable } from '../../../bases/tooltipable.base';
 import { MenuOption } from '../../../objects/interfaces/menu-option.interface';
 import { Router } from '@angular/router';
+import {Focusable} from "../../../bases/focusable.base";
+import {MonkeyFocusService} from "../../../services/focus/focus.service";
+import {Focus} from "../../../services/focus/focus";
 
 /**
  * Represents a menu component that displays a list of options.
@@ -18,6 +21,8 @@ import { Router } from '@angular/router';
   ]
 })
 export class MonkeyMenu extends Styleable implements OnDestroy {
+
+  focuseable: Focusable;
 
   /**
    * Represents the tooltipable behavior of the menu component.
@@ -64,10 +69,12 @@ export class MonkeyMenu extends Styleable implements OnDestroy {
   constructor(
     private themeService: ThemeService,
     private tooltipService: MonkeyTooltipService,
+    private focusService: MonkeyFocusService,
     private router: Router,
   ) {
     super();
     this.tooltipable = new Tooltipable(this.tooltipService);
+    this.focuseable = new Focusable(focusService);
   }
 
   /**
@@ -77,6 +84,14 @@ export class MonkeyMenu extends Styleable implements OnDestroy {
     super.ngOnInit();
     this.tooltipable.alt = this.alt;
     this.tooltipable.style = this.style;
+
+    this.focusService.event.subscribe((focusData: Focus) => {
+      // Menu should be closed when the focus is lost.
+      if (!focusData.focusedElement) {
+        this.isFullMenuOpen = false;
+        return;
+      }
+    })
   }
 
   /**
@@ -128,6 +143,12 @@ export class MonkeyMenu extends Styleable implements OnDestroy {
     this.isFullMenuOpen = !this.isFullMenuOpen;
     setTimeout(() => {
       this.checkRootComponentsStyles();
+
+      if (this.isFullMenuOpen) {
+        this.focuseable.focusElement(document.querySelector('monkey-menu') as HTMLElement || undefined!);
+      } else {
+        this.focuseable.unfocusElement();
+      }
     })
   }
 
