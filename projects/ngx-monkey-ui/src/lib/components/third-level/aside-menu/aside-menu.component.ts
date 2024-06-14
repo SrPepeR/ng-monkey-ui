@@ -8,6 +8,7 @@ import { ScreenSize } from '../../../services/screen/screen.enum';
 import { MonkeyStyle } from '../../../objects/enums/style.enum';
 import { Focusable } from '../../../bases/focusable.base';
 import { MonkeyFocusService } from '../../../services/focus/focus.service';
+import {Focus} from "../../../services/focus/focus";
 
 @Component({
   selector: 'monkey-aside-menu',
@@ -131,6 +132,14 @@ export class MonkeyAsideMenu extends Styleable {
       }
     }
 
+    this.focusService.event.subscribe((focusData: Focus) => {
+      // Aside menu should be closed when the focus is lost.
+      if (!focusData.focusedElement) {
+        this.closeMenu();
+        return;
+      }
+    })
+
     this.changeAsideWidth();
   }
 
@@ -179,8 +188,6 @@ export class MonkeyAsideMenu extends Styleable {
   openMenu() {
     this.isAsideOpened = true;
     this.changeAsideWidth();
-    const currentComponentElement: HTMLElement = 
-    this.focuseable.focusElement(this.)
   }
 
   /**
@@ -191,6 +198,7 @@ export class MonkeyAsideMenu extends Styleable {
     this.openByToggle = false;
     this.changeAsideWidth();
     this.checkRootComponentsStyles(false);
+    this.focuseable.unfocusElement();
   }
 
   private changeAsideWidth() {
@@ -208,9 +216,11 @@ export class MonkeyAsideMenu extends Styleable {
       asideContent!.style.width = this.CLOSED_ASIDE_WIDTH;
       return;
     }
-
     asideContent!.style.width = this.OPENED_ASIDE_WIDTH;
     this.checkRootComponentsStyles(true);
+    if (this.openByToggle) {
+      this.focuseable.focusElement(document.querySelector('monkey-aside-menu') as HTMLElement || undefined!);
+    }
 
     return;
   }
