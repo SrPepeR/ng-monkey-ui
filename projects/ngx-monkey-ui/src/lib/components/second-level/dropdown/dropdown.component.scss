@@ -5,7 +5,7 @@
     align-items: center;
     gap: 10px;
   }
-  
+
   label {
     cursor: pointer;
     color: var(--color);
@@ -27,7 +27,7 @@
     background-color: var(--opacity-hight);
     border-radius: 10px 0 10px 0;
 
-    z-index: 9999;
+    z-index: 9996;
 
     .dropdown-item {
       display: flex;
