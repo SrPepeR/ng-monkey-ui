@@ -19,11 +19,10 @@ export class MonkeyFocusService {
 
   /**
    * Sets the focus on the specified element.
-   * 
+   *
    * @param focus - The element to focus on.
    */
   focus(focus: Focus) {
-    this.checkUnfocusedComponentDeclared();
     this.event.next(focus);
   }
 
@@ -32,16 +31,6 @@ export class MonkeyFocusService {
    */
   unfocus() {
     this.event.next(new Focus());
-  }
-
-  /**
-   * Checks whether the unfocused component is declared.
-   * If not, creates a new unfocused component.
-   */
-  private checkUnfocusedComponentDeclared(): void {
-    if (document.querySelector(this.UNFOCUSED_COMPONENT_REFERENCE) === null) {
-      document.body.appendChild(document.createElement(this.UNFOCUSED_COMPONENT_REFERENCE));
-    }
   }
 
 }

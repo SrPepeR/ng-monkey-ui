@@ -53,6 +53,13 @@ export class MonkeyUnfocus implements OnInit, OnDestroy {
   }
 
   /**
+   * Removes the focus.
+   */
+  unfocusElement() {
+    this.focusable.unfocusElement();
+  }
+
+  /**
    * Lifecycle hook that is called when the component is about to be destroyed.
    */
   ngOnDestroy() {

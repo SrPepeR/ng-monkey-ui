@@ -15,11 +15,13 @@ export class Focusable implements OnDestroy {
 
 	/**
 	 * Sets the focus on the specified element.
-	 * 
+	 *
 	 * @param element - The element to focus on.
 	 * @param opacity - Determines whether the element has unfocused opacity.
 	 */
-	focusElement(element?: HTMLElement, opacity?: boolean) {
+	focusElement(element: HTMLElement, opacity?: boolean) {
+    element.classList.add('monkey-focused');
+    element.style.zIndex = '9999';
 		this.focusService.focus(new Focus(element, opacity));
 	}
 
@@ -27,7 +29,12 @@ export class Focusable implements OnDestroy {
 	 * Removes the focus.
 	 */
 	unfocusElement() {
-		this.focusService.unfocus();
+    let focusedElement = document.querySelector('.monkey-focused') as HTMLElement;
+    if (focusedElement) {
+      focusedElement.classList.remove('monkey-focused');
+      focusedElement.style.zIndex = '';
+      this.focusService.unfocus();
+    }
 	}
 
 	/**
