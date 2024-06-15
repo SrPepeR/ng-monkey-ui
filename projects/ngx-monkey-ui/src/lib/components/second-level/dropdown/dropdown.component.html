@@ -20,6 +20,7 @@
 </label>
 
 <monkey-list
+  [id]="'dropdown-' + randomId"
   [class]="classList"
   [class.dark-theme]="isDarkMode$ | async"
   *ngIf="isOpen"
@@ -34,7 +35,7 @@
     (click)="selectOption(item)"
   >
     {{ item.label }}
-    
+
     <monkey-icon
       *ngIf="item.icon"
       [icon]="item.icon"

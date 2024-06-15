@@ -1,9 +1,12 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
 import { DropdownOption } from '../../../objects/interfaces/dropdown-option.interface';
 import { ThemeService } from '../../../services/theme.service';
 import { Tooltipable } from '../../../bases/tooltipable.base';
 import { MonkeyTooltipService } from '../../../services/tooltip/tooltip.service';
+import { Focusable } from "../../../bases/focusable.base";
+import { MonkeyFocusService } from "../../../services/focus/focus.service";
+import { Focus } from "../../../services/focus/focus";
 
 /**
  * Represents a dropdown component that allows users to select an option from a list.
@@ -17,6 +20,10 @@ import { MonkeyTooltipService } from '../../../services/tooltip/tooltip.service'
   ]
 })
 export class MonkeyDropdown extends Styleable implements OnInit, OnDestroy {
+
+  focuseable: Focusable;
+
+  randomId: string = Math.random().toString(36).substring(7);
 
   /**
    * Represents the tooltipable behavior of the dropdown component.
@@ -61,9 +68,11 @@ export class MonkeyDropdown extends Styleable implements OnInit, OnDestroy {
   constructor(
     private themeService: ThemeService,
     private tooltipService: MonkeyTooltipService,
+    private focusService: MonkeyFocusService,
   ) {
     super();
     this.tooltipable = new Tooltipable(this.tooltipService);
+    this.focuseable = new Focusable(focusService);
   }
 
   /**
@@ -73,6 +82,14 @@ export class MonkeyDropdown extends Styleable implements OnInit, OnDestroy {
     super.ngOnInit();
     this.tooltipable.alt = this.alt;
     this.tooltipable.style = this.style;
+
+    this.focusService.event.subscribe((focusData: Focus) => {
+      // Menu should be closed when the focus is lost.
+      if (!focusData.focusedElement) {
+        this.isOpen = false;
+        return;
+      }
+    })
   }
 
   /**
@@ -93,6 +110,14 @@ export class MonkeyDropdown extends Styleable implements OnInit, OnDestroy {
    */
   toggleDropdown() {
     this.isOpen = !this.isOpen;
+
+    setTimeout(() => {
+      if (this.isOpen) {
+        this.focuseable.focusElement(document.querySelector(`#dropdown-${this.randomId}`)!);
+      } else {
+        this.focuseable.unfocusElement();
+      }
+    }, 0);
   }
 
   /**
@@ -103,6 +128,7 @@ export class MonkeyDropdown extends Styleable implements OnInit, OnDestroy {
     this.selected = option;
     this.isOpen = false;
     this.selectedChanged.emit(option);
+    this.focuseable.unfocusElement();
   }
 
   /**
