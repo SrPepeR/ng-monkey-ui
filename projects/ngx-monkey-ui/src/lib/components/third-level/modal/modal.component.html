@@ -1,0 +1,62 @@
+<monkey-card
+  [id]="randomId"
+  *ngIf="showing"
+  class="modal-card"
+
+  [class]="classList"
+  [class.dark-theme]="isDarkMode$ | async"
+  [style]="MONKEY_BACKGROUND_STYLE"
+
+  [brutalist]="brutalist"
+  [glass]="glass"
+  [flat]="flat"
+  [ghost]="ghost"
+  [glow]="glow"
+>
+
+  <monkey-list
+    class="modal-elements-list"
+    gapSize="md"
+  >
+    <monkey-icon-button
+      class="close-icon-button"
+      icon="close"
+      discreet
+
+      [style.align-self]="'end'"
+
+      [class]="classList"
+      [style]="MONKEY_DANGER_STYLE"
+      [brutalist]="brutalist"
+      [glass]="glass"
+      [flat]="flat"
+      [ghost]="ghost"
+      [glow]="glow"
+
+      (onClick)="closeModal()"
+    />
+
+    <monkey-list
+      class="content-list"
+    >
+      <ng-content/>
+    </monkey-list>
+
+    <monkey-buttons-group
+      *ngIf="actions && actions.length > 0"
+      [data]="actions"
+
+      gap
+
+      [style.align-self]="'center'"
+      [class]="classList"
+      [class.dark-theme]="isDarkMode$ | async"
+
+      [brutalist]="brutalist"
+      [glass]="glass"
+      [flat]="flat"
+      [ghost]="ghost"
+      [glow]="glow"
+    />
+  </monkey-list>
+</monkey-card>

@@ -33,6 +33,7 @@ export class ComponentsPortfolioComponent {
 
   warningStyle: MonkeyStyle = MonkeyStyle.WARNING;
   successStyle: MonkeyStyle = MonkeyStyle.SUCCESS;
+  infoStyle: MonkeyStyle = MonkeyStyle.INFO;
 
   offSwitchText: string = 'Off';
   onSwitchText: string = 'On';
@@ -45,7 +46,7 @@ export class ComponentsPortfolioComponent {
     passwordMonkeyInputText: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]),
     numberMonkeyInputNumber: new FormControl('', [Validators.min(0), Validators.max(100)]),
   });
-  
+
   monkeyInputTextTypeText: MonkeyInputTextType = MonkeyInputTextType.TEXT;
   monkeyInputTextTypeEmail: MonkeyInputTextType = MonkeyInputTextType.EMAIL;
   monkeyInputTextTypePassword: MonkeyInputTextType = MonkeyInputTextType.PASSWORD;
@@ -63,7 +64,7 @@ export class ComponentsPortfolioComponent {
   INPUT_TEXT_FORM_CONTROL_NAME: string = 'monkeyInputText';
   EMAIL_INPUT_TEXT_FORM_CONTROL_NAME: string = 'emailMonkeyInputText';
   PASSWORD_INPUT_TEXT_FORM_CONTROL_NAME: string = 'passwordMonkeyInputText';
-  
+
   NUMBER_INPUT_NUMBER_FORM_CONTROL_NAME: string = 'numberMonkeyInputNumber';
 
   constructor(

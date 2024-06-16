@@ -175,6 +175,9 @@ export * from './lib/ngx-monkey-ui.module';
     // Content header
     export * from './lib/components/third-level/content-header/content-header.component';
 
+    // Modal
+    export * from './lib/components/third-level/modal/modal.component';
+
   // THIRD LEVEL
 
   // FOURTH LEVEL

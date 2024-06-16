@@ -34,6 +34,7 @@ import { MonkeyTooltip } from './components/third-level/tooltip/tooltip.componen
 import { MonkeyMenu } from './components/third-level/menu/menu.component';
 import { MonkeyAsideMenu } from './components/third-level/aside-menu/aside-menu.component';
 import { MonkeyContentHeader } from './components/third-level/content-header/content-header.component';
+import { MonkeyModal } from './components/third-level/modal/modal.component';
 
 // THIRD LEVEL
 
@@ -87,6 +88,7 @@ import { MonkeyLoginPage } from './pages/form/login/login.page';
     MonkeyInputNumber,
     InvalidFormMessageComponent,
     MonkeyUnfocus,
+    MonkeyModal,
 
     // PAGES
     MonkeyLoginPage,
@@ -122,6 +124,7 @@ import { MonkeyLoginPage } from './pages/form/login/login.page';
     MonkeyInputNumber,
     InvalidFormMessageComponent,
     MonkeyUnfocus,
+    MonkeyModal,
 
     // PAGES
     MonkeyLoginPage,

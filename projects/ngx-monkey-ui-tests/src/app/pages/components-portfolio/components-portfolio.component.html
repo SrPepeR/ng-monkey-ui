@@ -142,6 +142,20 @@
                 [ghost]="currentType  === 'Ghost' ? '': 'false'"
                 [glow]="currentType  === 'Glow' ? '': 'false'"
             />
+
+            <monkey-icon-button
+              id="show-modal-button"
+              icon="info"
+              alt="Open modal"
+
+              [style]="infoStyle"
+
+              [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+              [glass]="currentType  === 'Glass' ? '': 'false'"
+              [flat]="currentType  === 'Flat' ? '': 'false'"
+              [ghost]="currentType  === 'Ghost' ? '': 'false'"
+              [glow]="currentType  === 'Glow' ? '': 'false'"
+            />
         </monkey-list>
     </monkey-card>
 
@@ -261,3 +275,22 @@
         </monkey-list>
     </monkey-card>
 </monkey-list>
+
+<monkey-modal
+  acceptable
+  skippeable
+
+  activationButtonId="show-modal-button"
+  (acceptEvent)="showAlert('Modal accepted')"
+  (skipEvent)="showAlert('Modal skipped')"
+
+  [style]="currentStyle"
+  [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+  [glass]="currentType  === 'Glass' ? '': 'false'"
+  [flat]="currentType  === 'Flat' ? '': 'false'"
+  [ghost]="currentType  === 'Ghost' ? '': 'false'"
+  [glow]="currentType  === 'Glow' ? '': 'false'"
+>
+  <h2>Settings</h2>
+  <h4>Do you want to accept the settings?</h4>
+</monkey-modal>

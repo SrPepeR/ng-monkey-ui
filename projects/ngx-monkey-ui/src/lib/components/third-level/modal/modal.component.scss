@@ -1,0 +1,26 @@
+:host ::ng-deep {
+  position: absolute;
+  z-index: 9999 !important;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .modal-card > section {
+    min-width: 400px;
+    max-width: 1200px;
+
+    .modal-elements-list {
+      width: 100%;
+    }
+
+    .content-list {
+      margin-top: -30px;
+    }
+
+    .content-list, .content-list > * {
+      align-self: center;
+      color: var(--contrast-hight);
+    }
+  }
+}
