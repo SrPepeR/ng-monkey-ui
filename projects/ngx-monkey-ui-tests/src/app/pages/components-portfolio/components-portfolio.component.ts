@@ -160,5 +160,4 @@ export class ComponentsPortfolioComponent {
   resetForm(): void {
     this.form.reset();
   }
-
 }

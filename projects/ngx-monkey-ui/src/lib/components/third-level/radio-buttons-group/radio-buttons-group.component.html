@@ -1,0 +1,49 @@
+<monkey-list
+  gapSize="md"
+>
+  <monkey-list
+    horizontal
+    gapSize="md"
+    class="label-container"
+  >
+    <label *ngIf="label">{{ label }}</label>
+    <monkey-icon-button
+      *ngIf="check(multipleSelection)"
+      icon="close_small"
+
+      (onClick)="clearAll()"
+
+      class="clear-button"
+      [class]="classList"
+      [class.dark-theme]="isDarkMode$ | async"
+
+      [brutalist]="brutalist"
+      [glass]="glass"
+      [flat]="flat"
+      [ghost]="ghost"
+      [glow]="glow"
+    />
+  </monkey-list>
+
+  <monkey-list
+    gapSize="sm"
+    [horizontal]="horizontal"
+  >
+    <monkey-radio-button
+      *ngFor="let option of options"
+      [label]="option.label"
+      [checked]="option.selected!"
+
+      (valueChanged)="optionSelected(option.id)"
+
+      [class]="classList"
+      [class.dark-theme]="isDarkMode$ | async"
+
+      [brutalist]="brutalist"
+      [glass]="glass"
+      [flat]="flat"
+      [ghost]="ghost"
+      [glow]="glow"
+    />
+  </monkey-list>
+</monkey-list>

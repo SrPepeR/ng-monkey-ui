@@ -24,6 +24,7 @@ import { MonkeyIconButton } from './components/second-level/icon-button/icon-but
 import { MonkeyAvatar } from './components/second-level/avatar/avatar.component';
 import { MonkeyDropdown } from './components/second-level/dropdown/dropdown.component';
 import { MonkeyButtonsGroup } from './components/second-level/buttons-group/buttons-group.component';
+import { MonkeyRadioButton } from './components/second-level/radio-button/radio-button.component';
 
 // SECOND LEVEL
 
@@ -35,6 +36,7 @@ import { MonkeyMenu } from './components/third-level/menu/menu.component';
 import { MonkeyAsideMenu } from './components/third-level/aside-menu/aside-menu.component';
 import { MonkeyContentHeader } from './components/third-level/content-header/content-header.component';
 import { MonkeyModal } from './components/third-level/modal/modal.component';
+import { MonkeyRadioButtonsGroup } from './components/third-level/radio-buttons-group/radio-buttons-group.component';
 
 // THIRD LEVEL
 
@@ -89,6 +91,8 @@ import { MonkeyLoginPage } from './pages/form/login/login.page';
     InvalidFormMessageComponent,
     MonkeyUnfocus,
     MonkeyModal,
+    MonkeyRadioButtonsGroup,
+    MonkeyRadioButton,
 
     // PAGES
     MonkeyLoginPage,
@@ -125,6 +129,8 @@ import { MonkeyLoginPage } from './pages/form/login/login.page';
     InvalidFormMessageComponent,
     MonkeyUnfocus,
     MonkeyModal,
+    MonkeyRadioButtonsGroup,
+    MonkeyRadioButton,
 
     // PAGES
     MonkeyLoginPage,

@@ -156,6 +156,24 @@
               [ghost]="currentType  === 'Ghost' ? '': 'false'"
               [glow]="currentType  === 'Glow' ? '': 'false'"
             />
+
+            <monkey-radio-buttons-group
+              label="Radio buttons"
+              [options]="[{id: 0, label: 'Radio button 1'}, {id: 1, label: 'Radio button 2'}, {id: 2, label: 'Radio button 3', selected: true}]"
+              [selectedOptionId]="1"
+              horizontal
+              multipleSelection
+
+              (selectionChanged)="showAlert('Options: selected: ' + $event.join(' and '))"
+
+              [style]="currentStyle"
+
+              [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+              [glass]="currentType  === 'Glass' ? '': 'false'"
+              [flat]="currentType  === 'Flat' ? '': 'false'"
+              [ghost]="currentType  === 'Ghost' ? '': 'false'"
+              [glow]="currentType  === 'Glow' ? '': 'false'"
+            />
         </monkey-list>
     </monkey-card>
 

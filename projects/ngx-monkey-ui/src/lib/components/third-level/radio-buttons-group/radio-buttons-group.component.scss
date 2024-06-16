@@ -1,0 +1,11 @@
+:host ::ng-deep {
+  .label-container {
+    & > section {
+      align-items: center;
+    }
+
+    .clear-button {
+      scale: .6;
+    }
+  }
+}

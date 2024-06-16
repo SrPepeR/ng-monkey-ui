@@ -1,0 +1,12 @@
+:host ::ng-deep {
+  monkey-checkbox {
+    & > label {
+      align-content: center;
+    }
+
+    .checkmark {
+      border-radius: 100% !important;
+      scale: .8;
+    }
+  }
+}

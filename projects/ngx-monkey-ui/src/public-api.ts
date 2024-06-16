@@ -154,6 +154,11 @@ export * from './lib/ngx-monkey-ui.module';
     // Buttons group
     export * from './lib/components/second-level/buttons-group/buttons-group.component';
 
+    // Radio button
+    export * from './lib/components/second-level/radio-button/radio-button.component';
+      // Radio button group
+      export * from './lib/components/third-level/radio-buttons-group/radio-buttons-group.component';
+
   // SECOND LEVEL
 
   // THIRD LEVEL

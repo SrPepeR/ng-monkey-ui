@@ -1,0 +1,16 @@
+<monkey-checkbox
+  [label]="label"
+  [checked]="checked"
+
+  [class]="classList"
+  [class.dark-theme]="isDarkMode$ | async"
+
+  [brutalist]="brutalist"
+  [glass]="glass"
+  [flat]="flat"
+  [ghost]="ghost"
+  [glow]="glow"
+
+  [disabled]="disabled"
+  (onCheckChange)="checkChanged($event)"
+/>
