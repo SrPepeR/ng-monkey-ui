@@ -88,6 +88,7 @@ export class MonkeyMenu extends Styleable implements OnDestroy {
     this.focusService.event.subscribe((focusData: Focus) => {
       // Menu should be closed when the focus is lost.
       if (!focusData.focusedElement) {
+        this.toggleFullMenu();
         this.isFullMenuOpen = false;
         return;
       }

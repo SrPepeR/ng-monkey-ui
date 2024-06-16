@@ -1,6 +1,6 @@
 <div
   *ngIf="focusData.focusedElement"
   [class.dark-theme]="isDarkMode$ | async"
-  [style.opacity]="focusData.unfocusedOpacity ? .8 : .2"
+  [style.opacity]="focusData.unfocusedOpacity ? .7 : .2"
   (click)="unfocusElement()"
 ></div>
