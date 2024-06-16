@@ -6,7 +6,10 @@
     gapSize="md"
     class="label-container"
   >
-    <label *ngIf="label">{{ label }}</label>
+    <label
+      *ngIf="label"
+      [class.dark-theme]="isDarkMode$ | async"
+    >{{ label }}</label>
     <monkey-icon-button
       *ngIf="check(multipleSelection)"
       icon="close_small"
@@ -16,6 +19,7 @@
       class="clear-button"
       [class]="classList"
       [class.dark-theme]="isDarkMode$ | async"
+      [style]="style"
 
       [brutalist]="brutalist"
       [glass]="glass"
@@ -38,6 +42,7 @@
 
       [class]="classList"
       [class.dark-theme]="isDarkMode$ | async"
+      [style]="style"
 
       [brutalist]="brutalist"
       [glass]="glass"

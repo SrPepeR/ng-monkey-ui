@@ -4,6 +4,10 @@
       align-items: center;
     }
 
+    label {
+      color: var(--background-color-contrast-hight);
+    }
+
     .clear-button {
       scale: .6;
     }
