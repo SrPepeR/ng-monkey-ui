@@ -39,6 +39,30 @@
     </monkey-card>
 
     <monkey-card
+      [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+      [glass]="currentType  === 'Glass' ? '': 'false'"
+      [flat]="currentType  === 'Flat' ? '': 'false'"
+      [ghost]="currentType  === 'Ghost' ? '': 'false'"
+      [glow]="currentType  === 'Glow' ? '': 'false'"
+    >
+      <monkey-carousel
+        [data]="carouselData"
+        cyclic
+        hinted
+
+        (onImageClicked)="carouselAction($event)"
+
+        [style]="currentStyle"
+
+        [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
+        [glass]="currentType  === 'Glass' ? '': 'false'"
+        [flat]="currentType  === 'Flat' ? '': 'false'"
+        [ghost]="currentType  === 'Ghost' ? '': 'false'"
+        [glow]="currentType  === 'Glow' ? '': 'false'"
+      />
+    </monkey-card>
+
+    <monkey-card
         [brutalist]="currentType  === 'Brutalist' ? '': 'false'"
         [glass]="currentType  === 'Glass' ? '': 'false'"
         [flat]="currentType  === 'Flat' ? '': 'false'"

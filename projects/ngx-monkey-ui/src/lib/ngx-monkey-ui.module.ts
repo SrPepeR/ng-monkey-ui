@@ -37,6 +37,7 @@ import { MonkeyAsideMenu } from './components/third-level/aside-menu/aside-menu.
 import { MonkeyContentHeader } from './components/third-level/content-header/content-header.component';
 import { MonkeyModal } from './components/third-level/modal/modal.component';
 import { MonkeyRadioButtonsGroup } from './components/third-level/radio-buttons-group/radio-buttons-group.component';
+import { MonkeyCarousel } from './components/third-level/carousel/carousel.component';
 
 // THIRD LEVEL
 
@@ -93,6 +94,7 @@ import { MonkeyLoginPage } from './pages/form/login/login.page';
     MonkeyModal,
     MonkeyRadioButtonsGroup,
     MonkeyRadioButton,
+    MonkeyCarousel,
 
     // PAGES
     MonkeyLoginPage,
@@ -131,6 +133,7 @@ import { MonkeyLoginPage } from './pages/form/login/login.page';
     MonkeyModal,
     MonkeyRadioButtonsGroup,
     MonkeyRadioButton,
+    MonkeyCarousel,
 
     // PAGES
     MonkeyLoginPage,

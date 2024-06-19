@@ -183,6 +183,9 @@ export * from './lib/ngx-monkey-ui.module';
     // Modal
     export * from './lib/components/third-level/modal/modal.component';
 
+    // Carousel
+    export * from './lib/components/third-level/carousel/carousel.component';
+
   // THIRD LEVEL
 
   // FOURTH LEVEL

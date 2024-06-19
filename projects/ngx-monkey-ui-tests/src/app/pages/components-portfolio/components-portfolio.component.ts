@@ -27,6 +27,29 @@ export class ComponentsPortfolioComponent {
     { label: 'Info alert', icon: 'info', value: 'info' },
   ];
 
+  carouselData: { src: string, title?: string, alt?: string, action?: Function }[] = [
+    {
+      src: 'https://via.placeholder.com/150',
+      title: 'First image',
+      alt: 'First image alt',
+    },
+    {
+      src: 'https://via.placeholder.com/300',
+      title: 'Second image',
+      alt: 'Second image alt'
+    },
+    {
+      src: 'https://via.placeholder.com/500',
+      title: 'Third image',
+      alt: 'Third image alt'
+    },
+    {
+      src: 'https://via.placeholder.com/700',
+      title: 'Fourth image',
+      alt: 'Fourth image alt'
+    }
+  ];
+
   currentType: string = 'Default';
 
   currentStyle: MonkeyStyle = MonkeyStyle.PRIMARY;
@@ -159,5 +182,9 @@ export class ComponentsPortfolioComponent {
 
   resetForm(): void {
     this.form.reset();
+  }
+
+  carouselAction(index: number): void {
+    this.alertService.infos(['Carousel image ' + index + ' clicked.'], true, 'Info');
   }
 }

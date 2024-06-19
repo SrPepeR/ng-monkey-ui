@@ -54,7 +54,14 @@ export class MonkeyRadioButtonsGroup extends Styleable implements OnInit{
   }
 
   override ngOnInit() {
-    this.options.find((option: {id: number, label: string, selected?: boolean}) => this.selectedOptionId && option.id === this.selectedOptionId)!.selected = true;
+    let selectedOption = this.options!.find(
+      (option: {id: number, label: string, selected?: boolean}) =>
+        this.selectedOptionId && option.id === this.selectedOptionId
+    );
+
+    if (selectedOption) {
+      selectedOption.selected = true;
+    }
   }
 
   /**

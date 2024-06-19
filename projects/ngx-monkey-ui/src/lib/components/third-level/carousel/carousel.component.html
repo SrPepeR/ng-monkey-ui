@@ -1,0 +1,50 @@
+<monkey-list
+  class="component-general-list"
+  gapSize="sm"
+>
+  <section
+    class="images-container"
+    [class.cyclic]="check(cyclic)"
+  >
+    <div
+      class="image-container"
+      *ngFor="let image of showingImages; let i = index"
+    >
+      <monkey-image
+        class="image"
+        [src]="image.src"
+        [title]="image.title"
+        [alt]="image.alt!"
+        (onClickImage)="imageClicked(i)"
+      />
+
+      <div
+        class="title-container"
+        *ngIf="check(hinted) && ((showingImages.length > 1 && i == 1) || showingImages.length == 1)"
+        [class.dark-theme]="isDarkMode$ | async"
+      >
+        <span>{{ image.title }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="controls-container">
+    <monkey-radio-buttons-group
+      class="control"
+      [options]="controls"
+      (selectionChanged)="changeCurrent($event[0])"
+      horizontal
+
+      [class]="classList"
+      [class.dark-theme]="isDarkMode$ | async"
+      [style]="style"
+
+      [brutalist]="brutalist"
+      [glass]="glass"
+      [flat]="flat"
+      [ghost]="ghost"
+      [glow]="glow"
+    />
+  </section>
+</monkey-list>
