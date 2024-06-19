@@ -24,6 +24,9 @@ export * from './lib/ngx-monkey-ui.module';
 /*
 * SERVICES
 */
+  // General
+  export * from './lib/services/monkey-ui.service';
+
   // Alert service
   export * from './lib/services/alert.service';
 

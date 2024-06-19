@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {
+  MonkeyUI,
   IconsProviders,
   MenuOption,
   MonkeyAlertService,
@@ -74,6 +75,7 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(
+    private monkeyUI: MonkeyUI,
     private alertService: MonkeyAlertService,
     private fontService: MonkeyFontService,
     private screenService: MonkeyScreenService,
@@ -82,9 +84,9 @@ export class AppComponent implements OnInit {
     private paletteService: MonkeyColorPaletteService,
     private router: Router,
   ) {
-    this.fontService.addDosisFont();
+    this.monkeyUI.start();
     this.setStyle();
-    this.backgroundService.setBaseColor('#2e99b1')
+    this.backgroundService
       .addGradient('hsl(162.15, 79%, 49%)', 30, { x: 47, y: 33 })
       .addGradient('hsl(166.53, 72%, 60%)', 55, { x: 82, y: 65 })
       .addGradient('hsl(168.74, 20%, 48%)', 33, { x: 33, y: 59 })
