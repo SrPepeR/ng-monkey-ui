@@ -48,11 +48,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ngx-monkey-ui-tests",
+            "outputPath": {
+              "base": "dist/ngx-monkey-ui-tests"
+            },
             "index": "projects/ngx-monkey-ui-tests/src/index.html",
-            "main": "projects/ngx-monkey-ui-tests/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -65,7 +66,8 @@
             "styles": [
               "projects/ngx-monkey-ui-tests/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/ngx-monkey-ui-tests/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -84,9 +86,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
