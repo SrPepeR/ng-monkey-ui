@@ -19,29 +19,29 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
     - `ComponentsStylesService` (que la lista no duplique clases), `Styleable` (que no acumule suscripciones ni toque `<main>`), `MonkeyInput` (mensajes de validación), `ThemeService`, `MonkeyAlertService`, `MonkeyTooltipService`, `MonkeyFontService`.
     - Escritos antes de corregir cada error, para que fallen primero y prueben la corrección después.
   - [ ] 12.3. Integración continua con GitHub Actions.
-    - En cada pull request y push a `main`: `npm ci`, `ng build ngx-monkey-ui`, `ng test --watch=false` en Chrome headless y build de la app de pruebas.
+    - En cada pull request y push a `main`: `npm ci`, `ng build ngx-monkey-ui`, `ng test ngx-monkey-ui --watch=false --browsers=ChromeHeadless` y build de la app de pruebas. Ningún target de Karma de `angular.json` fija `browsers`, así que el navegador headless hay que pedirlo explícitamente (o declarar un lanzador propio con `--no-sandbox` si el runner lo exige).
   - [ ] 12.4. Lint y formato.
     - `angular-eslint` con las reglas recomendadas y Prettier alineado con el `.editorconfig` existente. El lint entra en el CI del 12.3.
   - [ ] 12.5. Fijar la versión de Node.
     - `.nvmrc` y `engines` en `package.json`. Angular 22 exige Node `^22.22.3 || ^24.15.0 || >=26.0.0`, así que se fija ya una que sirva tanto para Angular 18 como para el destino del punto 16.
 
 - [ ] 13. Corregir los errores funcionales sin cambiar la API pública.
-  - Todo lo que hoy se comporta mal, arreglado sobre Angular 18 y publicado como `0.3.2`, para que el port del punto 16 no mezcle regresiones de dos orígenes. Ninguna tarea de este punto cambia el nombre o el tipo de un input u output.
+  - Todo lo que hoy se comporta mal, arreglado sobre Angular 18 y publicado como `0.3.2` junto con el punto 14, para que el port del punto 16 no mezcle regresiones de dos orígenes. Ninguna tarea de este punto cambia el nombre o el tipo de un input u output.
   - [ ] 13.1. Mensaje "required" invertido en `MonkeyInput` (E-06) y mensajes que no se recalculan tras `reset`, `setValue` o `markAllAsTouched` (E-23).
   - [ ] 13.2. `MonkeyLoginPage`: construir `loginActions` en `ngOnInit`/`ngOnChanges` para respetar los inputs, y sustituir el `keydown` global por un `(keydown.enter)` o un `(ngSubmit)` en el propio formulario (E-07).
   - [ ] 13.3. `MonkeyImage`: volver a `loading = true` solo cuando cambia `src`, salir del placeholder en `(error)`, y resolver `title` a partir de `alt` cuando no se indique (E-08, E-09).
   - [ ] 13.4. `MonkeyScrollbar`: leer los inputs después de asignados, reutilizar un único `<style>` y cancelar la suscripción al destruir (E-10).
   - [ ] 13.5. `ThemeService`: guardar la elección en `localStorage` y seguir los cambios de `prefers-color-scheme` mientras el usuario no haya elegido (E-11).
-  - [ ] 13.6. `MonkeyMenu`: `alt` como `@Input` y tooltip conectado (E-12). `MonkeyTooltip`: decidir, junto con el saneo del punto 14, entre aplicar las clases de `Styleable` al host o quitar esa herencia; llamar a `super.ngOnInit()` no corrige nada visible y añadiría otra suscripción sin cancelar (E-13).
+  - [ ] 13.6. `MonkeyMenu`: `alt` como `@Input` y tooltip conectado (E-12). `MonkeyTooltip`: decidir, junto con el saneo del punto 14, entre aplicar las clases de `Styleable` al host o quitar esa herencia; llamar a `super.ngOnInit()` no corrige nada visible y añadiría otra suscripción sin cancelar (E-13). Quitar la herencia aquí exige conservar por composición los inputs que hoy hereda y reenvía a `monkey-card` (`style`, `brutalist`, `flat`…), porque este punto no cambia la API pública; si no, se aplaza al 17.8.
   - [ ] 13.7. `MonkeyHeader` y `MonkeyIcon`: aplicar `classList` en la plantilla o dejar de heredar de `Styleable` (E-14).
   - [ ] 13.8. `MonkeyInputNumber`: con `inputType="number"`, escribir un `number` en el control e interceptar la rueda con `(wheel)` solo con el campo enfocado; con `tel`, `date`, `datetime-local` y `time`, conservar el string y no instalar el handler de rueda, porque `stepUp()` no se admite en todos ellos (E-15).
   - [ ] 13.9. `MonkeyFontService`: buscar por `id`, borrar el `<style>` al quitar una fuente, ids distintos para `<link>` y `<style>`, no duplicar `<link>`, `display=swap` en Red Hat Display (E-16).
   - [ ] 13.10. `MonkeyBackgroundService`: colores con `padStart(6, '0')`, incluir el último fotograma, acotar posiciones y tamaños, y que `remove()` pare también la animación (E-17).
   - [ ] 13.11. `MonkeyAsideMenu`: referencia al contenido con `viewChild` en lugar de id global, y tolerar `data` vacío (E-18).
-  - [ ] 13.12. Ids únicos en checkbox y switch con un contador por instancia, y `for` apuntando al `<input>` real (E-19).
+  - [ ] 13.12. Ids únicos en checkbox y switch con un contador compartido a nivel de módulo o `static` de la clase (uno por instancia empezaría siempre en el mismo valor y repetiría los ids), y `for` apuntando al `<input>` real (E-19).
   - [ ] 13.13. Tooltip: aceptar coordenadas 0 y usar coordenadas de viewport (`clientX/clientY`) de forma coherente (E-20); quitar el código muerto del servicio (E-21).
   - [ ] 13.14. `isDisabledComponent` vuelve a `false` al habilitar (E-22); clicks de componentes compuestos escuchando el output y no el `(click)` nativo del host (E-24).
-  - [ ] 13.15. Publicar `0.3.2` con `CHANGELOG.md` y tag de git.
+  - [ ] 13.15. Recoger las correcciones en `CHANGELOG.md`. La publicación de `0.3.2` espera al 14.6, para no salir sin E-02 a E-05, que son críticos.
 
 - [ ] 14. Sanear `Styleable` y el ciclo de vida de los componentes.
   - Es la pieza de la que heredan casi todos los componentes (todos menos `MonkeyThemeChanger` y `MonkeyScrollbar`), y concentra los tres errores más graves: la fuga de listeners (E-02), la reescritura del DOM global (E-03) y la pérdida de las clases que calculan los hijos (E-05). Va separado del 13 porque cambia cómo se comporta la base, aunque no su API.
@@ -50,6 +50,7 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
   - [ ] 14.3. `ComponentsStylesService` sin duplicados (E-04) y un punto de extensión (`protected extraClasses()`) para que `MonkeyLoader` y `MonkeyAvatar` añadan sus clases sin que la base las borre (E-05).
   - [ ] 14.4. Sacar de `Styleable` todo lo que toca `<main>`, `.aside-menu` y `monkey-menu`. Mientras exista el punto 22, queda en un servicio de layout que solo actúa si la app lo usa, y nunca borra clases ajenas.
   - [ ] 14.5. Bases como `@Directive()` abstractas en lugar de `@Component` vacío, y servicios por `inject()` en lugar de `new` (R-01).
+  - [ ] 14.6. Publicar `0.3.2` con las correcciones de los puntos 13 y 14, `CHANGELOG.md` y tag de git: es la última 0.3.x sobre Angular 18, con los errores críticos corregidos.
 
 - [ ] 15. Contrato del paquete npm.
   - Lo que hace que la librería se instale y se use bien desde fuera, independientemente de la versión de Angular.
