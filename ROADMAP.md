@@ -23,7 +23,7 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
   - [ ] 12.4. Lint y formato.
     - `angular-eslint` con las reglas recomendadas y Prettier alineado con el `.editorconfig` existente. El lint entra en el CI del 12.3.
   - [ ] 12.5. Fijar la versión de Node.
-    - `.nvmrc` y `engines` en `package.json`. Angular 22 exige `^22.22.3 || ^24.15.0`, así que se fija ya una que sirva tanto para Angular 18 como para el destino del punto 16.
+    - `.nvmrc` y `engines` en `package.json`. Angular 22 exige Node `^22.22.3 || ^24.15.0 || >=26.0.0`, así que se fija ya una que sirva tanto para Angular 18 como para el destino del punto 16.
 
 - [ ] 13. Corregir los errores funcionales sin cambiar la API pública.
   - Todo lo que hoy se comporta mal, arreglado sobre Angular 18 y publicado como `0.3.2`, para que el port del punto 16 no mezcle regresiones de dos orígenes. Ninguna tarea de este punto cambia el nombre o el tipo de un input u output.
@@ -34,7 +34,7 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
   - [ ] 13.5. `ThemeService`: guardar la elección en `localStorage` y seguir los cambios de `prefers-color-scheme` mientras el usuario no haya elegido (E-11).
   - [ ] 13.6. `MonkeyMenu`: `alt` como `@Input` y tooltip conectado (E-12). `MonkeyTooltip`: llamar a `super.ngOnInit()` (E-13).
   - [ ] 13.7. `MonkeyHeader` y `MonkeyIcon`: aplicar `classList` en la plantilla o dejar de heredar de `Styleable` (E-14).
-  - [ ] 13.8. `MonkeyInputNumber`: escribir un `number` en el control, usar `(wheel)` en vez de `(mousewheel)` y solo interceptar la rueda con el campo enfocado (E-15).
+  - [ ] 13.8. `MonkeyInputNumber`: con `inputType="number"`, escribir un `number` en el control e interceptar la rueda con `(wheel)` solo con el campo enfocado; con `tel`, `date`, `datetime-local` y `time`, conservar el string y no instalar el handler de rueda, porque `stepUp()` no se admite en todos ellos (E-15).
   - [ ] 13.9. `MonkeyFontService`: buscar por `id`, borrar el `<style>` al quitar una fuente, ids distintos para `<link>` y `<style>`, no duplicar `<link>`, `display=swap` en Red Hat Display (E-16).
   - [ ] 13.10. `MonkeyBackgroundService`: colores con `padStart(6, '0')`, incluir el último fotograma, acotar posiciones y tamaños, y que `remove()` pare también la animación (E-17).
   - [ ] 13.11. `MonkeyAsideMenu`: referencia al contenido con `viewChild` en lugar de id global, y tolerar `data` vacío (E-18).
@@ -44,7 +44,7 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
   - [ ] 13.15. Publicar `0.3.2` con `CHANGELOG.md` y tag de git.
 
 - [ ] 14. Sanear `Styleable` y el ciclo de vida de los componentes.
-  - Es la pieza de la que heredan todos los componentes, y concentra los tres errores más graves: la fuga de listeners (E-02), la reescritura del DOM global (E-03) y la pérdida de las clases que calculan los hijos (E-05). Va separado del 13 porque cambia cómo se comporta la base, aunque no su API.
+  - Es la pieza de la que heredan casi todos los componentes (todos menos `MonkeyThemeChanger` y `MonkeyScrollbar`), y concentra los tres errores más graves: la fuga de listeners (E-02), la reescritura del DOM global (E-03) y la pérdida de las clases que calculan los hijos (E-05). Va separado del 13 porque cambia cómo se comporta la base, aunque no su API.
   - [ ] 14.1. Una sola suscripción a cambios de pantalla, cancelada al destruir (`takeUntilDestroyed`), y sin `setTimeout` en `ngOnChanges`: las clases se recalculan en el momento.
   - [ ] 14.2. `MonkeyScreenService` compartido (`shareReplay` con `refCount`) y emitiendo solo al cruzar un breakpoint (`matchMedia` o `distinctUntilChanged`) (R-10). Corregir el JSDoc de `ScreenSize.XXL`.
   - [ ] 14.3. `ComponentsStylesService` sin duplicados (E-04) y un punto de extensión (`protected extraClasses()`) para que `MonkeyLoader` y `MonkeyAvatar` añadan sus clases sin que la base las borre (E-05).
@@ -57,7 +57,7 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
   - [ ] 15.2. `Router` opcional en `MonkeyMenu` y `MonkeyAsideMenu` (`inject(Router, { optional: true })`), para que no lancen `NullInjectorError` en apps sin router (R-08).
   - [ ] 15.3. `public-api.ts` sin exportaciones duplicadas, exportando `MonkeyInput` y con nombres coherentes (`InvalidFormMessageComponent` → `MonkeyInvalidFormMessage`, con alias deprecado) (R-14).
   - [ ] 15.4. Declarar y documentar la dependencia de *Material Symbols Outlined*.
-  - [ ] 15.5. Revisar `sideEffects: false`: solo es verdad cuando ningún servicio toque el DOM al construirse.
+  - [ ] 15.5. Verificar `sideEffects: false` comprobando el tree shaking del paquete y buscando efectos de importación reales (código que se ejecute al evaluar un módulo), no accesos al DOM dentro de constructores o métodos.
   - [ ] 15.6. Quitar `cli.analytics` de `angular.json`.
 
 - [ ] 16. Port a Angular 22.
@@ -86,8 +86,8 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
     - `@if`, `@for` con `track` y `@switch` en todas las plantillas (`ng g @angular/core:control-flow`).
   - [ ] 17.5. Clases calculadas con `computed()` y aplicadas al host.
     - Las variantes van a `host: { '[class]': … }` y el SCSS las lee con `:host(...)`, en lugar de repetir `[class]="classList"` en cada elemento de la plantilla.
-  - [ ] 17.6. `ChangeDetectionStrategy.OnPush` y zoneless.
-    - Todos los componentes en `OnPush`, y la app de pruebas con `provideZonelessChangeDetection()` como prueba de que funciona.
+  - [ ] 17.6. Zoneless y `OnPush`.
+    - Que cada cambio de estado notifique a Angular (señales, `AsyncPipe` o `markForCheck()`), con la app de pruebas en `provideZonelessChangeDetection()` como prueba de que funciona. `OnPush` en todos los componentes como objetivo aparte: no lo exige zoneless, pero reduce el trabajo de detección de cambios.
   - [ ] 17.7. Renombrados de la API.
     - `style` → `color` (R-03); outputs sin prefijo `on` (`clicked`, `checkedChange`, `selectedChange`, `dismissed`…) (R-13); `MonkeyButtonData.type` → `color` y `action` tipado (R-12). Guía de migración desde 0.x en el `CHANGELOG`.
   - [ ] 17.8. Composición en lugar de herencia.
@@ -116,7 +116,7 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
   - [ ] 19.9. Contraste AA comprobado para cada color y variante en los dos temas.
 
 - [ ] 20. Accesibilidad.
-  - Ningún componente interactivo es usable solo con teclado o con lector de pantalla. Donde exista, se apoya en el CDK o en Angular Aria en lugar de reimplementar el patrón.
+  - Los componentes que renderizan controles nativos (`<button>`, `<input>`) sí funcionan con teclado, pero varios componentes y estados carecen de los patrones de accesibilidad que siguen: el dropdown, los menús, el tooltip, la alerta o los botones de solo icono no son usables del todo con teclado o con lector de pantalla. Donde exista, se apoya en el CDK o en Angular Aria en lugar de reimplementar el patrón.
   - [ ] 20.1. `monkey-dropdown` como listbox: `aria-expanded`, roles, flechas, Enter, Escape y cierre al pulsar fuera.
   - [ ] 20.2. Menús: `aria-expanded`/`aria-controls` en los botones de abrir, apertura del aside con teclado y táctil (no solo `mouseenter`), y `aria-label` en las opciones que quedan solo con icono.
   - [ ] 20.3. `aria-label` obligatorio en `monkey-icon-button`; `aria-hidden="true"` por defecto en `monkey-icon`.
