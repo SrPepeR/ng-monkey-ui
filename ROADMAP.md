@@ -32,7 +32,7 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
   - [ ] 13.3. `MonkeyImage`: volver a `loading = true` solo cuando cambia `src`, salir del placeholder en `(error)`, y resolver `title` a partir de `alt` cuando no se indique (E-08, E-09).
   - [ ] 13.4. `MonkeyScrollbar`: leer los inputs después de asignados, reutilizar un único `<style>` y cancelar la suscripción al destruir (E-10).
   - [ ] 13.5. `ThemeService`: guardar la elección en `localStorage` y seguir los cambios de `prefers-color-scheme` mientras el usuario no haya elegido (E-11).
-  - [ ] 13.6. `MonkeyMenu`: `alt` como `@Input` y tooltip conectado (E-12). `MonkeyTooltip`: llamar a `super.ngOnInit()` (E-13).
+  - [ ] 13.6. `MonkeyMenu`: `alt` como `@Input` y tooltip conectado (E-12). `MonkeyTooltip`: decidir, junto con el saneo del punto 14, entre aplicar las clases de `Styleable` al host o quitar esa herencia; llamar a `super.ngOnInit()` no corrige nada visible y añadiría otra suscripción sin cancelar (E-13).
   - [ ] 13.7. `MonkeyHeader` y `MonkeyIcon`: aplicar `classList` en la plantilla o dejar de heredar de `Styleable` (E-14).
   - [ ] 13.8. `MonkeyInputNumber`: con `inputType="number"`, escribir un `number` en el control e interceptar la rueda con `(wheel)` solo con el campo enfocado; con `tel`, `date`, `datetime-local` y `time`, conservar el string y no instalar el handler de rueda, porque `stepUp()` no se admite en todos ellos (E-15).
   - [ ] 13.9. `MonkeyFontService`: buscar por `id`, borrar el `<style>` al quitar una fuente, ids distintos para `<link>` y `<style>`, no duplicar `<link>`, `display=swap` en Red Hat Display (E-16).
@@ -71,7 +71,7 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
   - [ ] 16.4. Angular 22.
     - `ng update @angular/core@22 @angular/cli@22`. TypeScript 6.0, `ng-packagr` 22, zone.js `~0.16` en la app de pruebas.
   - [ ] 16.5. Sass sin `@import`.
-    - Los 22 `@import` pasan a `@use`/`@forward`, para que el build no dependa de una sintaxis que Dart Sass va a eliminar.
+    - Los 22 `@import` pasan a `@use`/`@forward`, para que el build no dependa de una sintaxis cuya eliminación está prevista para Dart Sass 3.0.0.
   - [ ] 16.6. Actualizar `peerDependencies` al rango soportado (`^22.0.0`) y publicar `0.4.0`.
 
 - [ ] 17. API moderna de componentes (standalone, señales, zoneless).
