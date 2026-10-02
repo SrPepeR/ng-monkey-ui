@@ -86,7 +86,7 @@ export class MonkeyScreenService {
    */
   public unlockOrientation(): Promise<void> {
     if ('orientation' in screen) {
-      // @ts-expect-error: `unlock()` returns `void`, not a Promise; callers that chain `.catch()` fail at runtime.
+      // @ts-expect-error: `unlock()` returns `void`, not a Promise; callers that chain `.catch()` fail at runtime (E-25, roadmap 13.15).
       return screen.orientation.unlock();
     } else {
       return Promise.reject('Screen Orientation API not supported');

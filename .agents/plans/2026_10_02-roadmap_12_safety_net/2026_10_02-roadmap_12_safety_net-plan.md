@@ -145,7 +145,7 @@ The code follows the recommended `angular-eslint` rules and a Prettier format th
   - `angular-eslint` 18.4.3 (`ng add angular-eslint@18` + `add-eslint-to-project` for each project). The test app uses the `app` selector prefix.
   - Library rules deferred with a comment in `projects/ngx-monkey-ui/eslint.config.js`: `component-class-suffix` off (the `Monkey*` names are the API), `no-output-on-prefix` off (17.7), `no-explicit-any` and `no-unsafe-function-type` as warnings (17, 24.3), template keyboard and focus rules as warnings (20). The three base classes disable `component-selector` on their selector line (14.5). Result: 0 errors, 35 warnings.
   - Fixed: autofixable rules, two unused imports, two empty constructors, `no-cond-assign` in `tooltip.ts`, `==` in the aside menu template, and `@ts-ignore` → `@ts-expect-error` in `screen.service.ts`.
-  - Found while linting: `unlockOrientation()` returns the `void` of `screen.orientation.unlock()` as a `Promise<void>`, so the `.catch()` of the callers fails at runtime. It is marked with `@ts-expect-error` and must become a new `E-xx` in `ANALISIS.md`.
+  - Found while linting: `unlockOrientation()` returns the `void` of `screen.orientation.unlock()` as a `Promise<void>`, so the `.catch()` of the callers fails at runtime. It is marked with `@ts-expect-error`, recorded as E-25 in `ANALISIS.md` and planned as roadmap 13.15.
   - Prettier 3 with `endOfLine: "auto"` (the repository uses `core.autocrlf=true`), and `.prettierignore` also skips `package-lock.json` and `*.md` (prose keeps its line breaks).
   - Commits: `be4da4e` (setup and lint fixes), `0fb41fc` (format only, in `.git-blame-ignore-revs`), then CI steps, `ROADMAP.md` and plan.
 

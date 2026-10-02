@@ -25,7 +25,7 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
   - [x] 12.4. Lint y formato.
     - `angular-eslint` con las reglas recomendadas y Prettier alineado con el `.editorconfig` existente. El lint entra en el CI del 12.3.
     - Hecho: `angular-eslint` 18 y Prettier 3 (`npm run lint`, `npm run format:check`), los dos en el CI. El formateo está en un único commit, listado en `.git-blame-ignore-revs`. Las reglas cuya corrección cambia la API pública o el comportamiento quedan desactivadas o como aviso, con un comentario que remite al 14.5, al 17 o al 20.
-    - Al quitar un `@ts-ignore` apareció un error: `MonkeyScreenService.unlockOrientation()` devuelve lo que devuelve `screen.orientation.unlock()`, que es `void` y no una promesa, así que el `.catch()` de quien lo llama falla. Queda señalado con `@ts-expect-error` hasta corregirlo.
+    - Al quitar un `@ts-ignore` apareció un error nuevo: `MonkeyScreenService.unlockOrientation()` devuelve `void` en vez de una promesa (E-25). Queda señalado con `@ts-expect-error` hasta que lo corrija el 13.15.
   - [x] 12.5. Fijar la versión de Node.
     - `.nvmrc` y `engines` en `package.json`. Angular 22 exige Node `^22.22.3 || ^24.15.0 || >=26.0.0`, así que se fija ya una que sirva tanto para Angular 18 como para el destino del punto 16.
     - Hecho: `.nvmrc` con `22.23.3` y `engines.node` en `^22.22.3`. Node 22 es la única línea que soportan a la vez Angular 18 y Angular 22.
@@ -46,7 +46,8 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
   - [ ] 13.12. Ids únicos en checkbox y switch con un contador compartido a nivel de módulo o `static` de la clase (uno por instancia empezaría siempre en el mismo valor y repetiría los ids), y `for` apuntando al `<input>` real (E-19).
   - [ ] 13.13. Tooltip: aceptar coordenadas 0 y usar coordenadas de viewport (`clientX/clientY`) de forma coherente (E-20); quitar el código muerto del servicio (E-21).
   - [ ] 13.14. `isDisabledComponent` vuelve a `false` al habilitar (E-22); clicks de componentes compuestos escuchando el output y no el `(click)` nativo del host (E-24).
-  - [ ] 13.15. Recoger las correcciones en `CHANGELOG.md`. La publicación de `0.3.2` espera al 14.6, para no salir sin E-02 a E-05, que son críticos.
+  - [ ] 13.15. `MonkeyScreenService.unlockOrientation()`: llamar a `unlock()` y devolver una promesa de verdad (resuelta tras desbloquear y rechazada si `unlock()` lanza), quitando el `@ts-expect-error` (E-25). La firma `Promise<void>` no cambia.
+  - [ ] 13.16. Recoger las correcciones en `CHANGELOG.md`. La publicación de `0.3.2` espera al 14.6, para no salir sin E-02 a E-05, que son críticos.
 
 - [ ] 14. Sanear `Styleable` y el ciclo de vida de los componentes.
   - Es la pieza de la que heredan casi todos los componentes (todos menos `MonkeyThemeChanger` y `MonkeyScrollbar`), y concentra los tres errores más graves: la fuga de listeners (E-02), la reescritura del DOM global (E-03) y la pérdida de las clases que calculan los hijos (E-05). Va separado del 13 porque cambia cómo se comporta la base, aunque no su API.
