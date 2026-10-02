@@ -22,8 +22,10 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
   - [x] 12.3. Integración continua con GitHub Actions.
     - En cada pull request y push a `main`: `npm ci`, `ng build ngx-monkey-ui`, `ng test ngx-monkey-ui --watch=false --browsers=ChromeHeadless` y build de la app de pruebas. Ningún target de Karma de `angular.json` fija `browsers`, así que el navegador headless hay que pedirlo explícitamente (o declarar un lanzador propio con `--no-sandbox` si el runner lo exige).
     - Hecho: `.github/workflows/ci.yml` con Node desde `.nvmrc`, que ejecuta `npm run test:ci` (las dos suites). La primera ejecución pasó en `ubuntu-latest` con `ChromeHeadless` sin lanzador propio.
-  - [ ] 12.4. Lint y formato.
+  - [x] 12.4. Lint y formato.
     - `angular-eslint` con las reglas recomendadas y Prettier alineado con el `.editorconfig` existente. El lint entra en el CI del 12.3.
+    - Hecho: `angular-eslint` 18 y Prettier 3 (`npm run lint`, `npm run format:check`), los dos en el CI. El formateo está en un único commit, listado en `.git-blame-ignore-revs`. Las reglas cuya corrección cambia la API pública o el comportamiento quedan desactivadas o como aviso, con un comentario que remite al 14.5, al 17 o al 20.
+    - Al quitar un `@ts-ignore` apareció un error: `MonkeyScreenService.unlockOrientation()` devuelve lo que devuelve `screen.orientation.unlock()`, que es `void` y no una promesa, así que el `.catch()` de quien lo llama falla. Queda señalado con `@ts-expect-error` hasta corregirlo.
   - [x] 12.5. Fijar la versión de Node.
     - `.nvmrc` y `engines` en `package.json`. Angular 22 exige Node `^22.22.3 || ^24.15.0 || >=26.0.0`, así que se fija ya una que sirva tanto para Angular 18 como para el destino del punto 16.
     - Hecho: `.nvmrc` con `22.23.3` y `engines.node` en `^22.22.3`. Node 22 es la única línea que soportan a la vez Angular 18 y Angular 22.

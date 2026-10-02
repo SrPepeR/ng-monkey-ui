@@ -17,7 +17,7 @@ implemented_by:
     version: "5.5"
     reasoning_effort: "low"
 
-last_implementation_at: "2026-10-02T19:30:00Z"
+last_implementation_at: "2026-10-02T19:45:00Z"
 has_completed_all_phases: "false"
 ---
 
@@ -141,18 +141,25 @@ The code follows the recommended `angular-eslint` rules and a Prettier format th
 - npm scripts: `lint` (`ng lint`), `format` (`prettier --write .`), `format:check` (`prettier --check .`).
 - `.git-blame-ignore-revs` with the hash of the format commit.
 - CI: steps `npm run lint` and `npm run format:check` after `npm ci`.
+- Result:
+  - `angular-eslint` 18.4.3 (`ng add angular-eslint@18` + `add-eslint-to-project` for each project). The test app uses the `app` selector prefix.
+  - Library rules deferred with a comment in `projects/ngx-monkey-ui/eslint.config.js`: `component-class-suffix` off (the `Monkey*` names are the API), `no-output-on-prefix` off (17.7), `no-explicit-any` and `no-unsafe-function-type` as warnings (17, 24.3), template keyboard and focus rules as warnings (20). The three base classes disable `component-selector` on their selector line (14.5). Result: 0 errors, 35 warnings.
+  - Fixed: autofixable rules, two unused imports, two empty constructors, `no-cond-assign` in `tooltip.ts`, `==` in the aside menu template, and `@ts-ignore` → `@ts-expect-error` in `screen.service.ts`.
+  - Found while linting: `unlockOrientation()` returns the `void` of `screen.orientation.unlock()` as a `Promise<void>`, so the `.catch()` of the callers fails at runtime. It is marked with `@ts-expect-error` and must become a new `E-xx` in `ANALISIS.md`.
+  - Prettier 3 with `endOfLine: "auto"` (the repository uses `core.autocrlf=true`), and `.prettierignore` also skips `package-lock.json` and `*.md` (prose keeps its line breaks).
+  - Commits: `be4da4e` (setup and lint fixes), `0fb41fc` (format only, in `.git-blame-ignore-revs`), then CI steps, `ROADMAP.md` and plan.
 
 **To-do**
 
-- [ ] Add `angular-eslint` and the `lint` targets.
-- [ ] Fix the lint errors, or disable a rule with a comment that gives the reason when the fix changes the public API (the fix then goes to point 17).
-- [ ] Add Prettier, its config and `eslint-config-prettier`.
-- [ ] Run `npm run format` in a separate commit that has only format changes.
-- [ ] Add `.git-blame-ignore-revs` with the hash of that commit.
-- [ ] Add the `lint` and `format:check` steps to the CI.
-- [ ] Mark 12.4 as done in `ROADMAP.md`, with a short note on the result.
-- [ ] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run lint`, `npm run format:check`, `npm run test:ci`, `ng build ngx-monkey-ui`, `ng build ngx-monkey-ui-tests`, and a green CI run). Fix issues if any.
-- [ ] STOP. Present the changes to the user for review and suggest commit messages (or pull request titles, when the phases are implemented through pull requests). Do NOT proceed to the next phase until the user explicitly asks.
+- [x] Add `angular-eslint` and the `lint` targets.
+- [x] Fix the lint errors, or disable a rule with a comment that gives the reason when the fix changes the public API (the fix then goes to point 17).
+- [x] Add Prettier, its config and `eslint-config-prettier`.
+- [x] Run `npm run format` in a separate commit that has only format changes.
+- [x] Add `.git-blame-ignore-revs` with the hash of that commit.
+- [x] Add the `lint` and `format:check` steps to the CI.
+- [x] Mark 12.4 as done in `ROADMAP.md`, with a short note on the result.
+- [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run lint`, `npm run format:check`, `npm run test:ci`, `ng build ngx-monkey-ui`, `ng build ngx-monkey-ui-tests`, and a green CI run). Fix issues if any.
+- [x] STOP. Present the changes to the user for review and suggest commit messages (or pull request titles, when the phases are implemented through pull requests). Do NOT proceed to the next phase until the user explicitly asks.
 
 ### Phase 5: Behaviour tests for the units that points 13 and 14 change (12.2)
 
@@ -215,6 +222,6 @@ Each unit has tests for its current correct behaviour (`it`) and for its known b
 
 ## ⏭️ Next step
 
-Implement Phase 4: add `angular-eslint` and Prettier, and run both checks in the CI.
+Implement Phase 5: add the behaviour tests for the units that points 13 and 14 change.
 
-Safety net knitted by 🐢 💨 (Turbotuga™, [Codely](https://codely.com)’s mascot): the first monkey jumps and lands on 28 green tests, ties its rope to Node 22, and a robot now checks every knot. 🐒 ✅ 📌 🤖 🐢 💨
+Safety net knitted by 🐢 💨 (Turbotuga™, [Codely](https://codely.com)’s mascot): the first monkey jumps and lands on 28 green tests, ties its rope to Node 22, a robot checks every knot, and a broom sweeps the floor before the show. 🐒 ✅ 📌 🤖 🧹 🐢 💨
