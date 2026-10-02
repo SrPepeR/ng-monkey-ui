@@ -19,8 +19,9 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
   - [ ] 12.2. Sustituir los `should create` por tests de comportamiento en lo que se va a tocar.
     - `ComponentsStylesService` (que la lista no duplique clases), `Styleable` (que no acumule suscripciones ni toque `<main>`), `MonkeyInput` (mensajes de validación), `ThemeService`, `MonkeyAlertService`, `MonkeyTooltipService`, `MonkeyFontService`.
     - Escritos antes de corregir cada error, para que fallen primero y prueben la corrección después.
-  - [ ] 12.3. Integración continua con GitHub Actions.
+  - [x] 12.3. Integración continua con GitHub Actions.
     - En cada pull request y push a `main`: `npm ci`, `ng build ngx-monkey-ui`, `ng test ngx-monkey-ui --watch=false --browsers=ChromeHeadless` y build de la app de pruebas. Ningún target de Karma de `angular.json` fija `browsers`, así que el navegador headless hay que pedirlo explícitamente (o declarar un lanzador propio con `--no-sandbox` si el runner lo exige).
+    - Hecho: `.github/workflows/ci.yml` con Node desde `.nvmrc`, que ejecuta `npm run test:ci` (las dos suites). La primera ejecución pasó en `ubuntu-latest` con `ChromeHeadless` sin lanzador propio.
   - [ ] 12.4. Lint y formato.
     - `angular-eslint` con las reglas recomendadas y Prettier alineado con el `.editorconfig` existente. El lint entra en el CI del 12.3.
   - [x] 12.5. Fijar la versión de Node.

@@ -17,7 +17,7 @@ implemented_by:
     version: "5.5"
     reasoning_effort: "low"
 
-last_implementation_at: "2026-10-02T19:12:00Z"
+last_implementation_at: "2026-10-02T19:30:00Z"
 has_completed_all_phases: "false"
 ---
 
@@ -117,16 +117,18 @@ Each pull request and each push to `main` builds the library, runs the tests and
   4. `npx ng build ngx-monkey-ui`.
   5. `npm run test:ci`.
   6. `npx ng build ngx-monkey-ui-tests`.
-- If Chrome needs `--no-sandbox` on the runner: a custom launcher `ChromeHeadlessCI` in a new `karma.conf.js`, referenced by `karmaConfig` in the two Karma targets of `angular.json`, and used by `test:ci`.
+- If Chrome needs `--no-sandbox` on the runner: a custom launcher `ChromeHeadlessCI` in a new `karma.conf.js`, referenced by `karmaConfig` in the two Karma targets of `angular.json`, and used by `test:ci`. Not necessary: the first run passed with `ChromeHeadless`.
+- The workflow also has `permissions: contents: read` and a `concurrency` group that cancels old runs of the same ref.
+- Draft pull request: [SrPepeR/ng-monkey-ui#28](https://github.com/SrPepeR/ng-monkey-ui/pull/28), with Auto-fix on.
 
 **To-do**
 
-- [ ] Add `.github/workflows/ci.yml`.
-- [ ] Push the branch and check the first run of the workflow.
-- [ ] If Chrome fails on the runner, add the `ChromeHeadlessCI` launcher and use it in `test:ci`.
-- [ ] Mark 12.3 as done in `ROADMAP.md`, with a short note on the result.
-- [ ] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run test:ci`, `ng build ngx-monkey-ui`, `ng build ngx-monkey-ui-tests`, and a green CI run). Fix issues if any.
-- [ ] STOP. Present the changes to the user for review and suggest commit messages (or pull request titles, when the phases are implemented through pull requests). Do NOT proceed to the next phase until the user explicitly asks.
+- [x] Add `.github/workflows/ci.yml`.
+- [x] Push the branch and check the first run of the workflow.
+- [x] If Chrome fails on the runner, add the `ChromeHeadlessCI` launcher and use it in `test:ci` (not necessary: run `37052969506` passed).
+- [x] Mark 12.3 as done in `ROADMAP.md`, with a short note on the result.
+- [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run test:ci`, `ng build ngx-monkey-ui`, `ng build ngx-monkey-ui-tests`, and a green CI run). Fix issues if any.
+- [x] STOP. Present the changes to the user for review and suggest commit messages (or pull request titles, when the phases are implemented through pull requests). Do NOT proceed to the next phase until the user explicitly asks.
 
 ### Phase 4: Lint and format (12.4)
 
@@ -213,6 +215,6 @@ Each unit has tests for its current correct behaviour (`it`) and for its known b
 
 ## ⏭️ Next step
 
-Implement Phase 3: add the GitHub Actions CI workflow and check its first run.
+Implement Phase 4: add `angular-eslint` and Prettier, and run both checks in the CI.
 
-Safety net knitted by 🐢 💨 (Turbotuga™, [Codely](https://codely.com)’s mascot): the first monkey jumps and lands on 28 green tests, then ties its rope to Node 22. 🐒 ✅ 📌 🐢 💨
+Safety net knitted by 🐢 💨 (Turbotuga™, [Codely](https://codely.com)’s mascot): the first monkey jumps and lands on 28 green tests, ties its rope to Node 22, and a robot now checks every knot. 🐒 ✅ 📌 🤖 🐢 💨
