@@ -17,7 +17,7 @@ implemented_by:
     version: "5.5"
     reasoning_effort: "low"
 
-last_implementation_at: "2026-10-02T19:05:00Z"
+last_implementation_at: "2026-10-02T19:12:00Z"
 has_completed_all_phases: "false"
 ---
 
@@ -81,6 +81,7 @@ The library suite and the app suite compile and pass in a headless browser with 
 - [x] Give each failing spec the `NgxMonkeyUiModule` import (or the minimum `declarations`/`imports`) and `provideRouter([])` where `Router` is injected.
 - [x] Make `app.component.spec.ts` pass with the current `AppComponent`.
 - [x] Add the `test:ci` script to `package.json`.
+- [x] Mark 12.1 as done in `ROADMAP.md`, with a short note on the result (done with Phase 2).
 - [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run test:ci`, `ng build ngx-monkey-ui`, `ng build ngx-monkey-ui-tests`). Fix issues if any.
 - [x] STOP. Present the changes to the user for review and suggest commit messages (or pull request titles, when the phases are implemented through pull requests). Do NOT proceed to the next phase until the user explicitly asks.
 
@@ -90,17 +91,18 @@ The workspace declares the Node version for local work and for the CI.
 
 **Public contracts**
 
-- `.nvmrc`: `22.22.3` (or the latest 22.x patch that is equal or higher).
+- `.nvmrc`: `22.23.3` (the latest Node 22 LTS patch on 2026-10-02).
 - `package.json` `engines`: `{ "node": "^22.22.3" }`.
 
 **To-do**
 
-- [ ] Add `.nvmrc`.
-- [ ] Add `engines.node` to the root `package.json`.
-- [ ] Update `package-lock.json` if `npm install` changes it.
-- [ ] Note in the PR that local Node 22.22.0 is lower than the pinned version and gives an `EBADENGINE` warning.
-- [ ] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run test:ci`, `ng build ngx-monkey-ui`, `ng build ngx-monkey-ui-tests`). Fix issues if any.
-- [ ] STOP. Present the changes to the user for review and suggest commit messages (or pull request titles, when the phases are implemented through pull requests). Do NOT proceed to the next phase until the user explicitly asks.
+- [x] Add `.nvmrc`.
+- [x] Add `engines.node` to the root `package.json`.
+- [x] Update `package-lock.json` if `npm install` changes it.
+- [x] Mark 12.5 as done in `ROADMAP.md`, with a short note on the result.
+- [x] Note in the PR that the local Node is outside `engines` (it is now 24.18.1, not 22.22.0 as `ANALISIS.md` said), so `npm install` can give an `EBADENGINE` warning. All checks pass on it, but Angular 18 does not officially support Node 24: use `nvm use` for the pinned version.
+- [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run test:ci`, `ng build ngx-monkey-ui`, `ng build ngx-monkey-ui-tests`). Fix issues if any.
+- [x] STOP. Present the changes to the user for review and suggest commit messages (or pull request titles, when the phases are implemented through pull requests). Do NOT proceed to the next phase until the user explicitly asks.
 
 ### Phase 3: Continuous integration with GitHub Actions (12.3)
 
@@ -122,6 +124,7 @@ Each pull request and each push to `main` builds the library, runs the tests and
 - [ ] Add `.github/workflows/ci.yml`.
 - [ ] Push the branch and check the first run of the workflow.
 - [ ] If Chrome fails on the runner, add the `ChromeHeadlessCI` launcher and use it in `test:ci`.
+- [ ] Mark 12.3 as done in `ROADMAP.md`, with a short note on the result.
 - [ ] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run test:ci`, `ng build ngx-monkey-ui`, `ng build ngx-monkey-ui-tests`, and a green CI run). Fix issues if any.
 - [ ] STOP. Present the changes to the user for review and suggest commit messages (or pull request titles, when the phases are implemented through pull requests). Do NOT proceed to the next phase until the user explicitly asks.
 
@@ -145,6 +148,7 @@ The code follows the recommended `angular-eslint` rules and a Prettier format th
 - [ ] Run `npm run format` in a separate commit that has only format changes.
 - [ ] Add `.git-blame-ignore-revs` with the hash of that commit.
 - [ ] Add the `lint` and `format:check` steps to the CI.
+- [ ] Mark 12.4 as done in `ROADMAP.md`, with a short note on the result.
 - [ ] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run lint`, `npm run format:check`, `npm run test:ci`, `ng build ngx-monkey-ui`, `ng build ngx-monkey-ui-tests`, and a green CI run). Fix issues if any.
 - [ ] STOP. Present the changes to the user for review and suggest commit messages (or pull request titles, when the phases are implemented through pull requests). Do NOT proceed to the next phase until the user explicitly asks.
 
@@ -203,11 +207,12 @@ Each unit has tests for its current correct behaviour (`it`) and for its known b
 - [ ] Add the `MonkeyAlertService` and `MonkeyTooltipService` suites.
 - [ ] Add the `MonkeyFontService` suite.
 - [ ] Change each `xit` to `it` one time, confirm that it fails for the reason in its `E-xx`, and change it back to `xit`.
+- [ ] Mark 12.2 and point 12 as done in `ROADMAP.md`, and move point 12 to "Features implementadas".
 - [ ] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run lint`, `npm run format:check`, `npm run test:ci`, `ng build ngx-monkey-ui`, `ng build ngx-monkey-ui-tests`, and a green CI run). Fix issues if any.
 - [ ] STOP. Present the changes to the user for review and suggest commit messages (or pull request titles, when the phases are implemented through pull requests). Do NOT proceed to the next phase until the user explicitly asks.
 
 ## ⏭️ Next step
 
-Implement Phase 2: pin the Node version with `.nvmrc` and `engines`.
+Implement Phase 3: add the GitHub Actions CI workflow and check its first run.
 
-Safety net knitted by 🐢 💨 (Turbotuga™, [Codely](https://codely.com)’s mascot): the first monkey jumps and lands on 28 green tests. 🐒 ✅ 🐢 💨
+Safety net knitted by 🐢 💨 (Turbotuga™, [Codely](https://codely.com)’s mascot): the first monkey jumps and lands on 28 green tests, then ties its rope to Node 22. 🐒 ✅ 📌 🐢 💨

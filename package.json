@@ -11,6 +11,9 @@
     "test:ci": "ng test ngx-monkey-ui --watch=false --browsers=ChromeHeadless && ng build ngx-monkey-ui && ng test ngx-monkey-ui-tests --watch=false --browsers=ChromeHeadless"
   },
   "private": true,
+  "engines": {
+    "node": "^22.22.3"
+  },
   "dependencies": {
     "@angular/animations": "^18.2.8",
     "@angular/common": "^18.2.8",

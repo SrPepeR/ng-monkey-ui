@@ -12,9 +12,10 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
 
 - [ ] 12. Red de seguridad antes de tocar nada.
   - Hoy la suite de tests no compila (E-01) y no hay CI: cualquier corrección o salto de versión de Angular se haría a ciegas. Este punto va primero porque es lo que permite demostrar que los siguientes no rompen nada.
-  - [ ] 12.1. Hacer que la suite compile y pase.
+  - [x] 12.1. Hacer que la suite compile y pase.
     - Corregir el import de `theme-changer.component.spec.ts` (`ThemeChangerComponent` → `MonkeyThemeChanger`).
     - Dar a los 11 specs que fallan sus `declarations`/`imports` (o `NgxMonkeyUiModule` entero) y `provideRouter([])` a los que inyectan `Router`.
+    - Hecho: los 11 specs importan `NgxMonkeyUiModule`; solo `MonkeyMenu` y `MonkeyAsideMenu` inyectan `Router`, y los dos inputs necesitan además un `FormGroup`. `npm run test:ci` ejecuta las dos suites en `ChromeHeadless` (25 + 3 tests) y compila la librería antes de la app de pruebas, que la resuelve desde `dist/`.
   - [ ] 12.2. Sustituir los `should create` por tests de comportamiento en lo que se va a tocar.
     - `ComponentsStylesService` (que la lista no duplique clases), `Styleable` (que no acumule suscripciones ni toque `<main>`), `MonkeyInput` (mensajes de validación), `ThemeService`, `MonkeyAlertService`, `MonkeyTooltipService`, `MonkeyFontService`.
     - Escritos antes de corregir cada error, para que fallen primero y prueben la corrección después.
@@ -22,8 +23,9 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
     - En cada pull request y push a `main`: `npm ci`, `ng build ngx-monkey-ui`, `ng test ngx-monkey-ui --watch=false --browsers=ChromeHeadless` y build de la app de pruebas. Ningún target de Karma de `angular.json` fija `browsers`, así que el navegador headless hay que pedirlo explícitamente (o declarar un lanzador propio con `--no-sandbox` si el runner lo exige).
   - [ ] 12.4. Lint y formato.
     - `angular-eslint` con las reglas recomendadas y Prettier alineado con el `.editorconfig` existente. El lint entra en el CI del 12.3.
-  - [ ] 12.5. Fijar la versión de Node.
+  - [x] 12.5. Fijar la versión de Node.
     - `.nvmrc` y `engines` en `package.json`. Angular 22 exige Node `^22.22.3 || ^24.15.0 || >=26.0.0`, así que se fija ya una que sirva tanto para Angular 18 como para el destino del punto 16.
+    - Hecho: `.nvmrc` con `22.23.3` y `engines.node` en `^22.22.3`. Node 22 es la única línea que soportan a la vez Angular 18 y Angular 22.
 
 - [ ] 13. Corregir los errores funcionales sin cambiar la API pública.
   - Todo lo que hoy se comporta mal, arreglado sobre Angular 18 y publicado como `0.3.2` junto con el punto 14, para que el port del punto 16 no mezcle regresiones de dos orígenes. Ninguna tarea de este punto cambia el nombre o el tipo de un input u output.
