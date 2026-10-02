@@ -17,8 +17,8 @@ implemented_by:
     version: "5.5"
     reasoning_effort: "low"
 
-last_implementation_at: "2026-10-03T00:30:00Z"
-has_completed_all_phases: "false"
+last_implementation_at: "2026-10-03T09:00:00Z"
+has_completed_all_phases: "true"
 ---
 
 # Roadmap 13: Fix the functional bugs without changing the public API
@@ -170,14 +170,14 @@ Fix the theme persistence (E-11), the font service (E-16), the background servic
 
 Record the fixes and close point 13 in the docs.
 
-- [ ] Create `CHANGELOG.md` at the repository root with a `0.3.2 (unreleased)` section that lists the fixes of point 13 by `E-xx`, and notes that the release waits for point 14 (14.6).
-- [ ] Mark E-06 to E-12 and E-14 to E-25 as fixed in [ANALISIS.md](../../../ANALISIS.md), and E-13 as deferred to 17.8.
-- [ ] Mark 13.16 as done and move point 13 to "Features implementadas" in [ROADMAP.md](../../../ROADMAP.md) with a summary paragraph.
-- [ ] Verify the changes in terms of typechecking, linting and tests using the project's verification command. Fix issues if any.
-- [ ] STOP. Present the changes to the user for review and suggest commit messages. Do NOT proceed to the next phase until the user explicitly asks.
+- [x] Create `CHANGELOG.md` at the repository root with a `0.3.2 (unreleased)` section that lists the fixes of point 13 by `E-xx`, and notes that the release waits for point 14 (14.6).
+- [x] Mark E-06 to E-12 and E-14 to E-25 as fixed in [ANALISIS.md](../../../ANALISIS.md), and E-13 as deferred to 17.8.
+- [x] Mark 13.16 as done and move point 13 to "Features implementadas" in [ROADMAP.md](../../../ROADMAP.md) with a summary paragraph.
+- [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command. Fix issues if any.
+- [x] STOP. Present the changes to the user for review and suggest commit messages. Do NOT proceed to the next phase until the user explicitly asks.
 
 ## ⏭️ Next step
 
-Implement Phase 5: create `CHANGELOG.md` and close point 13 in `ROADMAP.md` and `ANALISIS.md`.
+All phases are done: push `fix/functional-bugs`, open the pull request and merge it once the CI is green; then decide on the `ngx-gorilla-ui` proposal.
 
-Sixteen bugs line up, the form fields already tell the truth about them, every button answers only its own click, broken images finally admit they are broken, and the theme remembers the night thanks to 🐢 💨 (Turbotuga™, [Codely](https://codely.com)'s mascot). 🐛 📝 ✅ 🖱️ 🖼️ 🌙
+Sixteen bugs line up, the form fields already tell the truth about them, every button answers only its own click, broken images finally admit they are broken, the theme remembers the night, and the changelog tells the whole story before a gorilla takes over thanks to 🐢 💨 (Turbotuga™, [Codely](https://codely.com)'s mascot). 🐛 📝 ✅ 🖱️ 🖼️ 🌙 📜 🦍
