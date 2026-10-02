@@ -3,17 +3,16 @@ import { MonkeyGradient } from './objects/gradient';
 import { MonkeyGradientPosition } from './objects/gradient-positions';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 /**
  * Represents a service for managing the background of the application.
  */
 export class MonkeyBackgroundService {
-
   /**
    * The base color used by the background service.
    */
-  baseColor: string = '#121212';
+  baseColor = '#121212';
 
   /**
    * The background service responsible for managing the MonkeyBackground instance.
@@ -23,11 +22,11 @@ export class MonkeyBackgroundService {
   /**
    * The ID of the animation.
    */
-  animationId: number = 0;
+  animationId = 0;
 
   /**
    * Sets the base color for the MonkeyBackgroundService.
-   * 
+   *
    * @param color - The color to set as the base color.
    * @returns The MonkeyBackgroundService instance.
    */
@@ -39,12 +38,16 @@ export class MonkeyBackgroundService {
 
   /**
    * Adds a gradient to the background.
-   * 
+   *
    * @param color - The color of the gradient.
    * @param size - The size of the gradient.
    * @param position - The position of the gradient.
    */
-  addGradient(color: string, size: number, position: MonkeyGradientPosition): MonkeyBackgroundService {
+  addGradient(
+    color: string,
+    size: number,
+    position: MonkeyGradientPosition,
+  ): MonkeyBackgroundService {
     this.gradient.addData(color, position, size);
 
     return this;
@@ -52,12 +55,16 @@ export class MonkeyBackgroundService {
 
   /**
    * Adds multiple gradients to the background.
-   * 
+   *
    * @param colors - An array of color values for the gradients.
    * @param sizes - An array of sizes for the gradients.
    * @param positions - An array of positions for the gradients.
    */
-  addGradients(colors: string[], sizes: number[], positions: MonkeyGradientPosition[]): MonkeyBackgroundService {
+  addGradients(
+    colors: string[],
+    sizes: number[],
+    positions: MonkeyGradientPosition[],
+  ): MonkeyBackgroundService {
     for (let i = 0; i < colors.length; i++) {
       this.addGradient(colors[i], sizes[i], positions[i]);
     }
@@ -76,7 +83,7 @@ export class MonkeyBackgroundService {
 
   /**
    * Adds random gradients to the background.
-   * 
+   *
    * @param amount - The number of random gradients to add.
    */
   addRandomGradients(amount: number): MonkeyBackgroundService {
@@ -89,11 +96,11 @@ export class MonkeyBackgroundService {
 
   /**
    * Generates the background CSS string.
-   * 
+   *
    * @returns The generated background CSS string.
    */
   generate(data?: MonkeyGradient): string {
-    let background: string = 'background-image: ';
+    let background = 'background-image: ';
 
     if (data) {
       background += `${data.generateAll()};`;
@@ -121,7 +128,7 @@ export class MonkeyBackgroundService {
       style = document.createElement('style');
       style.id = 'monkey-background';
     }
-    
+
     style.innerHTML = `body, html { ${backgroundCSS} }`;
     document.head.appendChild(style);
 
@@ -130,11 +137,11 @@ export class MonkeyBackgroundService {
 
   /**
    * Animates the background using keyframes.
-   * 
+   *
    * @param delay - The delay between each keyframe.
    * @returns The MonkeyBackgroundService instance.
    */
-  animate(steps: number = 10, delay: number = 5000): MonkeyBackgroundService {
+  animate(steps = 10, delay = 5000): MonkeyBackgroundService {
     const gradientsVariations: MonkeyGradient[] = [];
     gradientsVariations.push(this.gradient.copy());
 
@@ -168,7 +175,7 @@ export class MonkeyBackgroundService {
       style = document.createElement('style');
       style.id = 'monkey-background-animation';
     }
-    
+
     style.innerHTML = animationCss;
     document.head.appendChild(style);
 
@@ -190,7 +197,7 @@ export class MonkeyBackgroundService {
   /**
    * Stops the background animation.
    * Removes the 'monkey-background-animation' style element from the document.
-   * 
+   *
    * @returns The MonkeyBackgroundService instance.
    */
   stopAnimation(): MonkeyBackgroundService {
@@ -201,5 +208,4 @@ export class MonkeyBackgroundService {
 
     return this;
   }
-
 }

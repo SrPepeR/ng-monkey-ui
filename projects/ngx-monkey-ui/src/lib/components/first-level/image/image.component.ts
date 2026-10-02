@@ -16,10 +16,9 @@ import { Styleable } from '../../../bases/styleable.base';
     './styles/image.flat.component.scss',
     './styles/image.ghost.component.scss',
     './styles/image.glow.component.scss',
-  ]
+  ],
 })
 export class MonkeyImage extends Styleable implements OnChanges {
-
   /**
    * Whether the image should have full rounded corners.
    */
@@ -65,16 +64,14 @@ export class MonkeyImage extends Styleable implements OnChanges {
   /**
    * Indicates whether the image is currently loading.
    */
-  loading: boolean = true;
+  loading = true;
 
   /**
    * Observable that indicates whether the dark mode is enabled.
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
 
@@ -110,5 +107,4 @@ export class MonkeyImage extends Styleable implements OnChanges {
   onErrorImage() {
     this.onLoadingImageError.emit();
   }
-
 }

@@ -7,14 +7,8 @@ import { AppComponent } from './app.component';
 import { NgxMonkeyUiModule } from 'ngx-monkey-ui';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgxMonkeyUiModule,
-  ],
-  bootstrap: [AppComponent]
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, NgxMonkeyUiModule],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

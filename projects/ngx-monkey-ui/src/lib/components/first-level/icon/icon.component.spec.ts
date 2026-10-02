@@ -8,7 +8,7 @@ describe('IconComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MonkeyIcon]
+      declarations: [MonkeyIcon],
     });
     fixture = TestBed.createComponent(MonkeyIcon);
     component = fixture.componentInstance;

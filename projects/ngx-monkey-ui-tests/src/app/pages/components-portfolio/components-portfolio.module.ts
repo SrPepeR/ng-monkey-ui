@@ -19,16 +19,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    ComponentsPortfolioComponent,
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    
-    NgxMonkeyUiModule,
-    RouterModule.forChild(routes),
-  ],
-  bootstrap: [ComponentsPortfolioComponent]
+  declarations: [ComponentsPortfolioComponent],
+  imports: [CommonModule, ReactiveFormsModule, NgxMonkeyUiModule, RouterModule.forChild(routes)],
+  bootstrap: [ComponentsPortfolioComponent],
 })
-export class ComponentsPortfolioModule { }
+export class ComponentsPortfolioModule {}

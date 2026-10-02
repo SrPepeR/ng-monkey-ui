@@ -1,18 +1,11 @@
-<div
-    class='switch'
->
-    <label
-        [class.dark-theme]="isDarkMode$ | async"
-    >
-        <input
-            type='checkbox'
-            [class.dark-theme]="isDarkMode$ | async"
-            [checked]="isDarkMode$ | async"
-            (change)='toggleTheme()'
-        >
-        <span
-            class='slider'
-            [class.dark-theme]="isDarkMode$ | async"
-        ></span>
-    </label>
+<div class="switch">
+  <label [class.dark-theme]="isDarkMode$ | async">
+    <input
+      type="checkbox"
+      [class.dark-theme]="isDarkMode$ | async"
+      [checked]="isDarkMode$ | async"
+      (change)="toggleTheme()"
+    />
+    <span class="slider" [class.dark-theme]="isDarkMode$ | async"></span>
+  </label>
 </div>

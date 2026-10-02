@@ -10,21 +10,6 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
 
 ## Features pendientes
 
-- [ ] 12. Red de seguridad antes de tocar nada.
-  - Hoy la suite de tests no compila (E-01) y no hay CI: cualquier corrección o salto de versión de Angular se haría a ciegas. Este punto va primero porque es lo que permite demostrar que los siguientes no rompen nada.
-  - [ ] 12.1. Hacer que la suite compile y pase.
-    - Corregir el import de `theme-changer.component.spec.ts` (`ThemeChangerComponent` → `MonkeyThemeChanger`).
-    - Dar a los 11 specs que fallan sus `declarations`/`imports` (o `NgxMonkeyUiModule` entero) y `provideRouter([])` a los que inyectan `Router`.
-  - [ ] 12.2. Sustituir los `should create` por tests de comportamiento en lo que se va a tocar.
-    - `ComponentsStylesService` (que la lista no duplique clases), `Styleable` (que no acumule suscripciones ni toque `<main>`), `MonkeyInput` (mensajes de validación), `ThemeService`, `MonkeyAlertService`, `MonkeyTooltipService`, `MonkeyFontService`.
-    - Escritos antes de corregir cada error, para que fallen primero y prueben la corrección después.
-  - [ ] 12.3. Integración continua con GitHub Actions.
-    - En cada pull request y push a `main`: `npm ci`, `ng build ngx-monkey-ui`, `ng test ngx-monkey-ui --watch=false --browsers=ChromeHeadless` y build de la app de pruebas. Ningún target de Karma de `angular.json` fija `browsers`, así que el navegador headless hay que pedirlo explícitamente (o declarar un lanzador propio con `--no-sandbox` si el runner lo exige).
-  - [ ] 12.4. Lint y formato.
-    - `angular-eslint` con las reglas recomendadas y Prettier alineado con el `.editorconfig` existente. El lint entra en el CI del 12.3.
-  - [ ] 12.5. Fijar la versión de Node.
-    - `.nvmrc` y `engines` en `package.json`. Angular 22 exige Node `^22.22.3 || ^24.15.0 || >=26.0.0`, así que se fija ya una que sirva tanto para Angular 18 como para el destino del punto 16.
-
 - [ ] 13. Corregir los errores funcionales sin cambiar la API pública.
   - Todo lo que hoy se comporta mal, arreglado sobre Angular 18 y publicado como `0.3.2` junto con el punto 14, para que el port del punto 16 no mezcle regresiones de dos orígenes. Ninguna tarea de este punto cambia el nombre o el tipo de un input u output.
   - [ ] 13.1. Mensaje "required" invertido en `MonkeyInput` (E-06) y mensajes que no se recalculan tras `reset`, `setValue` o `markAllAsTouched` (E-23).
@@ -41,7 +26,8 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
   - [ ] 13.12. Ids únicos en checkbox y switch con un contador compartido a nivel de módulo o `static` de la clase (uno por instancia empezaría siempre en el mismo valor y repetiría los ids), y `for` apuntando al `<input>` real (E-19).
   - [ ] 13.13. Tooltip: aceptar coordenadas 0 y usar coordenadas de viewport (`clientX/clientY`) de forma coherente (E-20); quitar el código muerto del servicio (E-21).
   - [ ] 13.14. `isDisabledComponent` vuelve a `false` al habilitar (E-22); clicks de componentes compuestos escuchando el output y no el `(click)` nativo del host (E-24).
-  - [ ] 13.15. Recoger las correcciones en `CHANGELOG.md`. La publicación de `0.3.2` espera al 14.6, para no salir sin E-02 a E-05, que son críticos.
+  - [ ] 13.15. `MonkeyScreenService.unlockOrientation()`: llamar a `unlock()` y devolver una promesa de verdad (resuelta tras desbloquear y rechazada si `unlock()` lanza), quitando el `@ts-expect-error` (E-25). La firma `Promise<void>` no cambia.
+  - [ ] 13.16. Recoger las correcciones en `CHANGELOG.md`. La publicación de `0.3.2` espera al 14.6, para no salir sin E-02 a E-05, que son críticos.
 
 - [ ] 14. Sanear `Styleable` y el ciclo de vida de los componentes.
   - Es la pieza de la que heredan casi todos los componentes (todos menos `MonkeyThemeChanger` y `MonkeyScrollbar`), y concentra los tres errores más graves: la fuga de listeners (E-02), la reescritura del DOM global (E-03) y la pérdida de las clases que calculan los hijos (E-05). Va separado del 13 porque cambia cómo se comporta la base, aunque no su API.
@@ -178,6 +164,7 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
 
 ## Features implementadas
 
+- [x] 12. Red de seguridad antes de tocar nada. La suite compila y pasa (`npm run test:ci`, la librería y la app de pruebas en `ChromeHeadless`), Node está fijado en 22 (`.nvmrc` y `engines`), GitHub Actions ejecuta en cada pull request y push a `main` el lint, el formato, el build y los tests, y `angular-eslint` y Prettier están configurados, con el formateo en un commit aparte listado en `.git-blame-ignore-revs`. Los `should create` se complementan con tests de comportamiento de `ComponentsStylesService`, `Styleable`, `MonkeyInput`, `ThemeService`, `MonkeyAlertService`, `MonkeyTooltipService` y `MonkeyFontService`. Los que reproducen un error conocido son `xit` con su `E-xx` en el título (16, de E-02 a E-06, E-11, E-16, E-20 y E-23): se comprobó que fallan por ese motivo, y cada corrección de los puntos 13 y 14 los cambia a `it` antes de arreglar el código. Al activar el lint apareció un error nuevo, E-25, planificado en el 13.15.
 - [x] 11. Análisis en profundidad de la librería. `SUGERENCIAS.md` era una revisión rápida y pasa a ser [`ANALISIS.md`](./ANALISIS.md): errores confirmados con su archivo y línea, riesgos, revisión de lo que afirmaba la versión anterior (dos de sus afirmaciones resultaron incorrectas), el plan de port a Angular 22 y las mejoras de API, estilos, accesibilidad y empaquetado. Se comprobó compilando y ejecutando los tests, no solo leyendo: la librería compila, pero la suite no arranca y, corregido el import que lo impide, 11 de 25 specs fallan. De ahí sale este roadmap.
 - [x] 10. Actualización a Angular 17 y 18 (versiones 0.2.0 a 0.3.1).
 - [x] 9. `MonkeyScreenService` y clases de tamaño de pantalla, con el menú y el menú lateral adaptándose a pantallas pequeñas (0.1.4).

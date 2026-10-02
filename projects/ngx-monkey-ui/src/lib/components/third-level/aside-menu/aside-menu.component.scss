@@ -15,11 +15,11 @@
 
     transition: width 0.4s;
 
-    .aside-menu-option>button {
+    .aside-menu-option > button {
       width: 100%;
     }
 
-    >section {
+    > section {
       height: 100%;
       box-sizing: border-box;
     }
@@ -48,7 +48,8 @@
     }
   }
 
-  monkey-card, monkey-card * {
+  monkey-card,
+  monkey-card * {
     border-radius: 0 !important;
   }
 
@@ -62,7 +63,6 @@
   }
 
   @media (max-width: 600px) {
-
     // Extra small devices (portrait phones, less than 576px)
     .aside-menu-toggle {
       top: 75px;
@@ -71,7 +71,6 @@
   }
 
   @media (min-width: 600px) {
-
     // Small devices (landscape phones, 576px and up)
     .aside-menu-toggle {
       top: 75px;
@@ -80,7 +79,6 @@
   }
 
   @media (min-width: 768px) {
-
     // Medium devices (tablets, 768px and up)
     .aside-menu-toggle {
       top: 140px;
@@ -89,7 +87,6 @@
   }
 
   @media (min-width: 992px) {
-
     // Large devices (desktops, 992px and up)
     .aside-menu-toggle {
       top: 130px;
@@ -98,7 +95,6 @@
   }
 
   @media (min-width: 1200px) {
-
     // Extra large devices (large desktops, 1200px and up)
     .aside-menu-toggle {
       top: 130px;

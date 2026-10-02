@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { MonkeyMenu } from './menu.component';
+import { NgxMonkeyUiModule } from '../../../ngx-monkey-ui.module';
 
 describe('MenuComponent', () => {
   let component: MonkeyMenu;
@@ -8,7 +10,8 @@ describe('MenuComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MonkeyMenu]
+      imports: [NgxMonkeyUiModule],
+      providers: [provideRouter([])],
     });
     fixture = TestBed.createComponent(MonkeyMenu);
     component = fixture.componentInstance;

@@ -17,19 +17,18 @@ import { Styleable } from '../../../bases/styleable.base';
     './styles/button.glass.component.scss',
     './styles/button.glow.component.scss',
     './styles/button.discreet.component.scss',
-  ]
+  ],
 })
 export class MonkeyButton extends Styleable implements OnInit, OnChanges {
-
   /**
    * Whether the button should be squared. Defaults to 'false'.
    */
   @Input() squared?: string = 'false';
 
-	/**
-	 * The discreet type of the component.
-	 */
-	@Input() discreet?: string = 'false';
+  /**
+   * The discreet type of the component.
+   */
+  @Input() discreet?: string = 'false';
 
   /**
    * Event emitted when the button is clicked.
@@ -41,9 +40,7 @@ export class MonkeyButton extends Styleable implements OnInit, OnChanges {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
 
@@ -53,5 +50,4 @@ export class MonkeyButton extends Styleable implements OnInit, OnChanges {
   onClicked() {
     this.onClick.emit();
   }
-
 }

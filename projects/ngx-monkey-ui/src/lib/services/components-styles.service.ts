@@ -1,25 +1,22 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ComponentsStylesService {
-
-  constructor() { }
-
   /**
    * Generates a class list for the given component.
    * @param component - The component object.
    * @returns An array of class names.
    */
-  generateClassList(component: any): Array<string> {
-    let classList: Array<string> = [];
-    
+  generateClassList(component: any): string[] {
+    let classList: string[] = [];
+
     // Adds the component color scheme class to the classList array
     if (component.style) {
       classList.push(`style-${component.style}`);
     }
-    
+
     classList = classList.concat(this.checkTypes(classList, component));
 
     classList = classList.concat(this.checkGeneralStyles(classList, component));
@@ -37,7 +34,7 @@ export class ComponentsStylesService {
    * @param component - The component object.
    * @returns The updated class list.
    */
-  private checkTypes(classList: Array<string>, component: any): Array<string> {
+  private checkTypes(classList: string[], component: any): string[] {
     let componentType = 'type-default';
 
     if (this.check(component.brutalist)) {
@@ -75,7 +72,7 @@ export class ComponentsStylesService {
    * @param component - The component object.
    * @returns The updated class list.
    */
-  private checkGeneralStyles(classList: Array<string>, component: any): Array<string> {
+  private checkGeneralStyles(classList: string[], component: any): string[] {
     if (this.check(component.displayFlexWrapReverse)) {
       classList.push('display-flex-wrap-reverse');
     }
@@ -119,5 +116,4 @@ export class ComponentsStylesService {
   private check(value: any): boolean {
     return value === '' || value === 'true' || value === true;
   }
-
 }

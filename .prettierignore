@@ -1,0 +1,7 @@
+dist
+coverage
+.angular
+node_modules
+package-lock.json
+# Prose documents keep their own line breaks.
+*.md

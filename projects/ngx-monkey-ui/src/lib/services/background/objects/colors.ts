@@ -1,5 +1,4 @@
 export class Colors {
-
   /**
    * Array of background colors.
    */
@@ -7,7 +6,7 @@ export class Colors {
 
   /**
    * Adds a color to the list of background colors.
-   * 
+   *
    * @param color - The color to be added.
    * @returns An array of background colors after adding the new color.
    */
@@ -19,12 +18,12 @@ export class Colors {
 
   /**
    * Removes a color from the list of background colors.
-   * 
+   *
    * @param color - The color to be removed.
    * @returns An array of background colors after removing the color.
    */
   remove(color: string): string[] {
-    this.colors = this.colors.filter(c => c !== color);
+    this.colors = this.colors.filter((c) => c !== color);
 
     return this.colors;
   }
@@ -38,7 +37,7 @@ export class Colors {
 
   /**
    * Gets the list of background colors.
-   * 
+   *
    * @returns An array of background colors.
    */
   get(): string[] {
@@ -47,11 +46,10 @@ export class Colors {
 
   /**
    * Generates a random color in hexadecimal format.
-   * 
+   *
    * @returns A string representing a random color in hexadecimal format.
    */
   generateRandom(): string {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   }
-
 }

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InvalidFormMessageComponent } from './invalid-form-message.component';
+import { NgxMonkeyUiModule } from '../../../ngx-monkey-ui.module';
 
 describe('InvalidFormMessageComponent', () => {
   let component: InvalidFormMessageComponent;
@@ -8,7 +9,7 @@ describe('InvalidFormMessageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [InvalidFormMessageComponent]
+      imports: [NgxMonkeyUiModule],
     });
     fixture = TestBed.createComponent(InvalidFormMessageComponent);
     component = fixture.componentInstance;

@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
-import { ComponentsStylesService } from '../../../services/components-styles.service';
 import { Styleable } from '../../../bases/styleable.base';
 import { MonkeyStyle } from '../../../objects/enums/style.enum';
 
@@ -18,15 +17,14 @@ import { MonkeyStyle } from '../../../objects/enums/style.enum';
     './styles/card.ghost.component.scss',
     './styles/card.glass.component.scss',
     './styles/card.glow.component.scss',
-  ]
+  ],
 })
 export class MonkeyCard extends Styleable implements OnInit, OnChanges {
-  
   /**
    * Specifies whether the card should be displayed in a column layout.
    */
   @Input() column?: boolean = false;
-  
+
   /**
    * Specifies the style of the card.
    */
@@ -36,12 +34,12 @@ export class MonkeyCard extends Styleable implements OnInit, OnChanges {
    * Specifies whether padding should be removed from the card.
    */
   @Input() noPadding?: string = 'false';
-  
+
   /**
    * Specifies whether margin should be removed from the card.
    */
   @Input() noMargin?: string = 'false';
-  
+
   /**
    * Specifies whether the flex-wrap should be reversed for the card.
    */
@@ -52,10 +50,7 @@ export class MonkeyCard extends Styleable implements OnInit, OnChanges {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
-  
 }

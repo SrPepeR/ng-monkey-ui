@@ -9,24 +9,20 @@ import { ThemeService } from '../../../services/theme.service';
 @Component({
   selector: 'monkey-list',
   templateUrl: './list.component.html',
-  styleUrls: [
-    '../../../styles/components/_common.default.style.scss',
-    './list.component.scss',
-  ]
+  styleUrls: ['../../../styles/components/_common.default.style.scss', './list.component.scss'],
 })
 export class MonkeyList extends Styleable {
-
   /**
    * Specifies whether the list items should be displayed horizontally.
    * Default value is 'false'.
    */
-  @Input() horizontal: string = 'false';
+  @Input() horizontal = 'false';
 
   /**
    * Specifies whether the list items should have separators.
    * Default value is 'false'.
    */
-  @Input() separators: string = 'false';
+  @Input() separators = 'false';
 
   /**
    * Specifies the gap size between list items.
@@ -44,9 +40,7 @@ export class MonkeyList extends Styleable {
    * Creates an instance of MonkeyList.
    * @param themeService The theme service.
    */
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
 
@@ -65,5 +59,4 @@ export class MonkeyList extends Styleable {
 
     this.classList.push(`gap-${this.gapSize}`);
   }
-
 }

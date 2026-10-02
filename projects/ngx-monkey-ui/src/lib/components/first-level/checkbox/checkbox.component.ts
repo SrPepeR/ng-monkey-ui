@@ -16,10 +16,9 @@ import { Styleable } from '../../../bases/styleable.base';
     './styles/checkbox.flat.component.scss',
     './styles/checkbox.ghost.component.scss',
     './styles/checkbox.glow.component.scss',
-  ]
+  ],
 })
 export class MonkeyCheckbox extends Styleable implements AfterViewChecked {
-
   @ViewChild('checkbox') checkbox!: any;
 
   // LABELS
@@ -40,16 +39,14 @@ export class MonkeyCheckbox extends Styleable implements AfterViewChecked {
    * @type EventEmitter<Boolean>
    * @returns {Boolean} The checkbox state.
    */
-  @Output() onCheckChange = new EventEmitter<Boolean>();
+  @Output() onCheckChange = new EventEmitter<boolean>();
 
   /**
    * Observable that indicates whether the dark mode is enabled.
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
 
@@ -69,5 +66,4 @@ export class MonkeyCheckbox extends Styleable implements AfterViewChecked {
     this.checked = !this.checked;
     this.onCheckChange.emit(this.checked);
   }
-
 }

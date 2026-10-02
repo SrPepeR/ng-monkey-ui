@@ -8,12 +8,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class ThemeService {
-
   /**
    * Represents the current dark mode state.
    */
   private _isDarkMode = new BehaviorSubject<boolean>(false);
-  
+
   /**
    * Observable that emits the current dark mode state.
    */
@@ -49,5 +48,4 @@ export class ThemeService {
   get isLightMode() {
     return !this._isDarkMode.value;
   }
-  
 }

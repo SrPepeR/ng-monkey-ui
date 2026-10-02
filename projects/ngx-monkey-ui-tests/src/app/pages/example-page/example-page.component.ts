@@ -1,18 +1,28 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MonkeyAlertService, MonkeyButtonData, MonkeyFontService, MonkeyStyle } from 'ngx-monkey-ui';
+import {
+  MonkeyAlertService,
+  MonkeyButtonData,
+  MonkeyFontService,
+  MonkeyStyle,
+} from 'ngx-monkey-ui';
 import { map } from 'rxjs';
 
 @Component({
   selector: 'app-example-page',
   templateUrl: './example-page.component.html',
-  styleUrls: ['./example-page.component.scss']
+  styleUrls: ['./example-page.component.scss'],
 })
 export class ExamplePageComponent {
-
   @Input() currentStyle: MonkeyStyle = MonkeyStyle.PRIMARY;
 
-  contentHeaderAction: MonkeyButtonData = new MonkeyButtonData(this.currentStyle, 'Show alert', () => this.showAlert('Content header'), 'info', 'right');
+  contentHeaderAction: MonkeyButtonData = new MonkeyButtonData(
+    this.currentStyle,
+    'Show alert',
+    () => this.showAlert('Content header'),
+    'info',
+    'right',
+  );
 
   constructor(
     private alertService: MonkeyAlertService,
@@ -25,10 +35,13 @@ export class ExamplePageComponent {
   }
 
   private manageParams(): void {
-    this.route.paramMap.pipe(
-      map(params => {
-        this.setStyle(params.get('style') ?? undefined);
-      })).subscribe();
+    this.route.paramMap
+      .pipe(
+        map((params) => {
+          this.setStyle(params.get('style') ?? undefined);
+        }),
+      )
+      .subscribe();
   }
 
   private setStyle(style?: string): void {
@@ -64,5 +77,4 @@ export class ExamplePageComponent {
   navigateComponents(): void {
     this.router.navigate(['components']);
   }
-
 }

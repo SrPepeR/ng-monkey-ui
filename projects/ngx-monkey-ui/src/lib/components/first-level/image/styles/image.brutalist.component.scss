@@ -2,11 +2,17 @@
 
 /* Brutalist style */
 .placeholder.type-brutalist {
-    background: linear-gradient(90deg, var(--color), var(--contrast-hight), var(--color), var(--contrast-hight));
-    animation: imageLoader-horizontal 1.5s infinite linear;
+  background: linear-gradient(
+    90deg,
+    var(--color),
+    var(--contrast-hight),
+    var(--color),
+    var(--contrast-hight)
+  );
+  animation: imageLoader-horizontal 1.5s infinite linear;
 }
 
 .placeholder.type-brutalist,
 img.type-brutalist {
-    border: 2px solid var(--contrast-hight);
+  border: 2px solid var(--contrast-hight);
 }

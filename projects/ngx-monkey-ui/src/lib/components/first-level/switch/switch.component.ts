@@ -16,10 +16,9 @@ import { Styleable } from '../../../bases/styleable.base';
     './styles/switch.flat.component.scss',
     './styles/switch.ghost.component.scss',
     './styles/switch.glow.component.scss',
-  ]
+  ],
 })
 export class MonkeySwitch extends Styleable implements AfterViewChecked {
-
   @ViewChild('switch') switch!: any;
 
   // LABELS
@@ -44,7 +43,7 @@ export class MonkeySwitch extends Styleable implements AfterViewChecked {
    * Event emitted when the switch is toggled.
    * @type EventEmitter<Boolean>
    */
-  @Output() onSwitch = new EventEmitter<Boolean>();
+  @Output() onSwitch = new EventEmitter<boolean>();
 
   /**
    * Observable that indicates whether the dark mode is enabled.
@@ -52,9 +51,7 @@ export class MonkeySwitch extends Styleable implements AfterViewChecked {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
 
@@ -72,5 +69,4 @@ export class MonkeySwitch extends Styleable implements AfterViewChecked {
     this.checked = !this.checked;
     this.onSwitch.emit(this.checked);
   }
-
 }

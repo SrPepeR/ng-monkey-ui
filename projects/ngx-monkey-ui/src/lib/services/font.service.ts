@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MonkeyFontService {
-
   /**
    * The name of the Dosis font.
    */
@@ -13,7 +12,8 @@ export class MonkeyFontService {
   /**
    * The URL of the Dosis font.
    */
-  private DOSIS_FONT_URL = 'https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap';
+  private DOSIS_FONT_URL =
+    'https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap';
 
   /**
    * The name of the Titillium Web font.
@@ -23,7 +23,8 @@ export class MonkeyFontService {
   /**
    * The URL of the Titillium Web font.
    */
-  private TITILLIUM_WEB_FONT_URL = 'https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap';
+  private TITILLIUM_WEB_FONT_URL =
+    'https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap';
 
   /**
    * The name of the Red Hat Display font.
@@ -33,7 +34,8 @@ export class MonkeyFontService {
   /**
    * The URL of the Red Hat Display font.
    */
-  private RED_HAT_DISPLAY_FONT_URL = 'https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900';
+  private RED_HAT_DISPLAY_FONT_URL =
+    'https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900';
 
   constructor() {
     this.initGoogleFonts();
@@ -160,18 +162,17 @@ export class MonkeyFontService {
    */
   private removeOtherFonts(fontNameId: string) {
     const links = document.querySelectorAll('link');
-    links.forEach(link => {
+    links.forEach((link) => {
       if (link.href.includes(`monkey-font-`) && !link.href.includes(`monkey-font-${fontNameId}`)) {
         link.remove();
       }
     });
 
     const styles = document.querySelectorAll('style');
-    styles.forEach(style => {
+    styles.forEach((style) => {
       if (style.id.includes(`monkey-font-`) && !style.id.includes(`monkey-font-${fontNameId}`)) {
         style.remove();
       }
     });
   }
-  
 }

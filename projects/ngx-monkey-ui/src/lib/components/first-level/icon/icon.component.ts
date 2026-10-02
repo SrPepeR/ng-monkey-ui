@@ -5,13 +5,9 @@ import { ThemeService } from '../../../services/theme.service';
 @Component({
   selector: 'monkey-icon',
   templateUrl: './icon.component.html',
-  styleUrls: [
-    '../../../styles/components/_common.default.style.scss',
-    './icon.component.scss',
-  ]
+  styleUrls: ['../../../styles/components/_common.default.style.scss', './icon.component.scss'],
 })
 export class MonkeyIcon extends Styleable {
-
   /**
    * The icon to be displayed.
    */
@@ -22,10 +18,7 @@ export class MonkeyIcon extends Styleable {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
-
 }

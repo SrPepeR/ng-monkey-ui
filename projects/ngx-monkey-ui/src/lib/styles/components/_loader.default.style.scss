@@ -2,135 +2,154 @@
 @import '../components.styles';
 
 @mixin sizes() {
-    .spinner.size-xs {
-        --border: 2px;
-        --size: 10px;
-    }
+  .spinner.size-xs {
+    --border: 2px;
+    --size: 10px;
+  }
 
-    .spinner.size-sm {
-        --border: 2px;
-        --size: 15px;
-    }
+  .spinner.size-sm {
+    --border: 2px;
+    --size: 15px;
+  }
 
-    .spinner.size-md {
-        --border: 3px;
-        --size: 20px;
-    }
+  .spinner.size-md {
+    --border: 3px;
+    --size: 20px;
+  }
 
-    .spinner.size-lg {
-        --border: 4px;
-        --size: 25px;
-    }
+  .spinner.size-lg {
+    --border: 4px;
+    --size: 25px;
+  }
 
-    .spinner.size-xl {
-        --border: 5px;
-        --size: 30px;
-    }
+  .spinner.size-xl {
+    --border: 5px;
+    --size: 30px;
+  }
 }
-
 
 @include sizes();
 
 .spinner {
-    display: inline-block;
-    box-sizing: border-box;
-    border-style: solid;
+  display: inline-block;
+  box-sizing: border-box;
+  border-style: solid;
 
-    border-width: var(--border);
-    width: var(--size);
-    height: var(--size);
+  border-width: var(--border);
+  width: var(--size);
+  height: var(--size);
 
-    &.contrast {
-        border-color: var(--contrast-hight);
-    }
+  &.contrast {
+    border-color: var(--contrast-hight);
+  }
 
-    :not(&.contrast) {
-        border-color: var(--color);
-    }
+  :not(&.contrast) {
+    border-color: var(--color);
+  }
 }
 
 @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
 
-    100% {
-        transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes fill-horizontal {
-    0% {
-        box-shadow: 0 0 inset;
-    }
+  0% {
+    box-shadow: 0 0 inset;
+  }
 
-    100% {
-        box-shadow: var(--size) 0 inset;
-    }
+  100% {
+    box-shadow: var(--size) 0 inset;
+  }
 }
 
 @keyframes animloader {
-    0% {
-        transform: scale(0);
-        opacity: 1;
-    }
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
 
-    100% {
-        transform: scale(1);
-        opacity: 0;
-    }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
 }
 
 @keyframes growing-bars {
-    0% {
-        background-size: 20% 100%, 20% 100%, 20% 100%
-    }
+  0% {
+    background-size:
+      20% 100%,
+      20% 100%,
+      20% 100%;
+  }
 
-    33% {
-        background-size: 20% 10%, 20% 100%, 20% 100%
-    }
+  33% {
+    background-size:
+      20% 10%,
+      20% 100%,
+      20% 100%;
+  }
 
-    50% {
-        background-size: 20% 100%, 20% 10%, 20% 100%
-    }
+  50% {
+    background-size:
+      20% 100%,
+      20% 10%,
+      20% 100%;
+  }
 
-    66% {
-        background-size: 20% 100%, 20% 100%, 20% 10%
-    }
+  66% {
+    background-size:
+      20% 100%,
+      20% 100%,
+      20% 10%;
+  }
 
-    100% {
-        background-size: 20% 100%, 20% 100%, 20% 100%
-    }
+  100% {
+    background-size:
+      20% 100%,
+      20% 100%,
+      20% 100%;
+  }
 }
 
 @keyframes linear-three-dots-blink {
+  0% {
+    box-shadow:
+      calc(var(--animation-gap) * -1) 0 var(--color),
+      var(--animation-gap) 0 var(--opacity-low);
+    background: var(--opacity-low);
+  }
 
-    0% {
-        box-shadow: calc(var(--animation-gap) * -1) 0 var(--color), var(--animation-gap) 0 var(--opacity-low);
-        background: var(--opacity-low);
-    }
+  50% {
+    box-shadow:
+      calc(var(--animation-gap) * -1) 0 var(--opacity-low),
+      var(--animation-gap) 0 var(--opacity-low);
+    background: var(--color);
+  }
 
-    50% {
-        box-shadow: calc(var(--animation-gap) * -1) 0 var(--opacity-low), var(--animation-gap) 0 var(--opacity-low);
-        background: var(--color);
-    }
-
-    100% {
-        box-shadow: calc(var(--animation-gap) * -1) 0 var(--opacity-low), var(--animation-gap) 0 var(--color);
-        background: var(--opacity-low);
-    }
+  100% {
+    box-shadow:
+      calc(var(--animation-gap) * -1) 0 var(--opacity-low),
+      var(--animation-gap) 0 var(--color);
+    background: var(--opacity-low);
+  }
 }
 
 @keyframes circle-growing {
-    0% {
-        inset: 0 var(--mid-size) 0 0;
-    }
+  0% {
+    inset: 0 var(--mid-size) 0 0;
+  }
 
-    50% {
-        inset: 0 0 0 0;
-    }
+  50% {
+    inset: 0 0 0 0;
+  }
 
-    100% {
-        inset: 0 0 0 var(--mid-size);
-    }
+  100% {
+    inset: 0 0 0 var(--mid-size);
+  }
 }

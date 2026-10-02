@@ -1,5 +1,4 @@
 export enum MonkeyInputTextType {
-
   TEXT = 'text',
   EMAIL = 'email',
   PASSWORD = 'password',
@@ -7,5 +6,4 @@ export enum MonkeyInputTextType {
   SEARCH = 'search',
   MONTH = 'month',
   WEEK = 'week',
-
 }

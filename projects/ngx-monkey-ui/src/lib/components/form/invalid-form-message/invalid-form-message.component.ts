@@ -5,12 +5,9 @@ import { ThemeService } from '../../../services/theme.service';
 @Component({
   selector: 'monkey-invalid-form-message',
   templateUrl: './invalid-form-message.component.html',
-  styleUrls: [
-    './invalid-form-message.component.scss'
-  ]
+  styleUrls: ['./invalid-form-message.component.scss'],
 })
 export class InvalidFormMessageComponent extends Styleable {
-
   /**
    * Component for displaying an invalid form message.
    */
@@ -26,10 +23,7 @@ export class InvalidFormMessageComponent extends Styleable {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
-
 }

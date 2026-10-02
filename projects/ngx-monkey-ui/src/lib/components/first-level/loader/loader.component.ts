@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
 import { Styleable } from '../../../bases/styleable.base';
 import { ComponentsSizesService } from '../../../services/components-sizes.service';
@@ -17,10 +17,9 @@ import { ComponentsSizesService } from '../../../services/components-sizes.servi
     './styles/loader.flat.component.scss',
     './styles/loader.ghost.component.scss',
     './styles/loader.glow.component.scss',
-  ]
+  ],
 })
-export class MonkeyLoader extends Styleable {
-
+export class MonkeyLoader extends Styleable implements OnInit, OnChanges {
   /**
    * Indicates whether the contrast mode is enabled.
    * @type string
@@ -70,7 +69,7 @@ export class MonkeyLoader extends Styleable {
    * @type boolean
    * @default false
    */
-  @Input() isVisible: boolean = false;
+  @Input() isVisible = false;
 
   /**
    * Observable that indicates whether the dark mode is enabled.
@@ -83,7 +82,7 @@ export class MonkeyLoader extends Styleable {
   ) {
     super();
   }
-  
+
   /**
    * Initializes the component and sets up any necessary initializations.
    * Overrides the base class's ngOnInit method.
@@ -101,5 +100,4 @@ export class MonkeyLoader extends Styleable {
     super.ngOnChanges();
     this.classList = this.componentSizesService.generateClassList(this);
   }
-
 }

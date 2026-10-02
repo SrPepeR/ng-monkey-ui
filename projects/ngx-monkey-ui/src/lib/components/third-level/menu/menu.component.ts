@@ -1,11 +1,18 @@
-import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
+  OnInit,
+  OnChanges,
+} from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
 import { ThemeService } from '../../../services/theme.service';
 import { MonkeyTooltipService } from '../../../services/tooltip/tooltip.service';
 import { Tooltipable } from '../../../bases/tooltipable.base';
 import { MenuOption } from '../../../objects/interfaces/menu-option.interface';
 import { Router } from '@angular/router';
-import { MonkeyScreen } from '../../../services/screen/screen';
 
 /**
  * Represents a menu component that displays a list of options.
@@ -13,13 +20,9 @@ import { MonkeyScreen } from '../../../services/screen/screen';
 @Component({
   selector: 'monkey-menu',
   templateUrl: './menu.component.html',
-  styleUrls: [
-    '../../../styles/components/_common.default.style.scss',
-    './menu.component.scss',
-  ]
+  styleUrls: ['../../../styles/components/_common.default.style.scss', './menu.component.scss'],
 })
-export class MonkeyMenu extends Styleable implements OnDestroy {
-
+export class MonkeyMenu extends Styleable implements OnDestroy, OnInit, OnChanges {
   /**
    * Represents the tooltipable behavior of the menu component.
    */
@@ -44,7 +47,7 @@ export class MonkeyMenu extends Styleable implements OnDestroy {
   /**
    * Event emitted when a menu option is selected.
    */
-  @Output() optionSelected: EventEmitter<MenuOption> = new EventEmitter();
+  @Output() optionSelected = new EventEmitter<MenuOption>();
 
   /**
    * Observable that indicates whether the dark mode is enabled.
@@ -60,7 +63,7 @@ export class MonkeyMenu extends Styleable implements OnDestroy {
    * Determines whether the full menu is open or not.
    * Defaults to true.
    */
-  isFullMenuOpen: boolean = false;
+  isFullMenuOpen = false;
 
   constructor(
     private themeService: ThemeService,
@@ -116,8 +119,8 @@ export class MonkeyMenu extends Styleable implements OnDestroy {
    */
   navigateToPage(menuOption: MenuOption) {
     this.optionSelected.emit(menuOption);
-    
-    if(this.check(this.selfNavigation)) {
+
+    if (this.check(this.selfNavigation)) {
       this.router.navigate([menuOption.route]);
     }
   }
@@ -128,5 +131,4 @@ export class MonkeyMenu extends Styleable implements OnDestroy {
   toggleFullMenu() {
     this.isFullMenuOpen = !this.isFullMenuOpen;
   }
-
 }

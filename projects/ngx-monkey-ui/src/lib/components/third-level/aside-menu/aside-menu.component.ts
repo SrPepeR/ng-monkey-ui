@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit, OnChanges } from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
 import { ThemeService } from '../../../services/theme.service';
 import { MenuOption } from '../../../objects/interfaces/menu-option.interface';
@@ -13,10 +13,9 @@ import { MonkeyStyle } from '../../../objects/enums/style.enum';
   styleUrls: [
     '../../../styles/components/_common.default.style.scss',
     './aside-menu.component.scss',
-  ]
+  ],
 })
-export class MonkeyAsideMenu extends Styleable {
-
+export class MonkeyAsideMenu extends Styleable implements OnInit, OnChanges {
   /**
    * Represents the data for the aside menu component.
    */
@@ -25,7 +24,7 @@ export class MonkeyAsideMenu extends Styleable {
   /**
    * The alternative text for the toggle aside menu button.
    */
-  @Input() alt: string = 'Toggle aside menu';
+  @Input() alt = 'Toggle aside menu';
 
   /**
    * Indicates whether the menu should allow self-navigation.
@@ -47,52 +46,52 @@ export class MonkeyAsideMenu extends Styleable {
    * @event optionSelected
    * @type {EventEmitter<MenuOption>}
    */
-  @Output() optionSelected: EventEmitter<MenuOption> = new EventEmitter();
+  @Output() optionSelected = new EventEmitter<MenuOption>();
 
   /**
    * The default icon for the aside menu component.
    */
-  DEFAULT_ICON: string = 'navigate_next';
+  DEFAULT_ICON = 'navigate_next';
 
   /**
    * Indicates whether the aside menu is opened or closed.
    */
-  isAsideOpened: boolean = false;
+  isAsideOpened = false;
 
   /**
    * The width of the aside menu when it is closed.
    */
-  CLOSED_ASIDE_WIDTH: string = '0';
+  CLOSED_ASIDE_WIDTH = '0';
 
   /**
    * Width of the closed aside hint.
    */
-  CLOSED_ASIDE_HINT_WIDTH: string = '80px';
+  CLOSED_ASIDE_HINT_WIDTH = '80px';
 
   /**
    * Determines whether the hint should be shown or not.
    */
-  canShowHint: boolean = true;
+  canShowHint = true;
 
   /**
    * The icon used for closing the aside menu.
    */
-  CLOSE_ASIDE_ICON: string = 'arrow_back';
+  CLOSE_ASIDE_ICON = 'arrow_back';
 
   /**
    * The width of the aside menu when it is opened.
    */
-  OPENED_ASIDE_WIDTH: string = '200px';
+  OPENED_ASIDE_WIDTH = '200px';
 
   /**
    * The icon used to represent the open aside menu state.
    */
-  OPEN_ASIDE_ICON: string = 'arrow_forward';
+  OPEN_ASIDE_ICON = 'arrow_forward';
 
   /**
    * Indicates whether the menu should be opened by toggle.
    */
-  openByToggle: boolean = false;
+  openByToggle = false;
 
   backgroundStyle: MonkeyStyle = MonkeyStyle.BACKGROUND;
 
@@ -206,7 +205,7 @@ export class MonkeyAsideMenu extends Styleable {
 
   /**
    * Handles the click event for a menu option.
-   * 
+   *
    * @param option - The selected menu option.
    */
   onClicked(option: MenuOption) {
@@ -226,5 +225,4 @@ export class MonkeyAsideMenu extends Styleable {
       this.router.navigate([option.route]);
     }
   }
-
 }

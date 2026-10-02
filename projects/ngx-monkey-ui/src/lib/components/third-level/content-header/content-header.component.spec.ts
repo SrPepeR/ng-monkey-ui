@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MonkeyContentHeader } from './content-header.component';
+import { NgxMonkeyUiModule } from '../../../ngx-monkey-ui.module';
 
 describe('ContentHeaderComponent', () => {
   let component: MonkeyContentHeader;
@@ -8,7 +9,7 @@ describe('ContentHeaderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MonkeyContentHeader]
+      imports: [NgxMonkeyUiModule],
     });
     fixture = TestBed.createComponent(MonkeyContentHeader);
     component = fixture.componentInstance;

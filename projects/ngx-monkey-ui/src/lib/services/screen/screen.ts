@@ -1,10 +1,9 @@
-import { ScreenOrientation, ScreenSize, ScreenSizeStyleClass } from "./screen.enum";
+import { ScreenOrientation, ScreenSize, ScreenSizeStyleClass } from './screen.enum';
 
 /**
  * Represents a screen with its size, width, height, orientation, and size style class.
  */
 export class MonkeyScreen {
-
   /**
    * The size of the screen.
    */
@@ -46,7 +45,7 @@ export class MonkeyScreen {
 
   /**
    * Checks if the current screen size matches the specified size.
-   * 
+   *
    * @param size The screen size to check against.
    * @returns True if the current screen size matches the specified size, false otherwise.
    */
@@ -56,7 +55,7 @@ export class MonkeyScreen {
 
   /**
    * Checks if the current screen orientation matches the specified orientation.
-   * 
+   *
    * @param orientation The screen orientation to check against.
    * @returns True if the current screen orientation matches the specified orientation, false otherwise.
    */
@@ -66,7 +65,7 @@ export class MonkeyScreen {
 
   /**
    * Checks if the current screen size is equal to or greater than the specified size.
-   * 
+   *
    * @param size The screen size to check against.
    * @returns True if the current screen size is equal to or greater than the specified size, false otherwise.
    */
@@ -76,7 +75,7 @@ export class MonkeyScreen {
 
   /**
    * Checks if the current screen size is equal to or less than the specified size.
-   * 
+   *
    * @param size The screen size to check against.
    * @returns True if the current screen size is equal to or less than the specified size, false otherwise.
    */
@@ -86,7 +85,7 @@ export class MonkeyScreen {
 
   /**
    * Checks if the current screen orientation is portrait.
-   * 
+   *
    * @returns True if the current screen orientation is portrait, false otherwise.
    */
   public isScreenOrientationPortrait(): boolean {
@@ -95,7 +94,7 @@ export class MonkeyScreen {
 
   /**
    * Checks if the current screen orientation is landscape.
-   * 
+   *
    * @returns True if the current screen orientation is landscape, false otherwise.
    */
   public isScreenOrientationLandscape(): boolean {
@@ -154,7 +153,7 @@ export class MonkeyScreen {
    * @private
    */
   private setOrientation() {
-    this.orientation = this.width > this.height ? ScreenOrientation.LANDSCAPE : ScreenOrientation.PORTRAIT;
+    this.orientation =
+      this.width > this.height ? ScreenOrientation.LANDSCAPE : ScreenOrientation.PORTRAIT;
   }
-
 }

@@ -1,27 +1,24 @@
-import { Component, Input, ViewChild } from "@angular/core";
+import { Component, Input, ViewChild } from '@angular/core';
 
-import { ComponentsStylesService } from "../../services/components-styles.service";
-import { MonkeyScreenService } from "../../services/screen/screen.service";
-import { Styleable } from "../styleable.base";
-import { FormControl, FormGroup } from "@angular/forms";
+import { ComponentsStylesService } from '../../services/components-styles.service';
+import { MonkeyScreenService } from '../../services/screen/screen.service';
+import { Styleable } from '../styleable.base';
+import { FormControl, FormGroup } from '@angular/forms';
 
 /**
  * Base class for styleable components.
  */
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector -- Abstract base; becomes an @Directive() in roadmap 14.5.
   selector: '',
   template: '',
-  providers: [
-    ComponentsStylesService,
-    MonkeyScreenService,
-  ],
+  providers: [ComponentsStylesService, MonkeyScreenService],
 })
 /**
  * Represents a base class for styleable components.
  * Provides common style and type properties for components.
  */
 export class MonkeyInput extends Styleable {
-
   /**
    * The input element.
    */
@@ -30,7 +27,7 @@ export class MonkeyInput extends Styleable {
   /**
    * The label for the text input.
    */
-  @Input() label: string = 'Text input';
+  @Input() label = 'Text input';
 
   /**
    * The alternative text for the input element.
@@ -49,13 +46,13 @@ export class MonkeyInput extends Styleable {
 
   /**
    * Indicates whether the input is required or not.
-   * 
+   *
    * @remarks
    * The value of this property should be a string representation of a boolean value ('true' or 'false').
    * If set to 'true', the input will be marked as required.
    * If set to 'false' or '' (default), the input will not be marked as required.
    */
-  @Input() required: string = 'false';
+  @Input() required = 'false';
 
   // ICONS
 
@@ -73,7 +70,7 @@ export class MonkeyInput extends Styleable {
    * The icon to display when the input is invalid.
    * Defaults to 'cancel'.
    */
-  @Input() invalidIcon: string = 'cancel';
+  @Input() invalidIcon = 'cancel';
 
   /**
    * The icon to be displayed for the required field indicator.
@@ -83,27 +80,27 @@ export class MonkeyInput extends Styleable {
 
   /**
    * Determines the width of the input component.
-   * 
+   *
    * @remarks
    * The `wFull` property accepts a string value that specifies the width of the input component.
-   * 
+   *
    * @defaultValue 'false'
    */
-  @Input() wFull: string = 'false';
+  @Input() wFull = 'false';
 
   /**
    * Indicates whether the input text is deleteable or not.
    * If set to 'true', a delete button will be displayed next to the input text.
    * If set to 'false' (default), no delete button will be displayed.
    */
-  @Input() deleteable: string = 'false';
+  @Input() deleteable = 'false';
 
   /**
    * Determines whether to show the invalid message for the input.
-   * 
+   *
    * @default 'false'
    */
-  @Input() dontShowInvalidMessage: string = 'false';
+  @Input() dontShowInvalidMessage = 'false';
 
   /**
    * Array of invalid messages for the input.
@@ -133,7 +130,6 @@ export class MonkeyInput extends Styleable {
     this.generateInvalidMessages(control);
   }
 
-
   /**
    * Generates invalid messages for a given form control.
    * @param control - The form control to generate invalid messages for.
@@ -143,7 +139,7 @@ export class MonkeyInput extends Styleable {
 
     if (control?.errors) {
       if (control.errors) {
-        Object.keys(control.errors).forEach(key => {
+        Object.keys(control.errors).forEach((key) => {
           switch (key) {
             case 'required':
               if (control.value !== '' && control.value !== null && control.value !== undefined) {
@@ -151,19 +147,27 @@ export class MonkeyInput extends Styleable {
               }
               break;
             case 'minlength':
-              messages.push(`This field must have at least ${control.errors![key].requiredLength} characters`);
+              messages.push(
+                `This field must have at least ${control.errors![key].requiredLength} characters`,
+              );
               break;
             case 'maxlength':
-              messages.push(`This field must have at most ${control.errors![key].requiredLength} characters`);
+              messages.push(
+                `This field must have at most ${control.errors![key].requiredLength} characters`,
+              );
               break;
             case 'email':
               messages.push('This field must be a valid email address');
               break;
             case 'pattern':
-              messages.push(`This field must match the following pattern: ${control.errors![key].requiredPattern}`);
+              messages.push(
+                `This field must match the following pattern: ${control.errors![key].requiredPattern}`,
+              );
               break;
             case 'min':
-              messages.push(`This field must be greater than or equal to ${control.errors![key].min}`);
+              messages.push(
+                `This field must be greater than or equal to ${control.errors![key].min}`,
+              );
               break;
             case 'max':
               messages.push(`This field must be less than or equal to ${control.errors![key].max}`);

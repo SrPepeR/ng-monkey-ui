@@ -8,7 +8,7 @@ describe('LoaderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MonkeyLoader]
+      declarations: [MonkeyLoader],
     });
     fixture = TestBed.createComponent(MonkeyLoader);
     component = fixture.componentInstance;

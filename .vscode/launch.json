@@ -8,13 +8,13 @@
       "request": "launch",
       "url": "http://localhost:4200/",
       "preLaunchTask": "npm: start",
-      "postDebugTask": "quit",
+      "postDebugTask": "quit"
     },
     {
       "name": "ng build watch",
       "type": "node-terminal",
       "request": "launch",
-      "preLaunchTask": "npm: watch",
-    },
+      "preLaunchTask": "npm: watch"
+    }
   ]
 }

@@ -6,7 +6,6 @@
   [height]="imageSize"
   (onClickImage)="action?.action()"
   fullRounded
-  
   [brutalist]="brutalist"
   [glass]="glass"
   [flat]="flat"
@@ -14,16 +13,12 @@
   [glow]="glow"
 ></monkey-image>
 
-<div
-  class="texts"
->
+<div class="texts">
   <monkey-header>
     {{ header }}
   </monkey-header>
-  
-  <monkey-subheader
-    *ngIf="subHeader"
-  >
+
+  <monkey-subheader *ngIf="subHeader">
     {{ subHeader }}
   </monkey-subheader>
 </div>
@@ -32,22 +27,15 @@
   *ngIf="action"
   [style]="style"
   (onClick)="action.action()"
-  
   [brutalist]="brutalist"
   [glass]="glass"
   [flat]="flat"
   [ghost]="ghost"
   [glow]="glow"
 >
-  <monkey-icon
-    *ngIf="action.icon && action.iconPosition === 'left'"
-    [icon]="action.icon"
-  />
+  <monkey-icon *ngIf="action.icon && action.iconPosition === 'left'" [icon]="action.icon" />
 
   {{ action.text }}
 
-  <monkey-icon
-    *ngIf="action.icon && action.iconPosition === 'right'"
-    [icon]="action.icon"
-  />
+  <monkey-icon *ngIf="action.icon && action.iconPosition === 'right'" [icon]="action.icon" />
 </monkey-button>

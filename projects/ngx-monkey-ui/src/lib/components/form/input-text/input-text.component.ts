@@ -14,10 +14,9 @@ import { MonkeyInput } from '../../../bases/input/input.base';
     '../../../bases/input/styles/input.flat.component.scss',
     '../../../bases/input/styles/input.ghost.component.scss',
     '../../../bases/input/styles/input.glow.component.scss',
-  ]
+  ],
 })
 export class MonkeyInputText extends MonkeyInput {
-
   /**
    * The type of input for the input text component.
    */
@@ -31,16 +30,14 @@ export class MonkeyInputText extends MonkeyInput {
   /**
    * Indicates whether the password is visible or hidden.
    */
-  passwordVisible: boolean = false;
+  passwordVisible = false;
 
   /**
    * Observable that indicates whether the dark mode is enabled.
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
 
@@ -58,5 +55,4 @@ export class MonkeyInputText extends MonkeyInput {
 
     this.labelClicked();
   }
-
 }

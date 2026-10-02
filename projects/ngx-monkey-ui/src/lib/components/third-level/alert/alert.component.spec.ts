@@ -8,7 +8,7 @@ describe('AlertComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MonkeyAlert]
+      declarations: [MonkeyAlert],
     });
     fixture = TestBed.createComponent(MonkeyAlert);
     component = fixture.componentInstance;

@@ -57,7 +57,6 @@ import { MonkeyLoginPage } from './pages/form/login/login.page';
 
 // PAGES
 
-
 @NgModule({
   declarations: [
     MonkeyThemeChanger,
@@ -85,14 +84,11 @@ import { MonkeyLoginPage } from './pages/form/login/login.page';
     MonkeyInputText,
     MonkeyInputNumber,
     InvalidFormMessageComponent,
-    
+
     // PAGES
     MonkeyLoginPage,
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-  ],
+  imports: [CommonModule, ReactiveFormsModule],
   exports: [
     MonkeyThemeChanger,
     MonkeyScrollbar,
@@ -119,9 +115,9 @@ import { MonkeyLoginPage } from './pages/form/login/login.page';
     MonkeyInputText,
     MonkeyInputNumber,
     InvalidFormMessageComponent,
-    
+
     // PAGES
     MonkeyLoginPage,
   ],
 })
-export class NgxMonkeyUiModule { }
+export class NgxMonkeyUiModule {}

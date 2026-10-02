@@ -1,14 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuOption, MonkeyAlertService, MonkeyBackgroundService, MonkeyFontService, MonkeyScreenService, MonkeyStyle, ScreenOrientation } from 'ngx-monkey-ui';
+import {
+  MenuOption,
+  MonkeyAlertService,
+  MonkeyBackgroundService,
+  MonkeyFontService,
+  MonkeyScreenService,
+  MonkeyStyle,
+  ScreenOrientation,
+} from 'ngx-monkey-ui';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-
   currentStyle: MonkeyStyle = MonkeyStyle.PRIMARY;
 
   title = 'ngx-monkey-ui-tests';
@@ -17,21 +24,23 @@ export class AppComponent implements OnInit {
 
   fontOptions: MenuOption[] = [
     {
-      label: 'Fonts', icon: 'font_download', children: [
+      label: 'Fonts',
+      icon: 'font_download',
+      children: [
         { label: 'Dosis', icon: 'brand_family', route: 'font-dosis' },
         { label: 'Titillium Web', icon: 'brand_family', route: 'font-titillium' },
         { label: 'Red Hat Display', icon: 'brand_family', route: 'font-red' },
-      ]
+      ],
     },
   ];
 
-  singleUselessOption: MenuOption[] = [
-    { label: 'Useless', icon: 'info', route: 'useless' },
-  ];
+  singleUselessOption: MenuOption[] = [{ label: 'Useless', icon: 'info', route: 'useless' }];
 
   styleOptions: MenuOption[] = [
     {
-      label: 'Styles', icon: 'style', children: [
+      label: 'Styles',
+      icon: 'style',
+      children: [
         { label: 'Primary color', icon: 'looks_one', route: 'style-primary' },
         { label: 'Secondary color', icon: 'looks_two', route: 'style-secondary' },
         { label: 'Tertiary color', icon: 'looks_3', route: 'style-tertiary' },
@@ -39,19 +48,21 @@ export class AppComponent implements OnInit {
         { label: 'Danger color', icon: 'dangerous', route: 'style-danger' },
         { label: 'Success color', icon: 'done', route: 'style-success' },
         { label: 'Info color', icon: 'info', route: 'style-info' },
-      ]
+      ],
     },
   ];
 
   screenOptions: MenuOption[] = [
     {
-      label: 'Screen', icon: 'fit_screen', children: [
+      label: 'Screen',
+      icon: 'fit_screen',
+      children: [
         { label: 'Toggle fullscreen', icon: 'fullscreen', route: 'screen-toggleFullscreen' },
         { label: 'Lock rotation', icon: 'screen_lock_rotation', route: 'screen-locked' },
         { label: 'Unlock rotation', icon: 'screen_rotation', route: 'screen-unlocked' },
         { label: 'Portrait', icon: 'screen_lock_portrait', route: 'screen-portrait' },
         { label: 'Landscape', icon: 'screen_lock_landscape', route: 'screen-landscape' },
-      ]
+      ],
     },
   ];
 
@@ -71,7 +82,8 @@ export class AppComponent implements OnInit {
   ) {
     this.fontService.addDosisFont();
     this.setStyle();
-    this.backgroundService.setBaseColor('#2e99b1')
+    this.backgroundService
+      .setBaseColor('#2e99b1')
       .addGradient('hsl(162.15, 79%, 49%)', 30, { x: 47, y: 33 })
       .addGradient('hsl(166.53, 72%, 60%)', 55, { x: 82, y: 65 })
       .addGradient('hsl(168.74, 20%, 48%)', 33, { x: 33, y: 59 })
@@ -173,30 +185,25 @@ export class AppComponent implements OnInit {
         this.screenService.toggleFullScreen();
         break;
       case 'locked':
-        this.screenService.lockOrientation()
-          .catch((error) => {
-            this.alertService.dangers([error], true, 'Error');
-          });
+        this.screenService.lockOrientation().catch((error) => {
+          this.alertService.dangers([error], true, 'Error');
+        });
         break;
       case 'unlocked':
-        this.screenService.unlockOrientation()
-          .catch((error) => {
-            this.alertService.dangers([error], true, 'Error');
-          });
+        this.screenService.unlockOrientation().catch((error) => {
+          this.alertService.dangers([error], true, 'Error');
+        });
         break;
       case 'portrait':
-        this.screenService.lockOrientation(ScreenOrientation.PORTRAIT)
-          .catch((error) => {
-            this.alertService.dangers([error], true, 'Error');
-          });
+        this.screenService.lockOrientation(ScreenOrientation.PORTRAIT).catch((error) => {
+          this.alertService.dangers([error], true, 'Error');
+        });
         break;
       case 'landscape':
-        this.screenService.lockOrientation(ScreenOrientation.LANDSCAPE)
-          .catch((error) => {
-            this.alertService.dangers([error], true, 'Error');
-          });
+        this.screenService.lockOrientation(ScreenOrientation.LANDSCAPE).catch((error) => {
+          this.alertService.dangers([error], true, 'Error');
+        });
         break;
     }
   }
-
 }

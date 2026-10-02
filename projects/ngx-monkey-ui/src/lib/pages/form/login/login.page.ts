@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
 import { ThemeService } from '../../../services/theme.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -9,39 +9,35 @@ import { MonkeyInputTextType } from '../../../objects/enums/input-text-type.enum
 @Component({
   selector: 'monkey-login-page',
   templateUrl: './login.page.html',
-  styleUrls: [
-    '../../../styles/components/_common.default.style.scss',
-    './login.page.scss',
-  ]
+  styleUrls: ['../../../styles/components/_common.default.style.scss', './login.page.scss'],
 })
-export class MonkeyLoginPage extends Styleable {
-
+export class MonkeyLoginPage extends Styleable implements OnInit {
   /**
    * The header text for the login page.
    */
-  @Input() header: string = 'Login form';
+  @Input() header = 'Login form';
 
   // EMAIL
 
   /**
    * The icon to be displayed for the email input field.
    */
-  @Input() emailIcon: string = 'email';
+  @Input() emailIcon = 'email';
 
   /**
    * The label for the email input field.
    */
-  @Input() emailLabel: string = 'Email';
+  @Input() emailLabel = 'Email';
 
   /**
    * The placeholder text for the email input field.
    */
-  @Input() emailPlaceholder: string = 'Enter your email';
+  @Input() emailPlaceholder = 'Enter your email';
 
   /**
    * The name of the email control.
    */
-  EMAIL_CONTROL_NAME: string = 'email';
+  EMAIL_CONTROL_NAME = 'email';
 
   /**
    * The type of input for the email field.
@@ -53,22 +49,22 @@ export class MonkeyLoginPage extends Styleable {
   /**
    * The icon to be displayed for the password field.
    */
-  @Input() passwordIcon: string = 'lock';
+  @Input() passwordIcon = 'lock';
 
   /**
    * The label for the password input field.
    */
-  @Input() passwordLabel: string = 'Password';
+  @Input() passwordLabel = 'Password';
 
   /**
    * The placeholder text for the password input field.
    */
-  @Input() passwordPlaceholder: string = 'Enter your password';
+  @Input() passwordPlaceholder = 'Enter your password';
 
   /**
    * The name of the password control.
    */
-  PASSWORD_CONTROL_NAME: string = 'password';
+  PASSWORD_CONTROL_NAME = 'password';
 
   /**
    * The input type for the password field.
@@ -80,7 +76,7 @@ export class MonkeyLoginPage extends Styleable {
   /**
    * Label for the "Forgot password?" link.
    */
-  @Input() forgotPasswordLabel: string = 'Forgot password?';
+  @Input() forgotPasswordLabel = 'Forgot password?';
 
   /**
    * Event emitter for the "Forgot Password" event.
@@ -93,12 +89,12 @@ export class MonkeyLoginPage extends Styleable {
   /**
    * The icon to be displayed for the register button.
    */
-  @Input() registerIcon: string = 'person_add';
+  @Input() registerIcon = 'person_add';
 
   /**
    * The label for the register button.
    */
-  @Input() registerLabel: string = 'Register';
+  @Input() registerLabel = 'Register';
 
   /**
    * Event emitter for the register action.
@@ -111,12 +107,12 @@ export class MonkeyLoginPage extends Styleable {
   /**
    * The icon to be displayed for the login button.
    */
-  @Input() loginIcon: string = 'login';
+  @Input() loginIcon = 'login';
 
   /**
    * The label for the login input field.
    */
-  @Input() loginLabel: string = 'Login';
+  @Input() loginLabel = 'Login';
 
   /**
    * Event emitter for the login event.
@@ -125,29 +121,29 @@ export class MonkeyLoginPage extends Styleable {
    * @event onLogin
    * @type {EventEmitter<{ email: string, password: string }>}
    */
-  @Output() onLogin = new EventEmitter<{ email: string, password: string }>();
+  @Output() onLogin = new EventEmitter<{ email: string; password: string }>();
 
   // CONTINUE AS GUEST
 
   /**
    * Indicates whether the user can continue as a guest.
-   * 
+   *
    * @remarks
    * This property determines if the user has the option to continue using the application as a guest.
-   * 
+   *
    * @defaultValue 'false'
    */
-  @Input() canContinueAsGuest: string = 'false';
+  @Input() canContinueAsGuest = 'false';
 
   /**
    * The icon to be displayed for the "Continue as Guest" option.
    */
-  @Input() continueAsGuestIcon: string = 'arrow_forward';
+  @Input() continueAsGuestIcon = 'arrow_forward';
 
   /**
    * The label for the "Continue as guest" button.
    */
-  @Input() continueAsGuestLabel: string = 'Continue as guest';
+  @Input() continueAsGuestLabel = 'Continue as guest';
 
   /**
    * Event emitter for continuing as a guest.
@@ -178,7 +174,7 @@ export class MonkeyLoginPage extends Styleable {
         }
       },
       this.loginIcon,
-      'right'
+      'right',
     ),
     new MonkeyButtonData(
       MonkeyStyle.SECONDARY,
@@ -187,7 +183,7 @@ export class MonkeyLoginPage extends Styleable {
         this.onRegister.emit();
       },
       this.registerIcon,
-      'right'
+      'right',
     ),
   ];
 
@@ -200,9 +196,7 @@ export class MonkeyLoginPage extends Styleable {
    * Creates an instance of MonkeyContentHeader.
    * @param themeService The theme service.
    */
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
 
@@ -246,8 +240,8 @@ export class MonkeyLoginPage extends Styleable {
           this.onContinueAsGuest.emit();
         },
         this.continueAsGuestIcon,
-        'right'
-      )
+        'right',
+      ),
     );
   }
 }
