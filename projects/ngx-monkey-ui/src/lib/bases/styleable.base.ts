@@ -10,6 +10,7 @@ import { MonkeyStyle } from "../objects/enums/style.enum";
  * Base class for styleable components.
  */
 @Component({
+	// eslint-disable-next-line @angular-eslint/component-selector -- Abstract base; becomes an @Directive() in roadmap 14.5.
 	selector: '',
 	template: '',
 	providers: [
@@ -98,7 +99,7 @@ export class Styleable implements OnInit, OnChanges {
 	/**
 	 * Indicates whether the component is disabled.
 	 */
-	isDisabledComponent: boolean = false;
+	isDisabledComponent = false;
 
 	/**
 	 * The current screen data.
@@ -127,7 +128,7 @@ export class Styleable implements OnInit, OnChanges {
 	 * The list of classes to apply to the component.
 	 * Default value: [].
 	 */
-	classList: Array<string> = [];
+	classList: string[] = [];
 
 	constructor() {
 		this.currentScreen = this.screenService.getCurrentScreen();

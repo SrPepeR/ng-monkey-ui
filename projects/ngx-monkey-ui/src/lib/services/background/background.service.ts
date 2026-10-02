@@ -13,7 +13,7 @@ export class MonkeyBackgroundService {
   /**
    * The base color used by the background service.
    */
-  baseColor: string = '#121212';
+  baseColor = '#121212';
 
   /**
    * The background service responsible for managing the MonkeyBackground instance.
@@ -23,7 +23,7 @@ export class MonkeyBackgroundService {
   /**
    * The ID of the animation.
    */
-  animationId: number = 0;
+  animationId = 0;
 
   /**
    * Sets the base color for the MonkeyBackgroundService.
@@ -93,7 +93,7 @@ export class MonkeyBackgroundService {
    * @returns The generated background CSS string.
    */
   generate(data?: MonkeyGradient): string {
-    let background: string = 'background-image: ';
+    let background = 'background-image: ';
 
     if (data) {
       background += `${data.generateAll()};`;
@@ -134,7 +134,7 @@ export class MonkeyBackgroundService {
    * @param delay - The delay between each keyframe.
    * @returns The MonkeyBackgroundService instance.
    */
-  animate(steps: number = 10, delay: number = 5000): MonkeyBackgroundService {
+  animate(steps = 10, delay = 5000): MonkeyBackgroundService {
     const gradientsVariations: MonkeyGradient[] = [];
     gradientsVariations.push(this.gradient.copy());
 

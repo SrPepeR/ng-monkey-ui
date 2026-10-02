@@ -33,6 +33,16 @@
               "zone.js/testing"
             ]
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-monkey-ui/**/*.ts",
+              "projects/ngx-monkey-ui/**/*.html"
+            ],
+            "eslintConfig": "projects/ngx-monkey-ui/eslint.config.js"
+          }
         }
       }
     },
@@ -129,6 +139,16 @@
               "projects/ngx-monkey-ui-tests/src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-monkey-ui-tests/**/*.ts",
+              "projects/ngx-monkey-ui-tests/**/*.html"
+            ],
+            "eslintConfig": "projects/ngx-monkey-ui-tests/eslint.config.js"
           }
         }
       }

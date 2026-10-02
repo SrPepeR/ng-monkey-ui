@@ -49,7 +49,7 @@
         class="aside-menu-option"
         (onClick)="onClicked(option)"
 
-        [class.current-option]="option == currentOption"
+        [class.current-option]="option === currentOption"
         
         [style]="style"
         discreet
@@ -85,7 +85,7 @@
           class="aside-menu-option"
           (onClick)="onClicked(optionChildren)"
 
-          [class.current-option]="optionChildren == currentOption"
+          [class.current-option]="optionChildren === currentOption"
           
           [style]="style"
           discreet

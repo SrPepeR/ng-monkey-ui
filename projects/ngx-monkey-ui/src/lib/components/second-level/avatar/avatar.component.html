@@ -4,7 +4,7 @@
     [class.dark-theme]="isDarkMode$ | async"
 >
     <monkey-image
-        [fullRounded]="form == 'rounded' ? '' : 'false'"
+        [fullRounded]="form === 'rounded' ? '' : 'false'"
         [width]="size.width"
         [height]="size.height"
         [src]="image"

@@ -44,7 +44,7 @@ export class MonkeySwitch extends Styleable implements AfterViewChecked {
    * Event emitted when the switch is toggled.
    * @type EventEmitter<Boolean>
    */
-  @Output() onSwitch = new EventEmitter<Boolean>();
+  @Output() onSwitch = new EventEmitter<boolean>();
 
   /**
    * Observable that indicates whether the dark mode is enabled.

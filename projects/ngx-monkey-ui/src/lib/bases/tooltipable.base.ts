@@ -6,6 +6,7 @@ import { MonkeyStyle } from "../objects/enums/style.enum";
  * Base class for components that can display tooltips.
  */
 @Component({
+	// eslint-disable-next-line @angular-eslint/component-selector -- Abstract base; becomes an @Directive() in roadmap 14.5.
 	selector: 'app-tooltip-base',
 	template: '',
 })

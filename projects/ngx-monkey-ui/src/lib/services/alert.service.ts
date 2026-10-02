@@ -9,7 +9,7 @@ export class MonkeyAlertService {
   /**
    * Default screen time for the alert to be shown.
    */
-  private DEFAULT_SCREEN_TIME: number = 5000;
+  private DEFAULT_SCREEN_TIME = 5000;
 
   hideTimeoutId: any;
 

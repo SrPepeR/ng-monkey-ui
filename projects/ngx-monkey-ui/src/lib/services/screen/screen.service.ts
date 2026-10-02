@@ -71,7 +71,7 @@ export class MonkeyScreenService {
         orientation = this.getCurrentScreen().orientation;
       }
 
-      // @ts-ignore: Unreachable code error
+      // @ts-expect-error: `ScreenOrientation.lock()` is not in the TypeScript DOM types yet.
       return screen.orientation.lock(orientation);
     } else {
       return Promise.reject('Screen Orientation API not supported');
@@ -86,7 +86,7 @@ export class MonkeyScreenService {
    */
   public unlockOrientation(): Promise<void> {
     if ('orientation' in screen) {
-      // @ts-ignore: Unreachable code error
+      // @ts-expect-error: `unlock()` returns `void`, not a Promise; callers that chain `.catch()` fail at runtime.
       return screen.orientation.unlock();
     } else {
       return Promise.reject('Screen Orientation API not supported');

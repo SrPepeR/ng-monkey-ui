@@ -12,18 +12,18 @@ import { ThemeService } from '../../../services/theme.service';
 export class MonkeyScrollbar {
 
   // Lights
-  @Input() backgroundLight: string = 'rgba(251, 251, 251, 0.8)';
+  @Input() backgroundLight = 'rgba(251, 251, 251, 0.8)';
 
-  @Input() thumbLight: string = '#40d2ec';
+  @Input() thumbLight = '#40d2ec';
 
-  @Input() thumbHoverLight: string = '#2bb6d8';
+  @Input() thumbHoverLight = '#2bb6d8';
 
   // Darks
-  @Input() backgroundDark: string = 'rgba(18, 18, 18, 0.8)';
+  @Input() backgroundDark = 'rgba(18, 18, 18, 0.8)';
 
-  @Input() thumbDark: string = '#ff1493';
+  @Input() thumbDark = '#ff1493';
 
-  @Input() thumbHoverDark: string = '#ff69b4';
+  @Input() thumbHoverDark = '#ff69b4';
 
   /**
    * Observable that indicates whether the dark mode is enabled.
@@ -42,7 +42,7 @@ export class MonkeyScrollbar {
    * Adds the scrollbar style to the document head.
    * @param darkMode - A boolean indicating whether the dark mode is enabled or not. Default is false.
    */
-  private addScrollbarStyleStyle(darkMode: boolean = false) {
+  private addScrollbarStyleStyle(darkMode = false) {
     const style = document.createElement('style');
 
     style.innerHTML = `

@@ -53,7 +53,7 @@ export class MonkeyContentHeader extends Styleable implements OnInit, OnChanges 
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  imageSize: number = 20;
+  imageSize = 20;
 
   /**
    * Creates an instance of MonkeyContentHeader.

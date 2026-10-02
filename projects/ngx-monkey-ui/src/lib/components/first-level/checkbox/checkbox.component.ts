@@ -40,7 +40,7 @@ export class MonkeyCheckbox extends Styleable implements AfterViewChecked {
    * @type EventEmitter<Boolean>
    * @returns {Boolean} The checkbox state.
    */
-  @Output() onCheckChange = new EventEmitter<Boolean>();
+  @Output() onCheckChange = new EventEmitter<boolean>();
 
   /**
    * Observable that indicates whether the dark mode is enabled.

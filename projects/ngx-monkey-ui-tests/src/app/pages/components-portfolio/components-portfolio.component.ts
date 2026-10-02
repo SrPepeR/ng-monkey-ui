@@ -27,15 +27,15 @@ export class ComponentsPortfolioComponent {
     { label: 'Info alert', icon: 'info', value: 'info' },
   ];
 
-  currentType: string = 'Default';
+  currentType = 'Default';
 
   currentStyle: MonkeyStyle = MonkeyStyle.PRIMARY;
 
   warningStyle: MonkeyStyle = MonkeyStyle.WARNING;
   successStyle: MonkeyStyle = MonkeyStyle.SUCCESS;
 
-  offSwitchText: string = 'Off';
-  onSwitchText: string = 'On';
+  offSwitchText = 'Off';
+  onSwitchText = 'On';
 
   contentHeaderAction: MonkeyButtonData = new MonkeyButtonData(this.currentStyle, 'Show alert', () => this.showAlert('Content header'), 'info', 'right');
 
@@ -60,11 +60,11 @@ export class ComponentsPortfolioComponent {
   monkeyInputNumberTypeDatetime: MonkeyInputNumberType = MonkeyInputNumberType.DATETIME;
   monkeyInputNumberTypeTime: MonkeyInputNumberType = MonkeyInputNumberType.TIME;
 
-  INPUT_TEXT_FORM_CONTROL_NAME: string = 'monkeyInputText';
-  EMAIL_INPUT_TEXT_FORM_CONTROL_NAME: string = 'emailMonkeyInputText';
-  PASSWORD_INPUT_TEXT_FORM_CONTROL_NAME: string = 'passwordMonkeyInputText';
+  INPUT_TEXT_FORM_CONTROL_NAME = 'monkeyInputText';
+  EMAIL_INPUT_TEXT_FORM_CONTROL_NAME = 'emailMonkeyInputText';
+  PASSWORD_INPUT_TEXT_FORM_CONTROL_NAME = 'passwordMonkeyInputText';
   
-  NUMBER_INPUT_NUMBER_FORM_CONTROL_NAME: string = 'numberMonkeyInputNumber';
+  NUMBER_INPUT_NUMBER_FORM_CONTROL_NAME = 'numberMonkeyInputNumber';
 
   constructor(
     private alertService: MonkeyAlertService,
@@ -120,11 +120,11 @@ export class ComponentsPortfolioComponent {
     this.alertService.warnings(['Botón ' + fromButton + ' presionado.'], true, 'Warning');
   }
 
-  onSwitch(fromSwitch: string, checked: Boolean): void {
+  onSwitch(fromSwitch: string, checked: boolean): void {
     this.alertService.dangers(['Switch ' + fromSwitch + '.', checked ? 'ACTIVADO' : 'DESACTIVADO'], true, 'Danger');
   }
 
-  onCheck(fromCheckbox: string, checked: Boolean): void {
+  onCheck(fromCheckbox: string, checked: boolean): void {
     this.alertService.successes(['CheckBox ' + fromCheckbox + '.', checked ? 'ACTIVADO' : 'DESACTIVADO'], true, 'Success');
   }
 

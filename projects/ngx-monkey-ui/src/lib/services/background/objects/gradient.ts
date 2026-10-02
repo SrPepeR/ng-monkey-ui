@@ -74,7 +74,7 @@ export class MonkeyGradient {
    * @returns A string containing all the generated gradients.
    */
   generateAll(): string {
-    let gradients: string = '';
+    let gradients = '';
     
     for (let i = 0; i < this.colors.get().length; i++) {
       if (i > 0) {

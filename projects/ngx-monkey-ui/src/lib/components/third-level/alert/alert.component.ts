@@ -32,7 +32,7 @@ export class MonkeyAlert extends Styleable implements OnInit, OnChanges, OnDestr
   /**
    * The text to be displayed for the dismiss action.
    */
-  @Input() dismissibleText: string = 'Dismiss';
+  @Input() dismissibleText = 'Dismiss';
   
   /**
    * Event emitted when the dismiss action is triggered.
@@ -47,7 +47,7 @@ export class MonkeyAlert extends Styleable implements OnInit, OnChanges, OnDestr
   /**
    * The text to be displayed for the accept action.
    */
-  @Input() acceptText: string = 'Accept';
+  @Input() acceptText = 'Accept';
   
   /**
    * Event emitted when the accept action is triggered.
@@ -62,7 +62,7 @@ export class MonkeyAlert extends Styleable implements OnInit, OnChanges, OnDestr
   /**
    * The text to be displayed for the reject action.
    */
-  @Input() rejectText: string = 'Reject';
+  @Input() rejectText = 'Reject';
   
   /**
    * Event emitted when the reject action is triggered.

@@ -20,13 +20,13 @@ export class MonkeyList extends Styleable {
    * Specifies whether the list items should be displayed horizontally.
    * Default value is 'false'.
    */
-  @Input() horizontal: string = 'false';
+  @Input() horizontal = 'false';
 
   /**
    * Specifies whether the list items should have separators.
    * Default value is 'false'.
    */
-  @Input() separators: string = 'false';
+  @Input() separators = 'false';
 
   /**
    * Specifies the gap size between list items.

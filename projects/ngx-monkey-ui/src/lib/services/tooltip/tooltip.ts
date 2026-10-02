@@ -8,7 +8,7 @@ export class Tooltip {
     /**
      * The starting offset value for the tooltip.
      */
-    private START_OFFSET: number = 20;
+    private START_OFFSET = 20;
 
     /**
      * The style of the tooltip.
@@ -18,7 +18,7 @@ export class Tooltip {
     /**
      * The text content of the tooltip.
      */
-    text: string = '';
+    text = '';
 
     /**
      * The starting position of the tooltip.
@@ -28,7 +28,7 @@ export class Tooltip {
     /**
      * Indicates whether the tooltip should be positioned to the right of the mouse cursor.
      */
-    toRight: boolean = true;
+    toRight = true;
 
     /**
      * Creates a new Tooltip instance.
@@ -51,7 +51,9 @@ export class Tooltip {
             return;
         }
 
-        if (this.toRight = mousePosition.x <= window.innerWidth / 2) {
+        this.toRight = mousePosition.x <= window.innerWidth / 2;
+
+        if (this.toRight) {
             this.startPosition = { x: mousePosition.x + this.START_OFFSET, y: mousePosition.y };
         } else {
             this.startPosition = { x: (window.innerWidth - mousePosition.x) + this.START_OFFSET, y: mousePosition.y };

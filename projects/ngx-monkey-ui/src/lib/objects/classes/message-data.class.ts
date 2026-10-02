@@ -17,7 +17,7 @@ export class Message {
     /**
      * Indicates whether the message should automatically close.
      */
-    isAutoClose: boolean = true;
+    isAutoClose = true;
 
     /**
      * The title of the message.

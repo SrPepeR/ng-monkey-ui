@@ -65,7 +65,7 @@ export class MonkeyImage extends Styleable implements OnChanges {
   /**
    * Indicates whether the image is currently loading.
    */
-  loading: boolean = true;
+  loading = true;
 
   /**
    * Observable that indicates whether the dark mode is enabled.

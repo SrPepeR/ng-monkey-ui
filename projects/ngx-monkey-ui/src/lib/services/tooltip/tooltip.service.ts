@@ -11,12 +11,12 @@ export class MonkeyTooltipService {
   /**
    * Default screen time for the tooltip to be shown.
    */
-  private DEFAULT_SCREEN_TIME: number = 300;
+  private DEFAULT_SCREEN_TIME = 300;
 
   /**
    * Default time before show tooltip on screen.
    */
-  private DEFAULT_TIME_BEFORE_SHOW: number = 2000;
+  private DEFAULT_TIME_BEFORE_SHOW = 2000;
 
   showTimeoutId: any;
   hideTimeoutId: any;

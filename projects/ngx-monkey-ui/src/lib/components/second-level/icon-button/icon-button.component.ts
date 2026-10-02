@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output, OnInit } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
 import { MonkeyTooltipService } from '../../../services/tooltip/tooltip.service';
 import { Tooltipable } from '../../../bases/tooltipable.base';
@@ -15,7 +15,7 @@ import { Styleable } from '../../../bases/styleable.base';
     './styles/icon-button.component.scss',
   ]
 })
-export class MonkeyIconButton extends Styleable implements OnChanges, OnDestroy {
+export class MonkeyIconButton extends Styleable implements OnChanges, OnDestroy, OnInit {
 
   /**
    * Represents the tooltipable behavior of the icon button component.

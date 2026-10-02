@@ -31,7 +31,7 @@ export class MonkeyInputText extends MonkeyInput {
   /**
    * Indicates whether the password is visible or hidden.
    */
-  passwordVisible: boolean = false;
+  passwordVisible = false;
 
   /**
    * Observable that indicates whether the dark mode is enabled.

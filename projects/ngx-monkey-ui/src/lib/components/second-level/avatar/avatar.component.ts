@@ -27,12 +27,12 @@ export class MonkeyAvatar extends Styleable implements OnChanges, OnDestroy {
   /**
    * The image source for the avatar.
    */
-  @Input() image: string = '';
+  @Input() image = '';
 
   /**
    * The image source to be used when the main image fails to load.
    */
-  @Input() errorImage: string = '';
+  @Input() errorImage = '';
 
   /**
    * The form style of the avatar. Possible values: 'rounded', 'square'.
@@ -47,7 +47,7 @@ export class MonkeyAvatar extends Styleable implements OnChanges, OnDestroy {
   /**
    * The text to be displayed as a tooltip when the avatar is hovered.
    */
-  @Input() text: string = '';
+  @Input() text = '';
 
   // COMPONENTS SIZES
 
@@ -84,7 +84,7 @@ export class MonkeyAvatar extends Styleable implements OnChanges, OnDestroy {
   /**
    * Indicates whether the avatar is labeled or not.
    */
-  isLabeled: boolean = false;
+  isLabeled = false;
 
   constructor(
     private themeService: ThemeService,

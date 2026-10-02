@@ -13,7 +13,7 @@ import { MonkeyButtonData } from '../../../objects/classes/button-data.class';
 })
 export class MonkeyButtonsGroup extends Styleable {
 
-  @Input() gap: string = 'false';
+  @Input() gap = 'false';
 
   @Input() data: MonkeyButtonData[] = [];
 

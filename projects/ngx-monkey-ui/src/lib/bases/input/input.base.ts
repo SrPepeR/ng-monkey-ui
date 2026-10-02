@@ -9,6 +9,7 @@ import { FormControl, FormGroup } from "@angular/forms";
  * Base class for styleable components.
  */
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector -- Abstract base; becomes an @Directive() in roadmap 14.5.
   selector: '',
   template: '',
   providers: [
@@ -30,7 +31,7 @@ export class MonkeyInput extends Styleable {
   /**
    * The label for the text input.
    */
-  @Input() label: string = 'Text input';
+  @Input() label = 'Text input';
 
   /**
    * The alternative text for the input element.
@@ -55,7 +56,7 @@ export class MonkeyInput extends Styleable {
    * If set to 'true', the input will be marked as required.
    * If set to 'false' or '' (default), the input will not be marked as required.
    */
-  @Input() required: string = 'false';
+  @Input() required = 'false';
 
   // ICONS
 
@@ -73,7 +74,7 @@ export class MonkeyInput extends Styleable {
    * The icon to display when the input is invalid.
    * Defaults to 'cancel'.
    */
-  @Input() invalidIcon: string = 'cancel';
+  @Input() invalidIcon = 'cancel';
 
   /**
    * The icon to be displayed for the required field indicator.
@@ -89,21 +90,21 @@ export class MonkeyInput extends Styleable {
    * 
    * @defaultValue 'false'
    */
-  @Input() wFull: string = 'false';
+  @Input() wFull = 'false';
 
   /**
    * Indicates whether the input text is deleteable or not.
    * If set to 'true', a delete button will be displayed next to the input text.
    * If set to 'false' (default), no delete button will be displayed.
    */
-  @Input() deleteable: string = 'false';
+  @Input() deleteable = 'false';
 
   /**
    * Determines whether to show the invalid message for the input.
    * 
    * @default 'false'
    */
-  @Input() dontShowInvalidMessage: string = 'false';
+  @Input() dontShowInvalidMessage = 'false';
 
   /**
    * Array of invalid messages for the input.
