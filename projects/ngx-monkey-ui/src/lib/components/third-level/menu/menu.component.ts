@@ -55,9 +55,9 @@ export class MonkeyMenu extends Styleable implements OnDestroy, OnInit, OnChange
   isDarkMode$ = this.themeService.isDarkMode$;
 
   /**
-   * The alternative text for the menu.
+   * The alternative text for the menu, shown as a tooltip over the title.
    */
-  alt!: string;
+  @Input() alt!: string;
 
   /**
    * Determines whether the full menu is open or not.
@@ -130,5 +130,20 @@ export class MonkeyMenu extends Styleable implements OnDestroy, OnInit, OnChange
    */
   toggleFullMenu() {
     this.isFullMenuOpen = !this.isFullMenuOpen;
+  }
+
+  /**
+   * Shows the tooltip with the alternative text.
+   * @param event - The mouse event that triggers the tooltip.
+   */
+  showTooltip(event: MouseEvent) {
+    this.tooltipable.showTooltip(event);
+  }
+
+  /**
+   * Hides the tooltip.
+   */
+  hideTooltip() {
+    this.tooltipable.hideTooltip();
   }
 }

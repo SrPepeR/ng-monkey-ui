@@ -1,4 +1,13 @@
-import { Component, EventEmitter, Input, Output, OnInit, OnChanges } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
 import { ThemeService } from '../../../services/theme.service';
 import { MenuOption } from '../../../objects/interfaces/menu-option.interface';
@@ -102,6 +111,12 @@ export class MonkeyAsideMenu extends Styleable implements OnInit, OnChanges {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
+  /**
+   * The content of this aside menu, whose width changes when it opens and closes.
+   */
+  @ViewChild('asideContent', { read: ElementRef, static: true })
+  private asideContent?: ElementRef<HTMLElement>;
+
   constructor(
     private themeService: ThemeService,
     private router: Router,
@@ -116,12 +131,9 @@ export class MonkeyAsideMenu extends Styleable implements OnInit, OnChanges {
   override ngOnInit() {
     super.ngOnInit();
 
-    if (this.data) {
-      if (this.data[0].children) {
-        this.currentOption = this.data[0].children![0];
-      } else {
-        this.currentOption = this.data[0];
-      }
+    if (this.data?.length) {
+      const firstOption = this.data[0];
+      this.currentOption = firstOption.children?.length ? firstOption.children[0] : firstOption;
     }
 
     this.changeAsideWidth();
@@ -184,22 +196,26 @@ export class MonkeyAsideMenu extends Styleable implements OnInit, OnChanges {
   }
 
   private changeAsideWidth() {
-    const asideContent = document.getElementById('aside-menu-content');
+    const asideContent = this.asideContent?.nativeElement;
+    if (!asideContent) {
+      return;
+    }
+
     if (this.openedByLongScreen) {
-      asideContent!.style.width = this.OPENED_ASIDE_WIDTH;
+      asideContent.style.width = this.OPENED_ASIDE_WIDTH;
       return;
     }
 
     if (!this.isAsideOpened) {
       if (this.check(this.showHint) && this.canShowHint) {
-        asideContent!.style.width = this.CLOSED_ASIDE_HINT_WIDTH;
+        asideContent.style.width = this.CLOSED_ASIDE_HINT_WIDTH;
         return;
       }
-      asideContent!.style.width = this.CLOSED_ASIDE_WIDTH;
+      asideContent.style.width = this.CLOSED_ASIDE_WIDTH;
       return;
     }
 
-    asideContent!.style.width = this.OPENED_ASIDE_WIDTH;
+    asideContent.style.width = this.OPENED_ASIDE_WIDTH;
     return;
   }
 

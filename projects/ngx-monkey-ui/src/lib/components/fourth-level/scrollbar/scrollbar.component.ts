@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ThemeService } from '../../../services/theme.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ThemeService } from '../../../services/theme.service';
     './scrollbar.component.scss',
   ],
 })
-export class MonkeyScrollbar {
+export class MonkeyScrollbar implements OnInit, OnChanges, OnDestroy {
   // Lights
   @Input() backgroundLight = 'rgba(251, 251, 251, 0.8)';
 
@@ -29,10 +30,49 @@ export class MonkeyScrollbar {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  constructor(private themeService: ThemeService) {
-    this.isDarkMode$.subscribe((darkMode) => {
+  /**
+   * The `<style>` element of this scrollbar, reused on every change.
+   */
+  private styleElement?: HTMLStyleElement;
+
+  /**
+   * Whether the dark theme is active, to rebuild the styles when an input changes.
+   */
+  private darkMode = false;
+
+  /**
+   * Subscription to the theme changes.
+   */
+  private themeSubscription?: Subscription;
+
+  constructor(private themeService: ThemeService) {}
+
+  /**
+   * Starts following the theme once the inputs are set.
+   */
+  ngOnInit() {
+    this.themeSubscription = this.isDarkMode$.subscribe((darkMode) => {
+      this.darkMode = darkMode;
       this.addScrollbarStyleStyle(darkMode);
     });
+  }
+
+  /**
+   * Rebuilds the styles when a color input changes after the first render.
+   */
+  ngOnChanges() {
+    if (this.styleElement) {
+      this.addScrollbarStyleStyle(this.darkMode);
+    }
+  }
+
+  /**
+   * Stops following the theme and removes the styles of this scrollbar.
+   */
+  ngOnDestroy() {
+    this.themeSubscription?.unsubscribe();
+    this.styleElement?.remove();
+    this.styleElement = undefined;
   }
 
   /**
@@ -40,9 +80,12 @@ export class MonkeyScrollbar {
    * @param darkMode - A boolean indicating whether the dark mode is enabled or not. Default is false.
    */
   private addScrollbarStyleStyle(darkMode = false) {
-    const style = document.createElement('style');
+    if (!this.styleElement) {
+      this.styleElement = document.createElement('style');
+      document.head.appendChild(this.styleElement);
+    }
 
-    style.innerHTML = `
+    this.styleElement.textContent = `
       ::-webkit-scrollbar {
         width: 6px;
       }
@@ -60,6 +103,5 @@ export class MonkeyScrollbar {
         background: ${darkMode ? this.thumbHoverDark : this.thumbHoverLight};
       }
     `;
-    document.head.appendChild(style);
   }
 }

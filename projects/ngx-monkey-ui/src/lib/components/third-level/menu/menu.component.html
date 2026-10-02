@@ -9,6 +9,8 @@
       [class]="classList"
       [class.dark-theme]="isDarkMode$ | async"
       (click)="navigateToRootPage()"
+      (mouseover)="showTooltip($event)"
+      (mouseout)="hideTooltip()"
     >
       {{ title }}
     </span>

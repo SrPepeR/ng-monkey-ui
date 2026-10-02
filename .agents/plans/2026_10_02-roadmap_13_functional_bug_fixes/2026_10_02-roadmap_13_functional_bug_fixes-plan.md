@@ -17,7 +17,7 @@ implemented_by:
     version: "5.5"
     reasoning_effort: "low"
 
-last_implementation_at: "2026-10-02T22:30:00Z"
+last_implementation_at: "2026-10-02T23:30:00Z"
 has_completed_all_phases: "false"
 ---
 
@@ -116,29 +116,29 @@ Make `MonkeyLoginPage` respect its inputs and listen to Enter only inside its fo
 
 Fix the image placeholder and title (E-08, E-09), the scrollbar styles (E-10), the menu tooltip (E-12), the header and icon classes (E-14) and the aside menu content lookup (E-18). E-13 is deferred to 17.8.
 
-- [ ] Extend [image.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/first-level/image/image.component.spec.ts) with:
+- [x] Extend [image.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/first-level/image/image.component.spec.ts) with:
   - `does not show the placeholder again when only alt changes`
   - `shows the placeholder again when src changes`
   - `leaves the placeholder when the image fails to load`
   - `title defaults to alt`
-- [ ] `MonkeyImage`: set `loading = true` only when `src` changes, set `loading = false` on `(error)`, and resolve `title` from `alt` in `ngOnInit`/`ngOnChanges` when it is not given.
-- [ ] Extend [scrollbar.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/fourth-level/scrollbar/scrollbar.component.spec.ts) with:
+- [x] `MonkeyImage`: set `loading = true` only when `src` changes, set `loading = false` on `(error)`, and resolve `title` from `alt` in `ngOnInit`/`ngOnChanges` when it is not given.
+- [x] Extend [scrollbar.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/fourth-level/scrollbar/scrollbar.component.spec.ts) with:
   - `uses the custom colors given as inputs`
   - `keeps a single style element after several theme changes`
   - `stops listening to the theme on destroy`
-- [ ] `MonkeyScrollbar`: subscribe in `ngOnInit`, reuse one `<style>` element, unsubscribe and remove it in `ngOnDestroy`.
-- [ ] Extend [menu.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/third-level/menu/menu.component.spec.ts) with `the alt input reaches the tooltip`.
-- [ ] `MonkeyMenu`: `@Input() alt` connected to the tooltip.
-- [ ] Extend [header.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/first-level/header/header.component.spec.ts) and [icon.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/first-level/icon/icon.component.spec.ts) with `applies the classList to its element`.
-- [ ] `MonkeyHeader` and `MonkeyIcon`: bind `[class]="classList"` in the template, and check in the test app that the default look of headers and icons does not change.
-- [ ] Extend [aside-menu.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/third-level/aside-menu/aside-menu.component.spec.ts) with:
+- [x] `MonkeyScrollbar`: subscribe in `ngOnInit`, reuse one `<style>` element, unsubscribe and remove it in `ngOnDestroy`.
+- [x] Extend [menu.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/third-level/menu/menu.component.spec.ts) with `the alt input reaches the tooltip`.
+- [x] `MonkeyMenu`: `@Input() alt` connected to the tooltip.
+- [x] Extend [header.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/first-level/header/header.component.spec.ts) and [icon.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/first-level/icon/icon.component.spec.ts) with `applies the classList to its element`.
+- [x] `MonkeyHeader` and `MonkeyIcon`: bind `[class]="classList"` in the template, and check in the test app that the default look of headers and icons does not change.
+- [x] Extend [aside-menu.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/third-level/aside-menu/aside-menu.component.spec.ts) with:
   - `renders without errors when data is empty`
   - `two instances resize their own content element`
-- [ ] `MonkeyAsideMenu`: `viewChild` instead of `document.getElementById`, and tolerate an empty `data`.
-- [ ] Record the E-13 decision (deferred to 17.8, the tooltip keeps forwarding its inputs to `monkey-card`) in 13.6 of [ROADMAP.md](../../../ROADMAP.md) and in E-13 of [ANALISIS.md](../../../ANALISIS.md).
-- [ ] Mark 13.3, 13.4, 13.6, 13.7 and 13.11 as done in [ROADMAP.md](../../../ROADMAP.md).
-- [ ] Verify the changes in terms of typechecking, linting and tests using the project's verification command. Fix issues if any.
-- [ ] STOP. Present the changes to the user for review and suggest commit messages. Do NOT proceed to the next phase until the user explicitly asks.
+- [x] `MonkeyAsideMenu`: `viewChild` instead of `document.getElementById`, and tolerate an empty `data`.
+- [x] Record the E-13 decision (deferred to 17.8, the tooltip keeps forwarding its inputs to `monkey-card`) in 13.6 of [ROADMAP.md](../../../ROADMAP.md) and in E-13 of [ANALISIS.md](../../../ANALISIS.md).
+- [x] Mark 13.3, 13.4, 13.6, 13.7 and 13.11 as done in [ROADMAP.md](../../../ROADMAP.md).
+- [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command. Fix issues if any.
+- [x] STOP. Present the changes to the user for review and suggest commit messages. Do NOT proceed to the next phase until the user explicitly asks.
 
 ### Phase 4: Services (13.5, 13.9, 13.10, 13.13, 13.15)
 
@@ -178,6 +178,6 @@ Record the fixes and close point 13 in the docs.
 
 ## ⏭️ Next step
 
-Implement Phase 3: the visual component fixes (E-08, E-09, E-10, E-12, E-14, E-18) with their tests, and record the E-13 decision.
+Implement Phase 4: the service fixes (E-11, E-16, E-17, E-20, E-21, E-25) with their tests.
 
-Sixteen bugs line up, the form fields already tell the truth about them, and now every button answers only its own click thanks to 🐢 💨 (Turbotuga™, [Codely](https://codely.com)'s mascot). 🐛 📝 ✅ 🖱️
+Sixteen bugs line up, the form fields already tell the truth about them, every button answers only its own click, and broken images finally admit they are broken thanks to 🐢 💨 (Turbotuga™, [Codely](https://codely.com)'s mascot). 🐛 📝 ✅ 🖱️ 🖼️
