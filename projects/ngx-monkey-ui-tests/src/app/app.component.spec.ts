@@ -1,10 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { RouterModule } from '@angular/router';
+import { NgxMonkeyUiModule } from 'ngx-monkey-ui';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
+    imports: [RouterModule.forRoot([]), NgxMonkeyUiModule],
     declarations: [AppComponent]
   }));
 
@@ -20,10 +21,12 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('ngx-monkey-ui-tests');
   });
 
-  it('should render title', () => {
+  it('should render the menu, the aside menu and the router outlet', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('ngx-monkey-ui-tests app is running!');
+    expect(compiled.querySelector('monkey-menu')).toBeTruthy();
+    expect(compiled.querySelector('monkey-aside-menu')).toBeTruthy();
+    expect(compiled.querySelector('main router-outlet')).toBeTruthy();
   });
 });

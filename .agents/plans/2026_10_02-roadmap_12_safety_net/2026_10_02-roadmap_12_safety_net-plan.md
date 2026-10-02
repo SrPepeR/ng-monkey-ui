@@ -9,6 +9,16 @@ created_by:
     name: "Claude Opus"
     version: "5.5"
     reasoning_effort: "low"
+
+implemented_by:
+  tool: "Claude Code"
+  model:
+    name: "Claude Opus"
+    version: "5.5"
+    reasoning_effort: "low"
+
+last_implementation_at: "2026-10-02T19:05:00Z"
+has_completed_all_phases: "false"
 ---
 
 # Roadmap 12: Safety net before any change
@@ -57,21 +67,22 @@ The library suite and the app suite compile and pass in a headless browser with 
 
 **Public contracts**
 
-- npm script `test:ci`: `ng test ngx-monkey-ui --watch=false --browsers=ChromeHeadless && ng test ngx-monkey-ui-tests --watch=false --browsers=ChromeHeadless`.
+- npm script `test:ci`: `ng test ngx-monkey-ui --watch=false --browsers=ChromeHeadless && ng build ngx-monkey-ui && ng test ngx-monkey-ui-tests --watch=false --browsers=ChromeHeadless`. The library build is necessary because the test app resolves `ngx-monkey-ui` from `dist/` (`tsconfig.json` `paths`).
 - Test suites modified (each keeps `should create`):
   - `MonkeyThemeChanger`: import fixed (`ThemeChangerComponent` → `MonkeyThemeChanger`).
-  - The 11 failing specs: `imports: [NgxMonkeyUiModule]` (or the needed `declarations`/`imports`), and `provideRouter([])` for the specs whose component injects `Router`.
-  - `AppComponent` (test app): `should create the app`, plus the title cases aligned with the real template (or removed if the template has no title).
+  - The 11 failing specs: `imports: [NgxMonkeyUiModule]` instead of `declarations`, and `provideRouter([])` for `MonkeyMenu` and `MonkeyAsideMenu` (the only components that inject `Router`).
+  - `MonkeyInputText` and `MonkeyInputNumber`: `setInput('formGroup', ...)` and `setInput('name', 'field')` before the first `detectChanges()`.
+  - `AppComponent` (test app): `imports: [RouterModule.forRoot([]), NgxMonkeyUiModule]`; keeps `should create the app` and `should have as title 'ngx-monkey-ui-tests'`; `should render title` (the template has no `.content span`) becomes `should render the menu, the aside menu and the router outlet`.
 
 **To-do**
 
-- [ ] Fix the import in `theme-changer.component.spec.ts`.
-- [ ] Run `ng test ngx-monkey-ui --watch=false --browsers=ChromeHeadless` and list the failing specs and their errors.
-- [ ] Give each failing spec the `NgxMonkeyUiModule` import (or the minimum `declarations`/`imports`) and `provideRouter([])` where `Router` is injected.
-- [ ] Make `app.component.spec.ts` pass with the current `AppComponent`.
-- [ ] Add the `test:ci` script to `package.json`.
-- [ ] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run test:ci`, `ng build ngx-monkey-ui`, `ng build ngx-monkey-ui-tests`). Fix issues if any.
-- [ ] STOP. Present the changes to the user for review and suggest commit messages (or pull request titles, when the phases are implemented through pull requests). Do NOT proceed to the next phase until the user explicitly asks.
+- [x] Fix the import in `theme-changer.component.spec.ts`.
+- [x] Run `ng test ngx-monkey-ui --watch=false --browsers=ChromeHeadless` and list the failing specs and their errors.
+- [x] Give each failing spec the `NgxMonkeyUiModule` import (or the minimum `declarations`/`imports`) and `provideRouter([])` where `Router` is injected.
+- [x] Make `app.component.spec.ts` pass with the current `AppComponent`.
+- [x] Add the `test:ci` script to `package.json`.
+- [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run test:ci`, `ng build ngx-monkey-ui`, `ng build ngx-monkey-ui-tests`). Fix issues if any.
+- [x] STOP. Present the changes to the user for review and suggest commit messages (or pull request titles, when the phases are implemented through pull requests). Do NOT proceed to the next phase until the user explicitly asks.
 
 ### Phase 2: Pinned Node version (12.5)
 
@@ -197,6 +208,6 @@ Each unit has tests for its current correct behaviour (`it`) and for its known b
 
 ## ⏭️ Next step
 
-Implement Phase 1: make the test suite compile and pass with `npm run test:ci`.
+Implement Phase 2: pin the Node version with `.nvmrc` and `engines`.
 
-Safety net knitted by 🐢 💨 (Turbotuga™, [Codely](https://codely.com)’s mascot), so no monkey falls without a test to catch it.
+Safety net knitted by 🐢 💨 (Turbotuga™, [Codely](https://codely.com)’s mascot): the first monkey jumps and lands on 28 green tests. 🐒 ✅ 🐢 💨

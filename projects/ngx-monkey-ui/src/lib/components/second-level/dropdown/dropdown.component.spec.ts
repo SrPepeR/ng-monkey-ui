@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MonkeyDropdown } from './dropdown.component';
+import { NgxMonkeyUiModule } from '../../../ngx-monkey-ui.module';
 
 describe('DropdownComponent', () => {
   let component: MonkeyDropdown;
@@ -8,7 +9,7 @@ describe('DropdownComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MonkeyDropdown]
+      imports: [NgxMonkeyUiModule]
     });
     fixture = TestBed.createComponent(MonkeyDropdown);
     component = fixture.componentInstance;

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MonkeyIconButton } from './icon-button.component';
+import { NgxMonkeyUiModule } from '../../../ngx-monkey-ui.module';
 
 describe('IconButtonComponent', () => {
   let component: MonkeyIconButton;
@@ -8,7 +9,7 @@ describe('IconButtonComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MonkeyIconButton]
+      imports: [NgxMonkeyUiModule]
     });
     fixture = TestBed.createComponent(MonkeyIconButton);
     component = fixture.componentInstance;
