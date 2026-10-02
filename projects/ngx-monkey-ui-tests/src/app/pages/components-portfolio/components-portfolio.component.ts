@@ -12,53 +12,127 @@ import {
 } from 'ngx-monkey-ui';
 import { map } from 'rxjs';
 
+/**
+ * Visual variants that every `Styleable` component accepts.
+ */
+type Variant = 'Default' | 'Brutalist' | 'Glass' | 'Flat' | 'Ghost' | 'Glow';
+
+/**
+ * Size inputs shared by the loader and the content header.
+ */
+type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
+/**
+ * A form field of the forms section.
+ */
+interface FieldDemo {
+  label: string;
+  controlName: string;
+  icon: string;
+}
+
+interface TextFieldDemo extends FieldDemo {
+  type: MonkeyInputTextType;
+}
+
+interface NumberFieldDemo extends FieldDemo {
+  type: MonkeyInputNumberType;
+}
+
 @Component({
   selector: 'app-components-portfolio',
   templateUrl: './components-portfolio.component.html',
   styleUrls: ['./components-portfolio.component.scss'],
 })
 export class ComponentsPortfolioComponent {
-  componentsTypes: MonkeyButtonData[] = [
+  readonly IMAGE_URL =
+    'https://th.bing.com/th/id/OIP.6bDf-HbrDJFPfyRPJTYVZgHaG7?rs=1&pid=ImgDetMain';
+
+  readonly BROKEN_IMAGE_URL = 'https://example.invalid/monkey.png';
+
+  readonly variants: Variant[] = ['Default', 'Brutalist', 'Glass', 'Flat', 'Ghost', 'Glow'];
+
+  readonly colors: MonkeyStyle[] = [
+    MonkeyStyle.PRIMARY,
+    MonkeyStyle.SECONDARY,
+    MonkeyStyle.TERTIARY,
+    MonkeyStyle.SUCCESS,
+    MonkeyStyle.WARNING,
+    MonkeyStyle.DANGER,
+    MonkeyStyle.INFO,
+  ];
+
+  readonly sizes: Size[] = ['xs', 'sm', 'md', 'lg', 'xl'];
+
+  readonly avatarSizes: Size[] = ['sm', 'md', 'lg'];
+
+  readonly gapSizes: ('sm' | 'md' | 'lg')[] = ['sm', 'md', 'lg'];
+
+  /**
+   * Variant shown, or `All` to show every variant one under another.
+   */
+  currentVariant: Variant | 'All' = 'All';
+
+  variantFilters: MonkeyButtonData[] = [
+    new MonkeyButtonData(MonkeyStyle.INFO, 'All', () => this.setVariant('All'), 'apps', 'left'),
     new MonkeyButtonData(
       MonkeyStyle.PRIMARY,
       'Default',
-      () => this.setType('Default'),
+      () => this.setVariant('Default'),
       'star',
       'left',
     ),
     new MonkeyButtonData(
       MonkeyStyle.SECONDARY,
       'Brutalist',
-      () => this.setType('Brutalist'),
+      () => this.setVariant('Brutalist'),
       'gavel',
       'left',
     ),
     new MonkeyButtonData(
       MonkeyStyle.TERTIARY,
       'Glass',
-      () => this.setType('Glass'),
+      () => this.setVariant('Glass'),
       'wine_bar',
       'left',
     ),
     new MonkeyButtonData(
       MonkeyStyle.TERTIARY,
       'Flat',
-      () => this.setType('Flat'),
+      () => this.setVariant('Flat'),
       'tools_flat_head',
       'right',
     ),
     new MonkeyButtonData(
       MonkeyStyle.SECONDARY,
       'Ghost',
-      () => this.setType('Ghost'),
+      () => this.setVariant('Ghost'),
       'partly_cloudy_night',
       'right',
     ),
     new MonkeyButtonData(
       MonkeyStyle.PRIMARY,
       'Glow',
-      () => this.setType('Glow'),
+      () => this.setVariant('Glow'),
       'stylus_laser_pointer',
+      'right',
+    ),
+  ];
+
+  groupActions: MonkeyButtonData[] = [
+    new MonkeyButtonData(MonkeyStyle.PRIMARY, 'Save', () => this.onClicked('Save'), 'save', 'left'),
+    new MonkeyButtonData(
+      MonkeyStyle.SECONDARY,
+      'Share',
+      () => this.onClicked('Share'),
+      'share',
+      'left',
+    ),
+    new MonkeyButtonData(
+      MonkeyStyle.DANGER,
+      'Delete',
+      () => this.onClicked('Delete'),
+      'delete',
       'right',
     ),
   ];
@@ -70,54 +144,68 @@ export class ComponentsPortfolioComponent {
     { label: 'Info alert', icon: 'info', value: 'info' },
   ];
 
-  currentType = 'Default';
-
   currentStyle: MonkeyStyle = MonkeyStyle.PRIMARY;
 
   warningStyle: MonkeyStyle = MonkeyStyle.WARNING;
   successStyle: MonkeyStyle = MonkeyStyle.SUCCESS;
-
-  offSwitchText = 'Off';
-  onSwitchText = 'On';
+  dangerStyle: MonkeyStyle = MonkeyStyle.DANGER;
+  infoStyle: MonkeyStyle = MonkeyStyle.INFO;
 
   contentHeaderAction: MonkeyButtonData = new MonkeyButtonData(
-    this.currentStyle,
+    MonkeyStyle.PRIMARY,
     'Show alert',
     () => this.showAlert('Content header'),
     'info',
     'right',
   );
 
+  textFields: TextFieldDemo[] = [
+    { label: 'Text', controlName: 'text', icon: 'draw', type: MonkeyInputTextType.TEXT },
+    { label: 'Email', controlName: 'email', icon: 'email', type: MonkeyInputTextType.EMAIL },
+    {
+      label: 'Password',
+      controlName: 'password',
+      icon: 'password',
+      type: MonkeyInputTextType.PASSWORD,
+    },
+    { label: 'URL', controlName: 'url', icon: 'link', type: MonkeyInputTextType.URL },
+    { label: 'Search', controlName: 'search', icon: 'search', type: MonkeyInputTextType.SEARCH },
+    {
+      label: 'Month',
+      controlName: 'month',
+      icon: 'calendar_month',
+      type: MonkeyInputTextType.MONTH,
+    },
+    { label: 'Week', controlName: 'week', icon: 'date_range', type: MonkeyInputTextType.WEEK },
+  ];
+
+  numberFields: NumberFieldDemo[] = [
+    { label: 'Number', controlName: 'number', icon: 'numbers', type: MonkeyInputNumberType.NUMBER },
+    { label: 'Phone', controlName: 'phone', icon: 'call', type: MonkeyInputNumberType.PHONE },
+    { label: 'Date', controlName: 'date', icon: 'event', type: MonkeyInputNumberType.DATE },
+    {
+      label: 'Date and time',
+      controlName: 'datetime',
+      icon: 'schedule',
+      type: MonkeyInputNumberType.DATETIME,
+    },
+    { label: 'Time', controlName: 'time', icon: 'alarm', type: MonkeyInputNumberType.TIME },
+  ];
+
   form: FormGroup = new FormGroup({
-    monkeyInputText: new FormControl('', [Validators.minLength(3), Validators.maxLength(10)]),
-    emailMonkeyInputText: new FormControl('', [Validators.email, Validators.minLength(3)]),
-    passwordMonkeyInputText: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6),
-      Validators.maxLength(10),
-    ]),
-    numberMonkeyInputNumber: new FormControl('', [Validators.min(0), Validators.max(100)]),
+    text: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    email: new FormControl('', [Validators.email]),
+    password: new FormControl('', [Validators.minLength(6), Validators.maxLength(10)]),
+    url: new FormControl('', [Validators.pattern(/^https?:\/\/.+/)]),
+    search: new FormControl(''),
+    month: new FormControl(''),
+    week: new FormControl(''),
+    number: new FormControl(null, [Validators.min(0), Validators.max(100)]),
+    phone: new FormControl(''),
+    date: new FormControl(''),
+    datetime: new FormControl(''),
+    time: new FormControl(''),
   });
-
-  monkeyInputTextTypeText: MonkeyInputTextType = MonkeyInputTextType.TEXT;
-  monkeyInputTextTypeEmail: MonkeyInputTextType = MonkeyInputTextType.EMAIL;
-  monkeyInputTextTypePassword: MonkeyInputTextType = MonkeyInputTextType.PASSWORD;
-  monkeyInputTextTypeUrl: MonkeyInputTextType = MonkeyInputTextType.URL;
-  monkeyInputTextTypeSearch: MonkeyInputTextType = MonkeyInputTextType.SEARCH;
-  monkeyInputTextTypeMonth: MonkeyInputTextType = MonkeyInputTextType.MONTH;
-  monkeyInputTextTypeWeek: MonkeyInputTextType = MonkeyInputTextType.WEEK;
-
-  monkeyInputNumberTypeNumber: MonkeyInputNumberType = MonkeyInputNumberType.NUMBER;
-  monkeyInputNumberTypePhone: MonkeyInputNumberType = MonkeyInputNumberType.PHONE;
-  monkeyInputNumberTypeDate: MonkeyInputNumberType = MonkeyInputNumberType.DATE;
-  monkeyInputNumberTypeDatetime: MonkeyInputNumberType = MonkeyInputNumberType.DATETIME;
-  monkeyInputNumberTypeTime: MonkeyInputNumberType = MonkeyInputNumberType.TIME;
-
-  INPUT_TEXT_FORM_CONTROL_NAME = 'monkeyInputText';
-  EMAIL_INPUT_TEXT_FORM_CONTROL_NAME = 'emailMonkeyInputText';
-  PASSWORD_INPUT_TEXT_FORM_CONTROL_NAME = 'passwordMonkeyInputText';
-
-  NUMBER_INPUT_NUMBER_FORM_CONTROL_NAME = 'numberMonkeyInputNumber';
 
   constructor(
     private alertService: MonkeyAlertService,
@@ -126,6 +214,27 @@ export class ComponentsPortfolioComponent {
   ) {
     this.manageParams();
     this.fontService.addDosisFont();
+  }
+
+  /**
+   * Variants to render, depending on the filter.
+   */
+  get visibleVariants(): Variant[] {
+    return this.currentVariant === 'All' ? this.variants : [this.currentVariant];
+  }
+
+  /**
+   * Value for a variant input (`brutalist`, `glass`...): present (`''`) only for its variant.
+   */
+  flag(variant: Variant, target: Variant): string {
+    return variant === target ? '' : 'false';
+  }
+
+  /**
+   * Value for a size input (`xs`, `sm`...): present (`''`) only for the chosen size.
+   */
+  sizeFlag(size: Size, target: Size): string {
+    return size === target ? '' : target;
   }
 
   private manageParams(): void {
@@ -164,12 +273,8 @@ export class ComponentsPortfolioComponent {
     }
   }
 
-  setType(newType: string): void {
-    this.currentType = newType;
-  }
-
-  changeStyle(newStyle: MonkeyStyle): void {
-    this.currentStyle = newStyle;
+  setVariant(variant: Variant | 'All'): void {
+    this.currentVariant = variant;
   }
 
   onClicked(fromButton: string): void {
@@ -196,23 +301,53 @@ export class ComponentsPortfolioComponent {
     this.alertService.successes([`${text}`], true, 'Success');
   }
 
-  onSelectedChanged(DropdownOption: DropdownOption): void {
-    switch (DropdownOption.value) {
+  showAlertOf(type: 'success' | 'warning' | 'danger' | 'info' | 'custom'): void {
+    const texts = [`This is a ${type} alert.`, 'It closes by itself after a few seconds.'];
+
+    switch (type) {
       case 'success':
-        this.alertService.successes(['Selected option: ' + DropdownOption.label], true, 'Success');
+        this.alertService.successes(texts, true, 'Success');
         break;
       case 'warning':
-        this.alertService.warnings(['Selected option: ' + DropdownOption.label], true, 'Warning');
+        this.alertService.warnings(texts, true, 'Warning');
         break;
       case 'danger':
-        this.alertService.dangers(['Selected option: ' + DropdownOption.label], true, 'Danger');
+        this.alertService.dangers(texts, true, 'Danger');
         break;
       case 'info':
-        this.alertService.infos(['Selected option: ' + DropdownOption.label], true, 'Info');
+        this.alertService.infos(texts, true, 'Info');
+        break;
+      default:
+        this.alertService.customs(texts, this.currentStyle, true, 'Custom', 'pets');
+        break;
+    }
+  }
+
+  showPersistentAlert(): void {
+    this.alertService.infos(
+      ['This alert stays until you dismiss, accept or reject it.'],
+      false,
+      'Persistent',
+    );
+  }
+
+  onSelectedChanged(dropdownOption: DropdownOption): void {
+    switch (dropdownOption.value) {
+      case 'success':
+        this.alertService.successes(['Selected option: ' + dropdownOption.label], true, 'Success');
+        break;
+      case 'warning':
+        this.alertService.warnings(['Selected option: ' + dropdownOption.label], true, 'Warning');
+        break;
+      case 'danger':
+        this.alertService.dangers(['Selected option: ' + dropdownOption.label], true, 'Danger');
+        break;
+      case 'info':
+        this.alertService.infos(['Selected option: ' + dropdownOption.label], true, 'Info');
         break;
       default:
         this.alertService.customs(
-          ['Selected option: ' + DropdownOption.label],
+          ['Selected option: ' + dropdownOption.label],
           MonkeyStyle.PRIMARY,
           true,
           'Primary',

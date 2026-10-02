@@ -1,0 +1,11 @@
+// Name of the variant shown at the start of each row of the catalog.
+.variant-label {
+  align-self: center;
+  min-width: 6rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+}
