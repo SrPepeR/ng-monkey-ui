@@ -2,7 +2,8 @@
   z-index: 9999;
 
   monkey-card {
-    position: absolute;
+    // Viewport coordinates (clientX/clientY), so the tooltip follows the pointer with the page scrolled.
+    position: fixed;
     opacity: 0.8;
   }
 }

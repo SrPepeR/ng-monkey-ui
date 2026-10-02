@@ -1,9 +1,14 @@
-<label class="container" [class]="classList" [class.dark-theme]="isDarkMode$ | async">
+<label
+  class="container"
+  [for]="inputId"
+  [class]="classList"
+  [class.dark-theme]="isDarkMode$ | async"
+>
   <input
     #checkbox
     type="checkbox"
-    name="checkbox"
-    id="checkbox"
+    [name]="inputId"
+    [id]="inputId"
     [class]="classList"
     [class.dark-theme]="isDarkMode$ | async"
     (change)="onChanged()"

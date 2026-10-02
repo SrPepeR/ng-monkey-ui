@@ -1,225 +1,682 @@
-<!-- STYLES DEMOS -->
+<!-- COMPONENTS CATALOG -->
+<!-- Every section shows one row per visual variant; the color comes from the "Styles" aside menu. -->
 <monkey-list gapSize="lg">
-  <monkey-card
-    flexWrap
-    [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-    [glass]="currentType === 'Glass' ? '' : 'false'"
-    [flat]="currentType === 'Flat' ? '' : 'false'"
-    [ghost]="currentType === 'Ghost' ? '' : 'false'"
-    [glow]="currentType === 'Glow' ? '' : 'false'"
-  >
+  <!-- INTRO AND VARIANT FILTER -->
+  <monkey-card glass>
     <monkey-list [style]="currentStyle" flexCenter gapSize="md" flexWrap>
       <monkey-content-header
         [style]="currentStyle"
-        image="https://th.bing.com/th/id/OIP.6bDf-HbrDJFPfyRPJTYVZgHaG7?rs=1&pid=ImgDetMain"
+        [image]="IMAGE_URL"
         header="Monkey UI"
-        subHeader="Components portfolio"
+        subHeader="Components catalog: every component in every variant"
+        [action]="contentHeaderAction"
+        glass
       />
 
-      <monkey-buttons-group
-        [data]="componentsTypes"
-        flexWrap
-        gap
-        [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-        [glass]="currentType === 'Glass' ? '' : 'false'"
-        [flat]="currentType === 'Flat' ? '' : 'false'"
-        [ghost]="currentType === 'Ghost' ? '' : 'false'"
-        [glow]="currentType === 'Glow' ? '' : 'false'"
-      />
+      <monkey-buttons-group [data]="variantFilters" flexWrap gap glass />
+
+      <monkey-subheader [style]="currentStyle">
+        Showing: {{ currentVariant }} · Color: {{ currentStyle }}
+      </monkey-subheader>
     </monkey-list>
   </monkey-card>
 
-  <monkey-card
-    [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-    [glass]="currentType === 'Glass' ? '' : 'false'"
-    [flat]="currentType === 'Flat' ? '' : 'false'"
-    [ghost]="currentType === 'Ghost' ? '' : 'false'"
-    [glow]="currentType === 'Glow' ? '' : 'false'"
-  >
-    <monkey-list [style]="currentStyle" horizontal flexCenter gapSize="lg" flexWrap>
-      <monkey-avatar
-        [style]="currentStyle"
-        image="https://via.placeholder.com/33"
-        errorImage="https://via.placeholder.com/50"
-        form="rounded"
-        labeled
-        md
-        text="Monkey avatar"
-      />
+  <!-- COLORS -->
+  <monkey-card glass>
+    <monkey-list>
+      <monkey-header [style]="currentStyle">Colors</monkey-header>
+      <monkey-subheader>monkey-button in every MonkeyStyle</monkey-subheader>
 
-      <monkey-list [style]="currentStyle" separators flexCenter>
-        <span>Text</span>
+      <monkey-list *ngFor="let variant of visibleVariants" horizontal flexWrap gapSize="sm">
+        <span class="variant-label">{{ variant }}</span>
+        <monkey-button
+          *ngFor="let color of colors"
+          [style]="color"
+          (onClick)="onClicked(color)"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        >
+          {{ color }}
+        </monkey-button>
+      </monkey-list>
+    </monkey-list>
+  </monkey-card>
+
+  <!-- BUTTONS -->
+  <monkey-card glass>
+    <monkey-list>
+      <monkey-header [style]="currentStyle">Buttons</monkey-header>
+      <monkey-subheader>
+        monkey-button, monkey-icon-button (hover for the tooltip) and monkey-buttons-group
+      </monkey-subheader>
+
+      <monkey-list *ngFor="let variant of visibleVariants" horizontal flexWrap gapSize="sm">
+        <span class="variant-label">{{ variant }}</span>
+
+        <monkey-button
+          [style]="currentStyle"
+          (onClick)="onClicked('normal')"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        >
+          Button
+        </monkey-button>
+
+        <monkey-button
+          [style]="currentStyle"
+          disabled
+          (onClick)="onClicked('disabled')"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        >
+          Disabled
+        </monkey-button>
+
+        <monkey-button
+          [style]="currentStyle"
+          discreet
+          (onClick)="onClicked('discreet')"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        >
+          Discreet
+        </monkey-button>
+
+        <monkey-button
+          [style]="currentStyle"
+          squared
+          (onClick)="onClicked('squared')"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        >
+          <monkey-icon icon="crop_square" />
+        </monkey-button>
+
+        <monkey-icon-button
+          [style]="currentStyle"
+          icon="add"
+          [alt]="variant + ' icon button'"
+          (onClick)="onClicked('icon button')"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        />
+
+        <monkey-icon-button
+          [style]="currentStyle"
+          icon="visibility"
+          discreet
+          [alt]="variant + ' discreet icon button'"
+          (onClick)="onClicked('discreet icon button')"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        />
+
+        <monkey-icon-button
+          [style]="currentStyle"
+          icon="block"
+          disabled
+          [alt]="variant + ' disabled icon button'"
+          (onClick)="onClicked('disabled icon button')"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        />
+
+        <monkey-buttons-group
+          [data]="groupActions"
+          gap
+          [style]="currentStyle"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        />
+      </monkey-list>
+    </monkey-list>
+  </monkey-card>
+
+  <!-- SELECTION CONTROLS -->
+  <monkey-card glass>
+    <monkey-list>
+      <monkey-header [style]="currentStyle">Selection controls</monkey-header>
+      <monkey-subheader>monkey-switch, monkey-checkbox and monkey-dropdown</monkey-subheader>
+
+      <monkey-list *ngFor="let variant of visibleVariants" horizontal flexWrap gapSize="md">
+        <span class="variant-label">{{ variant }}</span>
 
         <monkey-switch
-          (onSwitch)="onSwitch(currentType, $event)"
           [style]="currentStyle"
-          [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-          [glass]="currentType === 'Glass' ? '' : 'false'"
-          [flat]="currentType === 'Flat' ? '' : 'false'"
-          [ghost]="currentType === 'Ghost' ? '' : 'false'"
-          [glow]="currentType === 'Glow' ? '' : 'false'"
+          (onSwitch)="onSwitch(variant, $event)"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        />
+
+        <monkey-switch
+          [style]="currentStyle"
+          offLabel="No"
+          onLabel="Yes"
+          [checked]="true"
+          (onSwitch)="onSwitch(variant, $event)"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
         />
 
         <monkey-checkbox
-          (onCheckChange)="onCheck(currentType, $event)"
           [style]="currentStyle"
-          [label]="currentType"
-          [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-          [glass]="currentType === 'Glass' ? '' : 'false'"
-          [flat]="currentType === 'Flat' ? '' : 'false'"
-          [ghost]="currentType === 'Ghost' ? '' : 'false'"
-          [glow]="currentType === 'Glow' ? '' : 'false'"
+          label="Unchecked"
+          (onCheckChange)="onCheck(variant, $event)"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
         />
 
-        <monkey-loader
-          lg
+        <monkey-checkbox
           [style]="currentStyle"
-          [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-          [glass]="currentType === 'Glass' ? '' : 'false'"
-          [flat]="currentType === 'Flat' ? '' : 'false'"
-          [ghost]="currentType === 'Ghost' ? '' : 'false'"
-          [glow]="currentType === 'Glow' ? '' : 'false'"
+          label="Checked"
+          [checked]="true"
+          (onCheckChange)="onCheck(variant, $event)"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        />
+
+        <monkey-dropdown
+          [style]="currentStyle"
+          [alt]="variant + ' dropdown'"
+          [options]="dropdownOptions"
+          (selectedChanged)="onSelectedChanged($event)"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        />
+
+        <monkey-dropdown
+          [style]="currentStyle"
+          [alt]="variant + ' dropdown with separators'"
+          [options]="dropdownOptions"
+          separators
+          (selectedChanged)="onSelectedChanged($event)"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
         />
       </monkey-list>
-
-      <monkey-icon-button
-        [alt]="currentType + ' monkey icon button'"
-        [style]="currentStyle"
-        icon="add"
-        (onClick)="onClicked('default')"
-        [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-        [glass]="currentType === 'Glass' ? '' : 'false'"
-        [flat]="currentType === 'Flat' ? '' : 'false'"
-        [ghost]="currentType === 'Ghost' ? '' : 'false'"
-        [glow]="currentType === 'Glow' ? '' : 'false'"
-      />
-
-      <monkey-image
-        [style]="currentStyle"
-        src="https://via.placeholder.com/100"
-        alt="Test image"
-        [title]="currentType + ' Monkey image'"
-        [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-        [glass]="currentType === 'Glass' ? '' : 'false'"
-        [flat]="currentType === 'Flat' ? '' : 'false'"
-        [ghost]="currentType === 'Ghost' ? '' : 'false'"
-        [glow]="currentType === 'Glow' ? '' : 'false'"
-      />
-
-      <monkey-dropdown
-        [style]="currentStyle"
-        alt="Test dropdown"
-        [options]="dropdownOptions"
-        (selectedChanged)="onSelectedChanged($event)"
-        [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-        [glass]="currentType === 'Glass' ? '' : 'false'"
-        [flat]="currentType === 'Flat' ? '' : 'false'"
-        [ghost]="currentType === 'Ghost' ? '' : 'false'"
-        [glow]="currentType === 'Glow' ? '' : 'false'"
-      />
     </monkey-list>
   </monkey-card>
 
-  <monkey-card
-    [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-    [glass]="currentType === 'Glass' ? '' : 'false'"
-    [flat]="currentType === 'Flat' ? '' : 'false'"
-    [ghost]="currentType === 'Ghost' ? '' : 'false'"
-    [glow]="currentType === 'Glow' ? '' : 'false'"
-  >
-    <monkey-list flexCenter>
-      <monkey-header>Form inputs</monkey-header>
+  <!-- LOADERS -->
+  <monkey-card glass>
+    <monkey-list>
+      <monkey-header [style]="currentStyle">Loaders</monkey-header>
+      <monkey-subheader>monkey-loader in every size, and with contrast</monkey-subheader>
 
-      <monkey-list [formGroup]="form">
-        <monkey-input-text
+      <monkey-list *ngFor="let variant of visibleVariants" horizontal flexWrap gapSize="md">
+        <span class="variant-label">{{ variant }}</span>
+
+        <monkey-loader
+          *ngFor="let size of sizes"
+          [isVisible]="true"
           [style]="currentStyle"
-          label="Monkey text input"
-          alt="Text input"
-          [name]="INPUT_TEXT_FORM_CONTROL_NAME"
-          [formGroup]="form"
-          icon="draw"
-          required
-          [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-          [glass]="currentType === 'Glass' ? '' : 'false'"
-          [flat]="currentType === 'Flat' ? '' : 'false'"
-          [ghost]="currentType === 'Ghost' ? '' : 'false'"
-          [glow]="currentType === 'Glow' ? '' : 'false'"
+          [xs]="sizeFlag(size, 'xs')"
+          [sm]="sizeFlag(size, 'sm')"
+          [md]="sizeFlag(size, 'md')"
+          [lg]="sizeFlag(size, 'lg')"
+          [xl]="sizeFlag(size, 'xl')"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
         />
 
-        <monkey-input-text
+        <monkey-loader
+          md
+          contrast
+          [isVisible]="true"
           [style]="currentStyle"
-          label="Email monkey text input"
-          alt="Email text input"
-          [name]="EMAIL_INPUT_TEXT_FORM_CONTROL_NAME"
-          [formGroup]="form"
-          icon="email"
-          [inputType]="monkeyInputTextTypeEmail"
-          deleteable
-          [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-          [glass]="currentType === 'Glass' ? '' : 'false'"
-          [flat]="currentType === 'Flat' ? '' : 'false'"
-          [ghost]="currentType === 'Ghost' ? '' : 'false'"
-          [glow]="currentType === 'Glow' ? '' : 'false'"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        />
+      </monkey-list>
+    </monkey-list>
+  </monkey-card>
+
+  <!-- MEDIA -->
+  <monkey-card glass>
+    <monkey-list>
+      <monkey-header [style]="currentStyle">Images and avatars</monkey-header>
+      <monkey-subheader>
+        monkey-image (default, full rounded, broken source) and monkey-avatar (forms, sizes,
+        labeled)
+      </monkey-subheader>
+
+      <monkey-list
+        *ngFor="let variant of visibleVariants"
+        horizontal
+        flexWrap
+        flexCenter
+        gapSize="md"
+      >
+        <span class="variant-label">{{ variant }}</span>
+
+        <monkey-image
+          [style]="currentStyle"
+          [src]="IMAGE_URL"
+          alt="Monkey image"
+          [title]="variant + ' image'"
+          [width]="80"
+          [height]="80"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
         />
 
-        <monkey-input-text
+        <monkey-image
           [style]="currentStyle"
-          label="Password monkey text input"
-          alt="Password text input"
-          [name]="PASSWORD_INPUT_TEXT_FORM_CONTROL_NAME"
-          [formGroup]="form"
-          icon="password"
-          [inputType]="monkeyInputTextTypePassword"
-          deleteable
-          [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-          [glass]="currentType === 'Glass' ? '' : 'false'"
-          [flat]="currentType === 'Flat' ? '' : 'false'"
-          [ghost]="currentType === 'Ghost' ? '' : 'false'"
-          [glow]="currentType === 'Glow' ? '' : 'false'"
+          [src]="IMAGE_URL"
+          alt="Full rounded monkey image"
+          fullRounded
+          [width]="80"
+          [height]="80"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
         />
 
-        <monkey-input-number
+        <monkey-image
           [style]="currentStyle"
-          label="Number monkey number input"
-          alt="Number input"
-          [name]="NUMBER_INPUT_NUMBER_FORM_CONTROL_NAME"
-          [formGroup]="form"
-          icon="numbers"
-          [inputType]="monkeyInputNumberTypeNumber"
-          deleteable
-          [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-          [glass]="currentType === 'Glass' ? '' : 'false'"
-          [flat]="currentType === 'Flat' ? '' : 'false'"
-          [ghost]="currentType === 'Ghost' ? '' : 'false'"
-          [glow]="currentType === 'Glow' ? '' : 'false'"
+          [src]="BROKEN_IMAGE_URL"
+          alt="Broken image"
+          [width]="80"
+          [height]="80"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
         />
 
-        <monkey-list horizontal>
-          <monkey-button
-            [style]="successStyle"
-            [disabled]="!form.valid ? '' : 'false'"
-            (onClick)="submitForm()"
-            [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-            [glass]="currentType === 'Glass' ? '' : 'false'"
-            [flat]="currentType === 'Flat' ? '' : 'false'"
-            [ghost]="currentType === 'Ghost' ? '' : 'false'"
-            [glow]="currentType === 'Glow' ? '' : 'false'"
-          >
-            Submit
-          </monkey-button>
+        <monkey-avatar
+          *ngFor="let size of avatarSizes"
+          [style]="currentStyle"
+          [image]="IMAGE_URL"
+          [errorImage]="IMAGE_URL"
+          form="rounded"
+          [sm]="sizeFlag(size, 'sm')"
+          [md]="sizeFlag(size, 'md')"
+          [lg]="sizeFlag(size, 'lg')"
+          [text]="'Avatar ' + size"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        />
 
-          <monkey-button
-            [style]="warningStyle"
-            (onClick)="resetForm()"
-            [brutalist]="currentType === 'Brutalist' ? '' : 'false'"
-            [glass]="currentType === 'Glass' ? '' : 'false'"
-            [flat]="currentType === 'Flat' ? '' : 'false'"
-            [ghost]="currentType === 'Ghost' ? '' : 'false'"
-            [glow]="currentType === 'Glow' ? '' : 'false'"
-          >
-            Reset all form
-          </monkey-button>
+        <monkey-avatar
+          [style]="currentStyle"
+          [image]="IMAGE_URL"
+          [errorImage]="IMAGE_URL"
+          form="squared"
+          md
+          text="Squared avatar"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        />
+
+        <monkey-avatar
+          [style]="currentStyle"
+          [image]="IMAGE_URL"
+          [errorImage]="IMAGE_URL"
+          form="rounded"
+          md
+          labeled
+          text="Labeled avatar"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        />
+      </monkey-list>
+    </monkey-list>
+  </monkey-card>
+
+  <!-- TYPOGRAPHY AND ICONS -->
+  <monkey-card glass>
+    <monkey-list>
+      <monkey-header [style]="currentStyle">Typography and icons</monkey-header>
+      <monkey-subheader>monkey-header, monkey-subheader and monkey-icon</monkey-subheader>
+
+      <monkey-list
+        *ngFor="let variant of visibleVariants"
+        horizontal
+        flexWrap
+        flexCenter
+        gapSize="md"
+      >
+        <span class="variant-label">{{ variant }}</span>
+
+        <monkey-header
+          [style]="currentStyle"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        >
+          Header
+        </monkey-header>
+
+        <monkey-subheader
+          [style]="currentStyle"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        >
+          Subheader
+        </monkey-subheader>
+
+        <monkey-icon
+          *ngFor="let icon of ['pets', 'favorite', 'bolt', 'rocket_launch']"
+          [icon]="icon"
+          [style]="currentStyle"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        />
+      </monkey-list>
+    </monkey-list>
+  </monkey-card>
+
+  <!-- LAYOUT -->
+  <monkey-card glass>
+    <monkey-list>
+      <monkey-header [style]="currentStyle">Layout</monkey-header>
+      <monkey-subheader>
+        monkey-card (default, column, no padding) and monkey-list (vertical, horizontal, separators,
+        gap sizes)
+      </monkey-subheader>
+
+      <monkey-list *ngFor="let variant of visibleVariants" horizontal flexWrap gapSize="md">
+        <span class="variant-label">{{ variant }}</span>
+
+        <monkey-card
+          [style]="currentStyle"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        >
+          <span>Card</span>
+          <monkey-icon icon="pets" />
+        </monkey-card>
+
+        <monkey-card
+          [style]="currentStyle"
+          [column]="true"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        >
+          <span>Column card</span>
+          <monkey-icon icon="pets" />
+        </monkey-card>
+
+        <monkey-card
+          [style]="currentStyle"
+          noPadding
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        >
+          <span>No padding</span>
+        </monkey-card>
+
+        <monkey-list
+          [style]="currentStyle"
+          separators
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        >
+          <span>Vertical</span>
+          <span>list with</span>
+          <span>separators</span>
         </monkey-list>
+
+        <monkey-list
+          *ngFor="let gap of gapSizes"
+          [style]="currentStyle"
+          horizontal
+          [gapSize]="gap"
+          [brutalist]="flag(variant, 'Brutalist')"
+          [glass]="flag(variant, 'Glass')"
+          [flat]="flag(variant, 'Flat')"
+          [ghost]="flag(variant, 'Ghost')"
+          [glow]="flag(variant, 'Glow')"
+        >
+          <span>Gap</span>
+          <span>{{ gap }}</span>
+        </monkey-list>
+      </monkey-list>
+    </monkey-list>
+  </monkey-card>
+
+  <!-- CONTENT HEADERS -->
+  <monkey-card glass>
+    <monkey-list>
+      <monkey-header [style]="currentStyle">Content headers</monkey-header>
+      <monkey-subheader>monkey-content-header with an action, in every size</monkey-subheader>
+
+      <monkey-list *ngFor="let variant of visibleVariants" gapSize="sm">
+        <span class="variant-label">{{ variant }}</span>
+
+        <monkey-list horizontal flexWrap gapSize="sm">
+          <monkey-content-header
+            *ngFor="let size of sizes"
+            [style]="currentStyle"
+            [image]="IMAGE_URL"
+            [header]="'Size ' + size"
+            [subHeader]="variant + ' content header'"
+            [action]="contentHeaderAction"
+            [xs]="sizeFlag(size, 'xs')"
+            [sm]="sizeFlag(size, 'sm')"
+            [md]="sizeFlag(size, 'md')"
+            [lg]="sizeFlag(size, 'lg')"
+            [xl]="sizeFlag(size, 'xl')"
+            [brutalist]="flag(variant, 'Brutalist')"
+            [glass]="flag(variant, 'Glass')"
+            [flat]="flag(variant, 'Flat')"
+            [ghost]="flag(variant, 'Ghost')"
+            [glow]="flag(variant, 'Glow')"
+          />
+        </monkey-list>
+      </monkey-list>
+    </monkey-list>
+  </monkey-card>
+
+  <!-- FORMS -->
+  <monkey-card glass>
+    <monkey-list>
+      <monkey-header [style]="currentStyle">Forms</monkey-header>
+      <monkey-subheader>
+        monkey-input-text and monkey-input-number in every type, and monkey-invalid-form-message.
+        Every row shares the same form, so typing in one updates the others.
+      </monkey-subheader>
+
+      <monkey-list *ngFor="let variant of visibleVariants" gapSize="sm">
+        <span class="variant-label">{{ variant }}</span>
+
+        <monkey-list horizontal flexWrap gapSize="md" [formGroup]="form">
+          <monkey-input-text
+            *ngFor="let field of textFields; let first = first"
+            [style]="currentStyle"
+            [label]="field.label"
+            [alt]="field.label + ' input'"
+            [icon]="field.icon"
+            [inputType]="field.type"
+            [formGroup]="form"
+            [name]="field.controlName"
+            [required]="first ? '' : 'false'"
+            deleteable
+            [brutalist]="flag(variant, 'Brutalist')"
+            [glass]="flag(variant, 'Glass')"
+            [flat]="flag(variant, 'Flat')"
+            [ghost]="flag(variant, 'Ghost')"
+            [glow]="flag(variant, 'Glow')"
+          />
+
+          <monkey-input-number
+            *ngFor="let field of numberFields"
+            [style]="currentStyle"
+            [label]="field.label"
+            [alt]="field.label + ' input'"
+            [icon]="field.icon"
+            [inputType]="field.type"
+            [formGroup]="form"
+            [name]="field.controlName"
+            deleteable
+            [brutalist]="flag(variant, 'Brutalist')"
+            [glass]="flag(variant, 'Glass')"
+            [flat]="flag(variant, 'Flat')"
+            [ghost]="flag(variant, 'Ghost')"
+            [glow]="flag(variant, 'Glow')"
+          />
+
+          <monkey-invalid-form-message
+            [style]="currentStyle"
+            text="Standalone invalid form message"
+            icon="cancel"
+          />
+        </monkey-list>
+      </monkey-list>
+
+      <monkey-list horizontal>
+        <monkey-button
+          [style]="successStyle"
+          [disabled]="!form.valid ? '' : 'false'"
+          (onClick)="submitForm()"
+          glass
+        >
+          Submit
+        </monkey-button>
+
+        <monkey-button [style]="warningStyle" (onClick)="resetForm()" glass>
+          Reset all form
+        </monkey-button>
+      </monkey-list>
+    </monkey-list>
+  </monkey-card>
+
+  <!-- ALERTS -->
+  <monkey-card glass>
+    <monkey-list>
+      <monkey-header [style]="currentStyle">Alerts</monkey-header>
+      <monkey-subheader>
+        MonkeyAlertService shows the monkey-alert of the app shell, which is dismissible, acceptable
+        and rejectable
+      </monkey-subheader>
+
+      <monkey-list horizontal flexWrap gapSize="sm">
+        <monkey-button [style]="successStyle" (onClick)="showAlertOf('success')" glass>
+          Success
+        </monkey-button>
+        <monkey-button [style]="warningStyle" (onClick)="showAlertOf('warning')" glass>
+          Warning
+        </monkey-button>
+        <monkey-button [style]="dangerStyle" (onClick)="showAlertOf('danger')" glass>
+          Danger
+        </monkey-button>
+        <monkey-button [style]="infoStyle" (onClick)="showAlertOf('info')" glass>
+          Info
+        </monkey-button>
+        <monkey-button [style]="currentStyle" (onClick)="showAlertOf('custom')" glass>
+          Custom
+        </monkey-button>
+        <monkey-button [style]="currentStyle" (onClick)="showPersistentAlert()" glass discreet>
+          Persistent
+        </monkey-button>
+      </monkey-list>
+    </monkey-list>
+  </monkey-card>
+
+  <!-- APP SHELL COMPONENTS -->
+  <monkey-card glass>
+    <monkey-list>
+      <monkey-header [style]="currentStyle">App shell components</monkey-header>
+      <monkey-subheader>Used once per app, so they live outside this page</monkey-subheader>
+
+      <monkey-list separators>
+        <span><b>monkey-menu</b>: the top bar, with the theme changer and an avatar.</span>
+        <span><b>monkey-theme-changer</b>: the toggle in the top bar.</span>
+        <span>
+          <b>monkey-aside-menu</b>: the side menu; its "Styles" option changes the color of this
+          page.
+        </span>
+        <span><b>monkey-alert</b>: shown with the buttons of the Alerts section.</span>
+        <span><b>monkey-tooltip</b>: shown when hovering an icon button for two seconds.</span>
+        <span><b>monkey-scrollbar</b>: the scrollbar of the page, in both themes.</span>
+        <span><b>monkey-login-page</b>: on the "Example" page of the top bar.</span>
       </monkey-list>
     </monkey-list>
   </monkey-card>

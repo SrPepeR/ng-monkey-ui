@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
 import { ThemeService } from '../../../services/theme.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -11,7 +11,7 @@ import { MonkeyInputTextType } from '../../../objects/enums/input-text-type.enum
   templateUrl: './login.page.html',
   styleUrls: ['../../../styles/components/_common.default.style.scss', './login.page.scss'],
 })
-export class MonkeyLoginPage extends Styleable implements OnInit {
+export class MonkeyLoginPage extends Styleable implements OnInit, OnChanges {
   /**
    * The header text for the login page.
    */
@@ -161,31 +161,7 @@ export class MonkeyLoginPage extends Styleable implements OnInit {
   /**
    * Represents the login actions for the login page.
    */
-  loginActions: MonkeyButtonData[] = [
-    new MonkeyButtonData(
-      MonkeyStyle.PRIMARY,
-      this.loginLabel,
-      () => {
-        if (this.form.valid) {
-          this.onLogin.emit({
-            email: this.form.get(this.EMAIL_CONTROL_NAME)?.value,
-            password: this.form.get(this.PASSWORD_CONTROL_NAME)?.value,
-          });
-        }
-      },
-      this.loginIcon,
-      'right',
-    ),
-    new MonkeyButtonData(
-      MonkeyStyle.SECONDARY,
-      this.registerLabel,
-      () => {
-        this.onRegister.emit();
-      },
-      this.registerIcon,
-      'right',
-    ),
-  ];
+  loginActions: MonkeyButtonData[] = [];
 
   /**
    * Observable that emits a boolean indicating whether the theme is in dark mode or not.
@@ -203,45 +179,73 @@ export class MonkeyLoginPage extends Styleable implements OnInit {
   override ngOnInit(): void {
     super.ngOnInit();
 
-    if (this.check(this.canContinueAsGuest)) {
-      this.addContinueAsGuestAction();
+    this.buildLoginActions();
+  }
+
+  /**
+   * Rebuilds the actions when an input changes, so they always show the given labels and icons.
+   */
+  override ngOnChanges(): void {
+    super.ngOnChanges();
+
+    this.buildLoginActions();
+  }
+
+  /**
+   * Handles the Enter key pressed inside the login form.
+   * Logs in when the form is valid, or continues as guest when that is allowed.
+   */
+  onEnterKey() {
+    if (this.form.valid) {
+      this.login();
+    } else if (this.check(this.canContinueAsGuest)) {
+      this.onContinueAsGuest.emit();
     }
-
-    this.handleEnterKey();
   }
 
   /**
-   * Handles the 'Enter' key press event.
+   * Emits the login event with the form values when the form is valid.
    */
-  private handleEnterKey() {
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') {
-        if (this.form.valid) {
-          this.onLogin.emit({
-            email: this.form.get(this.EMAIL_CONTROL_NAME)?.value,
-            password: this.form.get(this.PASSWORD_CONTROL_NAME)?.value,
-          });
-        } else if (this.check(this.canContinueAsGuest)) {
-          this.onContinueAsGuest.emit();
-        }
-      }
-    });
+  private login() {
+    if (this.form.valid) {
+      this.onLogin.emit({
+        email: this.form.get(this.EMAIL_CONTROL_NAME)?.value,
+        password: this.form.get(this.PASSWORD_CONTROL_NAME)?.value,
+      });
+    }
   }
 
   /**
-   * Adds the "Continue as Guest" action to the login actions array.
+   * Builds the actions from the current inputs.
    */
-  private addContinueAsGuestAction() {
-    this.loginActions.push(
+  private buildLoginActions() {
+    this.loginActions = [
       new MonkeyButtonData(
-        MonkeyStyle.TERTIARY,
-        this.continueAsGuestLabel,
-        () => {
-          this.onContinueAsGuest.emit();
-        },
-        this.continueAsGuestIcon,
+        MonkeyStyle.PRIMARY,
+        this.loginLabel,
+        () => this.login(),
+        this.loginIcon,
         'right',
       ),
-    );
+      new MonkeyButtonData(
+        MonkeyStyle.SECONDARY,
+        this.registerLabel,
+        () => this.onRegister.emit(),
+        this.registerIcon,
+        'right',
+      ),
+    ];
+
+    if (this.check(this.canContinueAsGuest)) {
+      this.loginActions.push(
+        new MonkeyButtonData(
+          MonkeyStyle.TERTIARY,
+          this.continueAsGuestLabel,
+          () => this.onContinueAsGuest.emit(),
+          this.continueAsGuestIcon,
+          'right',
+        ),
+      );
+    }
   }
 }

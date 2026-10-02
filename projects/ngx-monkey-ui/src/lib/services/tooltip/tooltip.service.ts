@@ -8,11 +8,6 @@ import { MonkeyStyle } from '../../objects/enums/style.enum';
 })
 export class MonkeyTooltipService {
   /**
-   * Default screen time for the tooltip to be shown.
-   */
-  private DEFAULT_SCREEN_TIME = 300;
-
-  /**
    * Default time before show tooltip on screen.
    */
   private DEFAULT_TIME_BEFORE_SHOW = 2000;
@@ -29,7 +24,7 @@ export class MonkeyTooltipService {
    * Shows a tooltip with the specified text, style, and mouse position.
    * @param text - The text to display in the tooltip.
    * @param style - The style of the tooltip.
-   * @param mousePosition - The position of the mouse when the tooltip is shown.
+   * @param mousePosition - The position of the mouse when the tooltip is shown, in viewport coordinates.
    */
   onShow(
     text: string,
@@ -53,15 +48,6 @@ export class MonkeyTooltipService {
   show(tooltip: Tooltip) {
     this.event.next(tooltip);
     this.removeTimeouts();
-  }
-
-  /**
-   * Hides the tooltip after a certain delay.
-   */
-  private onHide() {
-    this.hideTimeoutId = setTimeout(() => {
-      this.hide();
-    }, this.DEFAULT_SCREEN_TIME);
   }
 
   /**

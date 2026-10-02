@@ -8,7 +8,8 @@
   [glass]="glass"
   [glow]="glow"
   [discreet]="discreet"
-  (click)="onClicked()"
+  [disabled]="disabled"
+  (onClick)="onClicked()"
   (mouseover)="showTooltip($event)"
   (mouseout)="hideTooltip()"
 >

@@ -17,7 +17,8 @@
     (ngModelChange)="inputChanged()"
     [class]="classList"
     [class.dark-theme]="isDarkMode$ | async"
-    (mousewheel)="onMouseWheel($event)"
+    (input)="onInput()"
+    (wheel)="onMouseWheel($event)"
     #input
   />
 

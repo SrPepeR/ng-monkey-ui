@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
 import { Styleable } from '../../../bases/styleable.base';
 
@@ -37,9 +37,9 @@ export class MonkeyImage extends Styleable implements OnChanges {
   @Input() alt!: string;
 
   /**
-   * The title of the image.
+   * The title of the image. Defaults to `alt` when it is not given.
    */
-  @Input() title?: string = this.alt;
+  @Input() title?: string;
 
   /**
    * The width of the image.
@@ -77,11 +77,14 @@ export class MonkeyImage extends Styleable implements OnChanges {
 
   /**
    * Lifecycle hook that is called when any of the input properties change.
+   * Shows the placeholder again only when a new image has to be loaded.
    */
-  override ngOnChanges() {
+  override ngOnChanges(changes?: SimpleChanges) {
     super.ngOnChanges();
 
-    this.loading = true;
+    if (changes?.['src']) {
+      this.loading = true;
+    }
   }
 
   /**
@@ -105,6 +108,7 @@ export class MonkeyImage extends Styleable implements OnChanges {
    * Emits the onLoadingImageError event.
    */
   onErrorImage() {
+    this.loading = false;
     this.onLoadingImageError.emit();
   }
 }

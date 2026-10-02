@@ -1,3 +1,7 @@
-<span class="material-symbols-outlined">
+<span
+  class="material-symbols-outlined"
+  [class]="classList"
+  [class.dark-theme]="isDarkMode$ | async"
+>
   {{ icon }}
 </span>

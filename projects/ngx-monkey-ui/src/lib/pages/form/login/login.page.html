@@ -1,7 +1,7 @@
 <!-- PAGE CONTENT -->
 <monkey-list gapSize="lg">
   <!-- LOGIN FORM -->
-  <monkey-list class="login-form">
+  <monkey-list class="login-form" (keydown.enter)="onEnterKey()">
     <!-- HEADER -->
     <monkey-header>{{ header }}</monkey-header>
 

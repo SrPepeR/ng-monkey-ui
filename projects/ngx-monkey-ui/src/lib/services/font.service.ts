@@ -35,7 +35,7 @@ export class MonkeyFontService {
    * The URL of the Red Hat Display font.
    */
   private RED_HAT_DISPLAY_FONT_URL =
-    'https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900';
+    'https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap';
 
   constructor() {
     this.initGoogleFonts();
@@ -69,7 +69,7 @@ export class MonkeyFontService {
    * Removes the Dosis font from the document.
    */
   removeDosisFont() {
-    this.removeCustomFont(this.DOSIS_FONT_URL);
+    this.removeCustomFont(this.DOSIS_FONT_URL, this.DOSIS_FONT_NAME);
   }
 
   /**
@@ -83,7 +83,7 @@ export class MonkeyFontService {
    * Removes the Titillium Web font from the document.
    */
   removeTitilliumWebFont() {
-    this.removeCustomFont(this.TITILLIUM_WEB_FONT_URL);
+    this.removeCustomFont(this.TITILLIUM_WEB_FONT_URL, this.TITILLIUM_WEB_FONT_NAME);
   }
 
   /**
@@ -97,7 +97,7 @@ export class MonkeyFontService {
    * Removes the Red Hat Display font from the document.
    */
   removeRedHatDisplayFont() {
-    this.removeCustomFont(this.RED_HAT_DISPLAY_FONT_URL);
+    this.removeCustomFont(this.RED_HAT_DISPLAY_FONT_URL, this.RED_HAT_DISPLAY_FONT_NAME);
   }
 
   /**
@@ -107,11 +107,13 @@ export class MonkeyFontService {
    * @param useFont Whether to use the font as the default font.
    */
   addCustomFont(fontUrl: string, fontName: string, useFont = false) {
-    const link = document.createElement('link');
-    link.href = fontUrl;
-    link.id = `monkey-font-${this.parseFontName(fontName)}`;
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
+    if (!this.findLink(fontUrl)) {
+      const link = document.createElement('link');
+      link.href = fontUrl;
+      link.id = this.linkId(fontName);
+      link.rel = 'stylesheet';
+      document.head.appendChild(link);
+    }
 
     if (useFont) {
       this.removeOtherFonts(this.parseFontName(fontName));
@@ -124,9 +126,11 @@ export class MonkeyFontService {
    * @param fontName The name of the font.
    */
   useCustomFont(fontName: string) {
+    document.getElementById(this.styleId(fontName))?.remove();
+
     const style = document.createElement('style');
     style.innerHTML = `* { font-family: '${fontName}'}`;
-    style.id = `monkey-font-${this.parseFontName(fontName)}`;
+    style.id = this.styleId(fontName);
     document.head.appendChild(style);
   }
 
@@ -136,14 +140,10 @@ export class MonkeyFontService {
    * @param fontName The name of the font.
    */
   removeCustomFont(fontUrl: string, fontName?: string) {
-    const link = document.querySelector(`link[href="${fontUrl}"]`);
-    if (link) {
-      link.remove();
+    this.findLink(fontUrl)?.remove();
 
-      const style = document.querySelector(`style[id="monkey-font-${fontName}"]`);
-      if (style) {
-        style.remove();
-      }
+    if (fontName) {
+      document.getElementById(this.styleId(fontName))?.remove();
     }
   }
 
@@ -161,18 +161,41 @@ export class MonkeyFontService {
    * @param fontNameId The ID of the font name.
    */
   private removeOtherFonts(fontNameId: string) {
-    const links = document.querySelectorAll('link');
-    links.forEach((link) => {
-      if (link.href.includes(`monkey-font-`) && !link.href.includes(`monkey-font-${fontNameId}`)) {
-        link.remove();
-      }
-    });
+    const keptIds = [this.linkId(fontNameId), this.styleId(fontNameId)];
 
-    const styles = document.querySelectorAll('style');
-    styles.forEach((style) => {
-      if (style.id.includes(`monkey-font-`) && !style.id.includes(`monkey-font-${fontNameId}`)) {
-        style.remove();
-      }
-    });
+    document.head
+      .querySelectorAll('link[id^="monkey-font-"], style[id^="monkey-font-"]')
+      .forEach((element) => {
+        if (!keptIds.includes(element.id)) {
+          element.remove();
+        }
+      });
+  }
+
+  /**
+   * Finds the `<link>` of a font by its URL.
+   * @param fontUrl The URL of the font.
+   * @returns The `<link>`, or `undefined` when the font is not added.
+   */
+  private findLink(fontUrl: string): HTMLLinkElement | undefined {
+    return Array.from(document.head.querySelectorAll('link')).find(
+      (link) => link.getAttribute('href') === fontUrl,
+    );
+  }
+
+  /**
+   * Id of the `<link>` that loads a font.
+   * @param fontName The name of the font.
+   */
+  private linkId(fontName: string): string {
+    return `monkey-font-${this.parseFontName(fontName)}-link`;
+  }
+
+  /**
+   * Id of the `<style>` that uses a font.
+   * @param fontName The name of the font.
+   */
+  private styleId(fontName: string): string {
+    return `monkey-font-${this.parseFontName(fontName)}`;
   }
 }

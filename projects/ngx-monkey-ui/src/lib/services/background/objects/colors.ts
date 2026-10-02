@@ -50,6 +50,8 @@ export class Colors {
    * @returns A string representing a random color in hexadecimal format.
    */
   generateRandom(): string {
-    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    return `#${Math.floor(Math.random() * 16777215)
+      .toString(16)
+      .padStart(6, '0')}`;
   }
 }

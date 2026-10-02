@@ -58,7 +58,7 @@ describe('ThemeService', () => {
     expect(service.isLightMode).toBeFalse();
   });
 
-  xit('E-11: stores the choice in localStorage', () => {
+  it('E-11: stores the choice in localStorage', () => {
     const service = createService();
 
     service.toggleDarkMode();
@@ -66,11 +66,20 @@ describe('ThemeService', () => {
     expect(Storage.prototype.setItem).toHaveBeenCalledWith('theme', 'dark');
   });
 
-  xit('E-11: follows the changes of prefers-color-scheme when the user did not choose', () => {
+  it('E-11: follows the changes of prefers-color-scheme when the user did not choose', () => {
     const service = createService();
 
     systemListener?.({ matches: true });
 
     expect(service.isDarkMode).toBeTrue();
+  });
+
+  it('ignores the changes of prefers-color-scheme once the user chose', () => {
+    storedTheme = 'light';
+    const service = createService();
+
+    systemListener?.({ matches: true });
+
+    expect(service.isDarkMode).toBeFalse();
   });
 });

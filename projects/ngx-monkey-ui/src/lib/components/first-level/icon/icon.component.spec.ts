@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 
 import { MonkeyIcon } from './icon.component';
+import { NgxMonkeyUiModule } from '../../../ngx-monkey-ui.module';
+import { MonkeyStyle } from '../../../objects/enums/style.enum';
 
 describe('IconComponent', () => {
   let component: MonkeyIcon;
@@ -8,14 +10,28 @@ describe('IconComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MonkeyIcon],
+      imports: [NgxMonkeyUiModule],
     });
     fixture = TestBed.createComponent(MonkeyIcon);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    fixture.detectChanges();
+
     expect(component).toBeTruthy();
   });
+
+  it('applies the classList to its element', fakeAsync(() => {
+    fixture.componentRef.setInput('style', MonkeyStyle.DANGER);
+    fixture.componentRef.setInput('brutalist', '');
+    fixture.detectChanges();
+    tick(300);
+    fixture.detectChanges();
+
+    const element: HTMLElement = fixture.nativeElement.querySelector('span');
+    expect(element.classList).toContain('style-danger');
+    expect(element.classList).toContain('type-brutalist');
+    expect(element.classList).toContain('material-symbols-outlined');
+  }));
 });

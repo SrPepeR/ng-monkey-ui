@@ -52,9 +52,15 @@ export class MonkeyInputNumber extends MonkeyInput {
 
   /**
    * Handles the mouse wheel event.
+   * Only steps the value with `inputType="number"` and the field focused,
+   * so the page keeps scrolling when the pointer just passes over the field.
    * @param event - The mouse wheel event.
    */
   onMouseWheel(event: Event): void {
+    if (!this.isNumberType() || document.activeElement !== this.input.nativeElement) {
+      return;
+    }
+
     event.preventDefault();
     if ((event as WheelEvent).deltaY < 0) {
       this.stepUp();
@@ -64,9 +70,35 @@ export class MonkeyInputNumber extends MonkeyInput {
   }
 
   /**
+   * Handles the input event, after the form control has received the typed string.
+   * With `inputType="number"`, the control gets the value as a number.
+   */
+  onInput(): void {
+    if (this.isNumberType()) {
+      this.reloadValue();
+    }
+  }
+
+  /**
    * Reloads the value of the input field into the form control.
+   * With `inputType="number"` the value is a number (or `null` when empty);
+   * with the other types it is the string of the field.
    */
   private reloadValue(): void {
-    this.formGroup.get(this.name)!.setValue(this.input.nativeElement.value);
+    const nativeInput: HTMLInputElement = this.input.nativeElement;
+    const value = this.isNumberType()
+      ? Number.isNaN(nativeInput.valueAsNumber)
+        ? null
+        : nativeInput.valueAsNumber
+      : nativeInput.value;
+
+    this.formGroup.get(this.name)!.setValue(value, { emitModelToViewChange: false });
+  }
+
+  /**
+   * Whether the field is a number field.
+   */
+  private isNumberType(): boolean {
+    return this.inputType === MonkeyInputNumberType.NUMBER;
   }
 }

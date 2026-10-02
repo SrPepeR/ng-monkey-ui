@@ -33,7 +33,7 @@ export class Tooltip {
    * Creates a new Tooltip instance.
    * @param style - The style of the tooltip.
    * @param text - The text content of the tooltip.
-   * @param mousePosition - The current mouse position.
+   * @param mousePosition - The current mouse position, in viewport coordinates (`clientX`/`clientY`).
    */
   constructor(
     style: MonkeyStyle,
@@ -50,7 +50,8 @@ export class Tooltip {
    * @param mousePosition - The current mouse position.
    */
   private setDirection(mousePosition: { x: number; y: number }) {
-    if (!mousePosition || !mousePosition.x || !mousePosition.y) {
+    // 0 is a valid coordinate: only a missing position is ignored.
+    if (!mousePosition || mousePosition.x == null || mousePosition.y == null) {
       return;
     }
 

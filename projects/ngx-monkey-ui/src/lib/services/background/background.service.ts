@@ -156,7 +156,7 @@ export class MonkeyBackgroundService {
     let animationCss = '@keyframes monkey-background-animation {';
     let percentage = 0;
 
-    for (let i = 0; i < gradientsVariations.length - 1; i++) {
+    for (let i = 0; i < gradientsVariations.length; i++) {
       animationCss += `${percentage}% { ${this.generate(gradientsVariations[i])} } `;
       // Round next percentage to avoid floating point errors
       percentage = Math.round((100 / steps) * (i + 1));
@@ -183,7 +183,7 @@ export class MonkeyBackgroundService {
   }
 
   /**
-   * Removes the background from the document's head.
+   * Removes the background from the document's head and stops its animation.
    */
   remove(): MonkeyBackgroundService {
     const style = document.getElementById('monkey-background');
@@ -191,7 +191,7 @@ export class MonkeyBackgroundService {
       style.remove();
     }
 
-    return this;
+    return this.stopAnimation();
   }
 
   /**

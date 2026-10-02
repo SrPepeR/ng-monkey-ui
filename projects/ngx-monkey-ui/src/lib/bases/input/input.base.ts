@@ -1,4 +1,5 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { ComponentsStylesService } from '../../services/components-styles.service';
 import { MonkeyScreenService } from '../../services/screen/screen.service';
@@ -18,7 +19,7 @@ import { FormControl, FormGroup } from '@angular/forms';
  * Represents a base class for styleable components.
  * Provides common style and type properties for components.
  */
-export class MonkeyInput extends Styleable {
+export class MonkeyInput extends Styleable implements OnInit, OnDestroy {
   /**
    * The input element.
    */
@@ -108,6 +109,24 @@ export class MonkeyInput extends Styleable {
   invalidMessages: string[] = [];
 
   /**
+   * Subscription to the events of the form control, to keep the messages up to date.
+   */
+  private controlEventsSubscription?: Subscription;
+
+  override ngOnInit() {
+    super.ngOnInit();
+
+    const control = this.formGroup?.get(this.name) as FormControl | null;
+    this.controlEventsSubscription = control?.events.subscribe(() =>
+      this.generateInvalidMessages(control),
+    );
+  }
+
+  ngOnDestroy() {
+    this.controlEventsSubscription?.unsubscribe();
+  }
+
+  /**
    * Handles the click event on the label element.
    * Sets focus on the input element.
    */
@@ -132,19 +151,18 @@ export class MonkeyInput extends Styleable {
 
   /**
    * Generates invalid messages for a given form control.
+   * The messages are only shown once the user has changed or left the control.
    * @param control - The form control to generate invalid messages for.
    */
   private generateInvalidMessages(control: FormControl<any>) {
     const messages: string[] = [];
 
-    if (control?.errors) {
+    if (control?.errors && (control.dirty || control.touched)) {
       if (control.errors) {
         Object.keys(control.errors).forEach((key) => {
           switch (key) {
             case 'required':
-              if (control.value !== '' && control.value !== null && control.value !== undefined) {
-                messages.push('This field is required');
-              }
+              messages.push('This field is required');
               break;
             case 'minlength':
               messages.push(
