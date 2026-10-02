@@ -196,9 +196,9 @@ export class Styleable implements OnInit, OnChanges {
       this.classList.push('position-sticky');
     }
 
-    if (this.check(this.disabled)) {
+    this.isDisabledComponent = this.check(this.disabled);
+    if (this.isDisabledComponent) {
       this.classList.push('disabled');
-      this.isDisabledComponent = true;
     }
   }
 

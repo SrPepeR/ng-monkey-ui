@@ -17,7 +17,7 @@ implemented_by:
     version: "5.5"
     reasoning_effort: "low"
 
-last_implementation_at: "2026-10-02T21:45:00Z"
+last_implementation_at: "2026-10-02T22:30:00Z"
 has_completed_all_phases: "false"
 ---
 
@@ -95,22 +95,22 @@ Fix the inverted `required` message and the messages that are not recalculated (
 
 Make `MonkeyLoginPage` respect its inputs and listen to Enter only inside its form (E-07), make `isDisabledComponent` go back to `false` (E-22), and make composite components listen to the child output instead of the native click (E-24).
 
-- [ ] Extend [login.page.spec.ts](../../../projects/ngx-monkey-ui/src/lib/pages/form/login/login.page.spec.ts) with:
+- [x] Extend [login.page.spec.ts](../../../projects/ngx-monkey-ui/src/lib/pages/form/login/login.page.spec.ts) with:
   - `uses the custom labels and icons in the actions`
   - `updates the actions when a label input changes`
   - `Enter inside the form emits onLogin`
   - `Enter outside the form does not emit onLogin`
-- [ ] `MonkeyLoginPage`: build `loginActions` in `ngOnInit`/`ngOnChanges`, and replace the global `keydown` listener with a `(keydown.enter)` on the form. Inputs and outputs stay the same.
-- [ ] Extend [styleable.base.spec.ts](../../../projects/ngx-monkey-ui/src/lib/bases/styleable.base.spec.ts) with `isDisabledComponent returns to false when the component is enabled again`.
-- [ ] `Styleable`: set `isDisabledComponent` to `false` when `disabled` is false.
-- [ ] Extend [icon-button.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/second-level/icon-button/icon-button.component.spec.ts) with:
+- [x] `MonkeyLoginPage`: build `loginActions` in `ngOnInit`/`ngOnChanges`, and replace the global `keydown` listener with a `(keydown.enter)` on the form. Inputs and outputs stay the same.
+- [x] Extend [styleable.base.spec.ts](../../../projects/ngx-monkey-ui/src/lib/bases/styleable.base.spec.ts) with `isDisabledComponent returns to false when the component is enabled again`.
+- [x] `Styleable`: set `isDisabledComponent` to `false` when `disabled` is false.
+- [x] Extend [icon-button.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/second-level/icon-button/icon-button.component.spec.ts) with:
   - `emits onClick once per click`
   - `does not emit onClick when disabled`
-- [ ] Extend [alert.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/third-level/alert/alert.component.spec.ts) with `the dismiss, accept and reject buttons emit their outputs once`.
-- [ ] `MonkeyIconButton` and `MonkeyAlert`: bind the child `(onClick)` output instead of the native `(click)` on its host.
-- [ ] Mark 13.2 and 13.14 as done in [ROADMAP.md](../../../ROADMAP.md).
-- [ ] Verify the changes in terms of typechecking, linting and tests using the project's verification command. Fix issues if any.
-- [ ] STOP. Present the changes to the user for review and suggest commit messages. Do NOT proceed to the next phase until the user explicitly asks.
+- [x] Extend [alert.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/third-level/alert/alert.component.spec.ts) with `the dismiss, accept and reject buttons emit their outputs once`.
+- [x] `MonkeyIconButton` and `MonkeyAlert`: bind the child `(onClick)` output instead of the native `(click)` on its host.
+- [x] Mark 13.2 and 13.14 as done in [ROADMAP.md](../../../ROADMAP.md).
+- [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command. Fix issues if any.
+- [x] STOP. Present the changes to the user for review and suggest commit messages. Do NOT proceed to the next phase until the user explicitly asks.
 
 ### Phase 3: Visual components (13.3, 13.4, 13.6, 13.7, 13.11)
 
@@ -178,6 +178,6 @@ Record the fixes and close point 13 in the docs.
 
 ## ⏭️ Next step
 
-Implement Phase 2: the login page, disabled state and composite click fixes (E-07, E-22, E-24) with their tests.
+Implement Phase 3: the visual component fixes (E-08, E-09, E-10, E-12, E-14, E-18) with their tests, and record the E-13 decision.
 
-Sixteen bugs line up, and the form fields already tell the truth about them thanks to 🐢 💨 (Turbotuga™, [Codely](https://codely.com)'s mascot). 🐛 📝 ✅
+Sixteen bugs line up, the form fields already tell the truth about them, and now every button answers only its own click thanks to 🐢 💨 (Turbotuga™, [Codely](https://codely.com)'s mascot). 🐛 📝 ✅ 🖱️

@@ -13,7 +13,7 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
 - [ ] 13. Corregir los errores funcionales sin cambiar la API pública.
   - Todo lo que hoy se comporta mal, arreglado sobre Angular 18 y publicado como `0.3.2` junto con el punto 14, para que el port del punto 16 no mezcle regresiones de dos orígenes. Ninguna tarea de este punto cambia el nombre o el tipo de un input u output.
   - [x] 13.1. Mensaje "required" invertido en `MonkeyInput` (E-06) y mensajes que no se recalculan tras `reset`, `setValue` o `markAllAsTouched` (E-23).
-  - [ ] 13.2. `MonkeyLoginPage`: construir `loginActions` en `ngOnInit`/`ngOnChanges` para respetar los inputs, y sustituir el `keydown` global por un `(keydown.enter)` o un `(ngSubmit)` en el propio formulario (E-07).
+  - [x] 13.2. `MonkeyLoginPage`: construir `loginActions` en `ngOnInit`/`ngOnChanges` para respetar los inputs, y sustituir el `keydown` global por un `(keydown.enter)` o un `(ngSubmit)` en el propio formulario (E-07).
   - [ ] 13.3. `MonkeyImage`: volver a `loading = true` solo cuando cambia `src`, salir del placeholder en `(error)`, y resolver `title` a partir de `alt` cuando no se indique (E-08, E-09).
   - [ ] 13.4. `MonkeyScrollbar`: leer los inputs después de asignados, reutilizar un único `<style>` y cancelar la suscripción al destruir (E-10).
   - [ ] 13.5. `ThemeService`: guardar la elección en `localStorage` y seguir los cambios de `prefers-color-scheme` mientras el usuario no haya elegido (E-11).
@@ -25,7 +25,7 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
   - [ ] 13.11. `MonkeyAsideMenu`: referencia al contenido con `viewChild` en lugar de id global, y tolerar `data` vacío (E-18).
   - [x] 13.12. Ids únicos en checkbox y switch con un contador compartido a nivel de módulo o `static` de la clase (uno por instancia empezaría siempre en el mismo valor y repetiría los ids), y `for` apuntando al `<input>` real (E-19).
   - [ ] 13.13. Tooltip: aceptar coordenadas 0 y usar coordenadas de viewport (`clientX/clientY`) de forma coherente (E-20); quitar el código muerto del servicio (E-21).
-  - [ ] 13.14. `isDisabledComponent` vuelve a `false` al habilitar (E-22); clicks de componentes compuestos escuchando el output y no el `(click)` nativo del host (E-24).
+  - [x] 13.14. `isDisabledComponent` vuelve a `false` al habilitar (E-22); clicks de componentes compuestos escuchando el output y no el `(click)` nativo del host (E-24).
   - [ ] 13.15. `MonkeyScreenService.unlockOrientation()`: llamar a `unlock()` y devolver una promesa de verdad (resuelta tras desbloquear y rechazada si `unlock()` lanza), quitando el `@ts-expect-error` (E-25). La firma `Promise<void>` no cambia.
   - [ ] 13.16. Recoger las correcciones en `CHANGELOG.md`. La publicación de `0.3.2` espera al 14.6, para no salir sin E-02 a E-05, que son críticos.
 

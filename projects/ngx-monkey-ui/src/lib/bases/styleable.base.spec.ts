@@ -50,6 +50,20 @@ describe('Styleable', () => {
       expect(fixture.componentInstance.classList).not.toContain('style-primary');
     }));
 
+    it('isDisabledComponent returns to false when the component is enabled again', fakeAsync(() => {
+      fixture.componentRef.setInput('disabled', 'true');
+      fixture.detectChanges();
+      tick(CHANGES_DELAY);
+      expect(fixture.componentInstance.isDisabledComponent).toBeTrue();
+
+      fixture.componentRef.setInput('disabled', 'false');
+      fixture.detectChanges();
+      tick(CHANGES_DELAY);
+
+      expect(fixture.componentInstance.isDisabledComponent).toBeFalse();
+      expect(fixture.componentInstance.classList).not.toContain('disabled');
+    }));
+
     xit('E-02: keeps one subscription to the screen changes after several input changes', fakeAsync(() => {
       const addEventListener = spyOn(window, 'addEventListener').and.callThrough();
 
