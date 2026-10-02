@@ -17,7 +17,7 @@ implemented_by:
     version: "5.5"
     reasoning_effort: "low"
 
-last_implementation_at: "2026-10-02T23:30:00Z"
+last_implementation_at: "2026-10-03T00:30:00Z"
 has_completed_all_phases: "false"
 ---
 
@@ -144,27 +144,27 @@ Fix the image placeholder and title (E-08, E-09), the scrollbar styles (E-10), t
 
 Fix the theme persistence (E-11), the font service (E-16), the background service (E-17), the tooltip coordinates and dead code (E-20, E-21) and `unlockOrientation()` (E-25).
 
-- [ ] In [theme.service.spec.ts](../../../projects/ngx-monkey-ui/src/lib/services/theme.service.spec.ts), turn into `it`:
+- [x] In [theme.service.spec.ts](../../../projects/ngx-monkey-ui/src/lib/services/theme.service.spec.ts), turn into `it`:
   - `E-11: stores the choice in localStorage`
   - `E-11: follows the changes of prefers-color-scheme when the user did not choose`
-- [ ] `ThemeService`: save the choice in `localStorage` on `toggleDarkMode()`, and follow `prefers-color-scheme` changes while there is no saved choice. `isDarkMode$`, `isDarkMode`, `isLightMode` and `toggleDarkMode()` stay the same.
-- [ ] In [font.service.spec.ts](../../../projects/ngx-monkey-ui/src/lib/services/font.service.spec.ts), turn the five E-16 `xit` into `it`.
-- [ ] `MonkeyFontService`: look fonts up by `id`, remove the `<style>` together with the `<link>`, different ids for `<link>` and `<style>`, no duplicated `<link>`, `display=swap` in Red Hat Display.
-- [ ] Create `background.service.spec.ts` next to [background.service.ts](../../../projects/ngx-monkey-ui/src/lib/services/background/background.service.ts) with:
+- [x] `ThemeService`: save the choice in `localStorage` on `toggleDarkMode()`, and follow `prefers-color-scheme` changes while there is no saved choice. `isDarkMode$`, `isDarkMode`, `isLightMode` and `toggleDarkMode()` stay the same.
+- [x] In [font.service.spec.ts](../../../projects/ngx-monkey-ui/src/lib/services/font.service.spec.ts), turn the five E-16 `xit` into `it`.
+- [x] `MonkeyFontService`: look fonts up by `id`, remove the `<style>` together with the `<link>`, different ids for `<link>` and `<style>`, no duplicated `<link>`, `display=swap` in Red Hat Display.
+- [x] Create `background.service.spec.ts` next to [background.service.ts](../../../projects/ngx-monkey-ui/src/lib/services/background/background.service.ts) with:
   - `generated colors always have six hex digits`
   - `animate() includes the last frame`
   - `keeps positions and sizes between 0 and 100`
   - `remove() also stops the animation`
-- [ ] `MonkeyBackgroundService`: `padStart(6, '0')` in the colors, include the last frame, clamp positions and sizes, and stop the animation in `remove()`.
-- [ ] In [tooltip.service.spec.ts](../../../projects/ngx-monkey-ui/src/lib/services/tooltip/tooltip.service.spec.ts), turn `E-20: accepts the coordinate 0` into `it`, and add `chooses the direction from viewport coordinates`.
-- [ ] Tooltip: accept the coordinate 0 in `Tooltip`, pass `clientX/clientY` from `Tooltipable`, and remove `onHide()` and `DEFAULT_SCREEN_TIME` from `MonkeyTooltipService` (E-21).
-- [ ] Create `screen.service.spec.ts` next to [screen.service.ts](../../../projects/ngx-monkey-ui/src/lib/services/screen/screen.service.ts) with:
+- [x] `MonkeyBackgroundService`: `padStart(6, '0')` in the colors, include the last frame, clamp positions and sizes, and stop the animation in `remove()`.
+- [x] In [tooltip.service.spec.ts](../../../projects/ngx-monkey-ui/src/lib/services/tooltip/tooltip.service.spec.ts), turn `E-20: accepts the coordinate 0` into `it`, and add `chooses the direction from viewport coordinates`.
+- [x] Tooltip: accept the coordinate 0 in `Tooltip`, pass `clientX/clientY` from `Tooltipable`, and remove `onHide()` and `DEFAULT_SCREEN_TIME` from `MonkeyTooltipService` (E-21).
+- [x] Create `screen.service.spec.ts` next to [screen.service.ts](../../../projects/ngx-monkey-ui/src/lib/services/screen/screen.service.ts) with:
   - `unlockOrientation() resolves after unlocking`
   - `unlockOrientation() rejects when unlock() throws`
-- [ ] `MonkeyScreenService.unlockOrientation()`: call `unlock()` and return a real promise, removing the `@ts-expect-error`. The `Promise<void>` signature stays the same.
-- [ ] Mark 13.5, 13.9, 13.10, 13.13 and 13.15 as done in [ROADMAP.md](../../../ROADMAP.md).
-- [ ] Verify the changes in terms of typechecking, linting and tests using the project's verification command. Fix issues if any.
-- [ ] STOP. Present the changes to the user for review and suggest commit messages. Do NOT proceed to the next phase until the user explicitly asks.
+- [x] `MonkeyScreenService.unlockOrientation()`: call `unlock()` and return a real promise, removing the `@ts-expect-error`. The `Promise<void>` signature stays the same.
+- [x] Mark 13.5, 13.9, 13.10, 13.13 and 13.15 as done in [ROADMAP.md](../../../ROADMAP.md).
+- [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command. Fix issues if any.
+- [x] STOP. Present the changes to the user for review and suggest commit messages. Do NOT proceed to the next phase until the user explicitly asks.
 
 ### Phase 5: Changelog and closing (13.16)
 
@@ -178,6 +178,6 @@ Record the fixes and close point 13 in the docs.
 
 ## ⏭️ Next step
 
-Implement Phase 4: the service fixes (E-11, E-16, E-17, E-20, E-21, E-25) with their tests.
+Implement Phase 5: create `CHANGELOG.md` and close point 13 in `ROADMAP.md` and `ANALISIS.md`.
 
-Sixteen bugs line up, the form fields already tell the truth about them, every button answers only its own click, and broken images finally admit they are broken thanks to 🐢 💨 (Turbotuga™, [Codely](https://codely.com)'s mascot). 🐛 📝 ✅ 🖱️ 🖼️
+Sixteen bugs line up, the form fields already tell the truth about them, every button answers only its own click, broken images finally admit they are broken, and the theme remembers the night thanks to 🐢 💨 (Turbotuga™, [Codely](https://codely.com)'s mascot). 🐛 📝 ✅ 🖱️ 🖼️ 🌙

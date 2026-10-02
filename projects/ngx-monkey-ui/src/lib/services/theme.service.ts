@@ -18,21 +18,39 @@ export class ThemeService {
    */
   isDarkMode$ = this._isDarkMode.asObservable();
 
+  /**
+   * Key of the user's choice in `localStorage`.
+   */
+  private readonly THEME_STORAGE_KEY = 'theme';
+
+  /**
+   * Whether the user has chosen a theme. While they have not, the theme follows the system.
+   */
+  private hasUserChoice = false;
+
   constructor() {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    const hasTheme = localStorage.getItem('theme');
-    if (hasTheme) {
-      this._isDarkMode.next(hasTheme === 'dark');
-    } else {
-      this._isDarkMode.next(prefersDark.matches);
-    }
+    const storedTheme = localStorage.getItem(this.THEME_STORAGE_KEY);
+    this.hasUserChoice = storedTheme === 'dark' || storedTheme === 'light';
+
+    this._isDarkMode.next(this.hasUserChoice ? storedTheme === 'dark' : prefersDark.matches);
+
+    prefersDark.addEventListener('change', (event) => {
+      if (!this.hasUserChoice) {
+        this._isDarkMode.next(event.matches);
+      }
+    });
   }
 
   /**
-   * Toggles the dark mode of the application.
+   * Toggles the dark mode of the application and stores the choice in `localStorage`.
    */
   toggleDarkMode() {
-    this._isDarkMode.next(!this._isDarkMode.value);
+    const isDarkMode = !this._isDarkMode.value;
+
+    this.hasUserChoice = true;
+    localStorage.setItem(this.THEME_STORAGE_KEY, isDarkMode ? 'dark' : 'light');
+    this._isDarkMode.next(isDarkMode);
   }
 
   /**

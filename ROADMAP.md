@@ -16,17 +16,17 @@ Este documento describe la hoja de ruta para el desarrollo y las futuras mejoras
   - [x] 13.2. `MonkeyLoginPage`: construir `loginActions` en `ngOnInit`/`ngOnChanges` para respetar los inputs, y sustituir el `keydown` global por un `(keydown.enter)` o un `(ngSubmit)` en el propio formulario (E-07).
   - [x] 13.3. `MonkeyImage`: volver a `loading = true` solo cuando cambia `src`, salir del placeholder en `(error)`, y resolver `title` a partir de `alt` cuando no se indique (E-08, E-09).
   - [x] 13.4. `MonkeyScrollbar`: leer los inputs después de asignados, reutilizar un único `<style>` y cancelar la suscripción al destruir (E-10).
-  - [ ] 13.5. `ThemeService`: guardar la elección en `localStorage` y seguir los cambios de `prefers-color-scheme` mientras el usuario no haya elegido (E-11).
+  - [x] 13.5. `ThemeService`: guardar la elección en `localStorage` y seguir los cambios de `prefers-color-scheme` mientras el usuario no haya elegido (E-11).
   - [x] 13.6. `MonkeyMenu`: `alt` como `@Input` y tooltip conectado (E-12). `MonkeyTooltip`: decidir, junto con el saneo del punto 14, entre aplicar las clases de `Styleable` al host o quitar esa herencia; llamar a `super.ngOnInit()` no corrige nada visible y añadiría otra suscripción sin cancelar (E-13). Quitar la herencia aquí exige conservar por composición los inputs que hoy hereda y reenvía a `monkey-card` (`style`, `brutalist`, `flat`…), porque este punto no cambia la API pública; si no, se aplaza al 17.8. **Decisión:** se aplaza al 17.8. El tooltip sigue reenviando sus inputs a `monkey-card`, que es lo que lo pinta, y la suscripción que deja el `ngOnChanges` heredado desaparece con el 14.1.
   - [x] 13.7. `MonkeyHeader` y `MonkeyIcon`: aplicar `classList` en la plantilla o dejar de heredar de `Styleable` (E-14).
   - [x] 13.8. `MonkeyInputNumber`: con `inputType="number"`, escribir un `number` en el control e interceptar la rueda con `(wheel)` solo con el campo enfocado; con `tel`, `date`, `datetime-local` y `time`, conservar el string y no instalar el handler de rueda, porque `stepUp()` no se admite en todos ellos (E-15).
-  - [ ] 13.9. `MonkeyFontService`: buscar por `id`, borrar el `<style>` al quitar una fuente, ids distintos para `<link>` y `<style>`, no duplicar `<link>`, `display=swap` en Red Hat Display (E-16).
-  - [ ] 13.10. `MonkeyBackgroundService`: colores con `padStart(6, '0')`, incluir el último fotograma, acotar posiciones y tamaños, y que `remove()` pare también la animación (E-17).
+  - [x] 13.9. `MonkeyFontService`: buscar por `id`, borrar el `<style>` al quitar una fuente, ids distintos para `<link>` y `<style>`, no duplicar `<link>`, `display=swap` en Red Hat Display (E-16).
+  - [x] 13.10. `MonkeyBackgroundService`: colores con `padStart(6, '0')`, incluir el último fotograma, acotar posiciones y tamaños, y que `remove()` pare también la animación (E-17).
   - [x] 13.11. `MonkeyAsideMenu`: referencia al contenido con `viewChild` en lugar de id global, y tolerar `data` vacío (E-18).
   - [x] 13.12. Ids únicos en checkbox y switch con un contador compartido a nivel de módulo o `static` de la clase (uno por instancia empezaría siempre en el mismo valor y repetiría los ids), y `for` apuntando al `<input>` real (E-19).
-  - [ ] 13.13. Tooltip: aceptar coordenadas 0 y usar coordenadas de viewport (`clientX/clientY`) de forma coherente (E-20); quitar el código muerto del servicio (E-21).
+  - [x] 13.13. Tooltip: aceptar coordenadas 0 y usar coordenadas de viewport (`clientX/clientY`) de forma coherente (E-20); quitar el código muerto del servicio (E-21).
   - [x] 13.14. `isDisabledComponent` vuelve a `false` al habilitar (E-22); clicks de componentes compuestos escuchando el output y no el `(click)` nativo del host (E-24).
-  - [ ] 13.15. `MonkeyScreenService.unlockOrientation()`: llamar a `unlock()` y devolver una promesa de verdad (resuelta tras desbloquear y rechazada si `unlock()` lanza), quitando el `@ts-expect-error` (E-25). La firma `Promise<void>` no cambia.
+  - [x] 13.15. `MonkeyScreenService.unlockOrientation()`: llamar a `unlock()` y devolver una promesa de verdad (resuelta tras desbloquear y rechazada si `unlock()` lanza), quitando el `@ts-expect-error` (E-25). La firma `Promise<void>` no cambia.
   - [ ] 13.16. Recoger las correcciones en `CHANGELOG.md`. La publicación de `0.3.2` espera al 14.6, para no salir sin E-02 a E-05, que son críticos.
 
 - [ ] 14. Sanear `Styleable` y el ciclo de vida de los componentes.

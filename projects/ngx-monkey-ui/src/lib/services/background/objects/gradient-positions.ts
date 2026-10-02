@@ -80,7 +80,15 @@ export class GradientPositions {
           ? prevPositions[i].y + Math.floor(Math.random() * 31)
           : prevPositions[i].y - Math.floor(Math.random() * 31); // Generate a random value between -30 and 30
 
-      this.gradientPositions[i] = { x: newX, y: newY };
+      this.gradientPositions[i] = { x: this.clamp(newX), y: this.clamp(newY) };
     }
+  }
+
+  /**
+   * Keeps a position inside the background, between 0 and 100 %.
+   * @param value - The position to clamp.
+   */
+  private clamp(value: number): number {
+    return Math.min(100, Math.max(0, value));
   }
 }

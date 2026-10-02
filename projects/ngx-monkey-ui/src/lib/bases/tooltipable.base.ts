@@ -32,7 +32,7 @@ export class Tooltipable implements OnDestroy {
       return;
     }
 
-    this.tooltipService.onShow(this.alt, this.style, { x: event.pageX, y: event.pageY });
+    this.tooltipService.onShow(this.alt, this.style, { x: event.clientX, y: event.clientY });
   }
 
   /**

@@ -61,7 +61,10 @@ export class GradientSizes {
       const change: number = Math.floor(Math.random() * 3);
       const direction: number = Math.floor(Math.random() * 2);
 
-      return direction === 0 ? size - change : size + change;
+      const newSize = direction === 0 ? size - change : size + change;
+
+      // Keeps the size between 0 and 100 %.
+      return Math.min(100, Math.max(0, newSize));
     });
   }
 }

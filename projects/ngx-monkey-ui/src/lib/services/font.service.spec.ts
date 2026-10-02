@@ -44,31 +44,31 @@ describe('MonkeyFontService', () => {
     );
   });
 
-  xit('E-16: does not add a second <link> for the same URL', () => {
+  it('E-16: does not add a second <link> for the same URL', () => {
     service.addCustomFont(CUSTOM_URL, 'Custom Font');
     service.addCustomFont(CUSTOM_URL, 'Custom Font');
 
     expect(linksWithHref(CUSTOM_URL).length).toBe(1);
   });
 
-  xit('E-16: removeDosisFont() removes the <link> and the <style>', () => {
+  it('E-16: removeDosisFont() removes the <link> and the <style>', () => {
     service.removeDosisFont();
 
     expect(linksWithHref(DOSIS_URL).length).toBe(0);
     expect(document.head.querySelector('style#monkey-font-Dosis')).toBeNull();
   });
 
-  xit('E-16: the <link> and the <style> of a font have different ids', () => {
+  it('E-16: the <link> and the <style> of a font have different ids', () => {
     expect(document.querySelectorAll('[id="monkey-font-Dosis"]').length).toBe(1);
   });
 
-  xit('E-16: using another font removes the <link> of the previous one', () => {
+  it('E-16: using another font removes the <link> of the previous one', () => {
     service.addTitilliumWebFont();
 
     expect(linksWithHref(DOSIS_URL).length).toBe(0);
   });
 
-  xit('E-16: the Red Hat Display URL has display=swap', () => {
+  it('E-16: the Red Hat Display URL has display=swap', () => {
     service.addRedHatDisplayFont();
 
     const redHatLink = Array.from(document.head.querySelectorAll('link')).find((link) =>
