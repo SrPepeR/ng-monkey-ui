@@ -1,5 +1,4 @@
 export enum MonkeyStyle {
-
   BACKGROUND = 'background',
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
@@ -9,5 +8,4 @@ export enum MonkeyStyle {
   DANGER = 'danger',
   INFO = 'info',
   NONE = '',
-
 }

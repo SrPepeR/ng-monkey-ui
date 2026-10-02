@@ -9,7 +9,7 @@ describe('InvalidFormMessageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NgxMonkeyUiModule]
+      imports: [NgxMonkeyUiModule],
     });
     fixture = TestBed.createComponent(InvalidFormMessageComponent);
     component = fixture.componentInstance;

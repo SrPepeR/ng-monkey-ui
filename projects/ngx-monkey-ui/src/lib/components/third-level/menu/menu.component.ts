@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnDestroy, Output, OnInit, OnChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
+  OnInit,
+  OnChanges,
+} from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
 import { ThemeService } from '../../../services/theme.service';
 import { MonkeyTooltipService } from '../../../services/tooltip/tooltip.service';
@@ -12,13 +20,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'monkey-menu',
   templateUrl: './menu.component.html',
-  styleUrls: [
-    '../../../styles/components/_common.default.style.scss',
-    './menu.component.scss',
-  ]
+  styleUrls: ['../../../styles/components/_common.default.style.scss', './menu.component.scss'],
 })
 export class MonkeyMenu extends Styleable implements OnDestroy, OnInit, OnChanges {
-
   /**
    * Represents the tooltipable behavior of the menu component.
    */
@@ -115,8 +119,8 @@ export class MonkeyMenu extends Styleable implements OnDestroy, OnInit, OnChange
    */
   navigateToPage(menuOption: MenuOption) {
     this.optionSelected.emit(menuOption);
-    
-    if(this.check(this.selfNavigation)) {
+
+    if (this.check(this.selfNavigation)) {
       this.router.navigate([menuOption.route]);
     }
   }
@@ -127,5 +131,4 @@ export class MonkeyMenu extends Styleable implements OnDestroy, OnInit, OnChange
   toggleFullMenu() {
     this.isFullMenuOpen = !this.isFullMenuOpen;
   }
-
 }

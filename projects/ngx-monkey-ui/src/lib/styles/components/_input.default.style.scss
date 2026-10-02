@@ -43,8 +43,8 @@
     border: none;
     font-size: large;
 
-    &[type=number]::-webkit-inner-spin-button,
-    &[type=number]::-webkit-outer-spin-button {
+    &[type='number']::-webkit-inner-spin-button,
+    &[type='number']::-webkit-outer-spin-button {
       -webkit-appearance: none;
     }
 
@@ -66,7 +66,7 @@
     left: -30px;
 
     span {
-      font-size: .8rem;
+      font-size: 0.8rem;
     }
   }
 

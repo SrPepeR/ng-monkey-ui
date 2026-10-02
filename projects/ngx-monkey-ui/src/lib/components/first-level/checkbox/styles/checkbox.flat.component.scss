@@ -2,29 +2,29 @@
 
 /* Flat style */
 label.container.type-flat {
-    color: var(--background-color-contrast-hight);
+  color: var(--background-color-contrast-hight);
 
-    span.checkmark {
-        transition: all .2s ease-in-out;
+  span.checkmark {
+    transition: all 0.2s ease-in-out;
 
-        background-color: var(--opacity-medium);
-        border-radius: 6px;
+    background-color: var(--opacity-medium);
+    border-radius: 6px;
 
-        &:after {
-            border-bottom: 3px solid var(--background-color);
-            border-right: 3px solid var(--background-color);
-        }
+    &:after {
+      border-bottom: 3px solid var(--background-color);
+      border-right: 3px solid var(--background-color);
     }
+  }
 
-    &:hover input~span.checkmark {
-        background-color: var(--opacity-hight);
-    }
+  &:hover input ~ span.checkmark {
+    background-color: var(--opacity-hight);
+  }
 
-    &:hover input:checked~span.checkmark {
-        background-color: var(--emphasis);
-    }
+  &:hover input:checked ~ span.checkmark {
+    background-color: var(--emphasis);
+  }
 
-    input:checked~span.checkmark {
-        background-color: var(--color);
-    }
+  input:checked ~ span.checkmark {
+    background-color: var(--color);
+  }
 }

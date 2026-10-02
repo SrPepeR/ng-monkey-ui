@@ -9,10 +9,9 @@ import { ThemeService } from '../../../services/theme.service';
   styleUrls: [
     '../../../styles/components/_common.default.style.scss',
     './subheader.component.scss',
-  ]
+  ],
 })
 export class MonkeySubheader extends Styleable {
-  
   /**
    * Specifies the style of the card.
    */
@@ -23,10 +22,7 @@ export class MonkeySubheader extends Styleable {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
-
 }

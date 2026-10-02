@@ -1,26 +1,27 @@
 <div
-    class="avatar-container squared-item"
+  class="avatar-container squared-item"
+  [class]="classList"
+  [class.dark-theme]="isDarkMode$ | async"
+>
+  <monkey-image
+    [fullRounded]="form === 'rounded' ? '' : 'false'"
+    [width]="size.width"
+    [height]="size.height"
+    [src]="image"
+    [title]="text"
+    [style]="style"
     [class]="classList"
     [class.dark-theme]="isDarkMode$ | async"
->
-    <monkey-image
-        [fullRounded]="form === 'rounded' ? '' : 'false'"
-        [width]="size.width"
-        [height]="size.height"
-        [src]="image"
-        [title]="text"
-        [style]="style"
-        [class]="classList"
-        [class.dark-theme]="isDarkMode$ | async"
-        (onLoadingImageError)="onErrorImage()"
-        (mouseover)="showTooltip($event)"
-        (mouseout)="hideTooltip()"
-    ></monkey-image>
+    (onLoadingImageError)="onErrorImage()"
+    (mouseover)="showTooltip($event)"
+    (mouseout)="hideTooltip()"
+  ></monkey-image>
 </div>
 
 <span
-    *ngIf="isLabeled"
-    class="label"
-    [class]="classList"
-    [class.dark-theme]="isDarkMode$ | async"
->{{ text }}</span>
+  *ngIf="isLabeled"
+  class="label"
+  [class]="classList"
+  [class.dark-theme]="isDarkMode$ | async"
+  >{{ text }}</span
+>

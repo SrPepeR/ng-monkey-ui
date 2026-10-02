@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 
 /**
-  * Generates a class list based on the component's size properties.
-  * @param component - The component object.
-  * @returns An array of strings representing the class list.
-  */
+ * Generates a class list based on the component's size properties.
+ * @param component - The component object.
+ * @returns An array of strings representing the class list.
+ */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ComponentsSizesService {
-
   /**
    * Generates a class list based on the provided component's size properties.
    * @param component - The component object.
@@ -44,5 +43,4 @@ export class ComponentsSizesService {
 
     return classList;
   }
-
 }

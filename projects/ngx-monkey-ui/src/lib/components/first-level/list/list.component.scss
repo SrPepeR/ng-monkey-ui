@@ -15,18 +15,18 @@
     }
 
     &.separators {
-      &> :not(:last-child) {
+      & > :not(:last-child) {
         position: relative;
 
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           background-color: var(--opacity-medium);
         }
       }
 
       &.horizontal {
-        &> :not(:last-child) {
+        & > :not(:last-child) {
           // WITH HORIZONTAL SEPARATORS
           height: 100%;
 
@@ -37,21 +37,21 @@
           }
         }
 
-        &.gap-sm> :not(:last-child)::after {
+        &.gap-sm > :not(:last-child)::after {
           right: -3%;
         }
 
-        &.gap-md> :not(:last-child)::after {
+        &.gap-md > :not(:last-child)::after {
           right: -8%;
         }
 
-        &.gap-lg> :not(:last-child)::after {
+        &.gap-lg > :not(:last-child)::after {
           right: -16%;
         }
       }
 
       &:not(.horizontal) {
-        &> :not(:last-child) {
+        & > :not(:last-child) {
           // WITH VERTICAL SEPARATORS
           width: auto;
 
@@ -62,15 +62,15 @@
           }
         }
 
-        &.gap-sm> :not(:last-child)::after {
+        &.gap-sm > :not(:last-child)::after {
           bottom: -25%;
         }
 
-        &.gap-md> :not(:last-child)::after {
+        &.gap-md > :not(:last-child)::after {
           bottom: -50%;
         }
 
-        &.gap-lg> :not(:last-child)::after {
+        &.gap-lg > :not(:last-child)::after {
           bottom: -100%;
         }
       }

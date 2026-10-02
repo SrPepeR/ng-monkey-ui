@@ -6,13 +6,9 @@ import { MonkeyStyle } from '../../../objects/enums/style.enum';
 @Component({
   selector: 'monkey-header',
   templateUrl: './header.component.html',
-  styleUrls: [
-    '../../../styles/components/_common.default.style.scss',
-    './header.component.scss',
-  ]
+  styleUrls: ['../../../styles/components/_common.default.style.scss', './header.component.scss'],
 })
 export class MonkeyHeader extends Styleable {
-  
   /**
    * Specifies the style of the card.
    */
@@ -23,10 +19,7 @@ export class MonkeyHeader extends Styleable {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
-
 }

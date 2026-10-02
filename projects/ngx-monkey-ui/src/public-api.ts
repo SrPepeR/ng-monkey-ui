@@ -4,183 +4,183 @@
 export * from './lib/ngx-monkey-ui.module';
 
 /*
-* BASES
-*/
-  // Styleable
-  export * from './lib/bases/styleable.base';
-    // MonkeyStyle
-    export * from './lib/objects/enums/style.enum';
+ * BASES
+ */
+// Styleable
+export * from './lib/bases/styleable.base';
+// MonkeyStyle
+export * from './lib/objects/enums/style.enum';
 
-  // Tooltip
-  export * from './lib/bases/tooltipable.base';
-
-/*
-* SERVICES
-*/
-  // Alert service
-  export * from './lib/services/alert.service';
-
-  // Tooltip service
-  export * from './lib/services/tooltip/tooltip.service';
-    // Tooltip
-    export * from './lib/services/tooltip/tooltip';
-
-  // Font service
-  export * from './lib/services/font.service';
-
-  // Screen service
-  export * from './lib/services/screen/screen.service';
-    // Screen enum
-    export * from './lib/services/screen/screen.enum';
-    // Screen
-    export * from './lib/services/screen/screen';
-
-  // Background service
-  export * from './lib/services/background/background.service';
-    // Gradient
-    export * from './lib/services/background/objects/gradient';
-      // Colors
-      export * from './lib/services/background/objects/colors';
-      // Gradient positions
-      export * from './lib/services/background/objects/gradient-positions';
-      // Gradient sizes
-      export * from './lib/services/background/objects/gradient-sizes';
-
-  // Theme service
-  export * from './lib/services/theme.service';
+// Tooltip
+export * from './lib/bases/tooltipable.base';
 
 /*
-* OBJECTS
-*/
-  // Button data
-  export * from './lib/objects/classes/button-data.class';
+ * SERVICES
+ */
+// Alert service
+export * from './lib/services/alert.service';
 
-  // Message data
-  export * from './lib/objects/classes/message-data.class';
+// Tooltip service
+export * from './lib/services/tooltip/tooltip.service';
+// Tooltip
+export * from './lib/services/tooltip/tooltip';
+
+// Font service
+export * from './lib/services/font.service';
+
+// Screen service
+export * from './lib/services/screen/screen.service';
+// Screen enum
+export * from './lib/services/screen/screen.enum';
+// Screen
+export * from './lib/services/screen/screen';
+
+// Background service
+export * from './lib/services/background/background.service';
+// Gradient
+export * from './lib/services/background/objects/gradient';
+// Colors
+export * from './lib/services/background/objects/colors';
+// Gradient positions
+export * from './lib/services/background/objects/gradient-positions';
+// Gradient sizes
+export * from './lib/services/background/objects/gradient-sizes';
+
+// Theme service
+export * from './lib/services/theme.service';
 
 /*
-* ENUMS
-*/
-  // Input number enum
-  export * from './lib/objects/enums/input-number-type.enum';
+ * OBJECTS
+ */
+// Button data
+export * from './lib/objects/classes/button-data.class';
 
-  // Input text enum
-  export * from './lib/objects/enums/input-text-type.enum';
-
-  // Screen enums
-  export * from './lib/services/screen/screen.enum';
+// Message data
+export * from './lib/objects/classes/message-data.class';
 
 /*
-* INTERFACES
-*/
-  // Dropdown option
-  export * from './lib/objects/interfaces/dropdown-option.interface';
+ * ENUMS
+ */
+// Input number enum
+export * from './lib/objects/enums/input-number-type.enum';
 
-  // Menu option
-  export * from './lib/objects/interfaces/menu-option.interface';
+// Input text enum
+export * from './lib/objects/enums/input-text-type.enum';
+
+// Screen enums
+export * from './lib/services/screen/screen.enum';
 
 /*
-* UI COMPONENTS
-*/
-  // FIRST LEVEL
+ * INTERFACES
+ */
+// Dropdown option
+export * from './lib/objects/interfaces/dropdown-option.interface';
 
-    // Button
-    export * from './lib/components/first-level/button/button.component';
+// Menu option
+export * from './lib/objects/interfaces/menu-option.interface';
 
-    // Card
-    export * from './lib/components/first-level/card/card.component';
+/*
+ * UI COMPONENTS
+ */
+// FIRST LEVEL
 
-    // Image
-    export * from './lib/components/first-level/image/image.component';
+// Button
+export * from './lib/components/first-level/button/button.component';
 
-    // Switch
-    export * from './lib/components/first-level/switch/switch.component';
+// Card
+export * from './lib/components/first-level/card/card.component';
 
-    // Checkbox
-    export * from './lib/components/first-level/checkbox/checkbox.component';
+// Image
+export * from './lib/components/first-level/image/image.component';
 
-    // Loader
-    export * from './lib/components/first-level/loader/loader.component';
+// Switch
+export * from './lib/components/first-level/switch/switch.component';
 
-    // List
-    export * from './lib/components/first-level/list/list.component';
+// Checkbox
+export * from './lib/components/first-level/checkbox/checkbox.component';
 
-    // Header
-    export * from './lib/components/first-level/header/header.component';
+// Loader
+export * from './lib/components/first-level/loader/loader.component';
 
-    // Subheader
-    export * from './lib/components/first-level/subheader/subheader.component';
+// List
+export * from './lib/components/first-level/list/list.component';
 
-    // Icon
-    export * from './lib/components/first-level/icon/icon.component';
-  
-  // FIRST LEVEL
+// Header
+export * from './lib/components/first-level/header/header.component';
 
-  // SECOND LEVEL
+// Subheader
+export * from './lib/components/first-level/subheader/subheader.component';
 
-    // IconButton
-    export * from './lib/components/second-level/icon-button/icon-button.component';
+// Icon
+export * from './lib/components/first-level/icon/icon.component';
 
-    // Avatar
-    export * from './lib/components/second-level/avatar/avatar.component';
+// FIRST LEVEL
 
-    // Dropdown
-    export * from './lib/components/second-level/dropdown/dropdown.component';
-      // Dropdown option interface
-      export * from './lib/objects/interfaces/dropdown-option.interface';
+// SECOND LEVEL
 
-    // Buttons group
-    export * from './lib/components/second-level/buttons-group/buttons-group.component';
-    
-  // SECOND LEVEL
+// IconButton
+export * from './lib/components/second-level/icon-button/icon-button.component';
 
-  // THIRD LEVEL
+// Avatar
+export * from './lib/components/second-level/avatar/avatar.component';
 
-    // Menu
-    export * from './lib/components/third-level/menu/menu.component';
-      // Menu option interface
-      export * from './lib/objects/interfaces/menu-option.interface';
+// Dropdown
+export * from './lib/components/second-level/dropdown/dropdown.component';
+// Dropdown option interface
+export * from './lib/objects/interfaces/dropdown-option.interface';
 
-    // Alert
-    export * from './lib/components/third-level/alert/alert.component';
+// Buttons group
+export * from './lib/components/second-level/buttons-group/buttons-group.component';
 
-    // Tooltip
-    export * from './lib/components/third-level/tooltip/tooltip.component';
+// SECOND LEVEL
 
-    // Aside menu
-    export * from './lib/components/third-level/aside-menu/aside-menu.component';
+// THIRD LEVEL
 
-    // Content header
-    export * from './lib/components/third-level/content-header/content-header.component';
+// Menu
+export * from './lib/components/third-level/menu/menu.component';
+// Menu option interface
+export * from './lib/objects/interfaces/menu-option.interface';
 
-  // THIRD LEVEL
+// Alert
+export * from './lib/components/third-level/alert/alert.component';
 
-  // FOURTH LEVEL
+// Tooltip
+export * from './lib/components/third-level/tooltip/tooltip.component';
 
-    // Theme changer
-    export * from './lib/components/fourth-level/theme-changer/theme-changer.component';
+// Aside menu
+export * from './lib/components/third-level/aside-menu/aside-menu.component';
 
-    // Scrollbar
-    export * from './lib/components/fourth-level/scrollbar/scrollbar.component';
-    
-  // FOURTH LEVEL
+// Content header
+export * from './lib/components/third-level/content-header/content-header.component';
 
-  // FORM
+// THIRD LEVEL
 
-    // Input text
-    export * from './lib/components/form/input-text/input-text.component';
+// FOURTH LEVEL
 
-    // Input number
-    export * from './lib/components/form/input-number/input-number.component';
+// Theme changer
+export * from './lib/components/fourth-level/theme-changer/theme-changer.component';
 
-    // Invalid form message
-    export * from './lib/components/form/invalid-form-message/invalid-form-message.component';
-    
-  // FORM
+// Scrollbar
+export * from './lib/components/fourth-level/scrollbar/scrollbar.component';
 
-  // PAGES
+// FOURTH LEVEL
 
-    // Login page
-    export * from './lib/pages/form/login/login.page';
+// FORM
 
-  // PAGES
+// Input text
+export * from './lib/components/form/input-text/input-text.component';
+
+// Input number
+export * from './lib/components/form/input-number/input-number.component';
+
+// Invalid form message
+export * from './lib/components/form/invalid-form-message/invalid-form-message.component';
+
+// FORM
+
+// PAGES
+
+// Login page
+export * from './lib/pages/form/login/login.page';
+
+// PAGES

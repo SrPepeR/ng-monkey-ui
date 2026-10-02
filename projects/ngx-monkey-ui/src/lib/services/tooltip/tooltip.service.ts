@@ -4,10 +4,9 @@ import { Subject } from 'rxjs';
 import { MonkeyStyle } from '../../objects/enums/style.enum';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MonkeyTooltipService {
-
   /**
    * Default screen time for the tooltip to be shown.
    */
@@ -32,7 +31,11 @@ export class MonkeyTooltipService {
    * @param style - The style of the tooltip.
    * @param mousePosition - The position of the mouse when the tooltip is shown.
    */
-  onShow(text: string, style: MonkeyStyle, mousePosition: { x: number, y: number } = { x: 0, y: 0 }) {
+  onShow(
+    text: string,
+    style: MonkeyStyle,
+    mousePosition: { x: number; y: number } = { x: 0, y: 0 },
+  ) {
     if (this.showTimeoutId) {
       this.removeTimeouts();
     }
@@ -44,7 +47,7 @@ export class MonkeyTooltipService {
 
   /**
    * Shows the specified tooltip.
-   * 
+   *
    * @param tooltip - The tooltip to be shown.
    */
   show(tooltip: Tooltip) {

@@ -8,7 +8,7 @@ describe('ScrollbarComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MonkeyScrollbar]
+      declarations: [MonkeyScrollbar],
     });
     fixture = TestBed.createComponent(MonkeyScrollbar);
     component = fixture.componentInstance;

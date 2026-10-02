@@ -9,7 +9,7 @@ describe('DropdownComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NgxMonkeyUiModule]
+      imports: [NgxMonkeyUiModule],
     });
     fixture = TestBed.createComponent(MonkeyDropdown);
     component = fixture.componentInstance;

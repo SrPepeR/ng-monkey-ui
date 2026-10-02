@@ -9,10 +9,9 @@ import { ThemeService } from '../../../services/theme.service';
   styleUrls: [
     '../../../styles/components/_common.default.style.scss',
     './content-header.component.scss',
-  ]
+  ],
 })
 export class MonkeyContentHeader extends Styleable implements OnInit, OnChanges {
-
   @Input() image!: string;
 
   @Input() header!: string;
@@ -22,7 +21,7 @@ export class MonkeyContentHeader extends Styleable implements OnInit, OnChanges 
   @Input() action?: MonkeyButtonData;
 
   // COMPONENTS SIZES
-  
+
   /**
    * The size of the content header on extra small screens.
    */
@@ -59,9 +58,7 @@ export class MonkeyContentHeader extends Styleable implements OnInit, OnChanges 
    * Creates an instance of MonkeyContentHeader.
    * @param themeService The theme service.
    */
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
 
@@ -99,5 +96,4 @@ export class MonkeyContentHeader extends Styleable implements OnInit, OnChanges 
 
     return 100;
   }
-
 }

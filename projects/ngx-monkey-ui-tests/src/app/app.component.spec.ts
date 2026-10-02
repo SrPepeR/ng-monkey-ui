@@ -4,10 +4,12 @@ import { NgxMonkeyUiModule } from 'ngx-monkey-ui';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterModule.forRoot([]), NgxMonkeyUiModule],
-    declarations: [AppComponent]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      imports: [RouterModule.forRoot([]), NgxMonkeyUiModule],
+      declarations: [AppComponent],
+    }),
+  );
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);

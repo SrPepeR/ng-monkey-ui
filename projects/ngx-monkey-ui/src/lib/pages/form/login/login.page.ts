@@ -9,13 +9,9 @@ import { MonkeyInputTextType } from '../../../objects/enums/input-text-type.enum
 @Component({
   selector: 'monkey-login-page',
   templateUrl: './login.page.html',
-  styleUrls: [
-    '../../../styles/components/_common.default.style.scss',
-    './login.page.scss',
-  ]
+  styleUrls: ['../../../styles/components/_common.default.style.scss', './login.page.scss'],
 })
 export class MonkeyLoginPage extends Styleable implements OnInit {
-
   /**
    * The header text for the login page.
    */
@@ -125,16 +121,16 @@ export class MonkeyLoginPage extends Styleable implements OnInit {
    * @event onLogin
    * @type {EventEmitter<{ email: string, password: string }>}
    */
-  @Output() onLogin = new EventEmitter<{ email: string, password: string }>();
+  @Output() onLogin = new EventEmitter<{ email: string; password: string }>();
 
   // CONTINUE AS GUEST
 
   /**
    * Indicates whether the user can continue as a guest.
-   * 
+   *
    * @remarks
    * This property determines if the user has the option to continue using the application as a guest.
-   * 
+   *
    * @defaultValue 'false'
    */
   @Input() canContinueAsGuest = 'false';
@@ -178,7 +174,7 @@ export class MonkeyLoginPage extends Styleable implements OnInit {
         }
       },
       this.loginIcon,
-      'right'
+      'right',
     ),
     new MonkeyButtonData(
       MonkeyStyle.SECONDARY,
@@ -187,7 +183,7 @@ export class MonkeyLoginPage extends Styleable implements OnInit {
         this.onRegister.emit();
       },
       this.registerIcon,
-      'right'
+      'right',
     ),
   ];
 
@@ -200,9 +196,7 @@ export class MonkeyLoginPage extends Styleable implements OnInit {
    * Creates an instance of MonkeyContentHeader.
    * @param themeService The theme service.
    */
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
 
@@ -246,8 +240,8 @@ export class MonkeyLoginPage extends Styleable implements OnInit {
           this.onContinueAsGuest.emit();
         },
         this.continueAsGuestIcon,
-        'right'
-      )
+        'right',
+      ),
     );
   }
 }

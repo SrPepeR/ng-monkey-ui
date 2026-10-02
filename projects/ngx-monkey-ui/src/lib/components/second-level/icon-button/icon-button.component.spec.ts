@@ -9,7 +9,7 @@ describe('IconButtonComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NgxMonkeyUiModule]
+      imports: [NgxMonkeyUiModule],
     });
     fixture = TestBed.createComponent(MonkeyIconButton);
     component = fixture.componentInstance;

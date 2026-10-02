@@ -2,7 +2,6 @@
  * Represents the different screen sizes.
  */
 export enum ScreenSize {
-
   /**
    * Extra small screen size (600px).
    */
@@ -31,30 +30,25 @@ export enum ScreenSize {
   /**
    * Double extra large screen size (1600px).
    */
-  XXL = 1600
-
+  XXL = 1600,
 }
 
 /**
  * Represents the different screen size style classes.
  */
 export enum ScreenSizeStyleClass {
-
   XS = 'screen-xs',
   SM = 'screen-sm',
   MD = 'screen-md',
   LG = 'screen-lg',
   XL = 'screen-xl',
-  XXL = 'screen-xxl'
-
+  XXL = 'screen-xxl',
 }
 
 /**
  * Represents the possible screen orientations.
  */
 export enum ScreenOrientation {
-
   PORTRAIT = 'portrait',
   LANDSCAPE = 'landscape',
-
 }

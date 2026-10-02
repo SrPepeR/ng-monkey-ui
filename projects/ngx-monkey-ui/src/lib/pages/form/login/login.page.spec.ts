@@ -9,7 +9,7 @@ describe('LoginComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NgxMonkeyUiModule]
+      imports: [NgxMonkeyUiModule],
     });
     fixture = TestBed.createComponent(MonkeyLoginPage);
     component = fixture.componentInstance;

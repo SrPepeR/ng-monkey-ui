@@ -12,13 +12,9 @@ import { Styleable } from '../../../bases/styleable.base';
 @Component({
   selector: 'monkey-avatar',
   templateUrl: './avatar.component.html',
-  styleUrls: [
-    '../../../styles/components/_common.default.style.scss',
-    './avatar.component.scss',
-  ]
+  styleUrls: ['../../../styles/components/_common.default.style.scss', './avatar.component.scss'],
 })
 export class MonkeyAvatar extends Styleable implements OnChanges, OnDestroy {
-
   /**
    * Represents the tooltipable behavior of the avatar component.
    */
@@ -79,7 +75,7 @@ export class MonkeyAvatar extends Styleable implements OnChanges, OnDestroy {
   /**
    * The size of the avatar.
    */
-  size: { width: number, height: number } = { width: 0, height: 0 };
+  size: { width: number; height: number } = { width: 0, height: 0 };
 
   /**
    * Indicates whether the avatar is labeled or not.
@@ -117,7 +113,10 @@ export class MonkeyAvatar extends Styleable implements OnChanges, OnDestroy {
       return;
     }
 
-    this.tooltipService.onShow(this.text, this.style || MonkeyStyle.PRIMARY, { x: event.pageX, y: event.pageY })
+    this.tooltipService.onShow(this.text, this.style || MonkeyStyle.PRIMARY, {
+      x: event.pageX,
+      y: event.pageY,
+    });
   }
 
   /**

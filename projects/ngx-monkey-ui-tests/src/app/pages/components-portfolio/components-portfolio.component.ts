@@ -1,23 +1,66 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { DropdownOption, MonkeyAlertService, MonkeyButtonData, MonkeyFontService, MonkeyInputNumberType, MonkeyInputTextType, MonkeyStyle } from 'ngx-monkey-ui';
+import {
+  DropdownOption,
+  MonkeyAlertService,
+  MonkeyButtonData,
+  MonkeyFontService,
+  MonkeyInputNumberType,
+  MonkeyInputTextType,
+  MonkeyStyle,
+} from 'ngx-monkey-ui';
 import { map } from 'rxjs';
 
 @Component({
   selector: 'app-components-portfolio',
   templateUrl: './components-portfolio.component.html',
-  styleUrls: ['./components-portfolio.component.scss']
+  styleUrls: ['./components-portfolio.component.scss'],
 })
 export class ComponentsPortfolioComponent {
-
   componentsTypes: MonkeyButtonData[] = [
-    new MonkeyButtonData(MonkeyStyle.PRIMARY, 'Default', () => this.setType('Default'), 'star', 'left'),
-    new MonkeyButtonData(MonkeyStyle.SECONDARY, 'Brutalist', () => this.setType('Brutalist'), 'gavel', 'left'),
-    new MonkeyButtonData(MonkeyStyle.TERTIARY, 'Glass', () => this.setType('Glass'), 'wine_bar', 'left'),
-    new MonkeyButtonData(MonkeyStyle.TERTIARY, 'Flat', () => this.setType('Flat'), 'tools_flat_head', 'right'),
-    new MonkeyButtonData(MonkeyStyle.SECONDARY, 'Ghost', () => this.setType('Ghost'), 'partly_cloudy_night', 'right'),
-    new MonkeyButtonData(MonkeyStyle.PRIMARY, 'Glow', () => this.setType('Glow'), 'stylus_laser_pointer', 'right'),
+    new MonkeyButtonData(
+      MonkeyStyle.PRIMARY,
+      'Default',
+      () => this.setType('Default'),
+      'star',
+      'left',
+    ),
+    new MonkeyButtonData(
+      MonkeyStyle.SECONDARY,
+      'Brutalist',
+      () => this.setType('Brutalist'),
+      'gavel',
+      'left',
+    ),
+    new MonkeyButtonData(
+      MonkeyStyle.TERTIARY,
+      'Glass',
+      () => this.setType('Glass'),
+      'wine_bar',
+      'left',
+    ),
+    new MonkeyButtonData(
+      MonkeyStyle.TERTIARY,
+      'Flat',
+      () => this.setType('Flat'),
+      'tools_flat_head',
+      'right',
+    ),
+    new MonkeyButtonData(
+      MonkeyStyle.SECONDARY,
+      'Ghost',
+      () => this.setType('Ghost'),
+      'partly_cloudy_night',
+      'right',
+    ),
+    new MonkeyButtonData(
+      MonkeyStyle.PRIMARY,
+      'Glow',
+      () => this.setType('Glow'),
+      'stylus_laser_pointer',
+      'right',
+    ),
   ];
 
   dropdownOptions: DropdownOption[] = [
@@ -37,15 +80,25 @@ export class ComponentsPortfolioComponent {
   offSwitchText = 'Off';
   onSwitchText = 'On';
 
-  contentHeaderAction: MonkeyButtonData = new MonkeyButtonData(this.currentStyle, 'Show alert', () => this.showAlert('Content header'), 'info', 'right');
+  contentHeaderAction: MonkeyButtonData = new MonkeyButtonData(
+    this.currentStyle,
+    'Show alert',
+    () => this.showAlert('Content header'),
+    'info',
+    'right',
+  );
 
   form: FormGroup = new FormGroup({
     monkeyInputText: new FormControl('', [Validators.minLength(3), Validators.maxLength(10)]),
     emailMonkeyInputText: new FormControl('', [Validators.email, Validators.minLength(3)]),
-    passwordMonkeyInputText: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]),
+    passwordMonkeyInputText: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.maxLength(10),
+    ]),
     numberMonkeyInputNumber: new FormControl('', [Validators.min(0), Validators.max(100)]),
   });
-  
+
   monkeyInputTextTypeText: MonkeyInputTextType = MonkeyInputTextType.TEXT;
   monkeyInputTextTypeEmail: MonkeyInputTextType = MonkeyInputTextType.EMAIL;
   monkeyInputTextTypePassword: MonkeyInputTextType = MonkeyInputTextType.PASSWORD;
@@ -63,7 +116,7 @@ export class ComponentsPortfolioComponent {
   INPUT_TEXT_FORM_CONTROL_NAME = 'monkeyInputText';
   EMAIL_INPUT_TEXT_FORM_CONTROL_NAME = 'emailMonkeyInputText';
   PASSWORD_INPUT_TEXT_FORM_CONTROL_NAME = 'passwordMonkeyInputText';
-  
+
   NUMBER_INPUT_NUMBER_FORM_CONTROL_NAME = 'numberMonkeyInputNumber';
 
   constructor(
@@ -76,10 +129,13 @@ export class ComponentsPortfolioComponent {
   }
 
   private manageParams(): void {
-    this.route.paramMap.pipe(
-      map(params => {
-        this.setStyle(params.get('style') ?? undefined);
-      })).subscribe();
+    this.route.paramMap
+      .pipe(
+        map((params) => {
+          this.setStyle(params.get('style') ?? undefined);
+        }),
+      )
+      .subscribe();
   }
 
   private setStyle(style?: string): void {
@@ -121,11 +177,19 @@ export class ComponentsPortfolioComponent {
   }
 
   onSwitch(fromSwitch: string, checked: boolean): void {
-    this.alertService.dangers(['Switch ' + fromSwitch + '.', checked ? 'ACTIVADO' : 'DESACTIVADO'], true, 'Danger');
+    this.alertService.dangers(
+      ['Switch ' + fromSwitch + '.', checked ? 'ACTIVADO' : 'DESACTIVADO'],
+      true,
+      'Danger',
+    );
   }
 
   onCheck(fromCheckbox: string, checked: boolean): void {
-    this.alertService.successes(['CheckBox ' + fromCheckbox + '.', checked ? 'ACTIVADO' : 'DESACTIVADO'], true, 'Success');
+    this.alertService.successes(
+      ['CheckBox ' + fromCheckbox + '.', checked ? 'ACTIVADO' : 'DESACTIVADO'],
+      true,
+      'Success',
+    );
   }
 
   showAlert(text: string): void {
@@ -147,17 +211,26 @@ export class ComponentsPortfolioComponent {
         this.alertService.infos(['Selected option: ' + DropdownOption.label], true, 'Info');
         break;
       default:
-        this.alertService.customs(['Selected option: ' + DropdownOption.label], MonkeyStyle.PRIMARY, true, 'Primary', 'looks_one');
+        this.alertService.customs(
+          ['Selected option: ' + DropdownOption.label],
+          MonkeyStyle.PRIMARY,
+          true,
+          'Primary',
+          'looks_one',
+        );
         break;
     }
   }
 
   submitForm(): void {
-    this.alertService.successes(['Formulario válido.', 'Datos enviados:', JSON.stringify(this.form.value)], true, 'Success');
+    this.alertService.successes(
+      ['Formulario válido.', 'Datos enviados:', JSON.stringify(this.form.value)],
+      true,
+      'Success',
+    );
   }
 
   resetForm(): void {
     this.form.reset();
   }
-
 }

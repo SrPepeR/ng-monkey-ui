@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { MonkeyScreen } from './screen';
 import { ScreenOrientation } from './screen.enum';
-import { Observable, fromEvent, map, startWith } from "rxjs";
+import { Observable, fromEvent, map, startWith } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MonkeyScreenService {
   /**
@@ -19,13 +19,13 @@ export class MonkeyScreenService {
   constructor() {
     this.screenChanges$ = fromEvent(window, 'resize').pipe(
       startWith(null),
-      map(() => this.getCurrentScreen())
+      map(() => this.getCurrentScreen()),
     );
   }
 
   /**
    * Returns the current screen data.
-   * 
+   *
    * @returns The current screen data.
    */
   public getCurrentScreen(): MonkeyScreen {
@@ -36,13 +36,13 @@ export class MonkeyScreenService {
 
   /**
    * Returns the screen size constraints.
-   * 
+   *
    * @returns The screen size constraints.
    */
-  public getScreenConstraints(): { width: number, height: number } {
+  public getScreenConstraints(): { width: number; height: number } {
     return {
       width: window.innerWidth,
-      height: window.innerHeight
+      height: window.innerHeight,
     };
   }
 
@@ -60,7 +60,7 @@ export class MonkeyScreenService {
   /**
    * Locks the screen orientation to the specified orientation.
    * If no orientation is provided, it locks the screen to the current orientation.
-   * 
+   *
    * @param orientation - The desired screen orientation.
    * @returns A promise that resolves when the screen orientation is locked successfully.
    *          If the screen orientation API is not supported, the promise is rejected with an error message.
@@ -80,7 +80,7 @@ export class MonkeyScreenService {
 
   /**
    * Unlocks the screen orientation.
-   * 
+   *
    * @returns A promise that resolves when the screen orientation is unlocked.
    * @throws If the Screen Orientation API is not supported.
    */
@@ -92,5 +92,4 @@ export class MonkeyScreenService {
       return Promise.reject('Screen Orientation API not supported');
     }
   }
-
 }

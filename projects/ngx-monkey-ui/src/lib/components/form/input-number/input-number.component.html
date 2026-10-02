@@ -3,14 +3,9 @@
   [class.dark-theme]="isDarkMode$ | async"
   [class.w-full]="check(wFull)"
   [formGroup]="formGroup"
-
   [for]="name"
 >
-  <span
-    [class]="classList"
-    [class.dark-theme]="isDarkMode$ | async"
-    (click)="labelClicked()"
-  >
+  <span [class]="classList" [class.dark-theme]="isDarkMode$ | async" (click)="labelClicked()">
     {{ label }}
   </span>
 
@@ -19,30 +14,20 @@
     [formControlName]="name"
     [name]="name"
     [placeholder]="alt"
-
     (ngModelChange)="inputChanged()"
-
     [class]="classList"
     [class.dark-theme]="isDarkMode$ | async"
-
     (mousewheel)="onMouseWheel($event)"
-
     #input
   />
 
-  <monkey-list
-    *ngIf="inputType === 'number'"
-    class="input-number-arrows"
-    gapSize="sm"
-  >
+  <monkey-list *ngIf="inputType === 'number'" class="input-number-arrows" gapSize="sm">
     <monkey-icon
       class="input-icon"
       icon="add"
       (click)="stepUp()"
-
       [class]="classList"
       [class.dark-theme]="isDarkMode$ | async"
-
       [style]="style"
       [brutalist]="brutalist"
       [glass]="glass"
@@ -50,15 +35,13 @@
       [ghost]="ghost"
       [glow]="glow"
     ></monkey-icon>
-    
+
     <monkey-icon
       class="input-icon"
       icon="remove"
       (click)="stepDown()"
-
       [class]="classList"
       [class.dark-theme]="isDarkMode$ | async"
-
       [style]="style"
       [brutalist]="brutalist"
       [glass]="glass"
@@ -75,7 +58,6 @@
     (click)="labelClicked()"
     [class]="classList"
     [class.dark-theme]="isDarkMode$ | async"
-
     [style]="style"
     [brutalist]="brutalist"
     [glass]="glass"
@@ -102,7 +84,12 @@
 
   <!-- INVALID -->
   <monkey-icon
-    *ngIf="invalidIcon && check(dontShowInvalidMessage) && formGroup.controls[this.name].value && !formGroup.controls[this.name].valid"
+    *ngIf="
+      invalidIcon &&
+      check(dontShowInvalidMessage) &&
+      formGroup.controls[this.name].value &&
+      !formGroup.controls[this.name].valid
+    "
     [icon]="invalidIcon"
     class="invalid"
     [class.dark-theme]="isDarkMode$ | async"

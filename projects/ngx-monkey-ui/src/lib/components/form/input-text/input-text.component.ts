@@ -14,10 +14,9 @@ import { MonkeyInput } from '../../../bases/input/input.base';
     '../../../bases/input/styles/input.flat.component.scss',
     '../../../bases/input/styles/input.ghost.component.scss',
     '../../../bases/input/styles/input.glow.component.scss',
-  ]
+  ],
 })
 export class MonkeyInputText extends MonkeyInput {
-
   /**
    * The type of input for the input text component.
    */
@@ -38,9 +37,7 @@ export class MonkeyInputText extends MonkeyInput {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
 
@@ -58,5 +55,4 @@ export class MonkeyInputText extends MonkeyInput {
 
     this.labelClicked();
   }
-
 }

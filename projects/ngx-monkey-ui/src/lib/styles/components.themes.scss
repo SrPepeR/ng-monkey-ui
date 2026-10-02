@@ -1,9 +1,9 @@
 @use 'themes/mixins.themes' as mixins;
 
 *:not(.dark-theme) {
-    @include mixins.light-theme();
+  @include mixins.light-theme();
 }
 
 *.dark-theme {
-    @include mixins.dark-theme();
+  @include mixins.dark-theme();
 }

@@ -18,13 +18,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    ExamplePageComponent,
-  ],
-  imports: [
-    CommonModule,
-    NgxMonkeyUiModule,
-    RouterModule.forChild(routes),
-  ]
+  declarations: [ExamplePageComponent],
+  imports: [CommonModule, NgxMonkeyUiModule, RouterModule.forChild(routes)],
 })
-export class ExamplePageModule { }
+export class ExamplePageModule {}

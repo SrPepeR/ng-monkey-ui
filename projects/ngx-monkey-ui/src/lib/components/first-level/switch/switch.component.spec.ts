@@ -8,7 +8,7 @@ describe('SwitchComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MonkeySwitch]
+      declarations: [MonkeySwitch],
     });
     fixture = TestBed.createComponent(MonkeySwitch);
     component = fixture.componentInstance;

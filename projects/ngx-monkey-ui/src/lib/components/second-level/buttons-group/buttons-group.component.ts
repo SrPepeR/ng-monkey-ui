@@ -9,10 +9,9 @@ import { MonkeyButtonData } from '../../../objects/classes/button-data.class';
   styleUrls: [
     '../../../styles/components/_common.default.style.scss',
     './buttons-group.component.scss',
-  ]
+  ],
 })
 export class MonkeyButtonsGroup extends Styleable {
-
   @Input() gap = 'false';
 
   @Input() data: MonkeyButtonData[] = [];
@@ -26,10 +25,7 @@ export class MonkeyButtonsGroup extends Styleable {
    * Creates an instance of MonkeyButtonsGroup.
    * @param themeService The theme service.
    */
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
-
 }

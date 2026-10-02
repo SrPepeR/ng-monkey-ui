@@ -14,10 +14,9 @@ import { ThemeService } from '../../../services/theme.service';
     '../../../bases/input/styles/input.flat.component.scss',
     '../../../bases/input/styles/input.ghost.component.scss',
     '../../../bases/input/styles/input.glow.component.scss',
-  ]
+  ],
 })
 export class MonkeyInputNumber extends MonkeyInput {
-
   /**
    * The type of input for the input text component.
    */
@@ -28,9 +27,7 @@ export class MonkeyInputNumber extends MonkeyInput {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  constructor(
-    private themeService: ThemeService,
-  ) {
+  constructor(private themeService: ThemeService) {
     super();
   }
 
@@ -72,5 +69,4 @@ export class MonkeyInputNumber extends MonkeyInput {
   private reloadValue(): void {
     this.formGroup.get(this.name)!.setValue(this.input.nativeElement.value);
   }
-
 }

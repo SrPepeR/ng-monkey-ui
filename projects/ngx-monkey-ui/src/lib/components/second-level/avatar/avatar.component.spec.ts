@@ -9,7 +9,7 @@ describe('AvatarComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NgxMonkeyUiModule]
+      imports: [NgxMonkeyUiModule],
     });
     fixture = TestBed.createComponent(MonkeyAvatar);
     component = fixture.componentInstance;

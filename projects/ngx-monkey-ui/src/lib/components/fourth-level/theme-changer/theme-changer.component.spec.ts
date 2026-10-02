@@ -8,7 +8,7 @@ describe('MonkeyThemeChanger', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MonkeyThemeChanger]
+      declarations: [MonkeyThemeChanger],
     });
     fixture = TestBed.createComponent(MonkeyThemeChanger);
     component = fixture.componentInstance;

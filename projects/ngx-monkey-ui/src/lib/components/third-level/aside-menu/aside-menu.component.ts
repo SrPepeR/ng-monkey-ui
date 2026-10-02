@@ -13,10 +13,9 @@ import { MonkeyStyle } from '../../../objects/enums/style.enum';
   styleUrls: [
     '../../../styles/components/_common.default.style.scss',
     './aside-menu.component.scss',
-  ]
+  ],
 })
 export class MonkeyAsideMenu extends Styleable implements OnInit, OnChanges {
-
   /**
    * Represents the data for the aside menu component.
    */
@@ -206,7 +205,7 @@ export class MonkeyAsideMenu extends Styleable implements OnInit, OnChanges {
 
   /**
    * Handles the click event for a menu option.
-   * 
+   *
    * @param option - The selected menu option.
    */
   onClicked(option: MenuOption) {
@@ -226,5 +225,4 @@ export class MonkeyAsideMenu extends Styleable implements OnInit, OnChanges {
       this.router.navigate([option.route]);
     }
   }
-
 }

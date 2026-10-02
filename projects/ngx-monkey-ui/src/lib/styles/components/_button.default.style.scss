@@ -2,28 +2,28 @@
 @import '../components.styles';
 
 :host {
-    z-index: 1;
+  z-index: 1;
 
-    button {
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-    
-        min-height: 20px;
-        min-width: 20px;
-    
-        cursor: pointer;
-        text-align: center;
-        font-size: 1rem;
-        font-weight: normal;
-        line-height: 1.2;
-        letter-spacing: .05rem;
-        border: 0;
+  button {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 
-        &.squared-item {
-            padding: 5px;
-        }
+    min-height: 20px;
+    min-width: 20px;
+
+    cursor: pointer;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.2;
+    letter-spacing: 0.05rem;
+    border: 0;
+
+    &.squared-item {
+      padding: 5px;
     }
+  }
 }

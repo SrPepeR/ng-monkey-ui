@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ComponentsStylesService {
-
   /**
    * Generates a class list for the given component.
    * @param component - The component object.
@@ -12,12 +11,12 @@ export class ComponentsStylesService {
    */
   generateClassList(component: any): string[] {
     let classList: string[] = [];
-    
+
     // Adds the component color scheme class to the classList array
     if (component.style) {
       classList.push(`style-${component.style}`);
     }
-    
+
     classList = classList.concat(this.checkTypes(classList, component));
 
     classList = classList.concat(this.checkGeneralStyles(classList, component));
@@ -117,5 +116,4 @@ export class ComponentsStylesService {
   private check(value: any): boolean {
     return value === '' || value === 'true' || value === true;
   }
-
 }

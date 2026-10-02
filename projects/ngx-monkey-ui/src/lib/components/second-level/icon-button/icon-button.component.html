@@ -1,19 +1,16 @@
 <monkey-button
-    squared
-    [class]="classList"
-    [style]="style"
-    [brutalist]="brutalist"
-    [flat]="flat"
-    [ghost]="ghost"
-    [glass]="glass"
-    [glow]="glow"
-    [discreet]="discreet"
-    (click)="onClicked()"
-    (mouseover)="showTooltip($event)"
-    (mouseout)="hideTooltip()"
+  squared
+  [class]="classList"
+  [style]="style"
+  [brutalist]="brutalist"
+  [flat]="flat"
+  [ghost]="ghost"
+  [glass]="glass"
+  [glow]="glow"
+  [discreet]="discreet"
+  (click)="onClicked()"
+  (mouseover)="showTooltip($event)"
+  (mouseout)="hideTooltip()"
 >
-    <monkey-icon
-        *ngIf="icon"
-        [icon]="icon"
-    />
+  <monkey-icon *ngIf="icon" [icon]="icon" />
 </monkey-button>

@@ -10,7 +10,7 @@ describe('InputNumberComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NgxMonkeyUiModule]
+      imports: [NgxMonkeyUiModule],
     });
     fixture = TestBed.createComponent(MonkeyInputNumber);
     component = fixture.componentInstance;

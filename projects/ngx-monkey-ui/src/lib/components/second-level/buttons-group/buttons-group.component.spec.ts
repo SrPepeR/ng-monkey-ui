@@ -9,7 +9,7 @@ describe('ButtonsGroupComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NgxMonkeyUiModule]
+      imports: [NgxMonkeyUiModule],
     });
     fixture = TestBed.createComponent(MonkeyButtonsGroup);
     component = fixture.componentInstance;

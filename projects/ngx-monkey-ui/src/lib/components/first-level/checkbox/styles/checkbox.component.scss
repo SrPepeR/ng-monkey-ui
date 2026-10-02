@@ -2,31 +2,31 @@
 
 /* Default style */
 label.container.type-default {
-    color: var(--background-color-contrast-hight);
+  color: var(--background-color-contrast-hight);
 
-    span.checkmark {
-        transition: all .2s ease-in-out;
-        
-        background-color: var(--background-color);
-        border: solid 2px var(--background-color-contrast-hight);
-        border-radius: 4px;
+  span.checkmark {
+    transition: all 0.2s ease-in-out;
 
-        &:after {
-            border-bottom: 3px solid var(--background-color);
-            border-right: 3px solid var(--background-color);
-        }
-    }
+    background-color: var(--background-color);
+    border: solid 2px var(--background-color-contrast-hight);
+    border-radius: 4px;
 
-    &:hover input~span.checkmark {
-        background-color: var(--background-color-contrast-hight);
+    &:after {
+      border-bottom: 3px solid var(--background-color);
+      border-right: 3px solid var(--background-color);
     }
-    
-    &:hover input:checked~span.checkmark {
-        background-color: var(--emphasis);
-    }
+  }
 
-    input:checked~span.checkmark {
-        background-color: var(--color);
-        border: none;
-    }
+  &:hover input ~ span.checkmark {
+    background-color: var(--background-color-contrast-hight);
+  }
+
+  &:hover input:checked ~ span.checkmark {
+    background-color: var(--emphasis);
+  }
+
+  input:checked ~ span.checkmark {
+    background-color: var(--color);
+    border: none;
+  }
 }

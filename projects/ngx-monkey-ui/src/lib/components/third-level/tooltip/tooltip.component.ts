@@ -16,15 +16,14 @@ import { Tooltipable } from '../../../bases/tooltipable.base';
   styleUrls: [
     '../../../styles/components/_common.default.style.scss',
     './styles/tooltip.component.scss',
-  ]
+  ],
 })
 export class MonkeyTooltip extends Styleable implements OnInit, OnDestroy {
-
   /**
    * Represents the tooltipable behavior of the tooltip component.
    */
   tooltipable: Tooltipable;
-  
+
   /**
    * The tooltip input property.
    */
@@ -74,5 +73,4 @@ export class MonkeyTooltip extends Styleable implements OnInit, OnDestroy {
     this.unsubscribeComponent.complete();
     this.tooltipable.ngOnDestroy();
   }
-
 }

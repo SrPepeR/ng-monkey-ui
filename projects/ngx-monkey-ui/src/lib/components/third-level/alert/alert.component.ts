@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
 import { MonkeyAlertService } from '../../../services/alert.service';
 import { Subject, takeUntil } from 'rxjs';
@@ -14,11 +22,10 @@ import { Styleable } from '../../../bases/styleable.base';
   templateUrl: './alert.component.html',
   styleUrls: [
     '../../../styles/components/_common.default.style.scss',
-    './styles/alert.component.scss'
-  ]
+    './styles/alert.component.scss',
+  ],
 })
 export class MonkeyAlert extends Styleable implements OnInit, OnChanges, OnDestroy {
-
   /**
    * Specifies whether the alert should be displayed in a column layout.
    */
@@ -33,7 +40,7 @@ export class MonkeyAlert extends Styleable implements OnInit, OnChanges, OnDestr
    * The text to be displayed for the dismiss action.
    */
   @Input() dismissibleText = 'Dismiss';
-  
+
   /**
    * Event emitted when the dismiss action is triggered.
    */
@@ -43,12 +50,12 @@ export class MonkeyAlert extends Styleable implements OnInit, OnChanges, OnDestr
    * Specifies whether the alert can be accepted.
    */
   @Input() acceptable?: string = 'false';
-  
+
   /**
    * The text to be displayed for the accept action.
    */
   @Input() acceptText = 'Accept';
-  
+
   /**
    * Event emitted when the accept action is triggered.
    */
@@ -58,12 +65,12 @@ export class MonkeyAlert extends Styleable implements OnInit, OnChanges, OnDestr
    * Specifies whether the alert can be rejected.
    */
   @Input() rejectable?: string = 'false';
-  
+
   /**
    * The text to be displayed for the reject action.
    */
   @Input() rejectText = 'Reject';
-  
+
   /**
    * Event emitted when the reject action is triggered.
    */
@@ -140,5 +147,4 @@ export class MonkeyAlert extends Styleable implements OnInit, OnChanges, OnDestr
   private dismissAlert() {
     this.alertService.hide();
   }
-
 }

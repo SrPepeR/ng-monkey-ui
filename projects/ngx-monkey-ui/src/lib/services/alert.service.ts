@@ -5,7 +5,6 @@ import { MonkeyStyle } from '../objects/enums/style.enum';
 
 @Injectable({ providedIn: 'root' })
 export class MonkeyAlertService {
-
   /**
    * Default screen time for the alert to be shown.
    */
@@ -135,7 +134,13 @@ export class MonkeyAlertService {
    * @param title Optional title for the alerts.
    * @param icon Optional icon for the alerts.
    */
-  customs(texts: string[], style: MonkeyStyle, isAutoClose: boolean, title?: string, icon?: string) {
+  customs(
+    texts: string[],
+    style: MonkeyStyle,
+    isAutoClose: boolean,
+    title?: string,
+    icon?: string,
+  ) {
     this.event.next(new Message(texts, style, isAutoClose, title, icon));
     this.removeHideTimeout();
 
@@ -161,5 +166,4 @@ export class MonkeyAlertService {
   private removeHideTimeout() {
     clearTimeout(this.hideTimeoutId);
   }
-
 }

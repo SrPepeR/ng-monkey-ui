@@ -17,10 +17,9 @@ import { ComponentsSizesService } from '../../../services/components-sizes.servi
     './styles/loader.flat.component.scss',
     './styles/loader.ghost.component.scss',
     './styles/loader.glow.component.scss',
-  ]
+  ],
 })
 export class MonkeyLoader extends Styleable implements OnInit, OnChanges {
-
   /**
    * Indicates whether the contrast mode is enabled.
    * @type string
@@ -83,7 +82,7 @@ export class MonkeyLoader extends Styleable implements OnInit, OnChanges {
   ) {
     super();
   }
-  
+
   /**
    * Initializes the component and sets up any necessary initializations.
    * Overrides the base class's ngOnInit method.
@@ -101,5 +100,4 @@ export class MonkeyLoader extends Styleable implements OnInit, OnChanges {
     super.ngOnChanges();
     this.classList = this.componentSizesService.generateClassList(this);
   }
-
 }

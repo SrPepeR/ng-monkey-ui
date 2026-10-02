@@ -7,10 +7,9 @@ import { ThemeService } from '../../../services/theme.service';
   styleUrls: [
     '../../../styles/components/_common.default.style.scss',
     './scrollbar.component.scss',
-  ]
+  ],
 })
 export class MonkeyScrollbar {
-
   // Lights
   @Input() backgroundLight = 'rgba(251, 251, 251, 0.8)';
 
@@ -30,10 +29,8 @@ export class MonkeyScrollbar {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  constructor(
-    private themeService: ThemeService,
-  ) {
-    this.isDarkMode$.subscribe(darkMode => {
+  constructor(private themeService: ThemeService) {
+    this.isDarkMode$.subscribe((darkMode) => {
       this.addScrollbarStyleStyle(darkMode);
     });
   }
@@ -65,5 +62,4 @@ export class MonkeyScrollbar {
     `;
     document.head.appendChild(style);
   }
-
 }

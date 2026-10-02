@@ -1,11 +1,7 @@
 <!-- PAGE CONTENT -->
-<monkey-list
-  gapSize="lg"
->
+<monkey-list gapSize="lg">
   <!-- LOGIN FORM -->
-  <monkey-list
-    class="login-form"
-  >
+  <monkey-list class="login-form">
     <!-- HEADER -->
     <monkey-header>{{ header }}</monkey-header>
 
@@ -18,7 +14,6 @@
       [name]="EMAIL_CONTROL_NAME"
       [inputType]="EMAIL_INPUT_TYPE"
       required
-      
       [style]="style"
       [brutalist]="brutalist"
       [glass]="glass"
@@ -36,7 +31,6 @@
       [name]="PASSWORD_CONTROL_NAME"
       [inputType]="PASSWORD_INPUT_TYPE"
       required
-
       [style]="style"
       [brutalist]="brutalist"
       [glass]="glass"
@@ -49,7 +43,6 @@
     <monkey-button
       (onClick)="onForgotPassword.emit()"
       discreet
-
       [style]="style"
       [brutalist]="brutalist"
       [glass]="glass"
@@ -60,13 +53,12 @@
       {{ forgotPasswordLabel }}
     </monkey-button>
   </monkey-list>
-  
+
   <!-- ACTIONS -->
   <monkey-buttons-group
     class="login-actions"
     [data]="loginActions"
     gap
-
     [style]="style"
     [brutalist]="brutalist"
     [glass]="glass"
@@ -76,5 +68,5 @@
   />
 
   <!-- CONTENT -->
-  <ng-content/>
+  <ng-content />
 </monkey-list>

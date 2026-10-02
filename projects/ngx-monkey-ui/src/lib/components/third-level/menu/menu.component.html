@@ -1,8 +1,4 @@
-<section
-  class="menu-container"
-  [class]="classList"
-  [class.dark-theme]="isDarkMode$ | async"
->
+<section class="menu-container" [class]="classList" [class.dark-theme]="isDarkMode$ | async">
   <div
     class="menu-content"
     [class.expanded]="currentScreen.isScreenSizeDown(SMALL_SCREEN_FLAG) && isFullMenuOpen"
@@ -44,11 +40,7 @@
         gapSize="md"
         horizontal
       >
-        <div
-          *ngFor="let option of options"
-          class="menu-item"
-          [class]="classList"
-        >
+        <div *ngFor="let option of options" class="menu-item" [class]="classList">
           <monkey-button
             *ngIf="!option.children"
             [class]="classList"
@@ -62,7 +54,7 @@
           >
             {{ option.label }}
           </monkey-button>
-    
+
           <monkey-dropdown
             *ngIf="option.children"
             [class]="classList"
@@ -79,7 +71,7 @@
           ></monkey-dropdown>
         </div>
       </monkey-list>
-    
+
       <monkey-list
         *ngIf="isFullMenuOpen || !currentScreen.isScreenSizeDown(SMALL_SCREEN_FLAG)"
         [style]="style"
@@ -92,6 +84,5 @@
         <ng-content></ng-content>
       </monkey-list>
     </section>
-  
   </div>
 </section>

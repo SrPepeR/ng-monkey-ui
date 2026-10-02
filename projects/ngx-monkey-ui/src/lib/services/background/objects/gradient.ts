@@ -1,9 +1,8 @@
-import { Colors } from "./colors";
-import { GradientPositions, MonkeyGradientPosition } from "./gradient-positions";
-import { GradientSizes } from "./gradient-sizes";
+import { Colors } from './colors';
+import { GradientPositions, MonkeyGradientPosition } from './gradient-positions';
+import { GradientSizes } from './gradient-sizes';
 
 export class MonkeyGradient {
-
   /**
    * Represents the colors used in a gradient.
    */
@@ -21,7 +20,7 @@ export class MonkeyGradient {
 
   /**
    * Adds data to the gradient.
-   * 
+   *
    * @param color - The color to add to the gradient.
    * @param position - The position of the color in the gradient.
    * @param size - The size of the color in the gradient.
@@ -62,25 +61,25 @@ export class MonkeyGradient {
    */
   generateSingle(position: number): string {
     const color: string = this.colors.get()[position];
-    const positions: MonkeyGradientPosition= this.gradientPositions.get()[position];
+    const positions: MonkeyGradientPosition = this.gradientPositions.get()[position];
     const size: number = this.gradientSizes.get()[position];
 
     return `radial-gradient(at ${positions.x}% ${positions.y}%, ${color} 0, transparent ${size}%)`;
   }
-  
+
   /**
    * Generates all the gradients based on the colors provided.
-   * 
+   *
    * @returns A string containing all the generated gradients.
    */
   generateAll(): string {
     let gradients = '';
-    
+
     for (let i = 0; i < this.colors.get().length; i++) {
       if (i > 0) {
         gradients += ', ';
       }
-      
+
       gradients += this.generateSingle(i);
     }
 
@@ -91,10 +90,13 @@ export class MonkeyGradient {
     const gradient: MonkeyGradient = new MonkeyGradient();
 
     for (let i = 0; i < this.colors.get().length; i++) {
-      gradient.addData(this.colors.get()[i], this.gradientPositions.get()[i], this.gradientSizes.get()[i]);
+      gradient.addData(
+        this.colors.get()[i],
+        this.gradientPositions.get()[i],
+        this.gradientSizes.get()[i],
+      );
     }
 
     return gradient;
   }
-
 }

@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, OnChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  OnChanges,
+} from '@angular/core';
 import { Styleable } from '../../../bases/styleable.base';
 import { DropdownOption } from '../../../objects/interfaces/dropdown-option.interface';
 import { ThemeService } from '../../../services/theme.service';
@@ -11,13 +19,9 @@ import { MonkeyTooltipService } from '../../../services/tooltip/tooltip.service'
 @Component({
   selector: 'monkey-dropdown',
   templateUrl: './dropdown.component.html',
-  styleUrls: [
-    '../../../styles/components/_common.default.style.scss',
-    './dropdown.component.scss',
-  ]
+  styleUrls: ['../../../styles/components/_common.default.style.scss', './dropdown.component.scss'],
 })
 export class MonkeyDropdown extends Styleable implements OnInit, OnDestroy, OnChanges {
-
   /**
    * Represents the tooltipable behavior of the dropdown component.
    */
@@ -123,5 +127,4 @@ export class MonkeyDropdown extends Styleable implements OnInit, OnDestroy, OnCh
       this.tooltipable.hideTooltip();
     }
   }
-
 }

@@ -7,10 +7,9 @@ import { ThemeService } from '../../../services/theme.service';
 @Component({
   selector: 'monkey-theme-changer',
   templateUrl: './theme-changer.component.html',
-  styleUrls: ['./theme-changer.component.scss']
+  styleUrls: ['./theme-changer.component.scss'],
 })
 export class MonkeyThemeChanger {
-
   /**
    * Event emitter for when an action is performed.
    */
@@ -21,9 +20,7 @@ export class MonkeyThemeChanger {
    */
   isDarkMode$ = this.themeService.isDarkMode$;
 
-  constructor(
-    private themeService: ThemeService,
-  ) { }
+  constructor(private themeService: ThemeService) {}
 
   /**
    * Toggles the theme between light and dark mode.
@@ -33,5 +30,4 @@ export class MonkeyThemeChanger {
     this.themeService.toggleDarkMode();
     this.onAction.emit();
   }
-
 }

@@ -11,7 +11,7 @@ describe('MenuComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [NgxMonkeyUiModule],
-      providers: [provideRouter([])]
+      providers: [provideRouter([])],
     });
     fixture = TestBed.createComponent(MonkeyMenu);
     component = fixture.componentInstance;
