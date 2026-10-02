@@ -19,7 +19,17 @@ import { Styleable } from '../../../bases/styleable.base';
   ],
 })
 export class MonkeySwitch extends Styleable implements AfterViewChecked {
+  /**
+   * Counter shared by all the instances, to give each one a unique input id.
+   */
+  private static nextId = 0;
+
   @ViewChild('switch') switch!: any;
+
+  /**
+   * Unique id of the native input of this instance.
+   */
+  protected readonly inputId = `monkey-switch-${MonkeySwitch.nextId++}`;
 
   // LABELS
   /**

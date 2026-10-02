@@ -59,7 +59,7 @@ describe('InputTextComponent', () => {
       expect(component.invalidMessages).toEqual([MIN_LENGTH_MESSAGE]);
     });
 
-    xit('E-06: shows the required message when the value is empty', () => {
+    it('E-06: shows the required message when the value is empty', () => {
       createWithControl(new FormControl('', [Validators.required]));
 
       type('a');
@@ -68,7 +68,7 @@ describe('InputTextComponent', () => {
       expect(component.invalidMessages).toEqual([REQUIRED_MESSAGE]);
     });
 
-    xit('E-23: recalculates the messages after setValue()', () => {
+    it('E-23: recalculates the messages after setValue()', () => {
       createWithControl(new FormControl('', [Validators.minLength(3)]));
       type('ab');
 
@@ -78,7 +78,7 @@ describe('InputTextComponent', () => {
       expect(component.invalidMessages).toEqual([]);
     });
 
-    xit('E-23: recalculates the messages after reset()', () => {
+    it('E-23: recalculates the messages after reset()', () => {
       createWithControl(new FormControl('', [Validators.minLength(3)]));
       type('ab');
 
@@ -88,7 +88,7 @@ describe('InputTextComponent', () => {
       expect(component.invalidMessages).toEqual([]);
     });
 
-    xit('E-23: recalculates the messages after markAllAsTouched()', () => {
+    it('E-23: recalculates the messages after markAllAsTouched()', () => {
       createWithControl(new FormControl('ab', [Validators.minLength(3)]));
 
       form.markAllAsTouched();

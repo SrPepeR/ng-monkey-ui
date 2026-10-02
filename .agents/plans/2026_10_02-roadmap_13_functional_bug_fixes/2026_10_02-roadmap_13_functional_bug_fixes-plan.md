@@ -9,6 +9,16 @@ created_by:
     name: "Claude Opus"
     version: "5.5"
     reasoning_effort: "low"
+
+implemented_by:
+  tool: "Claude Code"
+  model:
+    name: "Claude Opus"
+    version: "5.5"
+    reasoning_effort: "low"
+
+last_implementation_at: "2026-10-02T21:45:00Z"
+has_completed_all_phases: "false"
 ---
 
 # Roadmap 13: Fix the functional bugs without changing the public API
@@ -60,26 +70,26 @@ Fix every functional bug listed in roadmap point 13 (E-06 to E-25, except E-13, 
 
 Fix the inverted `required` message and the messages that are not recalculated (E-06, E-23), the number and wheel handling of `MonkeyInputNumber` (E-15), and the duplicated ids of checkbox and switch (E-19).
 
-- [ ] In [input-text.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/form/input-text/input-text.component.spec.ts), turn the four `xit` into `it`:
+- [x] In [input-text.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/form/input-text/input-text.component.spec.ts), turn the four `xit` into `it`:
   - `E-06: shows the required message when the value is empty`
   - `E-23: recalculates the messages after setValue()`
   - `E-23: recalculates the messages after reset()`
   - `E-23: recalculates the messages after markAllAsTouched()`
-- [ ] `MonkeyInput` ([input.base.ts](../../../projects/ngx-monkey-ui/src/lib/bases/input/input.base.ts)): invert the `required` condition, and recalculate `invalidMessages` from the control `statusChanges` and `valueChanges`, unsubscribing on destroy. The public members stay the same.
-- [ ] Extend [input-number.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/form/input-number/input-number.component.spec.ts) with:
+- [x] `MonkeyInput` ([input.base.ts](../../../projects/ngx-monkey-ui/src/lib/bases/input/input.base.ts)): invert the `required` condition, and recalculate `invalidMessages` from the control `statusChanges` and `valueChanges`, unsubscribing on destroy. The public members stay the same.
+- [x] Extend [input-number.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/form/input-number/input-number.component.spec.ts) with:
   - `writes a number in the control with inputType number`
   - `keeps the string in the control with inputType tel`
   - `keeps the string in the control with inputType date`
   - `the wheel steps the value only when the field is focused`
   - `the wheel does nothing with a non-number inputType`
-- [ ] `MonkeyInputNumber`: write a `number` with `inputType="number"`; keep the string with `tel`, `date`, `datetime-local` and `time`; replace `(mousewheel)` with `(wheel)`, handled only for `number` and with the field focused.
-- [ ] Extend [checkbox.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/first-level/checkbox/checkbox.component.spec.ts) and [switch.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/first-level/switch/switch.component.spec.ts) with:
+- [x] `MonkeyInputNumber`: write a `number` with `inputType="number"`; keep the string with `tel`, `date`, `datetime-local` and `time`; replace `(mousewheel)` with `(wheel)`, handled only for `number` and with the field focused.
+- [x] Extend [checkbox.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/first-level/checkbox/checkbox.component.spec.ts) and [switch.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/first-level/switch/switch.component.spec.ts) with:
   - `two instances get different input ids`
   - `the label for points to the input id`
-- [ ] Checkbox and switch: unique id from a `static` counter of the class, bound to the `<input>` `id`/`name` and to the labels `for`.
-- [ ] Mark 13.1, 13.8 and 13.12 as done in [ROADMAP.md](../../../ROADMAP.md).
-- [ ] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run lint && npm run format:check && npm run test:ci && npx ng build ngx-monkey-ui-tests`). Fix issues if any.
-- [ ] STOP. Present the changes to the user for review and suggest commit messages. Do NOT proceed to the next phase until the user explicitly asks.
+- [x] Checkbox and switch: unique id from a `static` counter of the class, bound to the `<input>` `id`/`name` and to the labels `for`.
+- [x] Mark 13.1, 13.8 and 13.12 as done in [ROADMAP.md](../../../ROADMAP.md).
+- [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run lint && npm run format:check && npm run test:ci && npx ng build ngx-monkey-ui-tests`). Fix issues if any.
+- [x] STOP. Present the changes to the user for review and suggest commit messages. Do NOT proceed to the next phase until the user explicitly asks.
 
 ### Phase 2: Login page, disabled state and composite clicks (13.2, 13.14)
 
@@ -168,6 +178,6 @@ Record the fixes and close point 13 in the docs.
 
 ## ⏭️ Next step
 
-Implement Phase 1: the form field fixes (E-06, E-23, E-15, E-19) with their tests.
+Implement Phase 2: the login page, disabled state and composite click fixes (E-07, E-22, E-24) with their tests.
 
-Sixteen bugs line up to be squashed by 🐢 💨 (Turbotuga™, [Codely](https://codely.com)'s mascot).
+Sixteen bugs line up, and the form fields already tell the truth about them thanks to 🐢 💨 (Turbotuga™, [Codely](https://codely.com)'s mascot). 🐛 📝 ✅
