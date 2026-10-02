@@ -17,8 +17,8 @@ implemented_by:
     version: "5.5"
     reasoning_effort: "low"
 
-last_implementation_at: "2026-10-02T19:45:00Z"
-has_completed_all_phases: "false"
+last_implementation_at: "2026-10-02T20:15:00Z"
+has_completed_all_phases: "true"
 ---
 
 # Roadmap 12: Safety net before any change
@@ -169,11 +169,11 @@ Each unit has tests for its current correct behaviour (`it`) and for its known b
 
 - `ComponentsStylesService` (`components-styles.service.spec.ts`, new):
   - `it` generates the color class from `style`.
-  - `it` adds the variant class (`brutalist`, `flat`, `ghost`, `glass`, `glow`).
-  - `it` adds the layout classes (`flexWrap`, `flexCenter`, `sticky`...).
+  - `it` adds the variant class (`brutalist`, `flat`, `ghost`, `glass`, `glow`, `discreet`, and `type-default` without one).
+  - `it` adds the general style classes (`noPadding`, `squared`, `alignCenter`, `contrast`...). The layout classes (`flexWrap`, `sticky`...) come from `Styleable`, so its suite covers them.
   - `xit` E-04: does not duplicate classes.
 - `Styleable` (`styleable.base.spec.ts`, new, through `MonkeyButton` and `MonkeyLoader` in a host component):
-  - `it` applies `classList` from the inputs.
+  - `it` applies `classList` from the inputs (color, variant, `sticky` and the screen class).
   - `it` recalculates `classList` after an input change.
   - `xit` E-02: keeps one subscription to the screen changes after several input changes.
   - `xit` E-03: does not remove the classes of the `<main>` element.
@@ -182,7 +182,9 @@ Each unit has tests for its current correct behaviour (`it`) and for its known b
   - `it` shows no message when the value is valid.
   - `it` shows the message of a validator other than `required`.
   - `xit` E-06: shows the required message when the value is empty.
-  - `xit` E-23: recalculates the messages after `reset()`, `setValue()` and `markAllAsTouched()`.
+  - `xit` E-23: recalculates the messages after `setValue()`.
+  - `xit` E-23: recalculates the messages after `reset()`.
+  - `xit` E-23: recalculates the messages after `markAllAsTouched()`.
 - `ThemeService` (`theme.service.spec.ts`, new):
   - `it` uses the theme stored in `localStorage`.
   - `it` uses `prefers-color-scheme` when no theme is stored.
@@ -193,11 +195,12 @@ Each unit has tests for its current correct behaviour (`it`) and for its known b
   - `it` each single method (`warning`, `danger`, `success`, `info`, `custom`) emits one message with the correct style.
   - `it` each plural method emits the list of messages.
   - `it` `hide()` emits the hide event.
-  - `it` closes the alert automatically after the given time (`fakeAsync`).
+  - `it` closes the alert automatically after the screen time (`fakeAsync`).
+  - `it` does not close the alert when it is not auto-close.
 - `MonkeyTooltipService` (`tooltip.service.spec.ts`, new):
   - `it` `onShow()` emits after the delay (`fakeAsync`).
   - `it` `show()` emits immediately.
-  - `it` `hide()` emits the hide event.
+  - `it` `hide()` emits an empty tooltip and cancels a pending one.
   - `xit` E-20: accepts the coordinate 0.
 - `MonkeyFontService` (`font.service.spec.ts`, new; each test removes the `<link>` and `<style>` elements that it adds):
   - `it` adds the Dosis `<link>` when the service is created.
@@ -205,23 +208,26 @@ Each unit has tests for its current correct behaviour (`it`) and for its known b
   - `xit` E-16: does not add a second `<link>` for the same URL.
   - `xit` E-16: `removeDosisFont()` removes the `<link>` and the `<style>`.
   - `xit` E-16: the `<link>` and the `<style>` have different ids.
+  - `xit` E-16: using another font removes the `<link>` of the previous one.
   - `xit` E-16: the Red Hat Display URL has `display=swap`.
+
+- Result: 45 tests run and 16 `xit` (E-02, E-03, E-04, E-05, E-06, E-11 ×2, E-16 ×5, E-20, E-23 ×3). With every `xit` changed to `it`, the 16 fail for the reason of their `E-xx`.
 
 **To-do**
 
-- [ ] Add the `ComponentsStylesService` suite.
-- [ ] Add the `Styleable` suite.
-- [ ] Extend the `MonkeyInputText` suite with the `MonkeyInput` cases.
-- [ ] Add the `ThemeService` suite, with `localStorage` and `matchMedia` replaced by spies.
-- [ ] Add the `MonkeyAlertService` and `MonkeyTooltipService` suites.
-- [ ] Add the `MonkeyFontService` suite.
-- [ ] Change each `xit` to `it` one time, confirm that it fails for the reason in its `E-xx`, and change it back to `xit`.
-- [ ] Mark 12.2 and point 12 as done in `ROADMAP.md`, and move point 12 to "Features implementadas".
-- [ ] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run lint`, `npm run format:check`, `npm run test:ci`, `ng build ngx-monkey-ui`, `ng build ngx-monkey-ui-tests`, and a green CI run). Fix issues if any.
-- [ ] STOP. Present the changes to the user for review and suggest commit messages (or pull request titles, when the phases are implemented through pull requests). Do NOT proceed to the next phase until the user explicitly asks.
+- [x] Add the `ComponentsStylesService` suite.
+- [x] Add the `Styleable` suite.
+- [x] Extend the `MonkeyInputText` suite with the `MonkeyInput` cases.
+- [x] Add the `ThemeService` suite, with `localStorage` and `matchMedia` replaced by spies.
+- [x] Add the `MonkeyAlertService` and `MonkeyTooltipService` suites.
+- [x] Add the `MonkeyFontService` suite.
+- [x] Change each `xit` to `it` one time, confirm that it fails for the reason in its `E-xx`, and change it back to `xit`.
+- [x] Mark 12.2 and point 12 as done in `ROADMAP.md`, and move point 12 to "Features implementadas".
+- [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run lint`, `npm run format:check`, `npm run test:ci`, `ng build ngx-monkey-ui`, `ng build ngx-monkey-ui-tests`, and a green CI run). Fix issues if any. Local checks are green; the CI runs when this phase is pushed.
+- [x] STOP. Present the changes to the user for review and suggest commit messages (or pull request titles, when the phases are implemented through pull requests). Do NOT proceed to the next phase until the user explicitly asks.
 
 ## ⏭️ Next step
 
-Implement Phase 5: add the behaviour tests for the units that points 13 and 14 change.
+All phases are complete. Push the branch, check the CI of [SrPepeR/ng-monkey-ui#28](https://github.com/SrPepeR/ng-monkey-ui/pull/28), mark it as ready for review and merge it; then start roadmap point 13.
 
-Safety net knitted by 🐢 💨 (Turbotuga™, [Codely](https://codely.com)’s mascot): the first monkey jumps and lands on 28 green tests, ties its rope to Node 22, a robot checks every knot, and a broom sweeps the floor before the show. 🐒 ✅ 📌 🤖 🧹 🐢 💨
+Safety net knitted by 🐢 💨 (Turbotuga™, [Codely](https://codely.com)’s mascot): the first monkey jumps and lands on 28 green tests, ties its rope to Node 22, a robot checks every knot, a broom sweeps the floor, and sixteen traps wait with their labels for the bugs to come out. 🐒 ✅ 📌 🤖 🧹 🪤 🐢 💨
