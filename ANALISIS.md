@@ -35,7 +35,7 @@ Se ha leído entero el código de `bases/`, `services/`, `objects/`, `components
 | `ng test` corrigiendo solo ese import | 25 tests, **11 fallan**. Todos son el `should create` generado por el CLI: los specs declaran el componente solo, sin sus dependencias (`NG0304 'monkey-icon' is not a known element`, `NG0303 Can't bind to 'formGroup'`). |
 | `dist/ngx-monkey-ui` | No incluye ningún `.scss`: los temas y mixins no se publican. |
 
-Es decir: la librería compila, pero no tiene ninguna red de seguridad. Los 26 specs existentes no prueban comportamiento, y la suite ni siquiera arranca. Esto condiciona el orden del roadmap: antes de corregir nada ni de portar, hay que poder demostrar que no se rompe nada.
+Es decir: la librería compila, pero no tiene ninguna red de seguridad. Los 25 specs existentes no prueban comportamiento, y la suite ni siquiera arranca. Esto condiciona el orden del roadmap: antes de corregir nada ni de portar, hay que poder demostrar que no se rompe nada.
 
 ### Arquitectura en una frase
 
@@ -88,7 +88,7 @@ Errores que producen un comportamiento incorrecto hoy, ordenados por gravedad.
 ### Medios y bajos
 
 - **E-19. IDs fijos en el checkbox y `for` huérfano en el switch.** `checkbox.component.html` pone `id="checkbox"` y `name="checkbox"` a todas las instancias. En `switch.component.html` los dos `<label for="switch">` apuntan a un id que ningún elemento tiene; si la página consumidora tuviera un `id="switch"`, esos labels lo activarían.
-- **E-20. `Tooltip.setDirection` descarta coordenadas 0.** `!mousePosition.x || !mousePosition.y` (`services/tooltip/tooltip.ts:53`) trata el 0 como ausencia de valor. Además mezcla `pageX/pageY` (coordenadas de documento) con `window.innerWidth` (coordenadas de viewport): con la página desplazada horizontalmente el lado elegido es incorrecto.
+- **E-20. `Tooltip.setDirection` descarta coordenadas 0.** `!mousePosition.x || !mousePosition.y` (`services/tooltip/tooltip.ts:50`) trata el 0 como ausencia de valor. Además mezcla `pageX/pageY` (coordenadas de documento) con `window.innerWidth` (coordenadas de viewport): con la página desplazada horizontalmente el lado elegido es incorrecto.
 - **E-21. `MonkeyTooltipService.onHide` es código muerto** (`tooltip.service.ts:58`), y la constante `DEFAULT_SCREEN_TIME` no se usa.
 - **E-22. `isDisabledComponent` nunca vuelve a `false`** en `Styleable`: un componente que se habilita tras haber estado deshabilitado sigue marcado.
 - **E-23. Mensajes de validación desfasados.** `invalidMessages` solo se recalcula en `ngModelChange`; un `reset()`, un `setValue()` programático o un `markAllAsTouched()` al enviar no los actualizan.
@@ -133,7 +133,7 @@ No rompen nada hoy de forma visible, pero condicionan el port y la evolución.
 | `removeOtherFonts` mira `href` en vez de `id` | **Confirmado**, junto con otros cuatro fallos del mismo servicio (E-16). |
 | Sin `isPlatformBrowser` | **Confirmado** (R-06). |
 | Tooltip en coordenada 0 | **Confirmado**, más la mezcla de coordenadas (E-20). |
-| No hay pruebas unitarias | **Incompleto**: hay 26 specs, pero la suite no compila y la mitad de los que quedan fallan (E-01). |
+| No hay pruebas unitarias | **Incompleto**: hay 25 specs, pero la suite no compila y la mitad de los que quedan fallan (E-01). |
 
 ---
 
