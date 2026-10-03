@@ -15,10 +15,10 @@ Hoja de ruta de `ngx-gorilla-ui`. El porqué de cada decisión, las premisas, lo
   - [x] 0.1. Terminar el punto 13 de `ngx-monkey-ui` (fase 5: `CHANGELOG.md` y documentación), mergear `fix/functional-bugs` y crear el tag `ngx-monkey-ui-legacy`, sin publicar la `0.3.2`.
   - [x] 0.2. Descartar los puntos 14 a 27 del roadmap de `ngx-monkey-ui` (ver [Antecedentes](#antecedentes-ngx-monkey-ui)). La propuesta y este roadmap pasan a `docs/`, el análisis pasa a ser `docs/ERRORES-A-EVITAR.md`, y `CHANGELOG.md` y `README.md` empiezan de nuevo, en inglés, para `ngx-gorilla-ui`.
   - ~~0.3. (Opcional) Desplegar el catálogo legacy en Vercel como referencia visual fija.~~ Descartado: para comparar basta con un `git worktree` del tag.
-  - [ ] 0.4. Workspace limpio en Angular 22 con `projects/ngx-gorilla-ui` y `projects/ngx-gorilla-ui-catalog`; borrar `ngx-monkey-ui` y `ngx-monkey-ui-tests` de `main` en la misma pull request.
+  - [x] 0.4. Workspace limpio en Angular 22 con `projects/ngx-gorilla-ui` y `projects/ngx-gorilla-ui-catalog`; borrar `ngx-monkey-ui` y `ngx-monkey-ui-tests` de `main` en la misma pull request.
   - [ ] 0.5. Node 24, Vitest (`@angular/build:unit-test`) en modo navegador con Playwright, ESLint y Prettier adaptados, `.browserslistrc` con las dos últimas versiones de los navegadores principales, CI con lint, formato, tests y build en cada pull request y en cada push a `main` y a `release/**`. Catálogo zoneless.
   - [x] 0.6. Cerrar las decisiones de nombres. Renombrado el repositorio a `ng-gorilla-ui`.
-  - [ ] 0.7. Flujo de ramas: rama `release/0.1.0` y protección de `main` y de `release/*` (pull request obligatoria con la CI en verde). `CONTRIBUTING.md`, `AGENTS.md` y la CI en los push a `release/**` ya están.
+  - [x] 0.7. Flujo de ramas: rama `release/0.1.0` y protección de `main` y de `release/*` (pull request obligatoria con la CI `build-and-test` en verde, sin borrado ni force-push), `CONTRIBUTING.md`, `AGENTS.md` y la CI en los push a `release/**`.
   - [ ] 0.8. Workflow de release:
     - Se ejecuta al mergear en `main` una pull request desde `release/<versión>`, con la CI en verde.
     - Comprueba que la versión de la rama coincide con `package.json` y `CHANGELOG.md`.

@@ -1,89 +1,68 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "cli": {
+    "packageManager": "npm",
+    "analytics": false
+  },
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-monkey-ui": {
+    "ngx-gorilla-ui": {
       "projectType": "library",
-      "root": "projects/ngx-monkey-ui",
-      "sourceRoot": "projects/ngx-monkey-ui/src",
-      "prefix": "monkey",
+      "root": "projects/ngx-gorilla-ui",
+      "sourceRoot": "projects/ngx-gorilla-ui/src",
+      "prefix": "gorilla",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/ngx-monkey-ui/ng-package.json"
-          },
+          "builder": "@angular/build:ng-packagr",
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngx-monkey-ui/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngx-gorilla-ui/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ngx-monkey-ui/tsconfig.lib.json"
+              "tsConfig": "projects/ngx-gorilla-ui/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/ngx-monkey-ui/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
-          }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "projects/ngx-monkey-ui/**/*.ts",
-              "projects/ngx-monkey-ui/**/*.html"
-            ],
-            "eslintConfig": "projects/ngx-monkey-ui/eslint.config.js"
-          }
         }
       }
     },
-    "ngx-monkey-ui-tests": {
+    "ngx-gorilla-ui-catalog": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "css"
         }
       },
-      "root": "projects/ngx-monkey-ui-tests",
-      "sourceRoot": "projects/ngx-monkey-ui-tests/src",
-      "prefix": "app",
+      "root": "projects/ngx-gorilla-ui-catalog",
+      "sourceRoot": "projects/ngx-gorilla-ui-catalog/src",
+      "prefix": "gorilla",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular/build:application",
           "options": {
-            "outputPath": {
-              "base": "dist/ngx-monkey-ui-tests"
-            },
-            "index": "projects/ngx-monkey-ui-tests/src/index.html",
-            "polyfills": ["zone.js"],
-            "tsConfig": "projects/ngx-monkey-ui-tests/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
+            "browser": "projects/ngx-gorilla-ui-catalog/src/main.ts",
+            "tsConfig": "projects/ngx-gorilla-ui-catalog/tsconfig.app.json",
             "assets": [
-              "projects/ngx-monkey-ui-tests/src/favicon.ico",
-              "projects/ngx-monkey-ui-tests/src/assets"
+              {
+                "glob": "**/*",
+                "input": "projects/ngx-gorilla-ui-catalog/public"
+              }
             ],
-            "styles": ["projects/ngx-monkey-ui-tests/src/styles.scss"],
-            "scripts": [],
-            "browser": "projects/ngx-monkey-ui-tests/src/main.ts"
+            "styles": ["projects/ngx-gorilla-ui-catalog/src/styles.css"]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all"
@@ -91,58 +70,24 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ngx-monkey-ui-tests:build:production"
+              "buildTarget": "ngx-gorilla-ui-catalog:build:production"
             },
             "development": {
-              "buildTarget": "ngx-monkey-ui-tests:build:development"
+              "buildTarget": "ngx-gorilla-ui-catalog:build:development"
             }
           },
           "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "buildTarget": "ngx-monkey-ui-tests:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/ngx-monkey-ui-tests/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/ngx-monkey-ui-tests/src/favicon.ico",
-              "projects/ngx-monkey-ui-tests/src/assets"
-            ],
-            "styles": ["projects/ngx-monkey-ui-tests/src/styles.scss"],
-            "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "projects/ngx-monkey-ui-tests/**/*.ts",
-              "projects/ngx-monkey-ui-tests/**/*.html"
-            ],
-            "eslintConfig": "projects/ngx-monkey-ui-tests/eslint.config.js"
-          }
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "6a36267f-8591-4198-b9f2-246756215336"
   }
 }

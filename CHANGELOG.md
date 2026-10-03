@@ -10,5 +10,7 @@ First version of `ngx-gorilla-ui`: the workspace and its tooling (roadmap point 
 
 ### Project
 
+- Angular 22 workspace with the `ngx-gorilla-ui` library (primary entry point exporting `GORILLA_VERSION`) and the zoneless `ngx-gorilla-ui-catalog` documentation app. Requires Node 24.
+- Supported browsers: the last two versions of Chrome, Edge, Firefox, and Safari, desktop and mobile (`.browserslistrc`).
 - Contribution rules in `CONTRIBUTING.md`: premises (verified accessibility, overridable tokens, no abrupt changes, performance), branch flow, releases, and definition of done.
 - CI also runs on pushes to `release/**` branches.

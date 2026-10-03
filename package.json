@@ -1,53 +1,35 @@
 {
-  "name": "ng-monkey-ui",
+  "name": "ng-gorilla-ui",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve ngx-monkey-ui-tests",
-    "stop": "exit 0",
-    "build": "ng build",
-    "watch": "ng build ngx-monkey-ui --watch",
-    "test": "ng test",
-    "test:ci": "ng test ngx-monkey-ui --watch=false --browsers=ChromeHeadless && ng build ngx-monkey-ui && ng test ngx-monkey-ui-tests --watch=false --browsers=ChromeHeadless",
-    "lint": "ng lint",
+    "start": "ng build ngx-gorilla-ui && ng serve ngx-gorilla-ui-catalog",
+    "watch": "ng build ngx-gorilla-ui --watch --configuration development",
+    "build": "ng build ngx-gorilla-ui && ng build ngx-gorilla-ui-catalog",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "verify": "npm run format:check && npm run build"
   },
   "private": true,
   "engines": {
-    "node": "^22.22.3"
+    "node": "^24.15.0"
   },
   "dependencies": {
-    "@angular/animations": "^18.2.8",
-    "@angular/common": "^18.2.8",
-    "@angular/compiler": "^18.2.8",
-    "@angular/core": "^18.2.8",
-    "@angular/forms": "^18.2.8",
-    "@angular/platform-browser": "^18.2.8",
-    "@angular/platform-browser-dynamic": "^18.2.8",
-    "@angular/router": "^18.2.8",
+    "@angular/common": "^22.2.0",
+    "@angular/compiler": "^22.2.0",
+    "@angular/core": "^22.2.0",
+    "@angular/forms": "^22.2.0",
+    "@angular/platform-browser": "^22.2.0",
+    "@angular/router": "^22.2.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.14.10"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^18.2.9",
-    "@angular/cli": "~18.2.9",
-    "@angular/compiler-cli": "^18.2.8",
-    "@types/jasmine": "~4.3.0",
-    "angular-eslint": "18.4.3",
-    "concurrently": "^8.2.2",
-    "eslint": "^9.15.0",
-    "eslint-config-prettier": "^10.1.8",
-    "jasmine-core": "~4.6.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
-    "ng-packagr": "^18.2.1",
+    "@angular/build": "^22.2.1",
+    "@angular/cli": "^22.2.1",
+    "@angular/compiler-cli": "^22.2.0",
+    "ng-packagr": "^22.2.0",
     "prettier": "^3.9.9",
-    "typescript": "~5.4.5",
-    "typescript-eslint": "8.16.0"
+    "typescript": "~6.0.2"
   }
 }

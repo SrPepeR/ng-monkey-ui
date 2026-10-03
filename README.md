@@ -2,7 +2,7 @@
 
 Home of `ngx-gorilla-ui`, an Angular 22 component library, and its catalog. It succeeds `ngx-monkey-ui`, rebuilt from scratch to be accessible, lightweight, and ready for zoneless and server-rendered apps.
 
-> **Status:** in preparation. No version has been released yet, and until the new workspace lands, the code under `projects/` is still `ngx-monkey-ui`.
+> **Status:** in preparation. No version has been released yet: the Angular 22 workspace is in place and the first component is on its way.
 
 ## Premises
 
@@ -24,7 +24,7 @@ Home of `ngx-gorilla-ui`, an Angular 22 component library, and its catalog. It s
 
 ## Structure
 
-Once the new workspace lands, it will hold two projects:
+The workspace holds two projects:
 
 ```text
 projects/

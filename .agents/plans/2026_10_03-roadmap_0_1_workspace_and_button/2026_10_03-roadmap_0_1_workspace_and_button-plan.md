@@ -9,6 +9,16 @@ created_by:
     name: "Claude Opus"
     version: "5.5"
     reasoning_effort: "low"
+
+implemented_by:
+  tool: "Claude Code"
+  model:
+    name: "Claude Opus"
+    version: "5.5"
+    reasoning_effort: "low"
+
+last_implementation_at: "2026-10-03T12:25:00Z"
+has_completed_all_phases: "false"
 ---
 
 # Puntos 0 y 1: workspace de ngx-gorilla-ui y el botón
@@ -27,11 +37,11 @@ Sustituir el workspace de `ngx-monkey-ui` por uno nuevo en Angular 22 con la lib
   - [`package.json`](../../../package.json): scripts con `ngx-monkey-ui`, Karma y Jasmine, `@angular-devkit/build-angular`, `engines.node` `^22.22.3`.
   - [`angular.json`](../../../angular.json): proyectos `ngx-monkey-ui` y `ngx-monkey-ui-tests`, y `cli.analytics` (se elimina).
   - [`tsconfig.json`](../../../tsconfig.json): flags estrictos que se conservan (`strict`, `noImplicitOverride`, `noPropertyAccessFromIndexSignature`, `noImplicitReturns`, `noFallthroughCasesInSwitch`, `strictTemplates`).
-  - [`eslint.config.js`](../../../eslint.config.js): estructura que se conserva (typescript-eslint, angular-eslint con `templateAccessibility`, `eslint-config-prettier`), con el prefijo `monkey` que pasa a `gorilla`.
+  - `eslint.config.js` (se borra en la fase 1 y se recrea en la fase 2): estructura que se conserva (typescript-eslint, angular-eslint con `templateAccessibility`, `eslint-config-prettier`), con el prefijo `monkey` que pasa a `gorilla`.
   - [`.prettierrc.json`](../../../.prettierrc.json), [`.prettierignore`](../../../.prettierignore) y [`.editorconfig`](../../../.editorconfig): se conservan.
   - [`.nvmrc`](../../../.nvmrc) (22.23.3, pasa a 24), `.hintrc` (se elimina), [`.vscode/`](../../../.vscode) y [`.claude/launch.json`](../../../.claude/launch.json) (pasan a apuntar al catálogo).
   - [`.github/workflows/ci.yml`](../../../.github/workflows/ci.yml): el job se llama `build-and-test` y **ese nombre no puede cambiar**, porque es el check obligatorio de la protección de `main` y `release/**`.
-  - [`projects/ngx-monkey-ui`](../../../projects/ngx-monkey-ui) y [`projects/ngx-monkey-ui-tests`](../../../projects/ngx-monkey-ui-tests): se borran en la fase 1; siguen en el tag `ngx-monkey-ui-legacy`.
+  - `projects/ngx-monkey-ui` y `projects/ngx-monkey-ui-tests`: se borran en la fase 1; siguen en el tag `ngx-monkey-ui-legacy`.
 - Valores de partida del legacy:
   - `MonkeyStyle` en tema claro: primary `#40d2ec`, secondary `#967adc`, tertiary `#ff00ff`, success `#32cd32`, warning `#ffcc00`, danger `#dc3545`, info `#17a2b8`, fondo `#fbfbfb`/`#121212`. Decisión: **los tonos claros de primary, secondary y tertiary se usan en los dos temas** (en monkey el tema oscuro cambiaba de tono), con escalas de 12 pasos ajustadas para pasar AA.
   - Botón brutalist: borde de 2 px, radio 0, sombra sólida desplazada 8 px (`::after`), negrita. Botón glass: `backdrop-filter: blur(30px)`, radio 15 px, borde de 1 px translúcido, transición de 0,3 s.
@@ -135,18 +145,18 @@ Sustituir el workspace de `ngx-monkey-ui` por uno nuevo en Angular 22 con la lib
 
 Sustituye el workspace de Angular 18 por uno nuevo en Angular 22 con la librería vacía y el catálogo, y borra `ngx-monkey-ui` en la misma pull request. Al terminar, `npm start` abre el catálogo y la CI lo construye.
 
-- [ ] Crear la rama `chore/gorilla-workspace` desde `release/0.1.0` (este plan va en ella).
-- [ ] Generar un workspace temporal con `ng new` (Angular 22.2, `--create-application=false`, estilos CSS) fuera del repositorio y copiar `angular.json`, `package.json`, `tsconfig.json` y `.gitignore`, conservando los flags estrictos del `tsconfig.json` actual y sin `cli.analytics`.
-- [ ] Borrar `projects/ngx-monkey-ui`, `projects/ngx-monkey-ui-tests`, `.hintrc` y las dependencias de Karma, Jasmine y `@angular-devkit/build-angular`.
-- [ ] Generar `projects/ngx-gorilla-ui` (`ng generate library`) con `package.json` `name: ngx-gorilla-ui`, `version: 0.0.0`, `sideEffects: false` y `peerDependencies` `@angular/core` y `@angular/common` `^22.2.0`; entry point principal con `GORILLA_VERSION`.
-- [ ] Generar `projects/ngx-gorilla-ui-catalog` (`ng generate application`, CSS, sin SSR, zoneless) con una página `Getting started` que muestra `GORILLA_VERSION` importado desde la librería por el `paths` del `tsconfig.json`.
-- [ ] Node 24: `.nvmrc` a la última 24 LTS y `engines.node` `^24.15.0`; `.browserslistrc` con las dos últimas versiones de Chrome, Edge, Firefox y Safari (escritorio y móvil).
-- [ ] Scripts de `package.json`: `start` (catálogo), `build` (librería y catálogo), `format`, `format:check` y `verify` (por ahora `format:check` y `build`).
-- [ ] Adaptar `.github/workflows/ci.yml` manteniendo el job `build-and-test`: `npm ci`, `format:check` y `build`.
-- [ ] Actualizar `.vscode/launch.json`, `.vscode/tasks.json` y `.claude/launch.json` al catálogo.
-- [ ] Marcar 0.4 y 0.7 en `docs/ROADMAP.md` y añadir la entrada en `CHANGELOG.md` (0.1.0).
-- [ ] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run verify`). Fix issues if any.
-- [ ] STOP. Present the changes to the user for review and suggest pull request titles. Do NOT proceed to the next phase until the user explicitly asks.
+- [x] Crear la rama `chore/gorilla-workspace` desde `release/0.1.0` (este plan va en ella).
+- [x] Generar un workspace temporal con `ng new` (Angular 22.2, `--create-application=false`, estilos CSS) fuera del repositorio y copiar `angular.json`, `package.json`, `tsconfig.json` y `.gitignore`, conservando los flags estrictos del `tsconfig.json` actual y sin `cli.analytics`.
+- [x] Borrar `projects/ngx-monkey-ui`, `projects/ngx-monkey-ui-tests`, `.hintrc` y las dependencias de Karma, Jasmine y `@angular-devkit/build-angular`.
+- [x] Generar `projects/ngx-gorilla-ui` (`ng generate library`) con `package.json` `name: ngx-gorilla-ui`, `version: 0.0.0`, `sideEffects: false` y `peerDependencies` `@angular/core` y `@angular/common` `^22.2.0`; entry point principal con `GORILLA_VERSION`.
+- [x] Generar `projects/ngx-gorilla-ui-catalog` (`ng generate application`, CSS, sin SSR, zoneless) con una página `Getting started` que muestra `GORILLA_VERSION` importado desde la librería por el `paths` del `tsconfig.json`.
+- [x] Node 24: `.nvmrc` a la última 24 LTS y `engines.node` `^24.15.0`; `.browserslistrc` con las dos últimas versiones de Chrome, Edge, Firefox y Safari (escritorio y móvil).
+- [x] Scripts de `package.json`: `start` (catálogo), `build` (librería y catálogo), `format`, `format:check` y `verify` (por ahora `format:check` y `build`).
+- [x] Adaptar `.github/workflows/ci.yml` manteniendo el job `build-and-test`: `npm ci`, `format:check` y `build`.
+- [x] Actualizar `.vscode/launch.json`, `.vscode/tasks.json` y `.claude/launch.json` al catálogo.
+- [x] Marcar 0.4 y 0.7 en `docs/ROADMAP.md` y añadir la entrada en `CHANGELOG.md` (0.1.0).
+- [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run verify`). Fix issues if any.
+- [x] STOP. Present the changes to the user for review and suggest pull request titles. Do NOT proceed to the next phase until the user explicitly asks.
 
 ### Fase 2: tests en navegador, lint y CI completa
 
@@ -253,6 +263,6 @@ Automatiza la publicación y deja `release/0.1.0` lista para la pull request hac
 
 ## Siguiente paso
 
-Implementar la fase 1: el workspace de Angular 22 con el catálogo que arranca, en la rama `chore/gorilla-workspace`.
+Implementar la fase 2: tests en navegador con Vitest y Playwright, ESLint y la CI completa, en la rama `chore/gorilla-tooling` creada desde `release/0.1.0` una vez mergeada la fase 1.
 
-Plan swinging from branch to branch with 🐢 💨 (Turbotuga™, [Codely](https://codely.com)'s mascot) riding on the gorilla's back.
+The gorilla moved into its new Angular 22 home and 🐢 💨 (Turbotuga™, [Codely](https://codely.com)'s mascot) carried the boxes. 🏠 🦍 🐢 💨
