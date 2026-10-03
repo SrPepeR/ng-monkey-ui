@@ -31,8 +31,8 @@ Fix every functional bug listed in roadmap point 13 (E-06 to E-25, except E-13, 
 
 - Branch: `fix/functional-bugs`, created from `origin/main` (`200e055`).
 - There is no `AGENTS.md`, no `CLAUDE.md` and no `docs/` folder. The references are:
-  - [ROADMAP.md](../../../ROADMAP.md): point 13 (13.1 to 13.16).
-  - [ANALISIS.md](../../../ANALISIS.md): E-06 to E-25, each one with its file and line.
+  - [ROADMAP.md](https://github.com/SrPepeR/ng-gorilla-ui/blob/ngx-monkey-ui-legacy/ROADMAP.md): point 13 (13.1 to 13.16).
+  - [ANALISIS.md](https://github.com/SrPepeR/ng-gorilla-ui/blob/ngx-monkey-ui-legacy/ANALISIS.md): E-06 to E-25, each one with its file and line.
   - [.prettierrc.json](../../../.prettierrc.json) and the `eslint.config.js` files: the CI runs `npm run lint` and `npm run format:check`.
 - Verification command: `npm run lint && npm run format:check && npm run test:ci && npx ng build ngx-monkey-ui-tests` (`test:ci` builds the library between the library and the test app suites).
 - Test conventions (from point 12):
@@ -87,7 +87,7 @@ Fix the inverted `required` message and the messages that are not recalculated (
   - `two instances get different input ids`
   - `the label for points to the input id`
 - [x] Checkbox and switch: unique id from a `static` counter of the class, bound to the `<input>` `id`/`name` and to the labels `for`.
-- [x] Mark 13.1, 13.8 and 13.12 as done in [ROADMAP.md](../../../ROADMAP.md).
+- [x] Mark 13.1, 13.8 and 13.12 as done in [ROADMAP.md](https://github.com/SrPepeR/ng-gorilla-ui/blob/ngx-monkey-ui-legacy/ROADMAP.md).
 - [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run lint && npm run format:check && npm run test:ci && npx ng build ngx-monkey-ui-tests`). Fix issues if any.
 - [x] STOP. Present the changes to the user for review and suggest commit messages. Do NOT proceed to the next phase until the user explicitly asks.
 
@@ -108,7 +108,7 @@ Make `MonkeyLoginPage` respect its inputs and listen to Enter only inside its fo
   - `does not emit onClick when disabled`
 - [x] Extend [alert.component.spec.ts](../../../projects/ngx-monkey-ui/src/lib/components/third-level/alert/alert.component.spec.ts) with `the dismiss, accept and reject buttons emit their outputs once`.
 - [x] `MonkeyIconButton` and `MonkeyAlert`: bind the child `(onClick)` output instead of the native `(click)` on its host.
-- [x] Mark 13.2 and 13.14 as done in [ROADMAP.md](../../../ROADMAP.md).
+- [x] Mark 13.2 and 13.14 as done in [ROADMAP.md](https://github.com/SrPepeR/ng-gorilla-ui/blob/ngx-monkey-ui-legacy/ROADMAP.md).
 - [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command. Fix issues if any.
 - [x] STOP. Present the changes to the user for review and suggest commit messages. Do NOT proceed to the next phase until the user explicitly asks.
 
@@ -135,8 +135,8 @@ Fix the image placeholder and title (E-08, E-09), the scrollbar styles (E-10), t
   - `renders without errors when data is empty`
   - `two instances resize their own content element`
 - [x] `MonkeyAsideMenu`: `viewChild` instead of `document.getElementById`, and tolerate an empty `data`.
-- [x] Record the E-13 decision (deferred to 17.8, the tooltip keeps forwarding its inputs to `monkey-card`) in 13.6 of [ROADMAP.md](../../../ROADMAP.md) and in E-13 of [ANALISIS.md](../../../ANALISIS.md).
-- [x] Mark 13.3, 13.4, 13.6, 13.7 and 13.11 as done in [ROADMAP.md](../../../ROADMAP.md).
+- [x] Record the E-13 decision (deferred to 17.8, the tooltip keeps forwarding its inputs to `monkey-card`) in 13.6 of [ROADMAP.md](https://github.com/SrPepeR/ng-gorilla-ui/blob/ngx-monkey-ui-legacy/ROADMAP.md) and in E-13 of [ANALISIS.md](https://github.com/SrPepeR/ng-gorilla-ui/blob/ngx-monkey-ui-legacy/ANALISIS.md).
+- [x] Mark 13.3, 13.4, 13.6, 13.7 and 13.11 as done in [ROADMAP.md](https://github.com/SrPepeR/ng-gorilla-ui/blob/ngx-monkey-ui-legacy/ROADMAP.md).
 - [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command. Fix issues if any.
 - [x] STOP. Present the changes to the user for review and suggest commit messages. Do NOT proceed to the next phase until the user explicitly asks.
 
@@ -162,7 +162,7 @@ Fix the theme persistence (E-11), the font service (E-16), the background servic
   - `unlockOrientation() resolves after unlocking`
   - `unlockOrientation() rejects when unlock() throws`
 - [x] `MonkeyScreenService.unlockOrientation()`: call `unlock()` and return a real promise, removing the `@ts-expect-error`. The `Promise<void>` signature stays the same.
-- [x] Mark 13.5, 13.9, 13.10, 13.13 and 13.15 as done in [ROADMAP.md](../../../ROADMAP.md).
+- [x] Mark 13.5, 13.9, 13.10, 13.13 and 13.15 as done in [ROADMAP.md](https://github.com/SrPepeR/ng-gorilla-ui/blob/ngx-monkey-ui-legacy/ROADMAP.md).
 - [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command. Fix issues if any.
 - [x] STOP. Present the changes to the user for review and suggest commit messages. Do NOT proceed to the next phase until the user explicitly asks.
 
@@ -171,8 +171,8 @@ Fix the theme persistence (E-11), the font service (E-16), the background servic
 Record the fixes and close point 13 in the docs.
 
 - [x] Create `CHANGELOG.md` at the repository root with a `0.3.2 (unreleased)` section that lists the fixes of point 13 by `E-xx`, and notes that the release waits for point 14 (14.6).
-- [x] Mark E-06 to E-12 and E-14 to E-25 as fixed in [ANALISIS.md](../../../ANALISIS.md), and E-13 as deferred to 17.8.
-- [x] Mark 13.16 as done and move point 13 to "Features implementadas" in [ROADMAP.md](../../../ROADMAP.md) with a summary paragraph.
+- [x] Mark E-06 to E-12 and E-14 to E-25 as fixed in [ANALISIS.md](https://github.com/SrPepeR/ng-gorilla-ui/blob/ngx-monkey-ui-legacy/ANALISIS.md), and E-13 as deferred to 17.8.
+- [x] Mark 13.16 as done and move point 13 to "Features implementadas" in [ROADMAP.md](https://github.com/SrPepeR/ng-gorilla-ui/blob/ngx-monkey-ui-legacy/ROADMAP.md) with a summary paragraph.
 - [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command. Fix issues if any.
 - [x] STOP. Present the changes to the user for review and suggest commit messages. Do NOT proceed to the next phase until the user explicitly asks.
 

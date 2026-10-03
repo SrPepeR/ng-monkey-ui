@@ -31,8 +31,8 @@ Give the `ngx-monkey-ui` workspace a safety net: a test suite that compiles and 
 
 - Branch: `chore/safety-net`, created from `origin/main` (`64bf567`).
 - There is no `AGENTS.md`, no `CLAUDE.md` and no `docs/` folder. The references are:
-  - [ROADMAP.md](../../../ROADMAP.md): point 12 (12.1 to 12.5).
-  - [ANALISIS.md](../../../ANALISIS.md): E-01 (suite does not compile), E-02 to E-06, E-11, E-16, E-20, E-23.
+  - [ROADMAP.md](https://github.com/SrPepeR/ng-gorilla-ui/blob/ngx-monkey-ui-legacy/ROADMAP.md): point 12 (12.1 to 12.5).
+  - [ANALISIS.md](https://github.com/SrPepeR/ng-gorilla-ui/blob/ngx-monkey-ui-legacy/ANALISIS.md): E-01 (suite does not compile), E-02 to E-06, E-11, E-16, E-20, E-23.
   - [.editorconfig](../../../.editorconfig): 2 spaces, UTF-8, final newline, single quotes in `*.ts`.
 - Workspace config:
   - [package.json](../../../package.json): Angular 18.2.8, TypeScript ~5.4.5, Karma ~6.4.0, Jasmine ~4.6.0. No `engines`, no lint, no format.
