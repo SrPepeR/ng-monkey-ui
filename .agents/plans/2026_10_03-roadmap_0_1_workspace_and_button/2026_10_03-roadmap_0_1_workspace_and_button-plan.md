@@ -17,7 +17,7 @@ implemented_by:
     version: "5.5"
     reasoning_effort: "low"
 
-last_implementation_at: "2026-10-03T12:25:00Z"
+last_implementation_at: "2026-10-03T12:55:00Z"
 has_completed_all_phases: "false"
 ---
 
@@ -162,16 +162,16 @@ Sustituye el workspace de Angular 18 por uno nuevo en Angular 22 con la librerí
 
 Añade el tooling de calidad sobre el workspace vacío: Vitest en modo navegador con Playwright, ESLint con el prefijo `gorilla` y la CI con todas las comprobaciones.
 
-- [ ] Crear la rama `chore/gorilla-tooling` desde `release/0.1.0`.
-- [ ] Vitest con `@angular/build:unit-test` en la librería y el catálogo, en modo navegador con Playwright (Chromium, headless en CI), con `vitest`, `@vitest/browser-playwright` y `playwright`.
-- [ ] Primer test real: `app.spec.ts` del catálogo (arranca zoneless y pinta la navegación).
-- [ ] ESLint con `angular-eslint` 22 y `typescript-eslint` en flat config: prefijo `gorilla` para componentes (kebab-case) y directivas (camelCase), `templateAccessibility`, `eslint-config-prettier`, y reglas `no-explicit-any` y `ban-ts-comment` como error (R-12).
-- [ ] Scripts `lint`, `test`, `test:ci` y `verify` (`lint`, `format:check`, `test:ci` y `build`).
-- [ ] CI: `npx playwright install --with-deps chromium`, `lint`, `test:ci`, con caché de los navegadores de Playwright.
-- [ ] Documentar en `CONTRIBUTING.md` los comandos (`npm start`, `npm test`, `npm run verify`).
-- [ ] Marcar 0.5 en `docs/ROADMAP.md` y añadir la entrada en `CHANGELOG.md`.
-- [ ] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run verify`). Fix issues if any.
-- [ ] STOP. Present the changes to the user for review and suggest pull request titles. Do NOT proceed to the next phase until the user explicitly asks.
+- [x] Crear la rama `chore/gorilla-tooling` desde `release/0.1.0`.
+- [x] Vitest con `@angular/build:unit-test` en la librería y el catálogo, en modo navegador con Playwright (Chromium, headless en CI), con `vitest`, `@vitest/browser-playwright` y `playwright`.
+- [x] Primer test real: `app.spec.ts` del catálogo (arranca zoneless y pinta la navegación), y `version.spec.ts` en la librería (`GORILLA_VERSION` coincide con su `package.json`).
+- [x] ESLint con `angular-eslint` 22 y `typescript-eslint` en flat config: prefijo `gorilla` para componentes (kebab-case) y directivas (camelCase), `templateAccessibility`, `eslint-config-prettier`, y reglas `no-explicit-any` y `ban-ts-comment` como error (R-12).
+- [x] Scripts `lint`, `test`, `test:ci` y `verify` (`lint`, `format:check`, `test:ci` y `build`).
+- [x] CI: `npx playwright install --with-deps chromium`, `lint`, `test:ci`, con caché de los navegadores de Playwright.
+- [x] Documentar en `CONTRIBUTING.md` los comandos (`npm start`, `npm test`, `npm run verify`).
+- [x] Marcar 0.5 en `docs/ROADMAP.md` y añadir la entrada en `CHANGELOG.md`.
+- [x] Verify the changes in terms of typechecking, linting and tests using the project's verification command (`npm run verify`). Fix issues if any.
+- [x] STOP. Present the changes to the user for review and suggest pull request titles. Do NOT proceed to the next phase until the user explicitly asks.
 
 ### Fase 3: tokens y tema
 
@@ -180,7 +180,7 @@ Primer entry point real: los tokens en CSS y `GorillaTheme`. El catálogo muestr
 - [ ] Crear la rama `feat/theme-tokens` desde `release/0.1.0`.
 - [ ] `styles/tokens.css` con la capa `@layer gorilla`: paletas primitivas de 12 pasos (gris neutro, cian, violeta y magenta desde los tonos claros de `MonkeyStyle`, y verde, ámbar, rojo y azul para los estados), roles semánticos con `light-dark()`, superficies, texto, bordes, interacción, escalas y movimiento, publicado como asset en `ng-package.json`.
 - [ ] Reglas de preferencias en los tokens: `prefers-reduced-motion` (duraciones a `0s`), `prefers-contrast: more` (bordes y texto reforzados) y `forced-colors` (colores del sistema).
-- [ ] Entry point `ngx-gorilla-ui/theme` con `GorillaTheme`, `provideGorillaTheme()` y sus tipos, sin acceso directo a `window`, `document` ni `localStorage` (`DOCUMENT`, `isPlatformBrowser`).
+- [ ] Entry point `ngx-gorilla-ui/theme` con `GorillaTheme`, `provideGorillaTheme()` y sus tipos, sin acceso directo a `window`, `document` ni `localStorage` (`DOCUMENT`, `isPlatformBrowser`). Ajustar el target `test` de la librería (`include`) y `tsconfig.lib.json` para que cubran las carpetas de los entry points secundarios, que quedan fuera de `src/`.
 - [ ] Suites `gorilla-theme.spec.ts` y `tokens.spec.ts` con todos sus casos.
 - [ ] Catálogo: `provideGorillaTheme()`, selector `Light`/`Dark`/`System` en la cabecera y páginas `Theming` (cómo usar el tema y sobrescribir tokens) y `Tokens` (paletas, roles con su contraste, escalas).
 - [ ] Revisar con el usuario las paletas en el catálogo y ajustar los pasos que no pasen AA.
@@ -263,6 +263,6 @@ Automatiza la publicación y deja `release/0.1.0` lista para la pull request hac
 
 ## Siguiente paso
 
-Implementar la fase 2: tests en navegador con Vitest y Playwright, ESLint y la CI completa, en la rama `chore/gorilla-tooling` creada desde `release/0.1.0` una vez mergeada la fase 1.
+Implementar la fase 3: los tokens en CSS y `GorillaTheme`, con su página en el catálogo, en la rama `feat/theme-tokens` creada desde `release/0.1.0` una vez mergeada la fase 2.
 
-The gorilla moved into its new Angular 22 home and 🐢 💨 (Turbotuga™, [Codely](https://codely.com)'s mascot) carried the boxes. 🏠 🦍 🐢 💨
+The gorilla moved into its new Angular 22 home, 🐢 💨 (Turbotuga™, [Codely](https://codely.com)'s mascot) carried the boxes, and a robot now inspects every room. 🏠 🦍 🐢 💨 🤖

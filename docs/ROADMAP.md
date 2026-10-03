@@ -16,7 +16,7 @@ Hoja de ruta de `ngx-gorilla-ui`. El porqué de cada decisión, las premisas, lo
   - [x] 0.2. Descartar los puntos 14 a 27 del roadmap de `ngx-monkey-ui` (ver [Antecedentes](#antecedentes-ngx-monkey-ui)). La propuesta y este roadmap pasan a `docs/`, el análisis pasa a ser `docs/ERRORES-A-EVITAR.md`, y `CHANGELOG.md` y `README.md` empiezan de nuevo, en inglés, para `ngx-gorilla-ui`.
   - ~~0.3. (Opcional) Desplegar el catálogo legacy en Vercel como referencia visual fija.~~ Descartado: para comparar basta con un `git worktree` del tag.
   - [x] 0.4. Workspace limpio en Angular 22 con `projects/ngx-gorilla-ui` y `projects/ngx-gorilla-ui-catalog`; borrar `ngx-monkey-ui` y `ngx-monkey-ui-tests` de `main` en la misma pull request.
-  - [ ] 0.5. Node 24, Vitest (`@angular/build:unit-test`) en modo navegador con Playwright, ESLint y Prettier adaptados, `.browserslistrc` con las dos últimas versiones de los navegadores principales, CI con lint, formato, tests y build en cada pull request y en cada push a `main` y a `release/**`. Catálogo zoneless.
+  - [x] 0.5. Node 24, Vitest (`@angular/build:unit-test`) en modo navegador con Playwright, ESLint y Prettier adaptados, `.browserslistrc` con las dos últimas versiones de los navegadores principales, CI con lint, formato, tests y build en cada pull request y en cada push a `main` y a `release/**`. Catálogo zoneless.
   - [x] 0.6. Cerrar las decisiones de nombres. Renombrado el repositorio a `ng-gorilla-ui`.
   - [x] 0.7. Flujo de ramas: rama `release/0.1.0` y protección de `main` y de `release/*` (pull request obligatoria con la CI `build-and-test` en verde, sin borrado ni force-push), `CONTRIBUTING.md`, `AGENTS.md` y la CI en los push a `release/**`.
   - [ ] 0.8. Workflow de release:
