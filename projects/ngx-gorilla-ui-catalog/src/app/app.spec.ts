@@ -1,9 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { GorillaTheme } from 'ngx-gorilla-ui/theme';
 import { App } from './app';
 import { routes } from './app.routes';
 
 describe('App', () => {
+  afterEach(() => {
+    localStorage.clear();
+    document.documentElement.removeAttribute('data-theme');
+    document.documentElement.style.removeProperty('color-scheme');
+  });
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [App],
@@ -21,7 +28,38 @@ describe('App', () => {
     const element = fixture.nativeElement as HTMLElement;
 
     expect(element.querySelector('a.skip-link')?.getAttribute('href')).toBe('#main');
-    const nav = element.querySelector('nav[aria-label="Documentation"]');
-    expect(nav?.textContent).toContain('Getting started');
+    const links = Array.from(
+      element.querySelectorAll('nav[aria-label="Documentation"] a'),
+      (link) => link.textContent?.trim(),
+    );
+    expect(links).toEqual(['Getting started', 'Theming', 'Tokens']);
+  });
+
+  it('renders the theme switcher with the light, dark and system options', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const element = fixture.nativeElement as HTMLElement;
+
+    const options = Array.from(
+      element.querySelectorAll<HTMLInputElement>('gorilla-theme-switcher input[type="radio"]'),
+      (input) => input.value,
+    );
+    expect(options).toEqual(['light', 'dark', 'system']);
+  });
+
+  it('applies the theme picked in the switcher', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const element = fixture.nativeElement as HTMLElement;
+
+    element.querySelector<HTMLInputElement>('gorilla-theme-switcher input[value="dark"]')?.click();
+    await fixture.whenStable();
+
+    expect(TestBed.inject(GorillaTheme).theme()).toBe('dark');
+    expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
+    expect(
+      element.querySelector<HTMLInputElement>('gorilla-theme-switcher input[value="dark"]')
+        ?.checked,
+    ).toBe(true);
   });
 });
