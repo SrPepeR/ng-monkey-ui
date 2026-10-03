@@ -142,6 +142,25 @@ describe('tokens.css', () => {
     }
   });
 
+  it('the scrim becomes nearly opaque under `prefers-reduced-transparency: reduce`', async () => {
+    root.setAttribute('data-theme', 'light');
+    const alpha = () => {
+      const probe = document.createElement('span');
+      probe.style.color = 'var(--gorilla-scrim)';
+      document.body.append(probe);
+      const color = getComputedStyle(probe).color;
+      probe.remove();
+      return Number(/\/\s*([\d.]+)\)|,\s*([\d.]+)\)$/.exec(color)?.slice(1).find(Boolean) ?? 1);
+    };
+    expect(alpha()).toBeLessThan(0.5);
+
+    await cdp().send('Emulation.setEmulatedMedia', {
+      features: [{ name: 'prefers-reduced-transparency', value: 'reduce' }],
+    });
+
+    expect(alpha()).toBeGreaterThanOrEqual(0.85);
+  });
+
   it('an unlayered app rule overrides a token without `!important`', () => {
     const appStyle = document.createElement('style');
     appStyle.textContent = ':root { --gorilla-primary-solid: rgb(1, 2, 3); }';

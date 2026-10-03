@@ -1,9 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { GorillaTheme } from 'ngx-gorilla-ui/theme';
 import { App } from './app';
 import { routes } from './app.routes';
 
 describe('App', () => {
+  afterEach(() => {
+    localStorage.clear();
+    document.documentElement.removeAttribute('data-theme');
+    document.documentElement.style.removeProperty('color-scheme');
+  });
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [App],
@@ -38,5 +45,21 @@ describe('App', () => {
       (input) => input.value,
     );
     expect(options).toEqual(['light', 'dark', 'system']);
+  });
+
+  it('applies the theme picked in the switcher', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const element = fixture.nativeElement as HTMLElement;
+
+    element.querySelector<HTMLInputElement>('gorilla-theme-switcher input[value="dark"]')?.click();
+    await fixture.whenStable();
+
+    expect(TestBed.inject(GorillaTheme).theme()).toBe('dark');
+    expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
+    expect(
+      element.querySelector<HTMLInputElement>('gorilla-theme-switcher input[value="dark"]')
+        ?.checked,
+    ).toBe(true);
   });
 });

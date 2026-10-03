@@ -23,7 +23,13 @@ bootstrapApplication(App, {
   providers: [provideGorillaTheme({ defaultTheme: 'system', storageKey: 'gorilla-theme' })],
 });`;
 
-  protected readonly serviceSnippet = `import { GorillaTheme } from 'ngx-gorilla-ui/theme';
+  protected readonly serviceSnippet = `import { Component, inject } from '@angular/core';
+import { GorillaTheme } from 'ngx-gorilla-ui/theme';
+
+@Component({
+  selector: 'app-theme-toggle',
+  template: '<button type="button" (click)="toggle()">Toggle theme</button>',
+})
 
 export class ThemeToggle {
   private readonly theme = inject(GorillaTheme);

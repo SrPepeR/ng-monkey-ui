@@ -62,6 +62,15 @@ import { GorillaTheme, GorillaThemeMode } from 'ngx-gorilla-ui/theme';
       outline: 2px solid var(--gorilla-focus-ring);
       outline-offset: 2px;
     }
+
+    /* Forced colors repaint both states alike: mark the checked option with system colors. */
+    @media (forced-colors: active) {
+      input:checked + span {
+        forced-color-adjust: none;
+        background: Highlight;
+        color: HighlightText;
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

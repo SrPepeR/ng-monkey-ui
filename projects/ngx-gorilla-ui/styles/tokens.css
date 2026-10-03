@@ -342,6 +342,13 @@
     }
   }
 
+  /* Reduced transparency: translucent layers become nearly opaque. */
+  @media (prefers-reduced-transparency: reduce) {
+    :where(:root) {
+      --gorilla-scrim: light-dark(rgb(0 0 0 / 0.85), rgb(0 0 0 / 0.9));
+    }
+  }
+
   /* More contrast: muted text and borders move to their strongest step. */
   @media (prefers-contrast: more) {
     :where(:root) {
