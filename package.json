@@ -12,6 +12,7 @@
     "lint": "ng lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "tokens:palette": "node scripts/generate-palette.mjs && prettier --write projects/ngx-gorilla-ui/styles/tokens.css",
     "verify": "npm run lint && npm run format:check && npm run test:ci && npm run build"
   },
   "private": true,

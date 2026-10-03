@@ -21,7 +21,22 @@ describe('App', () => {
     const element = fixture.nativeElement as HTMLElement;
 
     expect(element.querySelector('a.skip-link')?.getAttribute('href')).toBe('#main');
-    const nav = element.querySelector('nav[aria-label="Documentation"]');
-    expect(nav?.textContent).toContain('Getting started');
+    const links = Array.from(
+      element.querySelectorAll('nav[aria-label="Documentation"] a'),
+      (link) => link.textContent?.trim(),
+    );
+    expect(links).toEqual(['Getting started', 'Theming', 'Tokens']);
+  });
+
+  it('renders the theme switcher with the light, dark and system options', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const element = fixture.nativeElement as HTMLElement;
+
+    const options = Array.from(
+      element.querySelectorAll<HTMLInputElement>('gorilla-theme-switcher input[type="radio"]'),
+      (input) => input.value,
+    );
+    expect(options).toEqual(['light', 'dark', 'system']);
   });
 });

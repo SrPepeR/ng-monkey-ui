@@ -1,0 +1,128 @@
+<h1>Tokens</h1>
+
+<p>
+  Every value of <code>ngx-gorilla-ui</code> is a CSS custom property with the
+  <code>--gorilla-</code> prefix. Components only read the semantic tokens; the palettes are the raw
+  material they are built from. Switch the theme in the header to see both versions.
+</p>
+
+<section aria-labelledby="roles-title">
+  <h2 id="roles-title">Color roles</h2>
+  <p>
+    The <code>color</code> input of the components picks one of these roles. Each pair of background
+    and text passes WCAG AA (4.5:1) in both themes; the ratios below are measured live.
+  </p>
+  <div class="roles">
+    @for (role of roles(); track role.name) {
+      <article class="role">
+        <h3>
+          {{ role.name }} <span class="muted">({{ role.tone }})</span>
+        </h3>
+        <div
+          class="sample"
+          [style.background]="'var(--gorilla-' + role.name + '-solid)'"
+          [style.color]="'var(--gorilla-' + role.name + '-on-solid)'"
+        >
+          <span>Solid</span>
+          <span>{{ role.solid.toFixed(2) }}:1</span>
+        </div>
+        <div
+          class="sample"
+          [style.background]="'var(--gorilla-' + role.name + '-subtle)'"
+          [style.color]="'var(--gorilla-' + role.name + '-on-subtle)'"
+          [style.border-color]="'var(--gorilla-' + role.name + '-border)'"
+        >
+          <span>Subtle</span>
+          <span>{{ role.subtle.toFixed(2) }}:1</span>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<section aria-labelledby="palettes-title">
+  <h2 id="palettes-title">Palettes</h2>
+  <p>
+    Twelve steps per tone: 1-2 backgrounds, 3-5 subtle backgrounds, 6-8 borders, 9 the solid color
+    (the same in both themes), 10 its hover, 11 low-contrast text and 12 high-contrast text.
+  </p>
+  <div class="palettes">
+    @for (tone of tones; track tone) {
+      <div class="palette">
+        <span class="palette-name">{{ tone }}</span>
+        <ol class="steps" [attr.aria-label]="tone + ' palette'">
+          @for (step of steps; track step) {
+            <li
+              class="swatch"
+              [style.background]="'var(--gorilla-' + tone + '-' + step + ')'"
+              [title]="'--gorilla-' + tone + '-' + step"
+            >
+              <span class="visually-hidden">--gorilla-{{ tone }}-{{ step }}</span>
+            </li>
+          }
+        </ol>
+      </div>
+    }
+  </div>
+</section>
+
+<section aria-labelledby="scales-title">
+  <h2 id="scales-title">Scales</h2>
+
+  <h3>Spacing</h3>
+  <ul class="scale">
+    @for (space of spaces; track space) {
+      <li>
+        <code>--gorilla-space-{{ space }}</code>
+        <span class="bar" [style.inline-size]="'var(--gorilla-space-' + space + ')'"></span>
+      </li>
+    }
+  </ul>
+
+  <h3>Radius</h3>
+  <ul class="tiles">
+    @for (radius of radii; track radius) {
+      <li class="tile" [style.border-radius]="'var(--gorilla-radius-' + radius + ')'">
+        <code>{{ radius }}</code>
+      </li>
+    }
+  </ul>
+
+  <h3>Shadows</h3>
+  <ul class="tiles">
+    @for (shadow of shadows; track shadow) {
+      <li class="tile raised" [style.box-shadow]="'var(--gorilla-shadow-' + shadow + ')'">
+        <code>{{ shadow }}</code>
+      </li>
+    }
+  </ul>
+
+  <h3>Font sizes and control heights</h3>
+  <ul class="scale">
+    @for (size of sizes; track size) {
+      <li>
+        <code>{{ size }}</code>
+        <span [style.font-size]="'var(--gorilla-font-size-' + size + ')'">The quick gorilla</span>
+        <span
+          class="control"
+          [style.block-size]="'var(--gorilla-control-height-' + size + ')'"
+          aria-hidden="true"
+        ></span>
+      </li>
+    }
+  </ul>
+
+  <h3>Motion</h3>
+  <p>
+    Durations become <code>0s</code> when the system asks for reduced motion. Hover a row to play
+    it.
+  </p>
+  <ul class="scale motion">
+    @for (duration of durations; track duration) {
+      <li [style.--duration]="'var(--gorilla-duration-' + duration + ')'">
+        <code>--gorilla-duration-{{ duration }}</code>
+        <span class="track"><span class="dot"></span></span>
+      </li>
+    }
+  </ul>
+</section>
