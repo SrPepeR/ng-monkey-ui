@@ -7,14 +7,15 @@
 .skip-link {
   position: absolute;
   inset-inline-start: 1rem;
-  inset-block-start: -3rem;
+  inset-block-start: 1rem;
   padding: 0.5rem 1rem;
   background: Canvas;
   color: CanvasText;
-  transition: inset-block-start 150ms ease;
+  transform: translateY(calc(-100% - 1.5rem));
+  transition: transform 150ms ease;
 
   &:focus {
-    inset-block-start: 1rem;
+    transform: none;
   }
 }
 

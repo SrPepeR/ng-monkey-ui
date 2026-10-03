@@ -253,7 +253,7 @@ Automatiza la publicación y deja `release/0.1.0` lista para la pull request hac
 
 - [ ] Crear la rama `ci/release-workflow` desde `release/0.1.0`.
 - [ ] `.github/workflows/release.yml` en `push` a `main` cuando el commit es el merge de una `release/<versión>`: repite las comprobaciones de la CI, comprueba que la versión de la rama coincide con `projects/ngx-gorilla-ui/package.json` y con la primera sección de `CHANGELOG.md`, construye la librería, publica con `npm publish --provenance` desde `dist/ngx-gorilla-ui` (permiso `id-token: write`, npm ≥ 11.5.1), y crea el tag `v<versión>` y la GitHub Release con las notas del changelog. Si algo falla, no se publica nada.
-- [ ] Script de comprobación de versión (`scripts/check-release-version.mjs`) usado por el workflow, con un test.
+- [ ] Script de comprobación de versión (`scripts/check-release-version.mjs`) usado por el workflow, con un test. Comprueba también que `GORILLA_VERSION` (`projects/ngx-gorilla-ui/src/version.ts`) coincide con la versión de la rama.
 - [ ] Confirmar si npm permite configurar el trusted publisher antes de que exista el paquete; si no, documentar el paso manual de la primera publicación. El usuario configura el trusted publisher en npm.
 - [ ] Versión `0.1.0` en `projects/ngx-gorilla-ui/package.json` y `CHANGELOG.md` con la sección `0.1.0` completa.
 - [ ] Quitar de `CONTRIBUTING.md` y `AGENTS.md` la nota de que el workflow de release todavía no existe.
