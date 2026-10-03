@@ -3,18 +3,17 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve tests app",
+      "name": "Serve the catalog",
       "type": "msedge",
       "request": "launch",
-      "url": "http://localhost:4200/",
       "preLaunchTask": "npm: start",
-      "postDebugTask": "quit"
+      "url": "http://localhost:4200/"
     },
     {
-      "name": "ng build watch",
+      "name": "Build the library in watch mode",
       "type": "node-terminal",
       "request": "launch",
-      "preLaunchTask": "npm: watch"
+      "command": "npm run watch"
     }
   ]
 }

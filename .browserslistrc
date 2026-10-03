@@ -1,0 +1,9 @@
+# Supported browsers: the last two versions of the main browsers, desktop and mobile.
+# See docs/PROPUESTA-NGX-GORILLA-UI.md, section 3 ("Decisiones técnicas").
+last 2 Chrome versions
+last 2 Edge major versions
+last 2 Firefox major versions
+last 2 Safari major versions
+last 2 iOS major versions
+last 2 ChromeAndroid versions
+last 2 FirefoxAndroid versions
