@@ -32,7 +32,9 @@ These come before any other consideration. A change that breaks one of them is n
 
 ## Releases
 
-Merging a `release/<version>` pull request into `main` triggers the release workflow. It:
+> **Planned:** the release workflow does not exist yet (roadmap point 0.8). Until it lands, merging into `main` does not tag or publish anything.
+
+Once in place, merging a `release/<version>` pull request into `main` will trigger the release workflow. It:
 
 1. Runs every CI check again.
 2. Verifies that the version in the branch name matches `projects/ngx-gorilla-ui/package.json` and the first section of `CHANGELOG.md`.

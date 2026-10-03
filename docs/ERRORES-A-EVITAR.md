@@ -155,4 +155,4 @@ Cada entrada tiene tres partes:
   - Qué pasó: `angular.json` guardaba el id de analíticas del CLI.
 - **Cada versión publicada tiene `CHANGELOG.md`, tag y procedencia.**
   - Qué pasó: la 0.2.0, la 0.3.0 y la 0.3.1 se publicaron el mismo día sin cambios entre ellas, sin tags ni changelog.
-  - Cómo se cumple: 7.5.
+  - Cómo se cumple: el workflow de release (0.8).

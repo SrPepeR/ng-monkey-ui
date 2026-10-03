@@ -4,6 +4,11 @@ All notable changes to `ngx-gorilla-ui`. The project follows [Semantic Versionin
 
 The history of `ngx-monkey-ui`, the previous library, up to the unreleased `0.3.2`, is in the [`CHANGELOG.md` of the `ngx-monkey-ui-legacy` tag](https://github.com/SrPepeR/ng-gorilla-ui/blob/ngx-monkey-ui-legacy/CHANGELOG.md) (in Spanish).
 
-## Unreleased
+## 0.1.0 (unreleased)
 
-No version of `ngx-gorilla-ui` has been released yet.
+First version of `ngx-gorilla-ui`: the workspace and its tooling (roadmap point 0) and the foundations with the button (point 1).
+
+### Project
+
+- Contribution rules in `CONTRIBUTING.md`: premises (verified accessibility, overridable tokens, no abrupt changes, performance), branch flow, releases, and definition of done.
+- CI also runs on pushes to `release/**` branches.

@@ -28,7 +28,7 @@ Un cambio que no las cumple no se mergea (sección 3 de la propuesta):
 1. Nunca se trabaja en `main` ni en `release/*` directamente.
 2. Cada versión tiene su rama `release/<versión>` creada desde `main`.
 3. Cada implementación va en una rama creada desde la `release/<versión>` en curso y termina con una pull request hacia esa `release/<versión>`, no hacia `main`.
-4. Al terminar todo lo de una versión, se abre una pull request desde `release/<versión>` hacia `main`. Al mergearla, el workflow de release publica la versión en npm.
+4. Al terminar todo lo de una versión, se abre una pull request desde `release/<versión>` hacia `main`. Al mergearla, el workflow de release publica la versión en npm. Ese workflow todavía no existe (punto 0.8 del roadmap): hasta entonces no se publica nada automáticamente.
 5. Antes de mergear una `release/<versión>` en `main`: la versión de `projects/ngx-gorilla-ui/package.json` y la primera sección de `CHANGELOG.md` coinciden con la del nombre de la rama.
 
 ## Definición de terminado
