@@ -6,9 +6,13 @@
     "start": "ng build ngx-gorilla-ui && ng serve ngx-gorilla-ui-catalog",
     "watch": "ng build ngx-gorilla-ui --watch --configuration development",
     "build": "ng build ngx-gorilla-ui && ng build ngx-gorilla-ui-catalog",
+    "test": "ng test ngx-gorilla-ui --watch=false && ng build ngx-gorilla-ui && ng test ngx-gorilla-ui-catalog --watch=false",
+    "test:watch": "ng test ngx-gorilla-ui",
+    "test:ci": "ng test ngx-gorilla-ui --watch=false --headless && ng build ngx-gorilla-ui && ng test ngx-gorilla-ui-catalog --watch=false --headless",
+    "lint": "ng lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "verify": "npm run format:check && npm run build"
+    "verify": "npm run lint && npm run format:check && npm run test:ci && npm run build"
   },
   "private": true,
   "engines": {
@@ -28,8 +32,16 @@
     "@angular/build": "^22.2.1",
     "@angular/cli": "^22.2.1",
     "@angular/compiler-cli": "^22.2.0",
+    "@eslint/js": "^10.0.1",
+    "@vitest/browser-playwright": "^5.0.3",
+    "angular-eslint": "^22.5.0",
+    "eslint": "^10.12.0",
+    "eslint-config-prettier": "^10.1.8",
     "ng-packagr": "^22.2.0",
+    "playwright": "^1.63.0",
     "prettier": "^3.9.9",
-    "typescript": "~6.0.2"
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.71.0",
+    "vitest": "^5.0.3"
   }
 }

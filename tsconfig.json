@@ -30,7 +30,13 @@
       "path": "./projects/ngx-gorilla-ui/tsconfig.lib.json"
     },
     {
+      "path": "./projects/ngx-gorilla-ui/tsconfig.spec.json"
+    },
+    {
       "path": "./projects/ngx-gorilla-ui-catalog/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/ngx-gorilla-ui-catalog/tsconfig.spec.json"
     }
   ]
 }

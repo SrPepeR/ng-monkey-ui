@@ -53,6 +53,20 @@ A component or change is done when:
 - `CHANGELOG.md` has an entry under the version in progress.
 - Lint, formatting, tests, build, and size budgets pass.
 
+## Development
+
+Requirements: Node 24 (see `.nvmrc`) and, the first time, the Chromium build used by the tests: `npx playwright install chromium`.
+
+| Command | What it does |
+|---|---|
+| `npm start` | Builds the library and serves the catalog at `http://localhost:4200`. |
+| `npm run watch` | Rebuilds the library on every change; run it next to `npm start`. |
+| `npm test` | Runs the library and catalog unit tests once, in Chromium (Vitest browser mode). |
+| `npm run test:watch` | Runs the library unit tests in watch mode. |
+| `npm run lint` | Lints TypeScript and templates, including the accessibility rules. |
+| `npm run format` | Formats the code with Prettier. |
+| `npm run verify` | Everything CI checks: lint, format, tests, and build. Run it before opening a pull request. |
+
 ## Commits
 
 Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `docs:`, `chore:`...) and are written in English.

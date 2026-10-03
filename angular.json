@@ -3,7 +3,8 @@
   "version": 1,
   "cli": {
     "packageManager": "npm",
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": ["angular-eslint"]
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -24,6 +25,22 @@
             }
           },
           "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/ngx-gorilla-ui/tsconfig.spec.json",
+            "browsers": ["chromium"]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-gorilla-ui/**/*.ts",
+              "projects/ngx-gorilla-ui/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -86,6 +103,22 @@
             }
           },
           "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/ngx-gorilla-ui-catalog/tsconfig.spec.json",
+            "browsers": ["chromium"]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-gorilla-ui-catalog/**/*.ts",
+              "projects/ngx-gorilla-ui-catalog/**/*.html"
+            ]
+          }
         }
       }
     }
